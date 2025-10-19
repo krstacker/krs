@@ -1150,6 +1150,7 @@ export default class Game {
 	  "laserBlock",
 	  "garbageBlock",
 	  "flipBlock",
+	  "emptyEffect",
     ],
     types = ["mino", "ghost", "stack"],
     skin = settings.settings.skin === "auto"

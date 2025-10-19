@@ -179,7 +179,7 @@ export default class Stack extends GameModule {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
-				this.grid[x][y] = colorToChangeTo
+				this.grid[x][y] = "emptyEffect"
 			}
 		}
       }
@@ -284,6 +284,14 @@ export default class Stack extends GameModule {
 	if (this.parent.hold.isDisabled && effectToUse === "holdLock") {
 		effectToUse = "hideNext"
 	}
+	if (
+		this.parent.useEffectBlocks && 
+		this.isFrozen !== true &&
+		this.effectBlockInterval <= 1 &&
+		this.wouldCauseLineClear() <= 0
+	) {
+		this.removeEffectBlocks()
+	}
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
         const isFilled = shape[y][x]
@@ -386,6 +394,9 @@ export default class Stack extends GameModule {
 				playGoldSound = true
 				this.parent.stat.score += 100
 			}
+			if (this.grid[x][y] === "emptyEffect") {
+				this.parent.stat.score += 100
+			}
             if (this.isFrozen) {
 				if (this.grid[x][y] !== "frozen") {
 					delete this.grid[x][y]
@@ -427,7 +438,7 @@ export default class Stack extends GameModule {
 	if (playEffectSound) {
       sound.add("effectactivated")
 	  //this.deleteCellsOfColor(this.parent.currentEffect);
-	  this.removeEffectBlocks("gold")
+	  this.removeEffectBlocks()
     }
 	if (this.parent.useEffectBlocks) {
 		if (this.effectBlockInterval <= 8) {

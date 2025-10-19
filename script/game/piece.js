@@ -244,6 +244,9 @@ export default class Piece extends GameModule {
         this.ire = 2
       }
     }
+	if (this.parent.currentEffect === "rotateLock") {
+		this.ire = 0
+	}
     if (this.ire !== 0) {
       sound.add("initialrotate")
       let ireDirection = ""
@@ -1258,12 +1261,21 @@ export default class Piece extends GameModule {
     }
   }
   rotateLeft() {
+	if (this.parent.currentEffect === "rotateLock") {
+		return
+	}
     this.rotate(3, "left")
   }
   rotateRight() {
+	if (this.parent.currentEffect === "rotateLock") {
+		return
+	}
     this.rotate(1, "right")
   }
   rotate180() {
+	if (this.parent.currentEffect === "rotateLock") {
+		return
+	}
     this.rotate(2, "double")
   }
   checkSpin() {

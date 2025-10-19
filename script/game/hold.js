@@ -36,6 +36,9 @@ export default class Hold extends GameModule {
       : this.parent.next.queue[0]
   }
   hold() {
+	if (this.parent.currentEffect === "holdLock") {
+		return
+	}
     if (this.parent.type !== "zen") {
       if (
         (this.isLocked && !this.useSkip) ||
