@@ -118,15 +118,10 @@ export default class Stack extends GameModule {
 	let cellSize = this.parent.cellSize
     let buffer = this.parent.bufferPeek
     let ctx = this.ctx
-    let flash = ("0" + Math.floor((1 - this.flashTime / this.flashLimit) * 255).toString(16)).slice(-2)
-	let brightness = Math.max(
-        0,
-        1 - this.parent.piece.are / (this.parent.piece.areLimit + this.parent.piece.areLimitLineModifier)
-    )
+	let flashTime = 200
+    let flash = ("0" + Math.floor((1 - flashTime / this.flashLimit) * 255).toString(16)).slice(-2)
+	let brightness = 1
 	let brightnessHex = ("0" + Math.round(brightness * 255).toString(16)).slice(-2)
-    if (!this.fadeLineClear) {
-		brightnessHex = "ff"
-    }
     ctx.fillStyle = `#ffffff${brightnessHex}`
     for (let i = 0; i < toAnimate.length; i++) {
         ctx.clearRect(
