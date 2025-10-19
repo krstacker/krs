@@ -871,7 +871,7 @@ export const loops = {
       game.updateStats()
 	  game.isRaceMode = true
 	  resetTimePassed(game)
-	  game.timeGoal = 120000
+	  game.timeGoal = 60000
 	  game.musicProgression = 0
 	  updateLockFlash()
 	  onCountdown = false
