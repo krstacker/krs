@@ -908,6 +908,7 @@ export default class Game {
     }
   }
   gameLoop() {
+	const game = gameHandler.game
     if (!game.isDead) {
       game.request = requestAnimationFrame(game.gameLoop)
       if (typeof game.loop === "function") {
