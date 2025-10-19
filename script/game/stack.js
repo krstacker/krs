@@ -113,6 +113,58 @@ export default class Stack extends GameModule {
       }
     }
 	sound.add("laser")
+	let cellSize = this.parent.cellSize
+	let ctx = this.ctx
+	const brightness = Math.max(
+        0,
+        1 - this.parent.piece.are / (this.parent.piece.areLimit + this.parent.piece.areLimitLineModifier)
+    )
+    let brightnessHex = (
+        "0" + Math.round(brightness * 255).toString(16)
+    ).slice(-2)
+    if (!this.fadeLineClear) {
+		brightnessHex = "ff"
+    }
+    ctx.fillStyle = `#ffffff${brightnessHex}`
+    for (let i = 0; i < toAnimate.length; i++) {
+        ctx.clearRect(
+			0,
+			Math.floor(
+			(toAnimate[i] - this.hiddenHeight) * cellSize +
+				buffer * cellSize
+			),
+			cellSize * this.width,
+			cellSize
+        )
+        this.parent.particle.generate({
+			amount: 2,
+			x: targetColumn,
+			y: (toAnimate[i] - this.hiddenHeight + buffer) * cellSize,
+			xRange: cellSize,
+			yRange: cellSize,
+			xVelocity: 0,
+			yVelocity: 0,
+			xVariance: 10,
+			yVariance: 10,
+			xDampening: 1.03,
+			yDampening: 1.03,
+			lifeVariance: 80,
+        })
+        if (
+			Math.round(this.parent.piece.are / this.flashClearRate) % 2 !== 1 ||
+			!this.flashLineClear
+        ) {
+			ctx.fillRect(
+				targetColumn,
+				Math.floor(
+				(toAnimate[i] - this.hiddenHeight) * cellSize +
+					buffer * cellSize
+				),
+				cellSize,
+				cellSize
+			)
+		}
+	}
 	this.reRenderStack()
   }
   mirrorGrid() {
