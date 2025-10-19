@@ -267,8 +267,10 @@ export default class Stack extends GameModule {
 	} else if (this.isFading && this.isHidden === false) {
 		this.hidePlacedMinos()
 	}
-	if (this.wouldCauseLineClear() <= 0) {
+	if (this.parent.useGoldBlocks) {
 		this.goldBlockInterval -= 1
+	}
+	if (this.parent.useEffectBlocks) {
 		this.effectBlockInterval -= 1
 	}
 	if (this.goldBlockInterval <= 0) {
@@ -276,6 +278,12 @@ export default class Stack extends GameModule {
 	}
 	if (this.effectBlockInterval <= 0) {
 		this.effectBlockInterval = 24
+	}
+	if (this.goldBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
+		this.goldBlockInterval += 1
+	}
+	if (this.effectBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
+		this.effectBlockInterval += 1
 	}
 	let effectToUse = this.parent.effectsRoster[Math.max(
 		0,
