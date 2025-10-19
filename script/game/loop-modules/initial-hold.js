@@ -4,6 +4,7 @@ import settings from "../../settings.js"
 
 export default function initialHold(arg) {
   if (arg.currentEffect === "holdLock") {
+	arg.hold.ihs = false
 	return
   }
   if (input.getGamePress("hold") && settings.settings.IHS === "tap") {

@@ -427,7 +427,7 @@ export default class Stack extends GameModule {
 	if (playEffectSound) {
       sound.add("effectactivated")
 	  //this.deleteCellsOfColor(this.parent.currentEffect);
-	  removeEffectBlocks("gold")
+	  this.removeEffectBlocks("gold")
     }
 	if (this.parent.useEffectBlocks) {
 		if (this.effectBlockInterval <= 8) {
