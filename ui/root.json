@@ -28,7 +28,7 @@
 	{
 	  "string": "virtuosoLabel",
       "stringDesc": "virtuosoDescription",
-	  "disabled": true
+	  "action": "virtuoso"
     },
 	{
 	  "string": "excavatorLabel",

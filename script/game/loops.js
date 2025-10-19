@@ -670,6 +670,215 @@ export const loops = {
 	  game.stack.trialMode = true
     },
   },
+  virtuoso: {
+    update: (arg) => {
+	  const game = gameHandler.game
+	  updateKrsBackground(game)
+      collapse(arg)
+      if (arg.piece.inAre) {
+        initialDas(arg)
+        initialRotation(arg)
+        initialHold(arg)
+        arg.piece.are += arg.ms
+      } else {
+        respawnPiece(arg)
+        rotate(arg)
+        rotate180(arg)
+        shifting(arg)
+      }
+      gravity(arg)
+      krsHardDrop(arg)
+	  krsSoftDrop(arg)
+      krsLockdown(arg)
+      if (!arg.piece.inAre) {
+        hold(arg)
+      }
+      lockFlash(arg)
+      updateLasts(arg)
+	  updateLockFlash()
+	  if (game.timePassed >= game.timeGoal - 10000) {
+		onCountdown = true
+        if (!game.playedHurryUp) {
+          sound.add("hurryup")
+          $("#timer").classList.add("hurry-up")
+          game.playedHurryUp = true
+        }
+      } else {
+		onCountdown = false
+		if (game.playedHurryUp) {
+			$("#timer").classList.remove("hurry-up")
+		}
+		game.playedHurryUp = false
+      }
+	  if (game.piece.startingAre >= game.piece.startingAreLimit) {
+        countdownTimer += arg.ms
+        if (countdownTimer > 1000) {
+          countdownTimer -= 1000
+          if (onCountdown) {
+			  sound.add("countdown")
+		  }
+        }
+      }
+	  updateTestMode()
+	  game.stack.trialMode = true
+      /* Might use this code later
+      $('#das').max = arg.piece.dasLimit;
+      $('#das').value = arg.piece.das;
+      $('#das').style.setProperty('--opacity', ((arg.piece.arr >= arg.piece.arrLimit) || arg.piece.inAre) ? 1 : 0);
+      */
+    },
+    onPieceSpawn: (game) => {
+	  const pieceRequirement = 40
+	  const levelGoal = 20
+      const x = game.stat.level
+      const gravityEquation = (0.8 - (x - 1) * 0.007) ** (x - 1)
+      game.piece.gravity = framesToMs(1 / 20)
+      updateFallSpeed(game)
+      if (krsLevelSystem(game, pieceRequirement, levelGoal)) {
+		resetTimeLimit(game)
+	  }
+	  const timeLimitTable = [
+		[1, 60],
+		[3, 55],
+		[5, 50],
+		[9, 45],
+		[10, 40],
+		[13, 35],
+		[15, 30],
+	  ]
+	  const areTable = [
+		[1, 30],
+		[2, 28],
+		[3, 26],
+        [4, 24],
+        [5, 20],
+        [6, 18],
+        [7, 16],
+        [8, 14],
+		[9, 12],
+		[10, 10],
+		[16, 8],
+		[21, 6],
+      ]
+	  const areLineModifierTable = [
+        [10, -4],
+        [12, -6],
+        [14, 0],
+      ]
+      const areLineTable = [
+		[1, 30],
+		[2, 28],
+		[3, 26],
+        [4, 24],
+        [5, 20],
+        [6, 18],
+        [7, 16],
+        [8, 14],
+		[9, 12],
+		[10, 10],
+		[16, 8],
+		[21, 6],
+      ]
+	  const lockDelayTable = [
+		[1, 30],
+		[2, 28],
+		[3, 26],
+		[4, 24],
+		[5, 22],
+		[6, 20],
+		[7, 18],
+		[8, 16],
+		[18, 14],
+		[19, 12],
+		[20, 10],
+      ]
+	  const musicProgressionTable = [
+        [9.8, 1],
+		[10, 2],
+      ]
+	  for (const pair of musicProgressionTable) {
+        const level = pair[0]
+        const entry = pair[1]
+        if (game.stat.piece >= Math.floor((level - 1) * pieceRequirement) && game.musicProgression < entry) {
+          switch (entry) {
+            case 1:
+			  sound.killBgm()
+			  break
+            case 2:
+			  sound.loadBgm(["stage2"], "virtuoso1")
+              sound.killBgm()
+              sound.playBgm(["stage2"], "virtuoso1")
+			  break
+          }
+          game.musicProgression = entry
+        }
+      }
+	  for (const pair of timeLimitTable) {
+        const level = pair[0]
+        const entry = pair[1]
+        if (game.stat.level <= level) {
+          game.timeGoal = entry * 1000
+          break
+        }
+      }
+	  for (const pair of areTable) {
+        const level = pair[0]
+        const entry = pair[1]
+        if (game.stat.level <= level) {
+          game.piece.areLimit = framesToMs(entry)
+          break
+        }
+      }
+	  for (const pair of areLineModifierTable) {
+        const level = pair[0]
+        const entry = pair[1]
+        if (game.stat.level <= level) {
+          game.piece.areLimitLineModifier = framesToMs(entry)
+          break
+        }
+      }
+      for (const pair of areLineTable) {
+        const level = pair[0]
+        const entry = pair[1]
+        if (game.stat.level <= level) {
+          game.piece.areLineLimit = framesToMs(entry)
+          break
+        }
+      }
+	  for (const pair of lockDelayTable) {
+        const level = pair[0]
+        const entry = pair[1]
+        if (game.stat.level <= level) {
+          updateLockDelay(game, entry)
+          break
+        }
+      }
+	  if (game.stat.piece >= pieceRequirement * levelGoal) {
+		game.stat.piece = pieceRequirement * levelGoal
+		$("#kill-message").textContent = locale.getString("ui", "excellent")
+        sound.killVox()
+        sound.add("voxexcellent")
+        game.end(true)
+	  }
+	  game.piece.ghostIsVisible = false
+    },
+    onInit: (game) => {
+      game.lineGoal = null
+      game.stat.level = 1
+      lastLevel = 1
+      game.piece.gravity = 1000
+      updateFallSpeed(game)
+      game.updateStats()
+	  game.isRaceMode = true
+	  resetTimePassed(game)
+	  game.timeGoal = 100000
+	  game.musicProgression = 0
+	  updateLockFlash()
+	  onCountdown = false
+	  countdownTimer = 0
+	  game.stack.trialMode = true
+    },
+  },
   normal2: {
     update: (arg) => {
 	  const game = gameHandler.game
