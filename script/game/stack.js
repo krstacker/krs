@@ -284,7 +284,6 @@ export default class Stack extends GameModule {
 	if (this.parent.hold.isDisabled && effectToUse === "holdLock") {
 		effectToUse = "hideNext"
 	}
-	console.log(this.goldBlockInterval)
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
         const isFilled = shape[y][x]
@@ -428,7 +427,7 @@ export default class Stack extends GameModule {
 	if (playEffectSound) {
       sound.add("effectactivated")
 	  //this.deleteCellsOfColor(this.parent.currentEffect);
-	  removeEffectBlocks("red")
+	  removeEffectBlocks("gold")
     }
 	if (this.parent.useEffectBlocks) {
 		if (this.effectBlockInterval <= 8) {
