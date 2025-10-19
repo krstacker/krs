@@ -85,6 +85,21 @@ const updateTestMode = () => {
 		}
 	}
 }
+const updateNextAndHold = () => {
+	const game = gameHandler.game
+	if (game.currentEffect === "holdLock") {
+		$(".hold-canvas").classList.add("hidden")
+	} else {
+		$(".hold-canvas").classList.remove("hidden")
+	}
+	if (game.currentEffect === "hideNext") {
+		$(".main-next-canvas").classList.add("hidden")
+		$(".sub-next-canvas").classList.add("hidden")
+	} else {
+		$(".main-next-canvas").classList.remove("hidden")
+		$(".sub-next-canvas").classList.remove("hidden")
+	}
+}
 const updateLockDelay = (game, lockDelay) => {
 	if (testMode === false) {
 		game.piece.lockDelayLimit = Math.ceil(framesToMs(lockDelay))
@@ -237,6 +252,7 @@ export const loops = {
 		  }
         }
       }
+	  updateNextAndHold()
 	  updateTestMode()
 	  game.useEffectBlocks = false
       /* Might use this code later
@@ -480,6 +496,7 @@ export const loops = {
 		  }
         }
       }
+	  updateNextAndHold()
 	  updateTestMode()
 	  game.useEffectBlocks = true
       /* Might use this code later
@@ -719,8 +736,9 @@ export const loops = {
 		  }
         }
       }
-	  game.useEffectBlocks = true
+	  updateNextAndHold()
 	  updateTestMode()
+	  game.useEffectBlocks = true
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -921,6 +939,7 @@ export const loops = {
 		  }
         }
       }
+	  updateNextAndHold()
 	  updateTestMode()
 	  game.useEffectBlocks = false
       /* Might use this code later
@@ -1164,6 +1183,7 @@ export const loops = {
 		  }
         }
       }
+	  updateNextAndHold()
 	  updateTestMode()
 	  game.useEffectBlocks = true
       /* Might use this code later

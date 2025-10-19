@@ -1113,7 +1113,7 @@ export default class Stack extends GameModule {
 			color = "hidden"
 			suffix = ""
 		}
-		if (this.parent.currentEffect === "fadingBlock" && this.effectBlockInterval % 2 <= 0) {
+		if (this.parent.currentEffect === "fadingBlock" && this.parent.stat.piece % 2 <= 0) {
 			color = "hidden"
 			suffix = ""
 		}

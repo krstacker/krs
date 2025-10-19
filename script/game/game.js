@@ -908,19 +908,6 @@ export default class Game {
     }
   }
   gameLoop() {
-    const game = gameHandler.game
-	if (game.currentEffect === "holdLock") {
-		$(".hold-canvas").classList.add("hidden")
-	} else {
-		$(".hold-canvas").classList.remove("hidden")
-	}
-	if (game.currentEffect === "hideNext") {
-		$(".main-next-canvas").classList.add("hidden")
-		$(".sub-next-canvas").classList.add("hidden")
-	} else {
-		$(".main-next-canvas").classList.remove("hidden")
-		$(".sub-next-canvas").classList.remove("hidden")
-	}
     if (!game.isDead) {
       game.request = requestAnimationFrame(game.gameLoop)
       if (typeof game.loop === "function") {
