@@ -399,7 +399,7 @@ export const loops = {
       game.updateStats()
 	  game.isRaceMode = true
 	  resetTimePassed(game)
-	  game.timeGoal = 100000
+	  game.timeGoal = 120000
 	  game.musicProgression = 0
 	  updateLockFlash()
 	  onCountdown = false
@@ -660,7 +660,7 @@ export const loops = {
       game.updateStats()
 	  game.isRaceMode = true
 	  resetTimePassed(game)
-	  game.timeGoal = 100000
+	  game.timeGoal = 120000
 	  game.musicProgression = 0
 	  game.stat.grade = ""
 	  game.endingStats.grade = true
@@ -871,7 +871,7 @@ export const loops = {
       game.updateStats()
 	  game.isRaceMode = true
 	  resetTimePassed(game)
-	  game.timeGoal = 100000
+	  game.timeGoal = 120000
 	  game.musicProgression = 0
 	  updateLockFlash()
 	  onCountdown = false
@@ -1090,7 +1090,7 @@ export const loops = {
       game.updateStats()
 	  game.isRaceMode = true
 	  resetTimePassed(game)
-	  game.timeGoal = 100000
+	  game.timeGoal = 120000
 	  game.musicProgression = 0
 	  updateLockFlash()
 	  onCountdown = false
@@ -1357,7 +1357,7 @@ export const loops = {
       game.updateStats()
 	  game.isRaceMode = true
 	  resetTimePassed(game)
-	  game.timeGoal = 100000
+	  game.timeGoal = 120000
 	  game.musicProgression = 0
 	  game.stat.grade = ""
 	  game.endingStats.grade = true
