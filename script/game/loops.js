@@ -238,7 +238,7 @@ export const loops = {
         }
       }
 	  updateTestMode()
-	  game.stack.trialMode = false
+	  game.useEffectBlocks = false
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -404,7 +404,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.stack.trialMode = false
+	  game.useEffectBlocks = false
     },
   },
   trial: {
@@ -481,7 +481,7 @@ export const loops = {
         }
       }
 	  updateTestMode()
-	  game.stack.trialMode = true
+	  game.useEffectBlocks = true
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -667,7 +667,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.stack.trialMode = true
+	  game.useEffectBlocks = true
     },
   },
   virtuoso: {
@@ -719,26 +719,7 @@ export const loops = {
 		  }
         }
       }
-	  if (arg.piece.startingAre >= arg.piece.startingAreLimit) {
-        garbageTimer += arg.ms
-        if (garbageTimer > 10000) {
-          garbageTimer -= 10000
-          if (game.stat.level >= 2 && game.stat.level <= 9) {
-			arg.stack.addGarbageToCounter(1)
-		  }
-		  if (game.stat.level >= 10 && game.stat.level <= 14) {
-			arg.stack.addGarbageToCounter(2)
-		  }
-		  if (game.stat.level >= 15) {
-			  arg.stack.addGarbageToCounter(4)
-		  }
-        }
-      }
-	  if (game.stat.level <= 9) {
-		  game.stack.trialMode = true
-	  } else {
-		  game.stack.trialMode = false
-	  }
+	  game.useEffectBlocks = true
 	  updateTestMode()
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
@@ -887,7 +868,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.stack.trialMode = true
+	  game.useEffectBlocks = true
 	  garbageTimer = 0
     },
   },
@@ -941,7 +922,7 @@ export const loops = {
         }
       }
 	  updateTestMode()
-	  game.stack.trialMode = false
+	  game.useEffectBlocks = false
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -1107,7 +1088,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.stack.trialMode = false
+	  game.useEffectBlocks = false
     },
   },
   trial2: {
@@ -1184,7 +1165,7 @@ export const loops = {
         }
       }
 	  updateTestMode()
-	  game.stack.trialMode = true
+	  game.useEffectBlocks = true
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -1374,7 +1355,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.stack.trialMode = true
+	  game.useEffectBlocks = true
     },
   },
 }

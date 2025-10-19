@@ -106,6 +106,19 @@ export default class Game {
     this.timePassed = 0
 	this.timePassedOffset = 0
     this.timePassedAre = 0
+	this.useGoldBlocks = false
+	this.useEffectBlocks = false
+	this.currentEffect = ""
+	this.effectsRoster = [
+		"hideNext",
+		"rotateLock",
+		"holdLock",
+		"mirrorBlock",
+		"fadingBlock",
+		"laserBlock",
+		"garbageBlock",
+		"flipBlock",
+	]
     loadGameType(gametype)
       .then((gameData) => {
         gtag("event", "play", {
@@ -446,34 +459,6 @@ export default class Game {
     if (victory) {
       sound.add("excellent")
 	  switch (this.loadedSoundbank) {
-		case "deluxe": {
-			endScreenDelay = 2000
-			break
-		}
-		case "nullpomino": {
-			endScreenDelay = 4200
-			break
-		}
-		case "ace": {
-			endScreenDelay = 4200
-			break
-		}
-		case "tgm2": {
-			endScreenDelay = 2700
-			break
-		}
-		case "tgm3": {
-			endScreenDelay = 2700
-			break
-		}
-		case "tgm4": {
-			endScreenDelay = 2700
-			break
-		}
-		case "newcentury": {
-			endScreenDelay = 6300
-			break
-		}
 		default: {
 			endScreenDelay = 1700
 			break
@@ -924,6 +909,18 @@ export default class Game {
   }
   gameLoop() {
     const game = gameHandler.game
+	if (game.currentEffect === "holdLock") {
+		$(".hold-canvas").classList.add("hidden")
+	} else {
+		$(".hold-canvas").classList.remove("hidden")
+	}
+	if (game.currentEffect === "hideNext") {
+		$(".main-next-canvas").classList.add("hidden")
+		$(".sub-next-canvas").classList.add("hidden")
+	} else {
+		$(".main-next-canvas").classList.remove("hidden")
+		$(".sub-next-canvas").classList.remove("hidden")
+	}
     if (!game.isDead) {
       game.request = requestAnimationFrame(game.gameLoop)
       if (typeof game.loop === "function") {
@@ -1145,6 +1142,14 @@ export default class Game {
 	  "gold",
 	  "frozen",
 	  "hidden",
+	  "hideNext",
+	  "rotateLock",
+	  "holdLock",
+	  "mirrorBlock",
+	  "fadingBlock",
+	  "laserBlock",
+	  "garbageBlock",
+	  "flipBlock",
     ],
     types = ["mino", "ghost", "stack"],
     skin = settings.settings.skin === "auto"

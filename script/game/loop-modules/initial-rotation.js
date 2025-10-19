@@ -4,6 +4,9 @@ import settings from "../../settings.js"
 import { negativeMod } from "../../shortcuts.js"
 
 export default function initialRotation(arg) {
+  if (arg.currentEffect === "rotateLock") {
+	return
+  }
   if (settings.settings.IRS === "hold" || settings.settings.IRS === "off") {
     return
   }

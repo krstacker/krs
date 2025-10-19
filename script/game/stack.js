@@ -40,13 +40,12 @@ export default class Stack extends GameModule {
 	this.cleanUnderwaterRows = false
 	this.isFrozen = false
 	this.isFading = false
-	this.toCollapseUnderwater = []
+	this.toCollapseTemp = []
 	this.redrawOnHidden = false
 	this.underwaterHeight = 10
-	this.trialMode = false
-	this.excavatorMode = false
 	this.gemsCleared = 0
-	this.trialgoldInterval = 8+1
+	this.goldBlockInterval = 16+1
+	this.effectBlockInterval = 32+1
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -97,6 +96,84 @@ export default class Stack extends GameModule {
     }
 	this.reRenderStack()
   }
+  laserGrid() {
+	let targetColumn = Math.max(
+		0,
+		Math.floor(Math.random() * this.width) - 1
+	)
+    for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] != null) {
+			if (x === targetColumn) {
+				delete this.grid[x][y]
+			}
+		}
+      }
+    }
+	sound.add("laser")
+	this.reRenderStack()
+  }
+  mirrorGrid() {
+	let tempGrid = this.grid
+	this.new()
+	for (let x = 0; x < this.grid.length; x++) {
+		this.grid[x] = tempGrid[Math.max(
+			0,
+			(this.grid.length - 1) - x
+		)]
+    }
+	this.reRenderStack()
+  }
+  flipGrid() {
+	let tempGrid = this.grid
+	this.new()
+	for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        this.grid[x][y] = tempGrid[x][Math.max(
+			0,
+			(this.grid[x].length - 1) - y
+		)]
+      }
+    }
+	//Were not done yet. We still have to move the flipped stack to the bottom of the board.
+	let highestPoint = 0
+	let lowestPoint = this.height + this.hiddenHeight
+	for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] != null) {
+			if (y > highestPoint) {
+				highestPoint = y
+			}
+		}
+      }
+    }
+	tempGrid = this.grid
+	this.new()
+	for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        this.grid[x][y] = tempGrid[x][Math.max(
+			0,
+			Math.min(
+				this.grid[x].length - 1,
+				y - (lowestPoint - highestPoint)
+			)
+		)]
+      }
+    }
+	this.reRenderStack()
+  }
+  deleteCellsOfColor(color) {
+    for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] != null) {
+			if (this.grid[x][y] === "color") {
+				delete this.grid[x][y]
+			}
+		}
+      }
+    }
+	this.reRenderStack()
+  }
   gridWithLockdown() {
     const finalBlocks = this.parent.piece.getFinalBlockLocations()
     const newGrid = JSON.parse(JSON.stringify(this.grid))
@@ -118,7 +195,7 @@ export default class Stack extends GameModule {
     for (let y = 0; y < newGrid[0].length; y++) {
       for (let x = 0; x <= newGrid.length; x++) {
         if (x === newGrid.length) {
-		  if (this.arrayContains(this.toCollapseUnderwater, y) !== true) {
+		  if (this.arrayContains(this.toCollapseTemp, y) !== true) {
 			  lineClear++
 		  }
 		  break
@@ -173,17 +250,29 @@ export default class Stack extends GameModule {
     let passedLockOut = shape.length
 	if (this.isFrozen && this.wouldCauseLineClear() <= 0) {
 		this.freezePlacedMinos()
-	}
-	if (this.isFading && this.isHidden === false) {
+	} else if (this.parent.currentEffect === "fadingBlock") {
+		this.reRenderStack()
+	} else if (this.isFading && this.isHidden === false) {
 		this.hidePlacedMinos()
 	}
 	if (this.wouldCauseLineClear() <= 0) {
-		this.trialgoldInterval -= 1
+		this.goldBlockInterval -= 1
+		this.effectBlockInterval -= 1
 	}
-	if (this.trialgoldInterval <= 0) {
-		this.trialgoldInterval = 8
+	if (this.goldBlockInterval <= 0) {
+		this.goldBlockInterval = 16
 	}
-	console.log(this.trialgoldInterval)
+	if (this.effectBlockInterval <= 0) {
+		this.effectBlockInterval = 32
+	}
+	let effectToUse = this.parent.effectsRoster[Math.max(
+		0,
+		Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+	)]
+	if (this.parent.hold.isDisabled && effectToUse === "holdLock") {
+		effectToUse = "hideNext"
+	}
+	console.log(this.goldBlockInterval)
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
         const isFilled = shape[y][x]
@@ -217,12 +306,20 @@ export default class Stack extends GameModule {
           } else {
 			if (this.isHidden && this.isFrozen !== true) {
 				this.grid[xLocation][yLocation] = "hidden"
-			} else if (this.trialMode && this.isFrozen !== true) {
-				if (this.trialgoldInterval <= 1 && this.wouldCauseLineClear() <= 0) {
-					this.grid[xLocation][yLocation] = "gold"
-				} else {
-					this.grid[xLocation][yLocation] = color
-				}
+			} else if (
+				this.parent.useGoldBlocks && 
+				this.isFrozen !== true &&
+				this.goldBlockInterval <= 1 &&
+				this.wouldCauseLineClear() <= 0
+			) {
+				this.grid[xLocation][yLocation] = "gold"
+			} else if (
+				this.parent.useEffectBlocks && 
+				this.isFrozen !== true &&
+				this.effectBlockInterval <= 1 &&
+				this.wouldCauseLineClear() <= 0
+			) {
+				this.grid[xLocation][yLocation] = effectToUse
 			} else {
 				this.grid[xLocation][yLocation] = color
 			}
@@ -245,9 +342,15 @@ export default class Stack extends GameModule {
         return
       }
     }
+	if (this.parent.useEffectBlocks) {
+		if (this.effectBlockInterval <= 8) {
+			this.parent.currentEffect = ""
+		}
+	}
 	
 	let playGemSound = false
 	let playGoldSound = false
+	let playEffectSound = false
     for (let y = 0; y < this.grid[0].length; y++) {
       for (let x = 0; x <= this.grid.length; x++) {
         if (x === this.grid.length) {
@@ -261,6 +364,11 @@ export default class Stack extends GameModule {
 
 		  let underwaterHeightPosition = this.height + this.hiddenHeight - this.underwaterHeight
           for (let x = 0; x < this.grid.length; x++) {
+			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
+				playEffectSound = true
+				this.parent.stat.score += 100
+				this.parent.currentEffect = this.grid[x][y]
+			}
 			if (this.grid[x][y].includes("gem")) {
 				playGemSound = true
 				this.gemsCleared += 1
@@ -285,14 +393,14 @@ export default class Stack extends GameModule {
 			}
           }
           this.parent.piece.hasLineDelay = true
-          if (this.arrayContains(this.toCollapseUnderwater, y) !== true) {
+          if (this.arrayContains(this.toCollapseTemp, y) !== true) {
 			  this.lineClear++
 		  }
 		  if (this.isUnderwater && y >= underwaterHeightPosition) {
 			  if (this.cleanUnderwaterRows) {
 				  this.toCollapse.push(y)
 			  } else {
-				  this.toCollapseUnderwater.push(y)
+				  this.toCollapseTemp.push(y)
 			  }
 		  } else {
 			  this.toCollapse.push(y)
@@ -310,6 +418,24 @@ export default class Stack extends GameModule {
 	if (playGoldSound) {
       sound.add("goldbonus")
     }
+	if (playEffectSound) {
+      sound.add("effectactivated")
+	  this.deleteCellsOfColor(this.parent.currentEffect)
+    }
+	if (this.parent.currentEffect === "garbageBlock") {
+		this.addGarbageToCounter(4)
+		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "flipBlock") {
+		this.flipGrid()
+		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "laserBlock") {
+		this.laserGrid()
+	}
+	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
+		this.mirrorGrid()
+	}
     if (isSpin) {
       sound.add("tspinbonus")
     }
@@ -718,27 +844,27 @@ export default class Stack extends GameModule {
 	let underwaterHeightPosition = this.height + this.hiddenHeight - this.underwaterHeight
 	if (this.isUnderwater) {
 		if (this.cleanUnderwaterRows) {
-			//this.toCollapse = [...this.toCollapseUnderwater, ...this.toCollapse]
-			if (this.toCollapseUnderwater.length > 0) {
-				for (const y of this.toCollapseUnderwater) {
+			//this.toCollapse = [...this.toCollapseTemp, ...this.toCollapse]
+			if (this.toCollapseTemp.length > 0) {
+				for (const y of this.toCollapseTemp) {
 					if (this.arrayContains(this.toCollapse, y) !== true) {
 						this.toCollapse.push(y)
 					}
 				}
 			}
-			this.toCollapseUnderwater = []
+			this.toCollapseTemp = []
 			this.cleanUnderwaterRows = false
 		}
 	} else {
-		//this.toCollapse = [...this.toCollapseUnderwater, ...this.toCollapse]
-		if (this.toCollapseUnderwater.length > 0) {
-			for (const y of this.toCollapseUnderwater) {
+		//this.toCollapse = [...this.toCollapseTemp, ...this.toCollapse]
+		if (this.toCollapseTemp.length > 0) {
+			for (const y of this.toCollapseTemp) {
 				if (this.arrayContains(this.toCollapse, y) !== true) {
 					this.toCollapse.push(y)
 				}
 			}
 		}
-		this.toCollapseUnderwater = []
+		this.toCollapseTemp = []
 	}
     if (this.isFrozen) {
 	if (this.lineClear >= 4) {
@@ -960,6 +1086,10 @@ export default class Stack extends GameModule {
           suffix = `-${negativeMod(this.parent.stat.level + modifier, 10)}`
         }
 		if (this.isHidden && this.redrawOnHidden) {
+			color = "hidden"
+			suffix = ""
+		}
+		if (this.parent.currentEffect === "fadingBlock" && this.effectBlockInterval % 2 <= 0) {
 			color = "hidden"
 			suffix = ""
 		}

@@ -1519,6 +1519,12 @@ body {
   margin-top: -5.25em;
 }
 
+.hold-canvas.hidden,
+.main-next-canvas.hidden,
+.sub-next-canvas.hidden {
+  opacity: 0;
+}
+
 .next-label,
 .hold-label {
   color: #84F78C;

@@ -1,11 +1,11 @@
 {
   "usesReadyGoVoices": true,
   "files": [
-    "b2b_erase4",
     "alarm",
     "bravo",
     "collapse",
 	"cheer",
+	"effectactivated",
     "erase4",
     "erasenot4",
     "excellent",
@@ -18,6 +18,7 @@
     "initialrotate",
 	"initialhold",
     "land",
+	"laser",
     "levelup",
 	"countdown",
     "lock",
