@@ -179,7 +179,7 @@ export default class Stack extends GameModule {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
-				this.grid = colorToChangeTo
+				this.grid[x][y] = colorToChangeTo
 			}
 		}
       }
@@ -444,6 +444,7 @@ export default class Stack extends GameModule {
 	}
 	if (this.parent.currentEffect === "laserBlock") {
 		this.laserGrid()
+		this.parent.currentEffect = ""
 	}
 	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
 		this.mirrorGrid()
