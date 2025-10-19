@@ -524,11 +524,11 @@ export const loops = {
 		[19, 30],
 	  ]
 	  const areTable = [
-		[7, 30],
-		[8, 28],
-		[9, 26],
-        [10, 24],
-        [11, 20],
+		[6, 30],
+		[7, 28],
+		[8, 26],
+        [9, 24],
+        [10, 20],
         [12, 18],
         [13, 16],
         [14, 14],
@@ -542,11 +542,11 @@ export const loops = {
         [14, 0],
       ]
       const areLineTable = [
-		[7, 30],
-		[8, 28],
-		[9, 26],
-        [10, 24],
-        [11, 20],
+		[6, 30],
+		[7, 28],
+		[8, 26],
+        [9, 24],
+        [10, 20],
         [12, 18],
         [13, 16],
         [14, 14],
@@ -719,8 +719,27 @@ export const loops = {
 		  }
         }
       }
+	  if (arg.piece.startingAre >= arg.piece.startingAreLimit) {
+        garbageTimer += arg.ms
+        if (garbageTimer > 10000) {
+          garbageTimer -= 10000
+          if (game.stat.level >= 2 && game.stat.level <= 9) {
+			arg.stack.addGarbageToCounter(1)
+		  }
+		  if (game.stat.level >= 10 && game.stat.level <= 14) {
+			arg.stack.addGarbageToCounter(2)
+		  }
+		  if (game.stat.level >= 15) {
+			  arg.stack.addGarbageToCounter(4)
+		  }
+        }
+      }
+	  if (game.stat.level <= 9) {
+		  game.stack.trialMode = true
+	  } else {
+		  game.stack.trialMode = false
+	  }
 	  updateTestMode()
-	  game.stack.trialMode = true
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -747,12 +766,11 @@ export const loops = {
 		[15, 30],
 	  ]
 	  const areTable = [
-        [1, 24],
-        [2, 20],
-        [3, 18],
-        [4, 16],
-        [5, 14],
-		[6, 12],
+        [1, 20],
+        [2, 18],
+        [3, 16],
+        [4, 14],
+		[5, 12],
 		[11, 10],
 		[16, 8],
 		[21, 6],
@@ -763,12 +781,11 @@ export const loops = {
         [14, 0],
       ]
       const areLineTable = [
-        [1, 24],
-        [2, 20],
-        [3, 18],
-        [4, 16],
-        [5, 14],
-		[6, 12],
+        [1, 20],
+        [2, 18],
+        [3, 16],
+        [4, 14],
+		[5, 12],
 		[11, 10],
 		[16, 8],
 		[21, 6],
@@ -871,6 +888,7 @@ export const loops = {
 	  onCountdown = false
 	  countdownTimer = 0
 	  game.stack.trialMode = true
+	  garbageTimer = 0
     },
   },
   normal2: {
@@ -1209,11 +1227,11 @@ export const loops = {
 		[19, 30],
 	  ]
 	  const areTable = [
-		[7, 30],
-		[8, 28],
-		[9, 26],
-        [10, 24],
-        [11, 20],
+		[6, 30],
+		[7, 28],
+		[8, 26],
+        [9, 24],
+        [10, 20],
         [12, 18],
         [13, 16],
         [14, 14],
@@ -1227,11 +1245,11 @@ export const loops = {
         [14, 0],
       ]
       const areLineTable = [
-		[7, 30],
-		[8, 28],
-		[9, 26],
-        [10, 24],
-        [11, 20],
+		[6, 30],
+		[7, 28],
+		[8, 26],
+        [9, 24],
+        [10, 20],
         [12, 18],
         [13, 16],
         [14, 14],
