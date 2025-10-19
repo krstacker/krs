@@ -466,7 +466,7 @@ export default class Stack extends GameModule {
 		this.laserGrid()
 		this.parent.currentEffect = ""
 	}
-	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
+	if (this.effectBlockInterval < 24 && this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
 		this.mirrorGrid()
 	}
     if (isSpin) {
