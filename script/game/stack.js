@@ -152,20 +152,15 @@ export default class Stack extends GameModule {
 			yDampening: 1.03,
 			lifeVariance: 80,
         })
-        if (
-			Math.round(this.parent.piece.are / this.flashClearRate) % 2 !== 1 ||
-			!this.flashLineClear
-        ) {
-			ctx.fillRect(
-				targetColumn,
-				Math.floor(
-				(toAnimate[i] - this.hiddenHeight) * cellSize +
-					buffer * cellSize
-				),
-				cellSize,
-				cellSize
-			)
-		}
+        ctx.fillRect(
+			targetColumn,
+			Math.floor(
+			(toAnimate[i] - this.hiddenHeight) * cellSize +
+				buffer * cellSize
+			),
+			cellSize,
+			cellSize
+		)
 	}
 	this.reRenderStack()
   }
