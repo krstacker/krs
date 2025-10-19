@@ -174,6 +174,18 @@ export default class Stack extends GameModule {
     }
 	this.reRenderStack()
   }
+  removeEffectBlocks(colorToChangeTo) {
+    for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] != null) {
+			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
+				this.grid = colorToChangeTo
+			}
+		}
+      }
+    }
+	this.reRenderStack()
+  }
   gridWithLockdown() {
     const finalBlocks = this.parent.piece.getFinalBlockLocations()
     const newGrid = JSON.parse(JSON.stringify(this.grid))
@@ -415,7 +427,8 @@ export default class Stack extends GameModule {
     }
 	if (playEffectSound) {
       sound.add("effectactivated")
-	  this.deleteCellsOfColor(this.parent.currentEffect)
+	  //this.deleteCellsOfColor(this.parent.currentEffect);
+	  removeEffectBlocks("red")
     }
 	if (this.parent.useEffectBlocks) {
 		if (this.effectBlockInterval <= 8) {
