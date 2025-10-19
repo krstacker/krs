@@ -113,27 +113,29 @@ export default class Stack extends GameModule {
       }
     }
 	sound.add("laser")
+	this.reRenderStack()
+	// Laser animation
 	let cellSize = this.parent.cellSize
-	let ctx = this.ctx
-	const brightness = Math.max(
+    let buffer = this.parent.bufferPeek
+    let ctx = this.ctx
+    let flash = ("0" + Math.floor((1 - this.flashTime / this.flashLimit) * 255).toString(16)).slice(-2)
+	let brightness = Math.max(
         0,
         1 - this.parent.piece.are / (this.parent.piece.areLimit + this.parent.piece.areLimitLineModifier)
     )
-    let brightnessHex = (
-        "0" + Math.round(brightness * 255).toString(16)
-    ).slice(-2)
+	let brightnessHex = ("0" + Math.round(brightness * 255).toString(16)).slice(-2)
     if (!this.fadeLineClear) {
 		brightnessHex = "ff"
     }
     ctx.fillStyle = `#ffffff${brightnessHex}`
     for (let i = 0; i < toAnimate.length; i++) {
         ctx.clearRect(
-			0,
+			targetColumn,
 			Math.floor(
 			(toAnimate[i] - this.hiddenHeight) * cellSize +
 				buffer * cellSize
 			),
-			cellSize * this.width,
+			cellSize,
 			cellSize
         )
         this.parent.particle.generate({
