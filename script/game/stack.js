@@ -44,8 +44,8 @@ export default class Stack extends GameModule {
 	this.redrawOnHidden = false
 	this.underwaterHeight = 10
 	this.gemsCleared = 0
-	this.goldBlockInterval = 16+1
-	this.effectBlockInterval = 32+1
+	this.goldBlockInterval = 12+1
+	this.effectBlockInterval = 24+1
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -260,10 +260,10 @@ export default class Stack extends GameModule {
 		this.effectBlockInterval -= 1
 	}
 	if (this.goldBlockInterval <= 0) {
-		this.goldBlockInterval = 16
+		this.goldBlockInterval = 12
 	}
 	if (this.effectBlockInterval <= 0) {
-		this.effectBlockInterval = 32
+		this.effectBlockInterval = 24
 	}
 	let effectToUse = this.parent.effectsRoster[Math.max(
 		0,
@@ -342,11 +342,6 @@ export default class Stack extends GameModule {
         return
       }
     }
-	if (this.parent.useEffectBlocks) {
-		if (this.effectBlockInterval <= 8) {
-			this.parent.currentEffect = ""
-		}
-	}
 	
 	let playGemSound = false
 	let playGoldSound = false
@@ -422,6 +417,11 @@ export default class Stack extends GameModule {
       sound.add("effectactivated")
 	  this.deleteCellsOfColor(this.parent.currentEffect)
     }
+	if (this.parent.useEffectBlocks) {
+		if (this.effectBlockInterval <= 8) {
+			this.parent.currentEffect = ""
+		}
+	}
 	if (this.parent.currentEffect === "garbageBlock") {
 		this.addGarbageToCounter(4)
 		this.parent.currentEffect = ""
