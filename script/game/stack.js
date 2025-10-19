@@ -390,6 +390,7 @@ export default class Stack extends GameModule {
 				playEffectSound = true
 				this.parent.stat.score += 100
 				this.parent.currentEffect = this.grid[x][y]
+				this.effectBlockInterval = 24
 			}
 			if (this.grid[x][y].includes("gem")) {
 				playGemSound = true
