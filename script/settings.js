@@ -12,7 +12,7 @@ class Settings {
       IRS: "tap",
       IHS: "tap",
       IAS: true,
-      rotationSystem: "auto",
+      rotationSystem: "krs",
       spinDetectionType: "auto",
       useAre: true,
       useLineClearAre: true,

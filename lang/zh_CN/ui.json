@@ -19,6 +19,10 @@
     "message": "时间",
     "description": "How much time has passed since the start of the game"
   },
+  "grade": {
+    "message": "等级",
+    "description": "The grade given to the player based on their performance"
+  },
   "fallspeed": {
     "message": "下落速度",
     "description": "The speed of the piece's descent, commonly referred to as 'gravity'"
