@@ -4609,7 +4609,7 @@ export const SCORE_TABLES = {
       "tmini",
       "combo",
     ],
-    b2bMultiplier: 2,
+    b2bMultiplier: 1.25,
     b2bMultiplied: [
       "erase4",
       "tspin1",
