@@ -101,10 +101,12 @@ export default class Stack extends GameModule {
 		0,
 		Math.floor(Math.random() * this.width) - 1
 	)
+	let toAnimate = []
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
 			if (x === targetColumn) {
+				toAnimate.push(y)
 				delete this.grid[x][y]
 			}
 		}
@@ -466,8 +468,14 @@ export default class Stack extends GameModule {
 		this.laserGrid()
 		this.parent.currentEffect = ""
 	}
-	if (this.effectBlockInterval < 24 && this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
-		this.mirrorGrid()
+	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
+		if (this.parent.useEffectBlocks) {
+			if (this.effectBlockInterval < 24) {
+				this.mirrorGrid()
+			}
+		} else {
+			this.mirrorGrid()
+		}
 	}
     if (isSpin) {
       sound.add("tspinbonus")
