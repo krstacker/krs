@@ -1574,11 +1574,6 @@ body {
   font-size: 2.5em;
   bottom: .1em;
   right: -1.5em;
-  animation-name: float;
-  animation-duration: .8s;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
   transition: opacity filter;
   transition-duration: .25s;
   transition-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000);
