@@ -393,10 +393,10 @@ export default class Stack extends GameModule {
 			} else {
 				this.grid[xLocation][yLocation] = color
 			}
-			if (this.parent.effectsRoster.includes(color)) {
+			if (this.parent.effectsRoster.includes(this.grid[xLocation][yLocation])) {
 				this.effectBlockInterval = 16
 			}
-			if (color === "gold") {
+			if (this.grid[xLocation][yLocation] === "gold") {
 				this.goldBlockInterval = 16
 			}
           }
