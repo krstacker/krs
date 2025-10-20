@@ -44,8 +44,8 @@ export default class Stack extends GameModule {
 	this.redrawOnHidden = false
 	this.underwaterHeight = 10
 	this.gemsCleared = 0
-	this.goldBlockInterval = 12+1
-	this.effectBlockInterval = 24+1
+	this.goldBlockInterval = 16
+	this.effectBlockInterval = 16
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -115,23 +115,33 @@ export default class Stack extends GameModule {
 	sound.add("laser")
 	this.reRenderStack()
 	// Laser animation
-	this.parent.particle.generateIgnoreSettings({
-		red: 255,
-		blue: 128,
-		green: 128,
-		amount: 4,
-		x: targetColumn,
-		y: (toAnimate[i] - this.hiddenHeight + buffer) * cellSize,
-		xRange: cellSize,
-		yRange: cellSize,
-		xVelocity: 0,
-		yVelocity: 0,
-		xVariance: 10,
-		yVariance: 10,
-		xDampening: 1.03,
-		yDampening: 1.03,
-		lifeVariance: 80,
-    })
+	let cellSize = this.parent.cellSize
+    let buffer = this.parent.bufferPeek
+    let ctx = this.ctx
+	let flashTime = 200
+    let flash = ("0" + Math.floor((1 - flashTime / this.flashLimit) * 255).toString(16)).slice(-2)
+	let brightness = 1
+	let brightnessHex = ("0" + Math.round(brightness * 255).toString(16)).slice(-2)
+    ctx.fillStyle = `#ffffff${brightnessHex}`
+    for (let i = 0; i < toAnimate.length; i++) {
+        this.parent.particle.generate({
+			red: 255,
+			blue: 128,
+			green: 128,
+			amount: 4,
+			x: targetColumn,
+			y: (toAnimate[i] - this.hiddenHeight + buffer) * cellSize,
+			xRange: cellSize,
+			yRange: cellSize,
+			xVelocity: 0,
+			yVelocity: 0,
+			xVariance: 10,
+			yVariance: 10,
+			xDampening: 1.03,
+			yDampening: 1.03,
+			lifeVariance: 80,
+        })
+	}
 	this.reRenderStack()
   }
   mirrorGrid() {
@@ -288,31 +298,33 @@ export default class Stack extends GameModule {
 	} else if (this.isFading && this.isHidden === false) {
 		this.hidePlacedMinos()
 	}
-	if (this.parent.useGoldBlocks) {
+	if (this.parent.useGoldBlocks && this.goldBlockInterval > 0) {
 		this.goldBlockInterval -= 1
 	}
-	if (this.parent.useEffectBlocks) {
+	if (this.parent.useEffectBlocks && this.effectBlockInterval > 0) {
 		this.effectBlockInterval -= 1
 	}
 	if (this.goldBlockInterval <= 0) {
-		this.goldBlockInterval = 12
+		//this.goldBlockInterval = 16
+		this.goldBlockInterval = 0
 	}
 	if (this.effectBlockInterval <= 0) {
-		this.effectBlockInterval = 24
+		//this.effectBlockInterval = 16
+		this.effectBlockInterval = 0
 	}
-	if (this.goldBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
-		this.goldBlockInterval += 1
-	}
-	if (this.effectBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
-		this.effectBlockInterval += 1
-	}
-	let effectToUse = this.parent.effectsRoster[Math.max(
-		0,
-		Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
-	)]
-	if (this.parent.hold.isDisabled && effectToUse === "holdLock") {
-		effectToUse = "hideNext"
-	}
+	//if (this.goldBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
+		//this.goldBlockInterval += 1
+	//}
+	//if (this.effectBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
+		//this.effectBlockInterval += 1
+	//}
+	//let effectToUse = this.parent.effectsRoster[Math.max(
+		//0,
+		//Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+	//)]
+	//if (this.parent.hold.isDisabled && effectToUse === "holdLock") {
+		//effectToUse = "hideNext"
+	//}
 	if (
 		this.parent.useEffectBlocks && 
 		this.isFrozen !== true &&
@@ -354,20 +366,20 @@ export default class Stack extends GameModule {
           } else {
 			if (this.isHidden && this.isFrozen !== true) {
 				this.grid[xLocation][yLocation] = "hidden"
-			} else if (
-				this.parent.useGoldBlocks && 
-				this.isFrozen !== true &&
-				this.goldBlockInterval <= 1 &&
-				this.wouldCauseLineClear() <= 0
-			) {
-				this.grid[xLocation][yLocation] = "gold"
-			} else if (
-				this.parent.useEffectBlocks && 
-				this.isFrozen !== true &&
-				this.effectBlockInterval <= 1 &&
-				this.wouldCauseLineClear() <= 0
-			) {
-				this.grid[xLocation][yLocation] = effectToUse
+			//} else if (
+				//this.parent.useGoldBlocks && 
+				//this.isFrozen !== true &&
+				//this.goldBlockInterval <= 1 &&
+				//this.wouldCauseLineClear() <= 0
+			//) {
+				//this.grid[xLocation][yLocation] = "gold"
+			//} else if (
+				//this.parent.useEffectBlocks && 
+				//this.isFrozen !== true &&
+				//this.effectBlockInterval <= 1 &&
+				//this.wouldCauseLineClear() <= 0
+			//) {
+				//this.grid[xLocation][yLocation] = effectToUse
 			} else {
 				this.grid[xLocation][yLocation] = color
 			}
@@ -411,7 +423,7 @@ export default class Stack extends GameModule {
 				playEffectSound = true
 				this.parent.stat.score += 100
 				this.parent.currentEffect = this.grid[x][y]
-				this.effectBlockInterval = 24
+				this.effectBlockInterval = 16
 			}
 			if (this.grid[x][y].includes("gem")) {
 				playGemSound = true
@@ -423,6 +435,7 @@ export default class Stack extends GameModule {
 			if (this.grid[x][y] === "gold") {
 				playGoldSound = true
 				this.parent.stat.score += 100
+				this.goldBlockInterval = 16
 			}
 			if (this.grid[x][y] === "emptyEffect") {
 				this.parent.stat.score += 100
@@ -467,35 +480,8 @@ export default class Stack extends GameModule {
     }
 	if (playEffectSound) {
       sound.add("effectactivated")
-	  //this.deleteCellsOfColor(this.parent.currentEffect);
 	  this.removeEffectBlocks()
     }
-	if (this.parent.useEffectBlocks) {
-		if (this.effectBlockInterval <= 8) {
-			this.parent.currentEffect = ""
-		}
-	}
-	if (this.parent.currentEffect === "garbageBlock") {
-		this.addGarbageToCounter(4)
-		this.parent.currentEffect = ""
-	}
-	if (this.parent.currentEffect === "flipBlock") {
-		this.flipGrid()
-		this.parent.currentEffect = ""
-	}
-	if (this.parent.currentEffect === "laserBlock") {
-		this.laserGrid()
-		this.parent.currentEffect = ""
-	}
-	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
-		if (this.parent.useEffectBlocks) {
-			if (this.effectBlockInterval < 24) {
-				this.mirrorGrid()
-			}
-		} else {
-			this.mirrorGrid()
-		}
-	}
     if (isSpin) {
       sound.add("tspinbonus")
     }
@@ -754,6 +740,32 @@ export default class Stack extends GameModule {
     //   this.parent.noUpdate = true;
     } */
     this.parent.updateStats()
+	if (this.parent.useEffectBlocks) {
+		if (this.effectBlockInterval <= 4) {
+			this.parent.currentEffect = ""
+		}
+	}
+	if (this.parent.currentEffect === "garbageBlock") {
+		this.addGarbageToCounter(4)
+		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "laserBlock") {
+		this.laserGrid()
+		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "flipBlock") {
+		this.flipGrid()
+		this.parent.currentEffect = ""
+	}
+	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
+		if (this.parent.useEffectBlocks) {
+			if (this.effectBlockInterval < 24) {
+				this.mirrorGrid()
+			}
+		} else {
+			this.mirrorGrid()
+		}
+	}
   }
   alarmCheck() {
     if (this.parent.type === "zen") {
