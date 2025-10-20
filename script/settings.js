@@ -63,7 +63,6 @@ class Settings {
       soundbank: "auto",
       nextSoundbank: "auto",
       voicebank: "off",
-	  pieceBehavior: "krs",
     }
     switch (navigator.language.substr(0, 2)) {
       case "ja":
