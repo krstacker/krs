@@ -45,6 +45,7 @@ export default class Stack extends GameModule {
 	this.underwaterHeight = 10
 	this.gemsCleared = 0
 	this.effectBlockInterval = 16
+	this.displayedEffectText = false
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -269,28 +270,29 @@ export default class Stack extends GameModule {
   flipGrid() {
 	let tempGrid = this.grid
 	this.new()
+	let flippedGrid = this.grid
 	for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
-        this.grid[x][y] = tempGrid[x][Math.max(
+        flippedGrid[x][y] = tempGrid[x][Math.max(
 			0,
-			(this.grid[x].length - 1) - y
+			this.grid[x].length - y
 		)]
       }
     }
-	//Were not done yet. We still have to move the flipped stack to the bottom of the board.
+	//Were not done yet. We still have to move the stack to the bottom of the board.
+	tempGrid = flippedGrid
+	this.new()
 	let highestPoint = 0
-	let lowestPoint = this.height + this.hiddenHeight
+	let lowestPoint = this.height + this.hiddenHeight - 1
 	for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
-        if (this.grid[x][y] != null) {
+        if (tempGrid[x][y] != null) {
 			if (y > highestPoint) {
 				highestPoint = y
 			}
 		}
       }
     }
-	tempGrid = this.grid
-	this.new()
 	for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         this.grid[x][y] = tempGrid[x][Math.max(
@@ -389,20 +391,20 @@ export default class Stack extends GameModule {
 		yDampening: 1,
 		lifeVariance: 0,
     })
-	//Were not done yet. We still have to move the modified stack to the bottom of the board.
+	//Were not done yet. We still have to move the stack to the bottom of the board.
+	let tempGrid = this.grid
+	this.new()
 	let highestPoint = 0
-	let lowestPoint = this.height + this.hiddenHeight
+	let lowestPoint = this.height + this.hiddenHeight - 1
 	for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
-        if (this.grid[x][y] != null) {
+        if (tempGrid[x][y] != null) {
 			if (y > highestPoint) {
 				highestPoint = y
 			}
 		}
       }
     }
-	tempGrid = this.grid
-	this.new()
 	for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         this.grid[x][y] = tempGrid[x][Math.max(
@@ -1003,43 +1005,81 @@ export default class Stack extends GameModule {
 		}
 	}
 	if (this.parent.currentEffect === "holdLock") {
-		this.parent.displayActionText("HOLD LOCK!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("HOLD LOCK!")
+		}
 	}
 	if (this.parent.currentEffect === "rotateLock") {
-		this.parent.displayActionText("ROTATE LOCK!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("ROTATE LOCK!")
+		}
 	}
 	if (this.parent.currentEffect === "hideNext") {
-		this.parent.displayActionText("HIDE NEXT!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("HIDE NEXT!")
+		}
 	}
 	if (this.parent.currentEffect === "mirrorBlock") {
-		this.parent.displayActionText("MIRROR BLOCK!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("MIRROR BLOCK!")
+		}
 	}
 	if (this.parent.currentEffect === "fadingBlock") {
-		this.parent.displayActionText("FLICKER BLOCK!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("FLICKER BLOCK!")
+		}
 	}
 	if (this.parent.currentEffect === "phantomBlock") {
-		this.parent.displayActionText("PHANTOM BLOCK!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("PHANTOM BLOCK!")
+		}
 	}
 	if (this.parent.currentEffect === "delFieldUp") {
-		this.parent.displayActionText("SPLIT FIELD!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("SLICE FIELD!")
+		}
+		this.sliceGridTop()
 	}
 	if (this.parent.currentEffect === "delFieldDown") {
-		this.parent.displayActionText("SPLIT FIELD!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("SLICE FIELD!")
+		}
+		this.sliceGridBottom()
 	}
 	if (this.parent.currentEffect === "garbageBlock") {
-		this.parent.displayActionText("GARBAGE!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("GARBAGE!")
+		}
 		this.addGarbageToCounter(4)
 		this.parent.currentEffect = ""
 	}
 	if (this.parent.currentEffect === "laserBlock") {
-		this.parent.displayActionText("LASER!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("LASER!")
+		}
 		this.laserGrid()
 		this.parent.currentEffect = ""
 	}
 	if (this.parent.currentEffect === "flipBlock") {
-		this.parent.displayActionText("180° STACK!")
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			this.parent.displayActionText("180° STACK!")
+		}
 		this.flipGrid()
 		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "") {
+		this.displayedEffectText = false
 	}
 	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
 		if (this.parent.useEffectBlocks) {
