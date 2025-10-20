@@ -106,6 +106,12 @@
   "virtuoso2Description": {
     "message": "如果你打败了VIRTUOSO，试试这个。"
   },
+  "virtuoso3Label": {
+    "message": "VIRTUOSO III"
+  },
+  "virtuoso3Description": {
+    "message": "如果你打败了VIRTUOSO II，试试这个。"
+  },
   "excavator2Label": {
     "message": "EXCAVATOR II"
   },

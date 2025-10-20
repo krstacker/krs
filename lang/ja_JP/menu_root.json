@@ -118,6 +118,12 @@
   "virtuoso2Description": {
     "message": "VIRTUOSOをクリアしたら、これを試してみてください。"
   },
+  "virtuoso3Label": {
+    "message": "VIRTUOSO III"
+  },
+  "virtuoso3Description": {
+    "message": "VIRTUOSO IIをクリアしたら、これを試してみてください。"
+  },
   "excavator2Label": {
     "message": "EXCAVATOR II"
   },

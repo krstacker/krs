@@ -16,5 +16,11 @@
   "piece": {
     "spinDetectionType": "3corner"
   },
+  "next": {
+    "nextLimit": 3
+  },
+  "hold": {
+    "isDisabled": false
+  },
   "stats": ["score", "level", "grade", "line", "piece"]
 }

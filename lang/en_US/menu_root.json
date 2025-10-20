@@ -112,6 +112,12 @@
   "virtuoso2Description": {
     "message": "If you beat Virtuoso, try this."
   },
+  "virtuoso3Label": {
+    "message": "Virtuoso III"
+  },
+  "virtuoso3Description": {
+    "message": "If you beat Virtuoso II, try this."
+  },
   "excavator2Label": {
     "message": "Excavator II"
   },

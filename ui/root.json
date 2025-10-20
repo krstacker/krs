@@ -48,6 +48,11 @@
 	{
 	  "string": "virtuoso2Label",
       "stringDesc": "virtuoso2Description",
+	  "action": "virtuoso2"
+    },
+	{
+	  "string": "virtuoso3Label",
+      "stringDesc": "virtuoso3Description",
 	  "disabled": true
     },
 	{
