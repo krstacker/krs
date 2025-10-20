@@ -1139,7 +1139,7 @@ export default class Stack extends GameModule {
 		}
 		this.parent.stat.effect = ""
 	}
-	if (this.effectBlockInterval % 2 <= 0 && this.parent.currentEffect === "mirrorBlock" && this.toCollapse.length <= 0) {
+	if (this.parent.currentEffect === "mirrorBlock" && this.toCollapse.length <= 0) {
 		if (this.parent.useEffectBlocks) {
 			if (this.effectBlockInterval < 16) {
 				this.mirrorGrid()
@@ -1431,7 +1431,7 @@ export default class Stack extends GameModule {
 		this.flipGrid()
 		this.parent.currentEffect = ""
 	}
-	if (this.effectBlockInterval % 2 <= 0 && this.parent.currentEffect === "mirrorBlock") {
+	if (this.parent.currentEffect === "mirrorBlock") {
 		if (this.parent.useEffectBlocks) {
 			if (this.effectBlockInterval < 16) {
 				this.mirrorGrid()
