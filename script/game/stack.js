@@ -205,7 +205,7 @@ export default class Stack extends GameModule {
     }
 	this.reRenderStack()
   }
-  removeEffectBlocks(colorToChangeTo) {
+  removeEffectBlocks() {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
@@ -333,9 +333,7 @@ export default class Stack extends GameModule {
 	}
 	if (
 		this.parent.useEffectBlocks && 
-		this.isFrozen !== true &&
-		this.effectBlockInterval <= 1 &&
-		this.wouldCauseLineClear() <= 0
+		this.effectBlockInterval < 0
 	) {
 		this.removeEffectBlocks()
 	}
@@ -389,7 +387,7 @@ export default class Stack extends GameModule {
 			} else if (
 				this.parent.useEffectBlocks &&
 				this.parent.pendingEffect !== "" &&
-				this.effectBlockInterval === 0
+				this.effectBlockInterval < 0
 			) {
 				this.grid[xLocation][yLocation] = this.parent.pendingEffect
 			} else {
