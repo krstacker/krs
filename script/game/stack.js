@@ -298,12 +298,6 @@ export default class Stack extends GameModule {
 	} else if (this.isFading && this.isHidden === false) {
 		this.hidePlacedMinos()
 	}
-	if (this.parent.useGoldBlocks) {
-		this.goldBlockInterval -= 1
-	}
-	if (this.parent.useEffectBlocks) {
-		this.effectBlockInterval -= 1
-	}
 	//if (this.goldBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
 		//this.goldBlockInterval += 1
 	//}
@@ -330,6 +324,12 @@ export default class Stack extends GameModule {
 				Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
 			)]
 		}
+	}
+	if (this.parent.useGoldBlocks) {
+		this.goldBlockInterval -= 1
+	}
+	if (this.parent.useEffectBlocks) {
+		this.effectBlockInterval -= 1
 	}
 	if (
 		this.parent.useEffectBlocks && 
