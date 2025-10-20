@@ -126,9 +126,9 @@ const updateNextAndHold = () => {
 		$(".stack-canvas").classList.remove("fadingeffect")
 	}
 	if (testMode === false) {
-		$(".error").classList.add("nontestmode")
+		$(".error-stack").classList.add("nontestmode")
 	} else {
-		$(".error").classList.remove("nontestmode")
+		$(".error-stack").classList.remove("nontestmode")
 	}
 }
 const updateLockDelay = (game, lockDelay) => {
