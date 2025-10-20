@@ -100,12 +100,10 @@ export default class Stack extends GameModule {
 		0,
 		Math.floor(Math.random() * this.width) - 1
 	)
-	let toAnimate = []
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
 			if (x === targetColumn) {
-				toAnimate.push(y)
 				delete this.grid[x][y]
 			}
 		}
@@ -117,30 +115,23 @@ export default class Stack extends GameModule {
 	let cellSize = this.parent.cellSize
     let buffer = this.parent.bufferPeek
     let ctx = this.ctx
-	let flashTime = 200
-    let flash = ("0" + Math.floor((1 - flashTime / this.flashLimit) * 255).toString(16)).slice(-2)
-	let brightness = 1
-	let brightnessHex = ("0" + Math.round(brightness * 255).toString(16)).slice(-2)
-    ctx.fillStyle = `#ffffff${brightnessHex}`
-    for (let i = 0; i < toAnimate.length; i++) {
-        this.parent.particle.generate({
-			red: 255,
-			blue: 128,
-			green: 128,
-			amount: 4,
-			x: targetColumn,
-			y: (toAnimate[i] - this.hiddenHeight + buffer) * cellSize,
-			xRange: cellSize,
-			yRange: cellSize,
-			xVelocity: 0,
-			yVelocity: 0,
-			xVariance: 10,
-			yVariance: 10,
-			xDampening: 1.03,
-			yDampening: 1.03,
-			lifeVariance: 80,
-        })
-	}
+	this.parent.particle.generateIgnoreSettings({
+		red: 255,
+		blue: 128,
+		green: 128,
+		amount: 100,
+		x: targetColumn * cellSize,
+		y: 0,
+		xRange: cellSize,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
 	this.reRenderStack()
   }
   mirrorGrid() {
@@ -152,6 +143,27 @@ export default class Stack extends GameModule {
 			(this.grid.length - 1) - x
 		)]
     }
+	// Grid particles
+	let cellSize = this.parent.cellSize
+    let buffer = this.parent.bufferPeek
+    let ctx = this.ctx
+	this.parent.particle.generateIgnoreSettings({
+		red: 255,
+		blue: 255,
+		green: 255,
+		amount: 50,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
 	this.reRenderStack()
   }
   flipGrid() {
@@ -190,6 +202,27 @@ export default class Stack extends GameModule {
 		)]
       }
     }
+	// Grid particles
+	let cellSize = this.parent.cellSize
+    let buffer = this.parent.bufferPeek
+    let ctx = this.ctx
+	this.parent.particle.generateIgnoreSettings({
+		red: 255,
+		blue: 255,
+		green: 255,
+		amount: 50,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
 	this.reRenderStack()
   }
   deleteCellsOfColor(color) {
@@ -742,7 +775,7 @@ export default class Stack extends GameModule {
 	}
 	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
 		if (this.parent.useEffectBlocks) {
-			if (this.effectBlockInterval < 24) {
+			if (this.effectBlockInterval < 16) {
 				this.mirrorGrid()
 			}
 		} else {
