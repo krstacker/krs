@@ -45,6 +45,7 @@ export default class Stack extends GameModule {
 	this.underwaterHeight = 10
 	this.gemsCleared = 0
 	this.effectBlockInterval = 16
+	this.dontUseLineClearAnim = true
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -119,7 +120,7 @@ export default class Stack extends GameModule {
 		red: 255,
 		blue: 128,
 		green: 128,
-		amount: 100,
+		amount: 500,
 		x: targetColumn * cellSize,
 		y: 0,
 		xRange: cellSize,
@@ -151,7 +152,7 @@ export default class Stack extends GameModule {
 		red: 255,
 		blue: 255,
 		green: 255,
-		amount: 50,
+		amount: 250,
 		x: 0,
 		y: 0,
 		xRange: cellSize * this.width,
@@ -212,7 +213,7 @@ export default class Stack extends GameModule {
 		red: 255,
 		blue: 255,
 		green: 255,
-		amount: 50,
+		amount: 250,
 		x: 0,
 		y: 0,
 		xRange: cellSize * this.width,
@@ -1260,7 +1261,7 @@ export default class Stack extends GameModule {
       }
     }
     // Line clear animation
-    if (this.toCollapse.length > 0 && this.isFrozen !== true) {
+    if (this.toCollapse.length > 0 && this.isFrozen !== true && this.dontUseLineClearAnim !== true) {
       const brightness = Math.max(
         0,
         1 -
@@ -1315,9 +1316,11 @@ export default class Stack extends GameModule {
         }
       }
   } else if (this.isFrozen === true) {
+	  this.reRenderStack()
 	  for (const i of this.toCollapse) {
 		this.parent.particle.generate({
-          amount: 2,
+          //amount: 2,
+		  amount: 25,
           x: 0,
           y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
           xRange: this.width * cellSize,
