@@ -975,32 +975,42 @@ export default class Stack extends GameModule {
 	}
 	if (this.parent.currentEffect !== "") {
 		if (this.parent.currentEffect === "holdLock") {
+			$("#garbage-counter").classList.remove("hidden")
 			$("#garbage-counter").textContent = "HOLD LOCK"
 		}
 		if (this.parent.currentEffect === "rotateLock") {
+			$("#garbage-counter").classList.remove("hidden")
 			$("#garbage-counter").textContent = "ROTATE LOCK"
 		}
 		if (this.parent.currentEffect === "hideNext") {
+			$("#garbage-counter").classList.remove("hidden")
 			$("#garbage-counter").textContent = "HIDE NEXT"
 		}
 		if (this.parent.currentEffect === "mirrorBlock") {
+			$("#garbage-counter").classList.remove("hidden")
 			$("#garbage-counter").textContent = "MIRROR BLOCK"
 		}
 		if (this.parent.currentEffect === "fadingBlock") {
+			$("#garbage-counter").classList.remove("hidden")
 			$("#garbage-counter").textContent = "FLICKER BLOCK"
 		}
 		if (this.parent.currentEffect === "phantomBlock") {
+			$("#garbage-counter").classList.remove("hidden")
 			$("#garbage-counter").textContent = "PHANTOM BLOCK"
 		}
 		if (this.waitingGarbage > 0) {
+			$("#garbage-counter").classList.remove("hidden")
 			$("#garbage-counter").textContent = `${this.waitingGarbage}`
 		} else {
+			$("#garbage-counter").classList.add("hidden")
 			$("#garbage-counter").textContent = ""
 		}
 	} else {
 		if (this.waitingGarbage > 0) {
+			$("#garbage-counter").classList.remove("hidden")
 			$("#garbage-counter").textContent = `${this.waitingGarbage}`
 		} else {
+			$("#garbage-counter").classList.add("hidden")
 			$("#garbage-counter").textContent = ""
 		}
 	}
