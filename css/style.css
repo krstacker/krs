@@ -1560,6 +1560,11 @@ body {
   margin-right: -2.7em;
 }
 
+.next-label.disabledeffect,
+.hold-label.disabledeffect {
+  filter: grayscale(100%);
+}
+
 @keyframes float {
   from {
     transform: translate(0, -.5);

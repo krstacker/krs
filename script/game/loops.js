@@ -101,15 +101,19 @@ const updateNextAndHold = () => {
 	const game = gameHandler.game
 	if (game.currentEffect === "holdLock") {
 		$(".hold-canvas").classList.add("hidden")
+		$(".hold-label").classList.add("disabledeffect")
 	} else {
 		$(".hold-canvas").classList.remove("hidden")
+		$(".hold-label").classList.remove("disabledeffect")
 	}
 	if (game.currentEffect === "hideNext") {
 		$(".main-next-canvas").classList.add("hidden")
 		$(".sub-next-canvas").classList.add("hidden")
+		$(".next-label").classList.add("disabledeffect")
 	} else {
 		$(".main-next-canvas").classList.remove("hidden")
 		$(".sub-next-canvas").classList.remove("hidden")
+		$(".next-label").classList.remove("disabledeffect")
 	}
 	if (game.useEffectBlocks && game.stack.effectBlockInterval === 0 && game.pendingEffect !== "") {
 		$(".hold-canvas").classList.add("oneffect")
