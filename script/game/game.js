@@ -125,6 +125,7 @@ export default class Game {
 		"delFieldUp",
 		"delFieldDown",
 		"jewelBlock",
+		"deathBlock",
 	]
     loadGameType(gametype)
       .then((gameData) => {
@@ -1149,6 +1150,7 @@ export default class Game {
 	  "delFieldUp",
 	  "delFieldDown",
 	  "jewelBlock",
+	  "deathBlock",
 	  "emptyEffect",
     ],
     types = ["mino", "ghost", "stack"],

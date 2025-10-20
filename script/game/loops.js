@@ -763,6 +763,15 @@ export const loops = {
 		  }
         }
       }
+	  if (arg.piece.startingAre >= arg.piece.startingAreLimit) {
+        garbageTimer += arg.ms
+        if (garbageTimer > 10000) {
+          garbageTimer -= 10000
+          if (game.stat.level >= 15) {
+			  arg.stack.addGarbageToCounter(1)
+		  }
+        }
+      }
 	  updateNextAndHold()
 	  updateTestMode()
 	  game.useEffectBlocks = true
@@ -1456,6 +1465,15 @@ export const loops = {
 		  }
         }
       }
+	  if (arg.piece.startingAre >= arg.piece.startingAreLimit) {
+        garbageTimer += arg.ms
+        if (garbageTimer > 10000) {
+          garbageTimer -= 10000
+          if (game.stat.level >= 5) {
+			  arg.stack.addGarbageToCounter(1)
+		  }
+        }
+      }
 	  updateNextAndHold()
 	  updateTestMode()
 	  game.useEffectBlocks = true
@@ -1812,7 +1830,6 @@ export const loops = {
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
-	  garbageTimer = 0
     },
   },
 }

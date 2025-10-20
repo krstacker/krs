@@ -592,6 +592,7 @@ export default class Stack extends GameModule {
 			"delFieldUp",
 			"delFieldDown",
 			"jewelBlock",
+			"deathBlock",
 		]
 		this.parent.pendingEffect = frozenEffectsRoster[Math.max(
 			0,
@@ -1146,6 +1147,12 @@ export default class Stack extends GameModule {
 		} else {
 			this.mirrorGrid()
 		}
+	}
+	if (this.parent.currentEffect === "deathBlock") {
+		$("#kill-message").textContent = locale.getString("ui", "topOut")
+        sound.killVox()
+        sound.add("voxtopout")
+        this.parent.end()
 	}
 	if (this.parent.currentEffect === "" && this.parent.useEffectBlocks) {
 		this.displayedEffectText = false
