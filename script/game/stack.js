@@ -202,6 +202,8 @@ export default class Stack extends GameModule {
 		)]
       }
     }
+	sound.add("collapse4")
+	sound.add("collapse")
 	// Grid particles
 	let cellSize = this.parent.cellSize
     let buffer = this.parent.bufferPeek
