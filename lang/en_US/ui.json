@@ -23,6 +23,12 @@
     "message": "Rank",
     "description": "The grade given to the player based on their performance"
   },
+  "effect": {
+    "message": "Effect"
+  },
+  "medals": {
+    "message": "Medals"
+  },
   "fallspeed": {
     "message": "Gravity",
     "description": "The speed of the piece's descent, commonly referred to as 'gravity'"

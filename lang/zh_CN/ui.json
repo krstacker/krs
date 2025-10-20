@@ -23,6 +23,12 @@
     "message": "等级",
     "description": "The grade given to the player based on their performance"
   },
+  "effect": {
+    "message": "效果"
+  },
+  "medals": {
+    "message": "奖章"
+  },
   "fallspeed": {
     "message": "下落速度",
     "description": "The speed of the piece's descent, commonly referred to as 'gravity'"

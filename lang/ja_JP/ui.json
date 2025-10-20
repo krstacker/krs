@@ -23,6 +23,12 @@
     "message": "RANK",
     "description": "The grade given to the player based on their performance"
   },
+  "effect": {
+    "message": "効果"
+  },
+  "medals": {
+    "message": "メダル"
+  },
   "fallspeed": {
     "message": "重力",
     "description": "The speed of the piece's descent, commonly referred to as 'gravity'"
