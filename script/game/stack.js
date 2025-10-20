@@ -298,19 +298,11 @@ export default class Stack extends GameModule {
 	} else if (this.isFading && this.isHidden === false) {
 		this.hidePlacedMinos()
 	}
-	if (this.parent.useGoldBlocks && this.goldBlockInterval > 0) {
+	if (this.parent.useGoldBlocks) {
 		this.goldBlockInterval -= 1
 	}
-	if (this.parent.useEffectBlocks && this.effectBlockInterval > 0) {
+	if (this.parent.useEffectBlocks) {
 		this.effectBlockInterval -= 1
-	}
-	if (this.goldBlockInterval <= 0) {
-		//this.goldBlockInterval = 16
-		this.goldBlockInterval = 0
-	}
-	if (this.effectBlockInterval <= 0) {
-		//this.effectBlockInterval = 16
-		this.effectBlockInterval = 0
 	}
 	//if (this.goldBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
 		//this.goldBlockInterval += 1
@@ -325,6 +317,20 @@ export default class Stack extends GameModule {
 	//if (this.parent.hold.isDisabled && effectToUse === "holdLock") {
 		//effectToUse = "hideNext"
 	//}
+	if (this.effectBlockInterval === 16) {
+		this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+			0,
+			Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+		)]
+	}
+	if (this.parent.hold.isDisabled && this.parent.pendingEffect === "holdLock") {
+		while (this.parent.pendingEffect === "holdLock") {
+			this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+				0,
+				Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+			)]
+		}
+	}
 	if (
 		this.parent.useEffectBlocks && 
 		this.isFrozen !== true &&
@@ -380,8 +386,20 @@ export default class Stack extends GameModule {
 				//this.wouldCauseLineClear() <= 0
 			//) {
 				//this.grid[xLocation][yLocation] = effectToUse
+			} else if (
+				this.parent.useEffectBlocks &&
+				this.parent.pendingEffect !== "" &&
+				this.effectBlockInterval === 0
+			) {
+				this.grid[xLocation][yLocation] = this.parent.pendingEffect
 			} else {
 				this.grid[xLocation][yLocation] = color
+			}
+			if (this.parent.effectsRoster.includes(color)) {
+				this.effectBlockInterval = 16
+			}
+			if (color === "gold") {
+				this.goldBlockInterval = 16
 			}
           }
           this.dirtyCells.push([xLocation, yLocation])

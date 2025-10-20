@@ -109,6 +109,7 @@ export default class Game {
 	this.useGoldBlocks = false
 	this.useEffectBlocks = false
 	this.currentEffect = ""
+	this.pendingEffect = ""
 	this.effectsRoster = [
 		"hideNext",
 		"rotateLock",

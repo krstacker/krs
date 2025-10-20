@@ -120,6 +120,15 @@ export default class Next extends GameModule {
         if (this.parent.piece.useRetroColors) {
           suffix = `-${this.parent.stat.level % 10}`
         }
+		if (this.parent.useEffectBlocks) {
+			if (this.parent.stack.effectBlockInterval === 1 && this.parent.pendingEffect !== "") {
+				color = this.parent.pendingEffect
+			}
+		} else if (this.parent.useGoldBlocks) {
+			if (this.parent.stack.goldBlockInterval === 1) {
+				color = "gold"
+			}
+		}
         const img = document.getElementById(`mino-${color}${suffix}`)
         const isFilled = shape[y][x]
         if (isFilled) {

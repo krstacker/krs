@@ -216,36 +216,8 @@ export default class Piece extends GameModule {
     this.lowestVisualY = this.visualY
     this.kicks = KICK_TABLES[backUpRotSys][name]
     this.manipulations = 0
-    //this.color = this.parent.colors[this.name]
-	if (this.parent.useEffectBlocks) {
-		if (this.parent.stack.effectBlockInterval <= 0) {
-			this.parent.stack.effectBlockInterval = 999999999
-			let effectToUse = this.parent.effectsRoster[Math.max(
-				0,
-				Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
-			)]
-			if (this.parent.hold.isDisabled && effectToUse === "holdLock") {
-				if (Math.random() * 10 >= 5) {
-					effectToUse = "mirrorBlock"
-				} else {
-					effectToUse = "hideNext"
-				}
-			}
-			this.color = effectToUse
-		} else {
-			this.color = this.parent.colors[this.name]
-		}
-	} else if (this.parent.useGoldBlocks) {
-		if (this.parent.stack.goldBlockInterval <= 0) {
-			this.parent.stack.goldBlockInterval = 999999999
-			this.color = "gold"
-		} else {
-			this.color = this.parent.colors[this.name]
-		}
-	} else {
-		this.color = this.parent.colors[this.name]
-	}
-
+    this.color = this.parent.colors[this.name]
+	
     for (let i = 0; i < SPAWN_OFFSETS[rotSys].downShift; i++) {
       this.shiftDown()
     }
@@ -366,6 +338,15 @@ export default class Piece extends GameModule {
     if (color == null) {
       color = this.color
     }
+	if (this.parent.useEffectBlocks) {
+		if (this.parent.stack.effectBlockInterval === 0 && this.parent.pendingEffect !== "") {
+			color = this.parent.pendingEffect
+		}
+	} else if (this.parent.useGoldBlocks) {
+		if (this.parent.stack.goldBlockInterval === 0) {
+			color = "gold"
+		}
+	}
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
         const isFilled = shape[y][x]
