@@ -103,6 +103,36 @@ export default class Particle extends GameModule {
       this.add(finalProperties)
     }
   }
+  generateIgnoreSettings(properties) {
+    const p = {
+      amount: 1,
+      red: 255,
+      blue: 255,
+      green: 255,
+      xVariance: 0,
+      yVariance: 0,
+      xVelocity: 0,
+      yVelocity: 0,
+      ...properties,
+    }
+    p.amount *= 0.5 * settings.settings.particleScale
+    for (let i = 0; i <= p.amount; i++) {
+      const xGen = getRandomInt(p.xRange * 100) / 100 + p.x
+      const yGen = getRandomInt(p.yRange * 100) / 100 + p.y
+      const xVelGen = getRandomInt(p.xVariance * 100) / 100
+      const yVelGen = getRandomInt(p.yVariance * 100) / 100
+      const xVelocity = p.xVariance / 2 - xVelGen + p.xVelocity
+      const yVelocity = p.yVariance / 2 - yVelGen + p.yVelocity
+      const finalProperties = {
+        ...p,
+        x: xGen,
+        y: yGen,
+        xVelocity: xVelocity,
+        yVelocity: yVelocity,
+      }
+      this.add(finalProperties)
+    }
+  }
   update(ms) {
     const limit = settings.settings.particleLimit
     while (this.particles.length > limit) {

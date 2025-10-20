@@ -115,48 +115,23 @@ export default class Stack extends GameModule {
 	sound.add("laser")
 	this.reRenderStack()
 	// Laser animation
-	let cellSize = this.parent.cellSize
-    let buffer = this.parent.bufferPeek
-    let ctx = this.ctx
-	let flashTime = 200
-    let flash = ("0" + Math.floor((1 - flashTime / this.flashLimit) * 255).toString(16)).slice(-2)
-	let brightness = 1
-	let brightnessHex = ("0" + Math.round(brightness * 255).toString(16)).slice(-2)
-    ctx.fillStyle = `#ffffff${brightnessHex}`
-    for (let i = 0; i < toAnimate.length; i++) {
-        ctx.clearRect(
-			targetColumn,
-			Math.floor(
-			(toAnimate[i] - this.hiddenHeight) * cellSize +
-				buffer * cellSize
-			),
-			cellSize,
-			cellSize
-        )
-        this.parent.particle.generate({
-			amount: 2,
-			x: targetColumn,
-			y: (toAnimate[i] - this.hiddenHeight + buffer) * cellSize,
-			xRange: cellSize,
-			yRange: cellSize,
-			xVelocity: 0,
-			yVelocity: 0,
-			xVariance: 10,
-			yVariance: 10,
-			xDampening: 1.03,
-			yDampening: 1.03,
-			lifeVariance: 80,
-        })
-        ctx.fillRect(
-			targetColumn,
-			Math.floor(
-			(toAnimate[i] - this.hiddenHeight) * cellSize +
-				buffer * cellSize
-			),
-			cellSize,
-			cellSize
-		)
-	}
+	this.parent.particle.generateIgnoreSettings({
+		red: 255,
+		blue: 128,
+		green: 128,
+		amount: 4,
+		x: targetColumn,
+		y: (toAnimate[i] - this.hiddenHeight + buffer) * cellSize,
+		xRange: cellSize,
+		yRange: cellSize,
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1.03,
+		yDampening: 1.03,
+		lifeVariance: 80,
+    })
 	this.reRenderStack()
   }
   mirrorGrid() {
