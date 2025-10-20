@@ -326,9 +326,11 @@ export default class Stack extends GameModule {
 		}
 	}
 	if (this.parent.useGoldBlocks) {
+		this.parent.useEffectBlocks = false
 		this.goldBlockInterval -= 1
 	}
 	if (this.parent.useEffectBlocks) {
+		this.parent.useGoldBlocks = false
 		this.effectBlockInterval -= 1
 	}
 	if (
@@ -337,6 +339,8 @@ export default class Stack extends GameModule {
 	) {
 		this.removeEffectBlocks()
 	}
+	let placedEffectBlock = false
+	let placedGoldBlock = false
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
         const isFilled = shape[y][x]
@@ -385,19 +389,20 @@ export default class Stack extends GameModule {
 			//) {
 				//this.grid[xLocation][yLocation] = effectToUse
 			} else if (
+				this.parent.useGoldBlocks &&
+				this.goldBlockInterval < 0
+			) {
+				this.grid[xLocation][yLocation] = "gold"
+				placedGoldBlock = true
+			} else if (
 				this.parent.useEffectBlocks &&
 				this.parent.pendingEffect !== "" &&
 				this.effectBlockInterval < 0
 			) {
 				this.grid[xLocation][yLocation] = this.parent.pendingEffect
+				placedEffectBlock = true
 			} else {
 				this.grid[xLocation][yLocation] = color
-			}
-			if (this.parent.effectsRoster.includes(this.grid[xLocation][yLocation])) {
-				this.effectBlockInterval = 16
-			}
-			if (this.grid[xLocation][yLocation] === "gold") {
-				this.goldBlockInterval = 16
 			}
           }
           this.dirtyCells.push([xLocation, yLocation])
@@ -406,6 +411,12 @@ export default class Stack extends GameModule {
         }
       }
     }
+	if (placedEffectBlock) {
+		effectBlockInterval = 16
+	}
+	if (placedGoldBlock) {
+		goldBlockInterval = 16
+	}
     if (passedLockOut >= shape.length && settings.settings.useLockOut) {
       if (this.wouldCauseLineClear() > 0) {
         this.isClutch = true
