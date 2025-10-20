@@ -111,6 +111,11 @@ const updateNextAndHold = () => {
 		$(".main-next-canvas").classList.remove("hidden")
 		$(".sub-next-canvas").classList.remove("hidden")
 	}
+	if (game.useEffectBlocks && game.stack.effectBlockInterval === 0 && game.pendingEffect !== "") {
+		$(".hold-canvas").classList.add("oneffect")
+	} else {
+		$(".hold-canvas").classList.remove("oneffect")
+	}
 }
 const updateLockDelay = (game, lockDelay) => {
 	if (testMode === false) {

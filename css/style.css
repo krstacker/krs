@@ -1080,6 +1080,10 @@ body {
   filter: grayscale(100%);
 }
 
+.hold-canvas.oneffect {
+  filter: grayscale(100%);
+}
+
 @keyframes hold-flash {
   from {
     filter: brightness(200%)

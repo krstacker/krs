@@ -973,101 +973,79 @@ export default class Stack extends GameModule {
 			this.parent.currentEffect = ""
 		}
 	}
-	if (this.parent.currentEffect !== "") {
-		if (this.parent.currentEffect === "holdLock") {
-			$("#garbage-counter").classList.remove("hidden")
-			$("#garbage-counter").textContent = "HOLD LOCK"
-		}
-		if (this.parent.currentEffect === "rotateLock") {
-			$("#garbage-counter").classList.remove("hidden")
-			$("#garbage-counter").textContent = "ROTATE LOCK"
-		}
-		if (this.parent.currentEffect === "hideNext") {
-			$("#garbage-counter").classList.remove("hidden")
-			$("#garbage-counter").textContent = "HIDE NEXT"
-		}
-		if (this.parent.currentEffect === "mirrorBlock") {
-			$("#garbage-counter").classList.remove("hidden")
-			$("#garbage-counter").textContent = "MIRROR BLOCK"
-		}
-		if (this.parent.currentEffect === "fadingBlock") {
-			$("#garbage-counter").classList.remove("hidden")
-			$("#garbage-counter").textContent = "FLICKER BLOCK"
-		}
-		if (this.parent.currentEffect === "phantomBlock") {
-			$("#garbage-counter").classList.remove("hidden")
-			$("#garbage-counter").textContent = "PHANTOM BLOCK"
-		}
-		if (this.waitingGarbage > 0) {
-			$("#garbage-counter").classList.remove("hidden")
-			$("#garbage-counter").textContent = `${this.waitingGarbage}`
-		} else {
-			$("#garbage-counter").classList.add("hidden")
-			$("#garbage-counter").textContent = ""
-		}
-	} else {
-		if (this.waitingGarbage > 0) {
-			$("#garbage-counter").classList.remove("hidden")
-			$("#garbage-counter").textContent = `${this.waitingGarbage}`
-		} else {
-			$("#garbage-counter").classList.add("hidden")
-			$("#garbage-counter").textContent = ""
-		}
-	}
 	if (this.parent.currentEffect === "holdLock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("HOLD LOCK!")
+			//this.parent.displayActionText()
+			$("#message").textContent = "HOLD LOCK!"
+			resetAnimation("#message", "dissolve")
 		}
 	}
 	if (this.parent.currentEffect === "rotateLock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("ROTATE LOCK!")
+			//this.parent.displayActionText("ROTATE LOCK!")
+			$("#message").textContent = "ROTATE LOCK!"
+			resetAnimation("#message", "dissolve")
 		}
 	}
 	if (this.parent.currentEffect === "hideNext") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("HIDE NEXT!")
+			//this.parent.displayActionText("HIDE NEXT!")
+			$("#message").textContent = "HIDE NEXT!"
+			resetAnimation("#message", "dissolve")
 		}
 	}
 	if (this.parent.currentEffect === "mirrorBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("MIRROR BLOCK!")
+			//this.parent.displayActionText("MIRROR BLOCK!")
+			$("#message").textContent = "MIRROR BLOCK!"
+			resetAnimation("#message", "dissolve")
 		}
 	}
 	if (this.parent.currentEffect === "fadingBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("FLICKER BLOCK!")
+			//this.parent.displayActionText("FLICKER BLOCK!")
+			$("#message").textContent = "FLICKER BLOCK!"
+			resetAnimation("#message", "dissolve")
 		}
 	}
 	if (this.parent.currentEffect === "phantomBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("PHANTOM BLOCK!")
+			//this.parent.displayActionText("PHANTOM BLOCK!")
+			$("#message").textContent = "PHANTOM BLOCK!"
+			resetAnimation("#message", "dissolve")
 		}
 	}
 	if (this.parent.currentEffect === "delFieldUp") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("SLICE FIELD!")
+			//this.parent.displayActionText("SLICE FIELD!")
+			$("#message").textContent = "SLICE FIELD!"
+			resetAnimation("#message", "dissolve")
 		}
 		this.sliceGridTop()
+		this.parent.currentEffect = ""
 	}
 	if (this.parent.currentEffect === "delFieldDown") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("SLICE FIELD!")
+			//this.parent.displayActionText("SLICE FIELD!")
+			$("#message").textContent = "SLICE FIELD!"
+			resetAnimation("#message", "dissolve")
 		}
 		this.sliceGridBottom()
 	}
 	if (this.parent.currentEffect === "garbageBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("GARBAGE!")
+			//this.parent.displayActionText("GARBAGE!")
+			$("#message").textContent = "GARBAGE!"
+			resetAnimation("#message", "dissolve")
 		}
 		this.addGarbageToCounter(4)
 		this.parent.currentEffect = ""
@@ -1075,7 +1053,9 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "laserBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("LASER!")
+			//this.parent.displayActionText("LASER!")
+			$("#message").textContent = "LASER!"
+			resetAnimation("#message", "dissolve")
 		}
 		this.laserGrid()
 		this.parent.currentEffect = ""
@@ -1083,7 +1063,9 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "flipBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			this.parent.displayActionText("180° STACK!")
+			//this.parent.displayActionText("180° STACK!")
+			$("#message").textContent = "180° STACK!"
+			resetAnimation("#message", "dissolve")
 		}
 		this.flipGrid()
 		this.parent.currentEffect = ""
