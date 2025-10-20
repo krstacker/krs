@@ -858,7 +858,6 @@ export default class Stack extends GameModule {
 		}
 	}
 	if (this.parent.currentEffect !== "") {
-		$("#garbage-counter").textContent = ""
 		if (this.parent.currentEffect === "holdLock") {
 			$("#garbage-counter").textContent = "HOLD LOCK"
 		}
@@ -877,8 +876,17 @@ export default class Stack extends GameModule {
 		if (this.parent.currentEffect === "phantomBlock") {
 			$("#garbage-counter").textContent = "PHANTOM BLOCK"
 		}
+		if (this.waitingGarbage > 0) {
+			$("#garbage-counter").textContent = `${this.waitingGarbage}`
+		} else {
+			$("#garbage-counter").textContent = ""
+		}
 	} else {
-		$("#garbage-counter").textContent = ""
+		if (this.waitingGarbage > 0) {
+			$("#garbage-counter").textContent = `${this.waitingGarbage}`
+		} else {
+			$("#garbage-counter").textContent = ""
+		}
 	}
 	if (this.parent.currentEffect === "garbageBlock") {
 		this.addGarbageToCounter(4)
