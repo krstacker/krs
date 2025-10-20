@@ -63,5 +63,11 @@
   "originalOption": {
     "message": "原始",
     "description": "As in 'Original Rotation System', the one used by the first version of the game"
+  },
+  "pieceBehaviorLabel": {
+    "message": "片段行為"
+  },
+  "pieceBehaviorLabel": {
+    "message": "選擇遊戲中棋子的行為模式"
   }
 }

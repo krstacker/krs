@@ -67,6 +67,41 @@
       ],
       "setting": "IHS",
       "settingType": "setting"
+    },
+	{
+      "string": "pieceBehaviorLabel",
+      "stringDesc": "pieceBehaviorDescription",
+      "type": "select",
+      "action": "select",
+      "selectOptions": [
+        {
+          "label": "KRS",
+          "fixedText": true,
+          "value": "krs"
+        },
+		{
+          "label": "TGM2",
+          "fixedText": true,
+          "value": "tgm2"
+        },
+		{
+          "label": "DS",
+          "fixedText": true,
+          "value": "ds"
+        },
+		{
+          "label": "ACE",
+          "fixedText": true,
+          "value": "ace"
+        },
+		{
+          "label": "TGM4",
+          "fixedText": true,
+          "value": "tgm4"
+        },
+      ],
+      "setting": "pieceBehavior",
+      "settingType": "setting"
     }
   ]
 }

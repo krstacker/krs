@@ -857,6 +857,29 @@ export default class Stack extends GameModule {
 			this.parent.currentEffect = ""
 		}
 	}
+	if (this.parent.currentEffect !== "") {
+		$("#garbage-counter").textContent = ""
+		if (this.parent.currentEffect === "holdLock") {
+			$("#garbage-counter").textContent = "HOLD LOCK"
+		}
+		if (this.parent.currentEffect === "rotateLock") {
+			$("#garbage-counter").textContent = "ROTATE LOCK"
+		}
+		if (this.parent.currentEffect === "hideNext") {
+			$("#garbage-counter").textContent = "HIDE NEXT"
+		}
+		if (this.parent.currentEffect === "mirrorBlock") {
+			$("#garbage-counter").textContent = "MIRROR BLOCK"
+		}
+		if (this.parent.currentEffect === "fadingBlock") {
+			$("#garbage-counter").textContent = "FLICKER BLOCK"
+		}
+		if (this.parent.currentEffect === "phantomBlock") {
+			$("#garbage-counter").textContent = "PHANTOM BLOCK"
+		}
+	} else {
+		$("#garbage-counter").textContent = ""
+	}
 	if (this.parent.currentEffect === "garbageBlock") {
 		this.addGarbageToCounter(4)
 		this.parent.currentEffect = ""
