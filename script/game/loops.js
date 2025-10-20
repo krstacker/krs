@@ -711,6 +711,7 @@ export const loops = {
 	  onCountdown = false
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
+	  game.stat.effect = ""
     },
   },
   virtuoso: {
@@ -913,6 +914,7 @@ export const loops = {
 	  onCountdown = false
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
+	  game.stat.effect = ""
 	  garbageTimer = 0
     },
   },
@@ -1402,6 +1404,7 @@ export const loops = {
 	  onCountdown = false
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
+	  game.stat.effect = ""
     },
   },
   virtuoso2: {
@@ -1604,6 +1607,7 @@ export const loops = {
 	  onCountdown = false
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
+	  game.stat.effect = ""
 	  garbageTimer = 0
     },
   },
@@ -1807,6 +1811,7 @@ export const loops = {
 	  onCountdown = false
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
+	  game.stat.effect = ""
 	  garbageTimer = 0
     },
   },
