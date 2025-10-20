@@ -343,7 +343,7 @@ export default class Stack extends GameModule {
 		green: 128,
 		amount: 750,
 		x: cellSize,
-		y: 0,
+		y: cellSize * this.hiddenHeight,
 		xRange: cellSize * this.width,
 		yRange: cellSize * halfPoint,
 		xVelocity: 0,
