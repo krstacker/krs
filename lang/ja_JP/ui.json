@@ -24,7 +24,7 @@
     "description": "The grade given to the player based on their performance"
   },
   "effect": {
-    "message": " "
+    "message": " ",
 	"description": "Please leave blank!"
   },
   "medals": {
