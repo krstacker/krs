@@ -39,6 +39,7 @@ export default class Stack extends GameModule {
 	this.isUnderwater = false
 	this.cleanUnderwaterRows = false
 	this.isFrozen = false
+	this.refreezeOnEffect = false
 	this.isFading = false
 	this.toCollapseUnderwater = []
 	this.redrawOnHidden = false
@@ -1025,9 +1026,13 @@ export default class Stack extends GameModule {
     //   this.parent.noUpdate = true;
     } */
     this.parent.updateStats()
+	this.parent.stat.effect = ""
 	if (this.parent.useEffectBlocks) {
 		if (this.effectBlockInterval <= 4) {
 			this.parent.currentEffect = ""
+			if (this.refreezeOnEffect) {
+				this.isFrozen = true
+			}
 		}
 		this.parent.stat.effect = ""
 	}
@@ -1441,6 +1446,10 @@ export default class Stack extends GameModule {
 		}
 	}
 	if (this.parent.currentEffect === "jewelBlock") {
+		if (this.isFrozen) {
+			this.refreezeOnEffect = true
+			this.isFrozen = false
+		}
 		this.gemIfyPlacedMinos()
 		this.parent.currentEffect = ""
 	}

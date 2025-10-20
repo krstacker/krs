@@ -121,8 +121,9 @@ const updateNextAndHold = () => {
 		$(".hold-canvas").classList.remove("oneffect")
 	}
 	if (
-		(game.currentEffect === "fadingBlock" && game.stat.piece % 2 <= 0) ||
-		(game.currentEffect === "phantomBlock" || game.stack.isHidden !== false)
+		game.currentEffect === "fadingBlock" ||
+		game.currentEffect === "phantomBlock" || 
+		game.stack.isHidden !== false
 	) {
 		$(".stack-canvas").classList.add("fadingeffect")
 	} else {
