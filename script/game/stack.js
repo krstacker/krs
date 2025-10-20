@@ -1028,8 +1028,6 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "SLICE FIELD!"
 			resetAnimation("#message", "dissolve")
 		}
-		this.sliceGridTop()
-		this.parent.currentEffect = ""
 	}
 	if (this.parent.currentEffect === "delFieldDown") {
 		if (this.displayedEffectText !== true) {
@@ -1047,8 +1045,6 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "GARBAGE!"
 			resetAnimation("#message", "dissolve")
 		}
-		this.addGarbageToCounter(4)
-		this.parent.currentEffect = ""
 	}
 	if (this.parent.currentEffect === "laserBlock") {
 		if (this.displayedEffectText !== true) {
@@ -1057,8 +1053,6 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "LASER!"
 			resetAnimation("#message", "dissolve")
 		}
-		this.laserGrid()
-		this.parent.currentEffect = ""
 	}
 	if (this.parent.currentEffect === "flipBlock") {
 		if (this.displayedEffectText !== true) {
@@ -1067,13 +1061,8 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "180° STACK!"
 			resetAnimation("#message", "dissolve")
 		}
-		this.flipGrid()
-		this.parent.currentEffect = ""
 	}
-	if (this.parent.currentEffect === "") {
-		this.displayedEffectText = false
-	}
-	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
+	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock" && this.wouldCauseLineClear <= 0) {
 		if (this.parent.useEffectBlocks) {
 			if (this.effectBlockInterval < 16) {
 				this.mirrorGrid()
@@ -1081,6 +1070,11 @@ export default class Stack extends GameModule {
 		} else {
 			this.mirrorGrid()
 		}
+	}
+	if (this.parent.currentEffect === "" && this.parent.useEffectBlocks) {
+		this.displayedEffectText = false
+	} else if (this.parent.useEffectBlocks !== true) {
+		this.displayedEffectText = true
 	}
   }
   alarmCheck() {
@@ -1344,6 +1338,35 @@ export default class Stack extends GameModule {
     this.alarmCheck()
     this.isDirty = true
     this.parent.piece.isDirty = true
+	if (this.parent.currentEffect === "delFieldUp") {
+		this.sliceGridTop()
+		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "delFieldDown") {
+		this.sliceGridBottom()
+		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "garbageBlock") {
+		this.addGarbageToCounter(4)
+		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "laserBlock") {
+		this.laserGrid()
+		this.parent.currentEffect = ""
+	}
+	if (this.parent.currentEffect === "flipBlock") {
+		this.flipGrid()
+		this.parent.currentEffect = ""
+	}
+	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock") {
+		if (this.parent.useEffectBlocks) {
+			if (this.effectBlockInterval < 16) {
+				this.mirrorGrid()
+			}
+		} else {
+			this.mirrorGrid()
+		}
+	}
   }
   new() {
     const cells = new Array(this.width)
