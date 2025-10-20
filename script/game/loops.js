@@ -44,7 +44,6 @@ import {
   retroLockdown,
   classicLockdown,
   infiniteLockdown,
-  beatLockdown,
   zenLockdown,
   krsLockdown,
 } from "./loop-modules/lockdown.js"

@@ -119,6 +119,8 @@ export default class Game {
 		"laserBlock",
 		"garbageBlock",
 		"flipBlock",
+		"delFieldUp",
+		"delFieldDown",
 	]
     loadGameType(gametype)
       .then((gameData) => {
@@ -1139,6 +1141,8 @@ export default class Game {
 	  "laserBlock",
 	  "garbageBlock",
 	  "flipBlock",
+	  "delFieldUp",
+	  "delFieldDown",
 	  "emptyEffect",
     ],
     types = ["mino", "ghost", "stack"],

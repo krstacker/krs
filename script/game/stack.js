@@ -321,6 +321,118 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
   }
+  sliceGridTop() {
+	let halfPoint = (this.height + this.hiddenHeight) - ((this.height / 2) + this.hiddenHeight)
+    for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] != null) {
+			if (y < halfPoint) {
+				delete this.grid[x][y]
+			}
+		}
+      }
+    }
+	this.reRenderStack()
+	// Animation
+	let cellSize = this.parent.cellSize
+    let buffer = this.parent.bufferPeek
+    let ctx = this.ctx
+	this.parent.particle.generateIgnoreSettings({
+		red: 128,
+		blue: 255,
+		green: 128,
+		amount: 750,
+		x: cellSize,
+		y: cellSize * halfPoint,
+		xRange: cellSize * this.width,
+		yRange: cellSize * halfPoint,
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
+	this.reRenderStack()
+  }
+  sliceGridBottom() {
+	let halfPoint = (this.height + this.hiddenHeight) - ((this.height / 2) + this.hiddenHeight)
+    for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] != null) {
+			if (y > halfPoint) {
+				delete this.grid[x][y]
+			}
+		}
+      }
+    }
+	this.reRenderStack()
+	// Animation
+	let cellSize = this.parent.cellSize
+    let buffer = this.parent.bufferPeek
+    let ctx = this.ctx
+	this.parent.particle.generateIgnoreSettings({
+		red: 128,
+		blue: 255,
+		green: 128,
+		amount: 750,
+		x: cellSize,
+		y: cellSize * halfPoint,
+		xRange: cellSize * this.width,
+		yRange: cellSize * halfPoint,
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
+	//Were not done yet. We still have to move the modified stack to the bottom of the board.
+	let highestPoint = 0
+	let lowestPoint = this.height + this.hiddenHeight
+	for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] != null) {
+			if (y > highestPoint) {
+				highestPoint = y
+			}
+		}
+      }
+    }
+	tempGrid = this.grid
+	this.new()
+	for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        this.grid[x][y] = tempGrid[x][Math.max(
+			0,
+			Math.min(
+				this.grid[x].length - 1,
+				y - (lowestPoint - highestPoint)
+			)
+		)]
+      }
+    }
+	sound.add("collapse4")
+	sound.add("collapse")
+	//Grid particles
+	this.parent.particle.generate({
+      amount: 100,
+      x: 0,
+      y: this.height + this.hiddenHeight,
+      xRange: this.width * this.parent.cellSize,
+      yRange: this.parent.cellSize * (this.height + this.hiddenHeight),
+      xVelocity: 0,
+      yVelocity: 1,
+      xVariance: 5,
+      yVariance: 2,
+      gravity: 0.3,
+      gravityAccceleration: 1.05,
+      lifeVariance: 80,
+    })
+	this.reRenderStack()
+  }
   deleteCellsOfColor(color) {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
@@ -422,6 +534,8 @@ export default class Stack extends GameModule {
 	if (this.isFrozen && this.wouldCauseLineClear() <= 0) {
 		this.freezePlacedMinos()
 	} else if (this.parent.currentEffect === "fadingBlock") {
+		this.reRenderStack()
+	} else if (this.parent.currentEffect === "phantomBlock") {
 		this.reRenderStack()
 	} else if (this.isFading && this.isHidden === false) {
 		this.hidePlacedMinos()
@@ -888,15 +1002,42 @@ export default class Stack extends GameModule {
 			$("#garbage-counter").textContent = ""
 		}
 	}
+	if (this.parent.currentEffect === "holdLock") {
+		this.parent.displayActionText("HOLD LOCK!")
+	}
+	if (this.parent.currentEffect === "rotateLock") {
+		this.parent.displayActionText("ROTATE LOCK!")
+	}
+	if (this.parent.currentEffect === "hideNext") {
+		this.parent.displayActionText("HIDE NEXT!")
+	}
+	if (this.parent.currentEffect === "mirrorBlock") {
+		this.parent.displayActionText("MIRROR BLOCK!")
+	}
+	if (this.parent.currentEffect === "fadingBlock") {
+		this.parent.displayActionText("FLICKER BLOCK!")
+	}
+	if (this.parent.currentEffect === "phantomBlock") {
+		this.parent.displayActionText("PHANTOM BLOCK!")
+	}
+	if (this.parent.currentEffect === "delFieldUp") {
+		this.parent.displayActionText("SPLIT FIELD!")
+	}
+	if (this.parent.currentEffect === "delFieldDown") {
+		this.parent.displayActionText("SPLIT FIELD!")
+	}
 	if (this.parent.currentEffect === "garbageBlock") {
+		this.parent.displayActionText("GARBAGE!")
 		this.addGarbageToCounter(4)
 		this.parent.currentEffect = ""
 	}
 	if (this.parent.currentEffect === "laserBlock") {
+		this.parent.displayActionText("LASER!")
 		this.laserGrid()
 		this.parent.currentEffect = ""
 	}
 	if (this.parent.currentEffect === "flipBlock") {
+		this.parent.displayActionText("180° STACK!")
 		this.flipGrid()
 		this.parent.currentEffect = ""
 	}
@@ -1305,6 +1446,10 @@ export default class Stack extends GameModule {
 			suffix = ""
 		}
 		if (this.parent.currentEffect === "fadingBlock" && this.parent.stat.piece % 2 <= 0) {
+			color = "hidden"
+			suffix = ""
+		}
+		if (this.parent.currentEffect === "phantomBlock") {
 			color = "hidden"
 			suffix = ""
 		}
