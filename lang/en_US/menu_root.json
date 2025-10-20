@@ -74,7 +74,7 @@
     "message": "Normal"
   },
   "normalDescription": {
-    "message": "Starts off slow, but progressively gets faster. Meant for beginners."
+    "message": "This mode starts off slow, but progressively gets faster. Meant for beginners."
   },
   "trialLabel": {
     "message": "Trial"
@@ -86,7 +86,7 @@
     "message": "Virtuoso"
   },
   "virtuosoDescription": {
-    "message": "Insanely fast stacking and dangerous obstacles. Can you keep up? Meant for experienced players."
+    "message": "Insanely fast stacking and crazy effects! Can you keep up? Meant for experienced players."
   },
   "excavatorLabel": {
     "message": "Excavator"

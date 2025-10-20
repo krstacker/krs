@@ -524,9 +524,9 @@
   }
 }
 
-@keyframes pulse-opacity2 {
+@keyframes krsfadingeffect {
   from {
-    opacity: 0.5
+    opacity: 0.25
   }
 
   to {
@@ -1479,7 +1479,7 @@ body {
 }
 
 .stack-canvas.fadingeffect {
-  animation-name: pulse-opacity2;
+  animation-name: krsfadingeffect;
   animation-duration: 1s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
@@ -2477,6 +2477,10 @@ progress[value]::-moz-progress-bar {
   border-radius: .2em;
   margin: 1em;
   cursor: pointer;
+}
+
+.error.nontestmode {
+  opacity: 0;
 }
 
 .error>.msg {}
