@@ -304,8 +304,6 @@ export default class Stack extends GameModule {
 		)]
       }
     }
-	sound.add("collapse4")
-	sound.add("collapse")
 	//Grid particles
 	this.parent.particle.generate({
       amount: 100,
@@ -345,7 +343,7 @@ export default class Stack extends GameModule {
 		green: 128,
 		amount: 750,
 		x: cellSize,
-		y: cellSize * halfPoint,
+		y: 0,
 		xRange: cellSize * this.width,
 		yRange: cellSize * halfPoint,
 		xVelocity: 0,
@@ -416,8 +414,6 @@ export default class Stack extends GameModule {
 		)]
       }
     }
-	sound.add("collapse4")
-	sound.add("collapse")
 	//Grid particles
 	this.parent.particle.generate({
       amount: 100,
