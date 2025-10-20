@@ -412,10 +412,10 @@ export default class Stack extends GameModule {
       }
     }
 	if (placedEffectBlock) {
-		effectBlockInterval = 16
+		this.effectBlockInterval = 16
 	}
 	if (placedGoldBlock) {
-		goldBlockInterval = 16
+		this.goldBlockInterval = 16
 	}
     if (passedLockOut >= shape.length && settings.settings.useLockOut) {
       if (this.wouldCauseLineClear() > 0) {
