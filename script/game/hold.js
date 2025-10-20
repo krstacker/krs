@@ -36,7 +36,12 @@ export default class Hold extends GameModule {
       : this.parent.next.queue[0]
   }
   hold() {
+	if (this.parent.useEffectBlocks && this.parent.stack.effectBlockInterval === 0 && this.parent.pendingEffect !== "") {
+		sound.add("holdfail")
+		return
+	}
 	if (this.parent.currentEffect === "holdLock") {
+		sound.add("holdfail")
 		return
 	}
     if (this.parent.type !== "zen") {

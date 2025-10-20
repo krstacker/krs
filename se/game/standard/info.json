@@ -16,6 +16,7 @@
 	"goldbonus",
 	"gradeup",
     "hold",
+	"holdfail",
 	"initialrotate",
 	"initialhold",
     "ko",
@@ -28,6 +29,7 @@
     "pause",
     "ready",
     "rotate",
+	"rotfail",
     "start",
     "step",
 	"tspinbonus"

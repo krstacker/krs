@@ -1594,6 +1594,7 @@ body {
   width: 6em;
   bottom: -2.3em;
   left: -7em;
+  opacity: 0;
 }
 
 .rotation-warning {
@@ -1712,13 +1713,13 @@ progress[value="0"].lockdown-meter::-webkit-progress-bar {
 }
 
 progress[value]::-webkit-progress-value {
-  background-color: #fff;
+  background-color: #0f0;
 }
 
 /* Firefox */
 
 progress[value]::-moz-progress-bar {
-  background-color: #fff;
+  background-color: #0f0;
 }
 
 .warning-message-container,

@@ -17,6 +17,8 @@
 	"goldbonus",
     "initialrotate",
 	"initialhold",
+	"holdfail",
+	"rotfail",
     "land",
 	"laser",
     "levelup",

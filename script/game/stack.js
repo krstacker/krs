@@ -44,7 +44,6 @@ export default class Stack extends GameModule {
 	this.redrawOnHidden = false
 	this.underwaterHeight = 10
 	this.gemsCleared = 0
-	this.goldBlockInterval = 16
 	this.effectBlockInterval = 16
   }
   removeFromArray(array, elementToRemove) {
@@ -298,19 +297,6 @@ export default class Stack extends GameModule {
 	} else if (this.isFading && this.isHidden === false) {
 		this.hidePlacedMinos()
 	}
-	//if (this.goldBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
-		//this.goldBlockInterval += 1
-	//}
-	//if (this.effectBlockInterval <= 1 && this.wouldCauseLineClear() > 0) {
-		//this.effectBlockInterval += 1
-	//}
-	//let effectToUse = this.parent.effectsRoster[Math.max(
-		//0,
-		//Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
-	//)]
-	//if (this.parent.hold.isDisabled && effectToUse === "holdLock") {
-		//effectToUse = "hideNext"
-	//}
 	if (this.effectBlockInterval === 16) {
 		this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
 			0,
@@ -325,12 +311,7 @@ export default class Stack extends GameModule {
 			)]
 		}
 	}
-	if (this.parent.useGoldBlocks) {
-		this.parent.useEffectBlocks = false
-		this.goldBlockInterval -= 1
-	}
 	if (this.parent.useEffectBlocks) {
-		this.parent.useGoldBlocks = false
 		this.effectBlockInterval -= 1
 	}
 	if (
@@ -340,7 +321,6 @@ export default class Stack extends GameModule {
 		this.removeEffectBlocks()
 	}
 	let placedEffectBlock = false
-	let placedGoldBlock = false
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
         const isFilled = shape[y][x]
@@ -374,26 +354,6 @@ export default class Stack extends GameModule {
           } else {
 			if (this.isHidden && this.isFrozen !== true) {
 				this.grid[xLocation][yLocation] = "hidden"
-			//} else if (
-				//this.parent.useGoldBlocks && 
-				//this.isFrozen !== true &&
-				//this.goldBlockInterval <= 1 &&
-				//this.wouldCauseLineClear() <= 0
-			//) {
-				//this.grid[xLocation][yLocation] = "gold"
-			//} else if (
-				//this.parent.useEffectBlocks && 
-				//this.isFrozen !== true &&
-				//this.effectBlockInterval <= 1 &&
-				//this.wouldCauseLineClear() <= 0
-			//) {
-				//this.grid[xLocation][yLocation] = effectToUse
-			} else if (
-				this.parent.useGoldBlocks &&
-				this.goldBlockInterval < 0
-			) {
-				this.grid[xLocation][yLocation] = "gold"
-				placedGoldBlock = true
 			} else if (
 				this.parent.useEffectBlocks &&
 				this.parent.pendingEffect !== "" &&
@@ -413,9 +373,6 @@ export default class Stack extends GameModule {
     }
 	if (placedEffectBlock) {
 		this.effectBlockInterval = 16
-	}
-	if (placedGoldBlock) {
-		this.goldBlockInterval = 16
 	}
     if (passedLockOut >= shape.length && settings.settings.useLockOut) {
       if (this.wouldCauseLineClear() > 0) {
@@ -462,7 +419,6 @@ export default class Stack extends GameModule {
 			if (this.grid[x][y] === "gold") {
 				playGoldSound = true
 				this.parent.stat.score += 100
-				this.goldBlockInterval = 16
 			}
 			if (this.grid[x][y] === "emptyEffect") {
 				this.parent.stat.score += 100

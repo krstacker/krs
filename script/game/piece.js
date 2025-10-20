@@ -342,10 +342,6 @@ export default class Piece extends GameModule {
 		if (this.parent.stack.effectBlockInterval === 0 && this.parent.pendingEffect !== "") {
 			color = this.parent.pendingEffect
 		}
-	} else if (this.parent.useGoldBlocks) {
-		if (this.parent.stack.goldBlockInterval === 0) {
-			color = "gold"
-		}
 	}
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
@@ -1271,18 +1267,21 @@ export default class Piece extends GameModule {
   }
   rotateLeft() {
 	if (this.parent.currentEffect === "rotateLock") {
+		sound.add("rotfail")
 		return
 	}
     this.rotate(3, "left")
   }
   rotateRight() {
 	if (this.parent.currentEffect === "rotateLock") {
+		sound.add("rotfail")
 		return
 	}
     this.rotate(1, "right")
   }
   rotate180() {
 	if (this.parent.currentEffect === "rotateLock") {
+		sound.add("rotfail")
 		return
 	}
     this.rotate(2, "double")
