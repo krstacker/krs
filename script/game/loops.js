@@ -75,6 +75,19 @@ let countdownTimer = 0
 let lastGemsCleared = 0
 let testMode = false
 let nonEvents = []
+let medals = [
+	"(KH)", //Home runs
+	"(KT)", //T spins
+	"(KL)", //L spins
+	"(KJ)", //J spins
+	"(KS)", //S spins
+	"(KZ)", //Z spins
+	"(KI)", //I spins
+	"(KC)", //O spins
+	"(KB)", //Perfect clears
+	"(KR)", //Combos
+	"(KV)", //Clutches
+]
 let bpm
 const updateTestMode = () => {
 	if (input.getGamePress("testModeKey")) {
