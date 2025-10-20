@@ -37,10 +37,12 @@ export default class Hold extends GameModule {
   }
   hold() {
 	if (this.parent.useEffectBlocks && this.parent.stack.effectBlockInterval === 0 && this.parent.pendingEffect !== "") {
+		$("#hold").classList.add("locked")
 		sound.add("holdfail")
 		return
 	}
 	if (this.parent.currentEffect === "holdLock") {
+		$("#hold").classList.add("locked")
 		sound.add("holdfail")
 		return
 	}

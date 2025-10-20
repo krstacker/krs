@@ -45,7 +45,7 @@ export default class Stack extends GameModule {
 	this.underwaterHeight = 10
 	this.gemsCleared = 0
 	this.effectBlockInterval = 16
-	this.dontUseLineClearAnim = true
+	this.useParticleLineClearAnim = true
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -118,8 +118,8 @@ export default class Stack extends GameModule {
     let ctx = this.ctx
 	this.parent.particle.generateIgnoreSettings({
 		red: 255,
-		blue: 128,
-		green: 128,
+		blue: 0,
+		green: 0,
 		amount: 500,
 		x: targetColumn * cellSize,
 		y: 0,
@@ -1261,7 +1261,7 @@ export default class Stack extends GameModule {
       }
     }
     // Line clear animation
-    if (this.toCollapse.length > 0 && this.isFrozen !== true && this.dontUseLineClearAnim !== true) {
+    if (this.toCollapse.length > 0 && this.isFrozen !== true && this.useParticleLineClearAnim !== true) {
       const brightness = Math.max(
         0,
         1 -
@@ -1315,12 +1315,142 @@ export default class Stack extends GameModule {
           )
         }
       }
+  } else if (this.useParticleLineClearAnim === true) {
+	  this.reRenderStack()
+	  for (const i of this.toCollapse) {
+		//red
+		this.parent.particle.generate({
+		  red: 255,
+		  blue: 128,
+		  green: 128,
+		  amount: 1,
+          x: 0,
+          y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
+          xRange: this.width * cellSize,
+          yRange: cellSize,
+          xVelocity: 0,
+          yVelocity: 0,
+          xVariance: 10,
+          yVariance: 10,
+          xDampening: 1.03,
+          yDampening: 1.03,
+          lifeVariance: 80,
+        })
+		//green
+		this.parent.particle.generate({
+		  red: 128,
+		  blue: 128,
+		  green: 255,
+		  amount: 1,
+          x: 0,
+          y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
+          xRange: this.width * cellSize,
+          yRange: cellSize,
+          xVelocity: 0,
+          yVelocity: 0,
+          xVariance: 10,
+          yVariance: 10,
+          xDampening: 1.03,
+          yDampening: 1.03,
+          lifeVariance: 80,
+        })
+		//blue
+		this.parent.particle.generate({
+		  red: 128,
+		  blue: 255,
+		  green: 128,
+		  amount: 1,
+          x: 0,
+          y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
+          xRange: this.width * cellSize,
+          yRange: cellSize,
+          xVelocity: 0,
+          yVelocity: 0,
+          xVariance: 10,
+          yVariance: 10,
+          xDampening: 1.03,
+          yDampening: 1.03,
+          lifeVariance: 80,
+        })
+		//yellow
+		this.parent.particle.generate({
+		  red: 255,
+		  blue: 128,
+		  green: 255,
+		  amount: 1,
+          x: 0,
+          y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
+          xRange: this.width * cellSize,
+          yRange: cellSize,
+          xVelocity: 0,
+          yVelocity: 0,
+          xVariance: 10,
+          yVariance: 10,
+          xDampening: 1.03,
+          yDampening: 1.03,
+          lifeVariance: 80,
+        })
+		//lightBlue
+		this.parent.particle.generate({
+		  red: 128,
+		  blue: 255,
+		  green: 255,
+		  amount: 1,
+          x: 0,
+          y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
+          xRange: this.width * cellSize,
+          yRange: cellSize,
+          xVelocity: 0,
+          yVelocity: 0,
+          xVariance: 10,
+          yVariance: 10,
+          xDampening: 1.03,
+          yDampening: 1.03,
+          lifeVariance: 80,
+        })
+		//purple
+		this.parent.particle.generate({
+		  red: 255,
+		  blue: 255,
+		  green: 128,
+		  amount: 1,
+          x: 0,
+          y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
+          xRange: this.width * cellSize,
+          yRange: cellSize,
+          xVelocity: 0,
+          yVelocity: 0,
+          xVariance: 10,
+          yVariance: 10,
+          xDampening: 1.03,
+          yDampening: 1.03,
+          lifeVariance: 80,
+        })
+		//orange
+		this.parent.particle.generate({
+		  red: 255,
+		  blue: 128,
+		  green: 195,
+		  amount: 1,
+          x: 0,
+          y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
+          xRange: this.width * cellSize,
+          yRange: cellSize,
+          xVelocity: 0,
+          yVelocity: 0,
+          xVariance: 10,
+          yVariance: 10,
+          xDampening: 1.03,
+          yDampening: 1.03,
+          lifeVariance: 80,
+        })
+	  }
+	  this.reRenderStack()
   } else if (this.isFrozen === true) {
 	  this.reRenderStack()
 	  for (const i of this.toCollapse) {
 		this.parent.particle.generate({
-          //amount: 2,
-		  amount: 25,
+		  amount: 2,
           x: 0,
           y: (this.toCollapse[i] - this.hiddenHeight + buffer) * cellSize,
           xRange: this.width * cellSize,
