@@ -24,7 +24,8 @@
     "description": "The grade given to the player based on their performance"
   },
   "effect": {
-    "message": "効果"
+    "message": " "
+	"description": "Please leave blank!"
   },
   "medals": {
     "message": "メダル"

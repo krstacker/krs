@@ -62,6 +62,7 @@ export default class Game {
       line: 0,
       piece: 0,
       maxcombo: 0,
+	  effect: "",
     }
     this.appends = {}
     this.prefixes = {}
@@ -73,6 +74,7 @@ export default class Game {
       fallspeed: true,
       entrydelay: true,
       pace: true,
+	  effect: true,
     }
     this.endingStats = {
       pcCount: true,

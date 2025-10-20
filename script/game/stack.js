@@ -1028,6 +1028,7 @@ export default class Stack extends GameModule {
 		if (this.effectBlockInterval <= 4) {
 			this.parent.currentEffect = ""
 		}
+		this.parent.stat.effect = ""
 	}
 	if (this.parent.currentEffect === "holdLock") {
 		if (this.displayedEffectText !== true) {
@@ -1036,6 +1037,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "HOLD LOCK!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = "HOLD LOCK"
 	}
 	if (this.parent.currentEffect === "rotateLock") {
 		if (this.displayedEffectText !== true) {
@@ -1044,6 +1046,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "ROTATE LOCK!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = "ROTATE LOCK"
 	}
 	if (this.parent.currentEffect === "hideNext") {
 		if (this.displayedEffectText !== true) {
@@ -1052,6 +1055,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "HIDE NEXT!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = "HIDE NEXT"
 	}
 	if (this.parent.currentEffect === "mirrorBlock") {
 		if (this.displayedEffectText !== true) {
@@ -1060,14 +1064,16 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "MIRROR BLOCK!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = "MIRROR BLOCK"
 	}
 	if (this.parent.currentEffect === "fadingBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("FLICKER BLOCK!")
-			$("#message").textContent = "FLICKER BLOCK!"
+			//this.parent.displayActionText("FADING BLOCK!")
+			$("#message").textContent = "FADING BLOCK!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = "FADING BLOCK"
 	}
 	if (this.parent.currentEffect === "phantomBlock") {
 		if (this.displayedEffectText !== true) {
@@ -1076,6 +1082,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "PHANTOM BLOCK!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = "PHANTOM BLOCK"
 	}
 	if (this.parent.currentEffect === "delFieldUp") {
 		if (this.displayedEffectText !== true) {
@@ -1084,6 +1091,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "SLICE FIELD!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = ""
 	}
 	if (this.parent.currentEffect === "delFieldDown") {
 		if (this.displayedEffectText !== true) {
@@ -1092,7 +1100,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "SLICE FIELD!"
 			resetAnimation("#message", "dissolve")
 		}
-		this.sliceGridBottom()
+		this.parent.stat.effect = ""
 	}
 	if (this.parent.currentEffect === "garbageBlock") {
 		if (this.displayedEffectText !== true) {
@@ -1101,6 +1109,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "GARBAGE!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = ""
 	}
 	if (this.parent.currentEffect === "laserBlock") {
 		if (this.displayedEffectText !== true) {
@@ -1109,6 +1118,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "LASER!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = ""
 	}
 	if (this.parent.currentEffect === "flipBlock") {
 		if (this.displayedEffectText !== true) {
@@ -1117,6 +1127,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "180° STACK!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = ""
 	}
 	if (this.parent.currentEffect === "jewelBlock") {
 		if (this.displayedEffectText !== true) {
@@ -1125,6 +1136,7 @@ export default class Stack extends GameModule {
 			$("#message").textContent = "JEWEL BLOCK!"
 			resetAnimation("#message", "dissolve")
 		}
+		this.parent.stat.effect = ""
 	}
 	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock" && this.wouldCauseLineClear() <= 0) {
 		if (this.parent.useEffectBlocks) {
