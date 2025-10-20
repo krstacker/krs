@@ -1058,7 +1058,7 @@ export default class Stack extends GameModule {
 			resetAnimation("#message", "dissolve")
 		}
 	}
-	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock" && this.wouldCauseLineClear <= 0) {
+	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock" && this.wouldCauseLineClear() <= 0) {
 		if (this.parent.useEffectBlocks) {
 			if (this.effectBlockInterval < 16) {
 				this.mirrorGrid()
@@ -1493,10 +1493,6 @@ export default class Stack extends GameModule {
           suffix = `-${negativeMod(this.parent.stat.level + modifier, 10)}`
         }
 		if (this.isHidden && this.redrawOnHidden) {
-			color = "hidden"
-			suffix = ""
-		}
-		if (this.parent.currentEffect === "fadingBlock" && this.parent.stat.piece % 2 <= 0) {
 			color = "hidden"
 			suffix = ""
 		}

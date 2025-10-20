@@ -119,6 +119,7 @@ export default class Game {
 		"laserBlock",
 		"garbageBlock",
 		"flipBlock",
+		"phantomBlock",
 		"delFieldUp",
 		"delFieldDown",
 	]
@@ -1141,6 +1142,7 @@ export default class Game {
 	  "laserBlock",
 	  "garbageBlock",
 	  "flipBlock",
+	  "phantomBlock",
 	  "delFieldUp",
 	  "delFieldDown",
 	  "emptyEffect",

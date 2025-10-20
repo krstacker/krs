@@ -120,6 +120,11 @@ const updateNextAndHold = () => {
 	} else {
 		$(".hold-canvas").classList.remove("oneffect")
 	}
+	if (game.currentEffect === "fadingBlock" && game.stat.piece % 2 <= 0) {
+		$(".stack-canvas").classList.add("fadingeffect")
+	} else {
+		$(".stack-canvas").classList.remove("fadingeffect")
+	}
 }
 const updateLockDelay = (game, lockDelay) => {
 	if (testMode === false) {

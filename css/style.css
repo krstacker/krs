@@ -524,6 +524,16 @@
   }
 }
 
+@keyframes pulse-opacity2 {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0
+  }
+}
+
 @keyframes bob {
   from {
     padding-left: .15em
@@ -1466,6 +1476,17 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.stack-canvas.fadingeffect {
+  animation-name: pulse-opacity2;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.stack-canvas.phantomeffect {
+  opacity: 0;
 }
 
 .hold-container {
