@@ -40,12 +40,13 @@ export default class Stack extends GameModule {
 	this.cleanUnderwaterRows = false
 	this.isFrozen = false
 	this.isFading = false
-	this.toCollapseTemp = []
+	this.toCollapseUnderwater = []
 	this.redrawOnHidden = false
 	this.underwaterHeight = 10
 	this.gemsCleared = 0
 	this.effectBlockInterval = 16
 	this.displayedEffectText = false
+	this.targetColor = "red"
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -80,7 +81,26 @@ export default class Stack extends GameModule {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
-			this.grid[x][y] = "frozen"
+			if (this.parent.effectsRoster.includes(this.grid[x][y]) !== true) {
+				this.grid[x][y] = "frozen"
+			}
+		}
+      }
+    }
+	this.reRenderStack()
+  }
+  gemIfyPlacedMinos() {
+	let color = this.targetColor
+    for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] != null) {
+			if (this.parent.effectsRoster.includes(this.grid[x][y]) === true || this.grid[x][y] === "emptyEffect") {
+				this.grid[x][y] = "redgem"
+			} else if (this.grid[x][y] === "frozen") {
+				this.grid[x][y] = "lightBluegem"
+			} else {
+				this.grid[x][y] = `${color}gem`
+			}
 		}
       }
     }
@@ -319,6 +339,8 @@ export default class Stack extends GameModule {
       gravityAccceleration: 1.05,
       lifeVariance: 80,
     })
+	sound.add("collapse")
+	sound.add("collapse4")
 	this.reRenderStack()
   }
   sliceGridTop() {
@@ -429,6 +451,8 @@ export default class Stack extends GameModule {
       gravityAccceleration: 1.05,
       lifeVariance: 80,
     })
+	sound.add("collapse")
+	sound.add("collapse4")
 	this.reRenderStack()
   }
   deleteCellsOfColor(color) {
@@ -476,7 +500,7 @@ export default class Stack extends GameModule {
     for (let y = 0; y < newGrid[0].length; y++) {
       for (let x = 0; x <= newGrid.length; x++) {
         if (x === newGrid.length) {
-		  if (this.arrayContains(this.toCollapseTemp, y) !== true) {
+		  if (this.arrayContains(this.toCollapseUnderwater, y) !== true) {
 			  lineClear++
 		  }
 		  break
@@ -529,6 +553,7 @@ export default class Stack extends GameModule {
     this.flashY = []
     this.flashTime = 0
     let passedLockOut = shape.length
+	this.targetColor = color
 	if (this.isFrozen && this.wouldCauseLineClear() <= 0) {
 		this.freezePlacedMinos()
 	} else if (this.parent.currentEffect === "fadingBlock") {
@@ -544,8 +569,43 @@ export default class Stack extends GameModule {
 			Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
 		)]
 	}
+	if (this.isUnderwater) {
+		let underwaterEffectsRoster = [
+			"rotateLock",
+			"holdLock",
+			"hideNext",
+			"fadingBlock",
+			"phantomBlock",
+		]
+		this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
+			0,
+			Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
+		)]
+	}
+	if (this.isFrozen) {
+		let frozenEffectsRoster = [
+			"rotateLock",
+			"holdLock",
+			"hideNext",
+			"fadingBlock",
+			"phantomBlock",
+			"delFieldUp",
+			"delFieldDown",
+			"jewelBlock",
+		]
+		this.parent.pendingEffect = frozenEffectsRoster[Math.max(
+			0,
+			Math.floor(Math.random() * frozenEffectsRoster.length) - 1
+		)]
+	}
 	if (this.parent.hold.isDisabled && this.parent.pendingEffect === "holdLock") {
 		while (this.parent.pendingEffect === "holdLock") {
+			let holdLockSubstitutes = [
+				"rotateLock",
+				"hideNext",
+				"fadingBlock",
+				"phantomBlock",
+			]
 			this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
 				0,
 				Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
@@ -677,14 +737,14 @@ export default class Stack extends GameModule {
 			}
           }
           this.parent.piece.hasLineDelay = true
-          if (this.arrayContains(this.toCollapseTemp, y) !== true) {
+          if (this.arrayContains(this.toCollapseUnderwater, y) !== true) {
 			  this.lineClear++
 		  }
 		  if (this.isUnderwater && y >= underwaterHeightPosition) {
 			  if (this.cleanUnderwaterRows) {
 				  this.toCollapse.push(y)
 			  } else {
-				  this.toCollapseTemp.push(y)
+				  this.toCollapseUnderwater.push(y)
 			  }
 		  } else {
 			  this.toCollapse.push(y)
@@ -1058,6 +1118,14 @@ export default class Stack extends GameModule {
 			resetAnimation("#message", "dissolve")
 		}
 	}
+	if (this.parent.currentEffect === "jewelBlock") {
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			//this.parent.displayActionText("JEWEL BLOCK!")
+			$("#message").textContent = "JEWEL BLOCK!"
+			resetAnimation("#message", "dissolve")
+		}
+	}
 	if (this.effectBlockInterval % 4 <= 0 && this.parent.currentEffect === "mirrorBlock" && this.wouldCauseLineClear() <= 0) {
 		if (this.parent.useEffectBlocks) {
 			if (this.effectBlockInterval < 16) {
@@ -1222,27 +1290,27 @@ export default class Stack extends GameModule {
 	let underwaterHeightPosition = this.height + this.hiddenHeight - this.underwaterHeight
 	if (this.isUnderwater) {
 		if (this.cleanUnderwaterRows) {
-			//this.toCollapse = [...this.toCollapseTemp, ...this.toCollapse]
-			if (this.toCollapseTemp.length > 0) {
-				for (const y of this.toCollapseTemp) {
+			//this.toCollapse = [...this.toCollapseUnderwater, ...this.toCollapse]
+			if (this.toCollapseUnderwater.length > 0) {
+				for (const y of this.toCollapseUnderwater) {
 					if (this.arrayContains(this.toCollapse, y) !== true) {
 						this.toCollapse.push(y)
 					}
 				}
 			}
-			this.toCollapseTemp = []
+			this.toCollapseUnderwater = []
 			this.cleanUnderwaterRows = false
 		}
 	} else {
-		//this.toCollapse = [...this.toCollapseTemp, ...this.toCollapse]
-		if (this.toCollapseTemp.length > 0) {
-			for (const y of this.toCollapseTemp) {
+		//this.toCollapse = [...this.toCollapseUnderwater, ...this.toCollapse]
+		if (this.toCollapseUnderwater.length > 0) {
+			for (const y of this.toCollapseUnderwater) {
 				if (this.arrayContains(this.toCollapse, y) !== true) {
 					this.toCollapse.push(y)
 				}
 			}
 		}
-		this.toCollapseTemp = []
+		this.toCollapseUnderwater = []
 	}
     if (this.isFrozen) {
 	if (this.lineClear >= 4) {
@@ -1252,17 +1320,7 @@ export default class Stack extends GameModule {
 	}
 	for (const y of this.toCollapse) {
       for (let x = 0; x < this.grid.length; x++) {
-        for (let shiftY = y; shiftY >= 0; shiftY--) {
-//          if (this.grid[x][shiftY] !== "frozen") {
-//			this.grid[x][shiftY] = this.grid[x][shiftY - 1]
-//			if (
-//				this.grid[x][shiftY] != null &&
-//				this.grid[x][shiftY - 1] != null
-//			) {
-//				fallenBlocks++
-//			}
-//			this.dirtyCells.push([x, shiftY + 1])
-//		  } else 
+        for (let shiftY = y; shiftY >= 0; shiftY--) { 
 			if (y === bottomLine && this.lineClear >= 4) {
 			this.grid[x][shiftY] = this.grid[x][shiftY - 1]
 			if (
@@ -1362,6 +1420,10 @@ export default class Stack extends GameModule {
 		} else {
 			this.mirrorGrid()
 		}
+	}
+	if (this.parent.currentEffect === "jewelBlock") {
+		this.gemIfyPlacedMinos()
+		this.parent.currentEffect = ""
 	}
   }
   new() {
