@@ -1169,9 +1169,8 @@ export default class Game {
 	  "delFieldDown",
 	  "jewelBlock",
 	  "deathBlock",
-	  "emptyEffect",
     ],
-    types = ["mino", "ghost", "stack"],
+    types = ["mino", "ghost"],
     skin = settings.settings.skin === "auto"
       ? SKIN_SETS[this.settings.rotationSystem]
       : settings.settings.skin

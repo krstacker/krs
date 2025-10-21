@@ -95,8 +95,8 @@ export default class Stack extends GameModule {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
-			if (this.parent.effectsRoster.includes(this.grid[x][y]) === true || this.grid[x][y] === "emptyEffect") {
-				this.grid[x][y] = "redgem"
+			if (this.parent.effectsRoster.includes(this.grid[x][y]) === true || this.grid[x][y] === "gold") {
+				this.grid[x][y] = "yellowgem"
 			} else if (this.grid[x][y] === "frozen") {
 				this.grid[x][y] = "lightBluegem"
 			} else if (this.grid[x][y] === color) {
@@ -481,7 +481,7 @@ export default class Stack extends GameModule {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
-				this.grid[x][y] = "emptyEffect"
+				this.grid[x][y] = "gold"
 			}
 		}
       }
@@ -699,7 +699,6 @@ export default class Stack extends GameModule {
     }
 	
 	let playGemSound = false
-	let playGoldSound = false
 	let playEffectSound = false
     for (let y = 0; y < this.grid[0].length; y++) {
       for (let x = 0; x <= this.grid.length; x++) {
@@ -728,10 +727,6 @@ export default class Stack extends GameModule {
 				this.parent.stat.score += 100
 			}
 			if (this.grid[x][y] === "gold") {
-				playGoldSound = true
-				this.parent.stat.score += 100
-			}
-			if (this.grid[x][y] === "emptyEffect") {
 				this.parent.stat.score += 100
 			}
             if (this.isFrozen) {
@@ -768,9 +763,6 @@ export default class Stack extends GameModule {
     }
 	if (playGemSound) {
       sound.add("gembonus")
-    }
-	if (playGoldSound) {
-      sound.add("goldbonus")
     }
 	if (playEffectSound) {
       sound.add("effectactivated")
@@ -1576,7 +1568,7 @@ export default class Stack extends GameModule {
       const isFilled = this.grid[x][y]
       if (isFilled && !this.isInvisible) {
         let color = this.grid[x][y]
-        let name = "stack"
+        let name = "mino"
         if (this.useMinoSkin) {
           name = "mino"
         }
