@@ -517,9 +517,7 @@ export const loops = {
         }
       } else {
 		onCountdown = false
-		if (game.playedHurryUp) {
-			$("#timer").classList.remove("hurry-up")
-		}
+		$("#timer").classList.remove("hurry-up")
 		game.playedHurryUp = false
       }
 	  if (game.piece.startingAre >= game.piece.startingAreLimit) {
@@ -758,9 +756,7 @@ export const loops = {
         }
       } else {
 		onCountdown = false
-		if (game.playedHurryUp) {
-			$("#timer").classList.remove("hurry-up")
-		}
+		$("#timer").classList.remove("hurry-up")
 		game.playedHurryUp = false
       }
 	  if (game.piece.startingAre >= game.piece.startingAreLimit) {
@@ -971,9 +967,7 @@ export const loops = {
         }
       } else {
 		onCountdown = false
-		if (game.playedHurryUp) {
-			$("#timer").classList.remove("hurry-up")
-		}
+		$("#timer").classList.remove("hurry-up")
 		game.playedHurryUp = false
       }
 	  if (game.piece.startingAre >= game.piece.startingAreLimit) {
@@ -1215,9 +1209,7 @@ export const loops = {
         }
       } else {
 		onCountdown = false
-		if (game.playedHurryUp) {
-			$("#timer").classList.remove("hurry-up")
-		}
+		$("#timer").classList.remove("hurry-up")
 		game.playedHurryUp = false
       }
 	  if (game.piece.startingAre >= game.piece.startingAreLimit) {
@@ -1673,9 +1665,7 @@ export const loops = {
         }
       } else {
 		onCountdown = false
-		if (game.playedHurryUp) {
-			$("#timer").classList.remove("hurry-up")
-		}
+		$("#timer").classList.remove("hurry-up")
 		game.playedHurryUp = false
       }
 	  if (game.piece.startingAre >= game.piece.startingAreLimit) {
