@@ -3140,6 +3140,7 @@ KICK_TEMPLATES.world = {
     ],
   },
 }
+/*
 KICK_TEMPLATES.krs = {
   x: {
 	...KICK_TEMPLATES.ascx.x,
@@ -3663,6 +3664,14 @@ KICK_TEMPLATES.krs = {
   O: {
     ...KICK_TEMPLATES.ascx.x,
   },
+}
+*/
+KICK_TEMPLATES.krs = {
+  x: KICK_TEMPLATES.ascx.x,  
+  I: KICK_TEMPLATES.ascx.x,
+  LJ: KICK_TEMPLATES.tetrax.x,
+  T: KICK_TEMPLATES.tetrax.x,
+  O: KICK_TEMPLATES.ascx.x,
 }
 
 export const KICK_TABLES = {
