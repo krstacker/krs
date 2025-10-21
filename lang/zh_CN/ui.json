@@ -87,19 +87,19 @@
     "description": "Displays when the game is finished. Encourages the player to try again"
   },
   "blockOut": {
-    "message": " ",
+    "message": "击倒！",
     "description": "Displays as a failure message when the piece cannot spawn due to one already being in the way"
   },
   "lockOut": {
-    "message": " ",
+    "message": "击倒！",
     "description": "Displays as a failure message when the piece was locked above the skyline/ceiling"
   },
   "topOut": {
-    "message": " ",
+    "message": "击倒！",
     "description": "Displays as a failure message when the stack is pushed above the maximum limit on the board; for example, a stack higher than 40 lines in guideline results in a top out. Also known as 'garbage out'"
   },
   "timeOut": {
-    "message": " ",
+    "message": "击倒！",
     "description": "Displays when the time runs out"
   },
   "excellent": {
