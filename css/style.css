@@ -1228,16 +1228,31 @@ body {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .pulse.spin-pulse {
   animation-name: pulse-strong;
   animation-duration: .1s;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .pulse.spin-pulse-mini {
   animation-name: pulse-semi-strong;
   animation-duration: .1s;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .hold-canvas.locked {
@@ -2459,10 +2474,21 @@ progress[value]::-moz-progress-bar {
   animation-duration: var(--combo-flash-speed);
   animation-iteration-count: infinite;
   width: 20em;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(2px 2px 2px #333);
 }
 
 .combo-counter-container b {
   color: #fff;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 50%, rgba(216, 216, 216, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .combo-counter {
@@ -2565,6 +2591,11 @@ progress[value]::-moz-progress-bar {
 
 .game .action-text.skip-default-animation {
   animation: none;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .game .action-text.perfect-clear-text {
@@ -2700,6 +2731,11 @@ progress[value]::-moz-progress-bar {
   animation-duration: 4s;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 @keyframes perfect-clear-secondary {
@@ -2721,6 +2757,11 @@ progress[value]::-moz-progress-bar {
   animation-duration: 1s;
   animation-delay: .5s;
   animation-timing-function: ease-out;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .pulse-spin-text {
@@ -2728,6 +2769,11 @@ progress[value]::-moz-progress-bar {
   animation-timing-function: ease-in-out;
   animation-duration: var(--duration);
   animation-iteration-count: var(--pulse-count);
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 @keyframes ready-text {
