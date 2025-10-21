@@ -46,7 +46,7 @@
         {
           "label": "TGM",
           "fixedText": true,
-          "value": "tgm"
+          "value": "standardtgm"
         }
       ],
       "setting": "soundbank",
