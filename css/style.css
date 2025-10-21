@@ -2641,25 +2641,16 @@ progress[value]::-moz-progress-bar {
   animation-name: spin-start-double-v;
 }
 
-@keyframes tetra-text {
-  from {
-    transform: scale(4) translate(0, 1em);
-    opacity: 0;
-  }
-
-  to {
-    transform: scale(1) translate(0, 0);
-    opacity: 1;
-  }
-}
-
 .tetra-animation {
-  animation-name: tetra-text;
-  display: inline-block;
-  animation-fill-mode: backwards;
-  animation-duration: 1s;
-  animation-delay: var(--animation-delay);
-  animation-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+  animation-name: action-text;
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.635, 0.005, 0.940, 0.080);
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 @keyframes perfect-clear {
