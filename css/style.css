@@ -526,7 +526,7 @@
 
 @keyframes krsfadingeffect {
   from {
-    opacity: 0.5
+    opacity: 0.75
   }
 
   to {
@@ -2420,11 +2420,17 @@ progress[value]::-moz-progress-bar {
 
 @keyframes hurry-up-timer {
   from {
-    color: #f00
+    color: transparent;
+    background: linear-gradient(180deg,rgba(253, 220, 220, 1) 0%, rgba(241, 127, 127, 1) 50%, rgba(233, 75, 75, 1) 100%);
+    background-clip: text;
+    text-shadow: none;
   }
 
   to {
-    color: #a00
+    color: transparent;
+    background: linear-gradient(180deg,rgba(253, 220, 220, 1) 0%, rgba(241, 127, 127, 1) 50%, rgba(233, 75, 75, 1) 100%);
+    background-clip: text;
+    text-shadow: none;
   }
 }
 
@@ -2447,11 +2453,19 @@ progress[value]::-moz-progress-bar {
 
 @keyframes pace-timer {
   from {
-    color: #FF8C00
+    font-weight: bold;
+    color: transparent;
+    background: linear-gradient(180deg,rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 50%, rgba(216, 216, 216, 1) 100%);
+    background-clip: text;
+    text-shadow: none;
   }
 
   to {
-    color: #ffd700
+    font-weight: bold;
+    color: transparent;
+    background: linear-gradient(180deg,rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 50%, rgba(216, 216, 216, 1) 100%);
+    background-clip: text;
+    text-shadow: none;
   }
 }
 
