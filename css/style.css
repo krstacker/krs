@@ -2623,22 +2623,47 @@ progress[value]::-moz-progress-bar {
   display: inline-block;
   animation-duration: 1s;
   animation-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .spin-start.left {
   animation-name: spin-start-left;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .spin-start.right {
   animation-name: spin-start-right;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .spin-start.double.horizontal {
   animation-name: spin-start-double-h;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .spin-start.double.vertical {
   animation-name: spin-start-double-v;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .tetra-animation {
