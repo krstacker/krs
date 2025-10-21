@@ -43,7 +43,7 @@ export default class Stack extends GameModule {
 	this.isFading = false
 	this.toCollapseUnderwater = []
 	this.redrawOnHidden = false
-	this.underwaterHeight = 10
+	this.underwaterHeight = (this.height / 2)
 	this.gemsCleared = 0
 	this.effectBlockInterval = 16
 	this.displayedEffectText = false
@@ -345,9 +345,9 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
   }
   sliceGridTop() {
-	let targetPoint = (this.height + this.hiddenHeight) - 4
+	let targetPoint = (this.height + this.hiddenHeight) - (this.height - 4)
 	if (this.isFrozen) {
-		targetPoint = (this.height + this.hiddenHeight) - 12
+		targetPoint = (this.height + this.hiddenHeight) - (this.height / 2)
 	}
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
@@ -383,9 +383,9 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
   }
   sliceGridBottom() {
-	let targetPoint = (this.height + this.hiddenHeight) - 4
+	let targetPoint = (this.height + this.hiddenHeight) - (this.height - 4)
 	if (this.isFrozen) {
-		targetPoint = (this.height + this.hiddenHeight) - 12
+		targetPoint = (this.height + this.hiddenHeight) - (this.height / 2)
 	}
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
