@@ -76,6 +76,9 @@ export default class Game {
       pace: true,
 	  effect: true,
     }
+	this.redStats = {
+	  effect: true,
+    }
     this.endingStats = {
       pcCount: true,
       skipCount: true,
@@ -709,6 +712,11 @@ export default class Game {
       if (!game.smallStats[statName]) {
         number.classList.add("big")
       }
+	  if (game.redStats[statName]) {
+        number.classList.add("redstat")
+      } else {
+		number.classList.remove("redstat")
+	  }
       stat.appendChild(label)
       stat.appendChild(number)
       $("#stats").appendChild(stat)
