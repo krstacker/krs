@@ -1256,11 +1256,11 @@ body {
 }
 
 .hold-canvas.locked {
-  filter: grayscale(100%);
+  filter: grayscale(100%), drop-shadow(2px 2px 2px #333);
 }
 
 .hold-canvas.oneffect {
-  filter: grayscale(100%);
+  filter: grayscale(100%), drop-shadow(2px 2px 2px #333);
 }
 
 @keyframes hold-flash {
@@ -1716,11 +1716,13 @@ body {
 .main-next-canvas {
   width: calc(4 * var(--cell-size));
   height: calc(4 * var(--cell-size));
+  filter: drop-shadow(2px 2px 2px #333);
 }
 
 .hold-canvas {
   width: calc(4 * var(--cell-size));
   height: calc(4 * var(--cell-size));
+  filter: drop-shadow(2px 2px 2px #333);
 }
 
 .hold-canvas {
@@ -1748,6 +1750,7 @@ body {
   padding: 0;
   height: calc(4 * var(--cell-size) * .62);
   width: calc(4 * var(--cell-size) * var(--next-count) * .62);
+  filter: drop-shadow(2px 2px 2px #333);
 }
 
 .sub-next-canvas.hold-disabled {
@@ -1821,7 +1824,7 @@ body {
 
 .next-label.disabledeffect,
 .hold-label.disabledeffect {
-  filter: grayscale(100%);
+  filter: drop-shadow(2px 2px 2px #333), grayscale(100%);
 }
 
 @keyframes float {
