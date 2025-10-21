@@ -31,6 +31,26 @@
       "discrete": 5,
       "setting": "musicVolume",
       "settingType": "setting"
+    },
+    {
+      "string": "soundbankLabel",
+      "stringDesc": "soundbankDescription",
+      "type": "select",
+      "action": "select",
+      "selectOptions": [
+        {
+          "label": "KRS",
+          "fixedText": true,
+          "value": "auto"
+        },
+        {
+          "label": "TGM",
+          "fixedText": true,
+          "value": "tgm"
+        }
+      ],
+      "setting": "soundbank",
+      "settingType": "setting"
     }
   ]
 }
