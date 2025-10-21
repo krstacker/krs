@@ -1330,7 +1330,6 @@ body {
 
 .game.dead {
   filter: grayscale(100%) brightness(1) blur(.5em);
-  transform: scale(0.8);
 }
 
 .game.paused canvas {
