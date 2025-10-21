@@ -1824,7 +1824,11 @@ body {
 
 .next-label.disabledeffect,
 .hold-label.disabledeffect {
-  filter: grayscale(100%) drop-shadow(2px 2px 2px #333);
+  color: transparent;
+  background: linear-gradient(180deg,rgba(253, 220, 220, 1) 0%, rgba(241, 127, 127, 1) 50%, rgba(233, 75, 75, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(2px 2px 2px #333);
 }
 
 @keyframes float {
