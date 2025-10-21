@@ -392,7 +392,7 @@ export default class Stack extends GameModule {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
-			if (y => targetPoint) {
+			if (y >= targetPoint) {
 				delete this.grid[x][y]
 			}
 		}
