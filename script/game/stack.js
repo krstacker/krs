@@ -345,11 +345,14 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
   }
   sliceGridTop() {
-	let halfPoint = (this.height + this.hiddenHeight) - (this.height / 2)
+	let targetPoint = (this.height + this.hiddenHeight) - 4
+	if (this.isFrozen) {
+		targetPoint = (this.height + this.hiddenHeight) - 12
+	}
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
-			if (y <= halfPoint) {
+			if (y <= targetPoint) {
 				delete this.grid[x][y]
 			}
 		}
@@ -368,7 +371,7 @@ export default class Stack extends GameModule {
 		x: cellSize,
 		y: cellSize * this.hiddenHeight,
 		xRange: cellSize * this.width,
-		yRange: cellSize * halfPoint,
+		yRange: cellSize * targetPoint,
 		xVelocity: 0,
 		yVelocity: 0,
 		xVariance: 10,
@@ -380,11 +383,14 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
   }
   sliceGridBottom() {
-	let halfPoint = (this.height + this.hiddenHeight) - (this.height / 2)
+	let targetPoint = (this.height + this.hiddenHeight) - 4
+	if (this.isFrozen) {
+		targetPoint = (this.height + this.hiddenHeight) - 12
+	}
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
-			if (y > halfPoint) {
+			if (y => targetPoint) {
 				delete this.grid[x][y]
 			}
 		}
@@ -401,9 +407,9 @@ export default class Stack extends GameModule {
 		green: 128,
 		amount: 750,
 		x: cellSize,
-		y: cellSize * halfPoint,
+		y: cellSize * targetPoint,
 		xRange: cellSize * this.width,
-		yRange: cellSize * halfPoint,
+		yRange: cellSize * targetPoint,
 		xVelocity: 0,
 		yVelocity: 0,
 		xVariance: 10,
