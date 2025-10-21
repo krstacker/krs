@@ -930,6 +930,7 @@ export const loops = {
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
 	  garbageTimer = 0
+	  sound.add("cheer")
     },
   },
   normal2: {
@@ -1628,6 +1629,7 @@ export const loops = {
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
 	  garbageTimer = 0
+	  sound.add("cheer")
     },
   },
   virtuoso3: {
@@ -1829,6 +1831,7 @@ export const loops = {
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
+	  sound.add("cheer")
     },
   },
 }
