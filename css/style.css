@@ -1366,7 +1366,7 @@ body {
   animation-iteration-count: infinite;
   font-weight: bold;
   color: transparent;
-  background: linear-gradient(180deg,rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 50%, rgba(216, 216, 216, 1) 100%);
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
   background-clip: text;
   text-shadow: none;
   filter: drop-shadow(2px 2px 2px #333);
