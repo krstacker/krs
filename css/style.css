@@ -1367,6 +1367,7 @@ body {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  filter: drop-shadow(2px 2px 2px #333);
 }
 
 #press-container {
@@ -2100,35 +2101,37 @@ progress[value]::-moz-progress-bar {
   0% {
     opacity: 0;
     transform: scale(2);
+	filter: drop-shadow(2px 2px 2px #333);
   }
 
   15% {
     opacity: 1;
     transform: scale(1);
+	filter: drop-shadow(2px 2px 2px #333);
   }
 
   30% {
-    filter: brightness(1)
+    filter: drop-shadow(2px 2px 2px #333) brightness(1)
   }
 
   40% {
-    filter: brightness(0.5)
+    filter: drop-shadow(2px 2px 2px #333) brightness(0.5)
   }
 
   50% {
-    filter: brightness(1)
+    filter: drop-shadow(2px 2px 2px #333) brightness(1)
   }
 
   60% {
-    filter: brightness(0.5)
+    filter: drop-shadow(2px 2px 2px #333) brightness(0.5)
   }
 
   70% {
-    filter: brightness(1)
+    filter: drop-shadow(2px 2px 2px #333) brightness(1)
   }
 
   80% {
-    filter: brightness(0.5)
+    filter: drop-shadow(2px 2px 2px #333) brightness(0.5)
   }
 }
 
