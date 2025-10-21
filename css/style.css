@@ -1938,6 +1938,7 @@ body {
   width: 105%;
   left: -.5em;
   bottom: -2em;
+  filter: drop-shadow(2px 2px 2px #333);
 }
 
 .das-meter {
