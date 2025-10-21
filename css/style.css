@@ -1332,6 +1332,14 @@ body {
   filter: grayscale(100%) brightness(1) blur(.5em);
 }
 
+.game.loss {
+  filter: grayscale(100%) brightness(1) blur(0em);
+}
+
+.game.victory {
+  filter: grayscale(0%) brightness(1) blur(.5em);
+}
+
 .game.paused canvas {
   opacity: 0;
 }

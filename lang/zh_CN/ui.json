@@ -87,27 +87,27 @@
     "description": "Displays when the game is finished. Encourages the player to try again"
   },
   "blockOut": {
-    "message": "天哪……",
+    "message": " ",
     "description": "Displays as a failure message when the piece cannot spawn due to one already being in the way"
   },
   "lockOut": {
-    "message": "天哪……",
+    "message": " ",
     "description": "Displays as a failure message when the piece was locked above the skyline/ceiling"
   },
   "topOut": {
-    "message": "天哪……",
+    "message": " ",
     "description": "Displays as a failure message when the stack is pushed above the maximum limit on the board; for example, a stack higher than 40 lines in guideline results in a top out. Also known as 'garbage out'"
   },
   "timeOut": {
-    "message": "天哪……",
+    "message": " ",
     "description": "Displays when the time runs out"
   },
   "excellent": {
-    "message": "太棒了！",
+    "message": "清除！",
     "description": "Displays as a victory message. Any sort of praising line like 'Excellent', 'Awesome', 'Great', 'Good Job' is fine"
   },
   "newRecord": {
-    "message": "太棒了！",
+    "message": "清除！",
     "description": "Displays when the user beats their previous score or time"
   },
   "returnToMenu": {

@@ -144,6 +144,8 @@ export default class Game {
         $("#timer").classList.remove("hurry-up")
         $("#timer-real").classList.remove("hurry-up")
         $("#game").classList.remove("dead")
+		$("#game").classList.remove("victory")
+		$("#game").classList.remove("loss")
         $("#ready-meter").classList.remove("hidden")
         $("#end-message-container").classList.add("hidden")
         $("#kill-message-container").classList.add("hidden")
@@ -478,8 +480,15 @@ export default class Game {
     }
     sound.killBgm()
     sound.killAllLoops()
-    $("#game").classList.add("dead")
+    if (victory) {
+		$("#game").classList.add("victory")
+	} else {
+		$("#game").classList.add("loss")
+	}
     endScreenTimeout = setTimeout(() => {
+	  $("#game").classList.add("dead")
+	  $("#game").classList.remove("victory")
+	  $("#game").classList.remove("loss")
       sound.stopSeLoop("alarm")
       $("#kill-message-container").classList.add("hidden")
       sound.add("gameover")
