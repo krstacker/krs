@@ -385,7 +385,7 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
   }
   sliceGridBottom() {
-	let targetPoint = (this.height + this.hiddenHeight) - 4
+	let targetPoint = (this.height + this.hiddenHeight) - (this.height - 4)
 	if (this.isFrozen) {
 		targetPoint = (this.height + this.hiddenHeight) - (this.height / 2)
 	}
