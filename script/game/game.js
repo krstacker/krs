@@ -713,6 +713,7 @@ export default class Game {
         number.classList.add("big")
       }
 	  if (game.redStats[statName]) {
+		label.textContent = " "
         number.classList.add("redstat")
       } else {
 		number.classList.remove("redstat")

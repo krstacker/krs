@@ -1888,6 +1888,7 @@ body {
   animation-duration: .2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
+  filter: drop-shadow(2px 2px 2px #333);
   opacity: 0;
 }
 
@@ -2437,6 +2438,11 @@ progress[value]::-moz-progress-bar {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(253, 220, 220, 1) 0%, rgba(241, 127, 127, 1) 50%, rgba(233, 75, 75, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 @keyframes pace-timer {
@@ -2458,6 +2464,11 @@ progress[value]::-moz-progress-bar {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 50%, rgba(216, 216, 216, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 @keyframes paused-timer {
@@ -2477,6 +2488,12 @@ progress[value]::-moz-progress-bar {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(247, 247, 247, 1) 0%, rgba(234, 234, 234, 1) 50%, rgba(216, 216, 216, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(2px 2px 2px #333);
 }
 
 .combo-counter-container {
@@ -2513,6 +2530,11 @@ progress[value]::-moz-progress-bar {
   transition-property: letter-spacing, opacity;
   transition-duration: 0.5s;
   transition-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
 }
 
 .combo-counter-container.hidden .combo-counter {
