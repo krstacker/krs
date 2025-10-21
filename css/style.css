@@ -1256,11 +1256,11 @@ body {
 }
 
 .hold-canvas.locked {
-  filter: grayscale(100%), drop-shadow(2px 2px 2px #333);
+  filter: grayscale(100%) drop-shadow(2px 2px 2px #333);
 }
 
 .hold-canvas.oneffect {
-  filter: grayscale(100%), drop-shadow(2px 2px 2px #333);
+  filter: grayscale(100%) drop-shadow(2px 2px 2px #333);
 }
 
 @keyframes hold-flash {
@@ -1824,7 +1824,7 @@ body {
 
 .next-label.disabledeffect,
 .hold-label.disabledeffect {
-  filter: drop-shadow(2px 2px 2px #333), grayscale(100%);
+  filter: grayscale(100%) drop-shadow(2px 2px 2px #333);
 }
 
 @keyframes float {
