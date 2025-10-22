@@ -1,0 +1,41 @@
+{
+  "hideNext": {
+    "message": "HIDE NEXT"
+  },
+  "rotateLock": {
+    "message": "ROTATE LOCK"
+  },
+  "holdLock": {
+    "message": "HOLD LOCK"
+  },
+  "mirrorBlock": {
+    "message": "MIRROR BLOCK"
+  },
+  "fadingBlock": {
+    "message": "FADING BLOCK"
+  },
+  "laserBlock": {
+    "message": "LASER"
+  },
+  "garbageBlock": {
+    "message": "GARBAGE"
+  },
+  "flipBlock": {
+    "message": "180° FIELD"
+  },
+  "phantomBlock": {
+    "message": "PHANTOM BLOCK"
+  },
+  "delFieldUp": {
+    "message": "SLICE FIELD"
+  },
+  "delFieldDown": {
+    "message": "SLICE FIELD"
+  },
+  "jewelBlock": {
+    "message": "JEWEL BLOCK"
+  },
+  "deathBlock": {
+    "message": "DEATH BLOCK"
+  }
+}

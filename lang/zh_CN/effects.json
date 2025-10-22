@@ -1,0 +1,41 @@
+{
+  "hideNext": {
+    "message": "隐藏下一条"
+  },
+  "rotateLock": {
+    "message": "旋转锁定"
+  },
+  "holdLock": {
+    "message": "保持锁定"
+  },
+  "mirrorBlock": {
+    "message": "镜面区块"
+  },
+  "fadingBlock": {
+    "message": "渐隐区块"
+  },
+  "laserBlock": {
+    "message": "激光"
+  },
+  "garbageBlock": {
+    "message": "垃圾"
+  },
+  "flipBlock": {
+    "message": "180° 视野"
+  },
+  "phantomBlock": {
+    "message": "幻影区块"
+  },
+  "delFieldUp": {
+    "message": "切片区域"
+  },
+  "delFieldDown": {
+    "message": "切片区域"
+  },
+  "jewelBlock": {
+    "message": "珠宝方块"
+  },
+  "deathBlock": {
+    "message": "死亡阻挡"
+  }
+}

@@ -23,6 +23,7 @@ class Locale {
 	  "menu_settings",
       "action-text",
       "mode-options",
+	  "effects",
     ]
     this.test = new Promise(function (resolve, reject) {
       resolve("test")

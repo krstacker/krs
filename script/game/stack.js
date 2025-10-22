@@ -1039,62 +1039,62 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "holdLock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText()
-			$("#message").textContent = "HOLD LOCK!"
+			let effectName = locale.getString("effects", "holdLock")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
-		this.parent.stat.effect = "HOLD LOCK"
+		this.parent.stat.effect = locale.getString("effects", "holdLock")
 	}
 	if (this.parent.currentEffect === "rotateLock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("ROTATE LOCK!")
-			$("#message").textContent = "ROTATE LOCK!"
+			let effectName = locale.getString("effects", "rotateLock")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
-		this.parent.stat.effect = "ROTATE LOCK"
+		this.parent.stat.effect = locale.getString("effects", "rotateLock")
 	}
 	if (this.parent.currentEffect === "hideNext") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("HIDE NEXT!")
-			$("#message").textContent = "HIDE NEXT!"
+			let effectName = locale.getString("effects", "hideNext")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
-		this.parent.stat.effect = "HIDE NEXT"
+		this.parent.stat.effect = locale.getString("effects", "hideNext")
 	}
 	if (this.parent.currentEffect === "mirrorBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("MIRROR BLOCK!")
-			$("#message").textContent = "MIRROR BLOCK!"
+			let effectName = locale.getString("effects", "mirrorBlock")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
-		this.parent.stat.effect = "MIRROR BLOCK"
+		this.parent.stat.effect = locale.getString("effects", "mirrorBlock")
 	}
 	if (this.parent.currentEffect === "fadingBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("FADING BLOCK!")
-			$("#message").textContent = "FADING BLOCK!"
+			let effectName = locale.getString("effects", "fadingBlock")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
-		this.parent.stat.effect = "FADING BLOCK"
+		this.parent.stat.effect = locale.getString("effects", "fadingBlock")
 	}
 	if (this.parent.currentEffect === "phantomBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("PHANTOM BLOCK!")
-			$("#message").textContent = "PHANTOM BLOCK!"
+			let effectName = locale.getString("effects", "phantomBlock")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
-		this.parent.stat.effect = "PHANTOM BLOCK"
+		this.parent.stat.effect = locale.getString("effects", "phantomBlock")
 	}
 	if (this.parent.currentEffect === "delFieldUp") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("SLICE FIELD!")
-			$("#message").textContent = "SLICE FIELD!"
+			let effectName = locale.getString("effects", "delFieldUp")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
 		this.parent.stat.effect = ""
@@ -1102,8 +1102,8 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "delFieldDown") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("SLICE FIELD!")
-			$("#message").textContent = "SLICE FIELD!"
+			let effectName = locale.getString("effects", "delFieldDown")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
 		this.parent.stat.effect = ""
@@ -1111,8 +1111,8 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "garbageBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("GARBAGE!")
-			$("#message").textContent = "GARBAGE!"
+			let effectName = locale.getString("effects", "garbage")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
 		this.parent.stat.effect = ""
@@ -1120,8 +1120,8 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "laserBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("LASER!")
-			$("#message").textContent = "LASER!"
+			let effectName = locale.getString("effects", "laserBlock")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
 		this.parent.stat.effect = ""
@@ -1129,8 +1129,8 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "flipBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("180° STACK!")
-			$("#message").textContent = "180° STACK!"
+			let effectName = locale.getString("effects", "flipBlock")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
 		this.parent.stat.effect = ""
@@ -1138,8 +1138,8 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "jewelBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			//this.parent.displayActionText("JEWEL BLOCK!")
-			$("#message").textContent = "JEWEL BLOCK!"
+			let effectName = locale.getString("effects", "jewelBlock")
+			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
 		this.parent.stat.effect = ""
