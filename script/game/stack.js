@@ -48,6 +48,7 @@ export default class Stack extends GameModule {
 	this.effectBlockInterval = 16
 	this.displayedEffectText = false
 	this.targetColor = "red"
+	$("#message").classList.remove("effectactivated")
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -1035,6 +1036,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "holdLock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1044,6 +1046,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "rotateLock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1053,6 +1056,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "hideNext")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1062,6 +1066,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "mirrorBlock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1071,6 +1076,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "fadingBlock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1080,6 +1086,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "phantomBlock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1089,6 +1096,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "delFieldUp")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1098,6 +1106,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "delFieldDown")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1107,6 +1116,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "garbageBlock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1116,6 +1126,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "laserBlock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1125,6 +1136,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "flipBlock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1134,6 +1146,7 @@ export default class Stack extends GameModule {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
 			let effectName = locale.getString("effects", "jewelBlock")
+			$("#message").classList.add("effectactivated")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}
@@ -1156,8 +1169,10 @@ export default class Stack extends GameModule {
 	}
 	if (this.parent.currentEffect === "" && this.parent.useEffectBlocks) {
 		this.displayedEffectText = false
+		$("#message").classList.remove("effectactivated")
 	} else if (this.parent.useEffectBlocks !== true) {
 		this.displayedEffectText = true
+		$("#message").classList.remove("effectactivated")
 	}
   }
   alarmCheck() {

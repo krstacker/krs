@@ -2363,6 +2363,30 @@ progress[value]::-moz-progress-bar {
   filter: drop-shadow(2px 2px 2px #333);
 }
 
+.game .main-message.effectactivated {
+  text-shadow: 1px 1px 5px #000000;
+  text-transform: uppercase;
+  font-weight: 500;
+  animation-name: pulse-darkness-light;
+  animation-duration: .3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+  display: block;
+  color: #84F78C;
+  font-size: 3em;
+  position: absolute;
+  top: 6em;
+  left: -150%;
+  width: 400%;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(253, 220, 220, 1) 0%, rgba(241, 127, 127, 1) 50%, rgba(233, 75, 75, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+  filter: drop-shadow(2px 2px 2px #333);
+}
+
 @keyframes dissolve {
   0% {
     transform: scale(4);
