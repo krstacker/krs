@@ -1111,7 +1111,7 @@ export default class Stack extends GameModule {
 	if (this.parent.currentEffect === "garbageBlock") {
 		if (this.displayedEffectText !== true) {
 			this.displayedEffectText = true
-			let effectName = locale.getString("effects", "garbage")
+			let effectName = locale.getString("effects", "garbageBlock")
 			$("#message").textContent = `${effectName}!`
 			resetAnimation("#message", "dissolve")
 		}

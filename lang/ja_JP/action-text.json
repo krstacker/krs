@@ -12,15 +12,15 @@
     "description": "Displays in the screen when three lines are cleared at the same time"
   },
   "tetra": {
-    "message": "Home Run",
+    "message": "ホームラン",
     "description": "Displays in the screen when four lines are cleared at the same time. Do not use copyrighted terms"
   },
   "penta": {
-    "message": "Home Run +",
+    "message": "ホームラン+",
     "description": "Displays in the screen when five lines are cleared at the same time. Do not use copyrighted terms"
   },
   "tetraplus": {
-    "message": "Home Run +",
+    "message": "ホームラン+",
     "description": "Displays in the screen when six or more lines are cleared at the same time. Do not use copyrighted terms"
   },
   "spin": {
@@ -40,15 +40,15 @@
     "description": "Displays when a spin clears 3 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintetra": {
-    "message": "%1-Spin Tetra",
+    "message": "%1-Spin ホームラン",
     "description": "Displays when a spin clears 4 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spinpenta": {
-    "message": "%1-Spin Penta",
+    "message": "%1-Spin ホームラン+",
     "description": "Displays when a spin clears 5 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintetraplus": {
-    "message": "%1-Spin Tetra Plus",
+    "message": "%1-Spin ホームラン+",
     "description": "Displays when a spin clears 6 or more lines. %1 is the name of the piece ('T', 'S')"
   },
   "spinmini": {
@@ -68,15 +68,15 @@
     "description": "Displays when a spin clears 3 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintetramini": {
-    "message": "%1-Spin Home Run",
+    "message": "%1-Spin ホームラン",
     "description": "Displays when a spin clears 4 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spinpentamini": {
-    "message": "%1-Spin Home Run +",
+    "message": "%1-Spin ホームラン+",
     "description": "Displays when a spin clears 5 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintetraplusmini": {
-    "message": "%1-Spin Home Run +",
+    "message": "%1-Spin ホームラン+",
     "description": "Displays when a spin clears 6 or more lines. %1 is the name of the piece ('T', 'S')"
   },
   "b2b": {
@@ -84,7 +84,7 @@
     "description": "Displays when a tetra or spin line clear is performed when the previous one was also a tetra or spin line clear"
   },
   "combo": {
-    "message": "%1 Ren",
+    "message": "%1 Combo",
     "description": "Displays on clearing rows successively"
   },
   "pc": {

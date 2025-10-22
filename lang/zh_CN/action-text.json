@@ -12,71 +12,71 @@
     "description": "Displays in the screen when three lines are cleared at the same time"
   },
   "tetra": {
-    "message": "Home Run",
+    "message": "本垒打",
     "description": "Displays in the screen when four lines are cleared at the same time. Do not use copyrighted terms"
   },
   "penta": {
-    "message": "Home Run +",
+    "message": "本垒打+",
     "description": "Displays in the screen when five lines are cleared at the same time. Do not use copyrighted terms"
   },
   "tetraplus": {
-    "message": "Home Run +",
+    "message": "本垒打+",
     "description": "Displays in the screen when six or more lines are cleared at the same time. Do not use copyrighted terms"
   },
   "spin": {
-    "message": "%1-Spin",
+    "message": "%1旋转",
     "description": "Displays when a spin is created but no lines are cleared. %1 is the name of the piece ('T', 'S')"
   },
   "spinsingle": {
-    "message": "%1-Spin Single",
+    "message": "%1旋转 Single",
     "description": "Displays when a spin clears 1 line. %1 is the name of the piece ('T', 'S')"
   },
   "spindouble": {
-    "message": "%1-Spin Double",
+    "message": "%1旋转 Double",
     "description": "Displays when a spin clears 2 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintriple": {
-    "message": "%1-Spin Triple",
+    "message": "%1旋转 Triple",
     "description": "Displays when a spin clears 3 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintetra": {
-    "message": "%1-Spin Tetra",
+    "message": "%1旋转 本垒打",
     "description": "Displays when a spin clears 4 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spinpenta": {
-    "message": "%1-Spin Penta",
+    "message": "%1旋转 本垒打+",
     "description": "Displays when a spin clears 5 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintetraplus": {
-    "message": "%1-Spin Tetra Plus",
+    "message": "%1旋转 本垒打+",
     "description": "Displays when a spin clears 6 or more lines. %1 is the name of the piece ('T', 'S')"
   },
   "spinmini": {
-    "message": "%1-Spin",
+    "message": "%1旋转",
     "description": "Displays when a spin is created but no lines are cleared. %1 is the name of the piece ('T', 'S')"
   },
   "spinsinglemini": {
-    "message": "%1-Spin Single",
+    "message": "%1旋转 Single",
     "description": "Displays when a spin clears 1 line. %1 is the name of the piece ('T', 'S')"
   },
   "spindoublemini": {
-    "message": "%1-Spin Double",
+    "message": "%1旋转 Double",
     "description": "Displays when a spin clears 2 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintriplemini": {
-    "message": "%1-Spin Triple",
+    "message": "%1旋转 Triple",
     "description": "Displays when a spin clears 3 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintetramini": {
-    "message": "%1-Spin Home Run",
+    "message": "%1旋转 本垒打",
     "description": "Displays when a spin clears 4 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spinpentamini": {
-    "message": "%1-Spin Home Run +",
+    "message": "%1旋转 本垒打+",
     "description": "Displays when a spin clears 5 lines. %1 is the name of the piece ('T', 'S')"
   },
   "spintetraplusmini": {
-    "message": "%1-Spin Home Run +",
+    "message": "%1旋转 本垒打+",
     "description": "Displays when a spin clears 6 or more lines. %1 is the name of the piece ('T', 'S')"
   },
   "b2b": {
