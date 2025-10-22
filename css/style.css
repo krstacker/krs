@@ -484,6 +484,16 @@
   }
 }
 
+@keyframes pulse-lockdown-meter {
+  from {
+    filter: brightness(1) drop-shadow(2px 2px 2px #333)
+  }
+
+  to {
+    filter: brightness(.5) drop-shadow(2px 2px 2px #333)
+  }
+}
+
 @keyframes pulse {
   from {
     filter: brightness(1.1)
@@ -1979,13 +1989,13 @@ body {
 
 progress[value] {
   -webkit-appearance: none;
-  background-color: #000a;
+  background-color: #f00a;
   border: none;
   height: .5em;
 }
 
 progress[value="0"] {
-  animation-name: pulse-darkness-light;
+  animation-name: pulse-lockdown-meter;
   animation-duration: .2s;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
