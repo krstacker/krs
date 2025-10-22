@@ -346,11 +346,6 @@ export default class Stack extends GameModule {
   }
   sliceGridTop() {
 	let targetPoint = (this.height + this.hiddenHeight) - 4
-	/*
-	if (this.isFrozen) {
-		targetPoint = (this.height + this.hiddenHeight) - (this.height / 2)
-	}
-	*/
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
@@ -387,7 +382,7 @@ export default class Stack extends GameModule {
   sliceGridBottom() {
 	let targetPoint = (this.height + this.hiddenHeight) - 4
 	if (this.isFrozen) {
-		targetPoint = (this.height + this.hiddenHeight) - (this.height / 2)
+		targetPoint = (this.height + this.hiddenHeight) - (this.height - 4)
 	}
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
