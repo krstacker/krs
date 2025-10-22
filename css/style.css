@@ -1989,7 +1989,7 @@ body {
 
 progress[value] {
   -webkit-appearance: none;
-  background-color: #f00a;
+  background-color: #f00;
   border: none;
   height: .5em;
 }
