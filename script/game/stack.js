@@ -1882,7 +1882,7 @@ export default class Stack extends GameModule {
         }
       }
     }
-    const bravo = pc ? 4 : 1
+    const bravo = pc ? 4 : 
     if (this.parent.stack.lineClear !== 0) {
       this.parent.arcadeCombo += 2 * (this.parent.stack.lineClear - 1)
     } else this.parent.arcadeCombo = 1
