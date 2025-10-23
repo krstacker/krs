@@ -17,6 +17,21 @@
       "action": "toggle",
       "setting": "particles",
       "settingType": "setting"
+    },
+	{
+      "string": "skinLabel",
+      "stringDesc": "skinDescription",
+      "type": "select",
+      "action": "select",
+      "selectOptions": [
+		{
+          "label": "KRS",
+          "fixedText": true,
+          "value": "auto"
+        }
+      ],
+      "setting": "skin",
+      "settingType": "setting"
     }
   ]
 }
