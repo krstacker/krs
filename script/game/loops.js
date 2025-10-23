@@ -190,10 +190,10 @@ const krsGradingSystem = (
 		if (game.stat.grade !== firstGrade) {
 			sound.add("gradeup")
 		}
-		if (applauseGrades.includes(game.stat.grade) {
+		if (applauseGrades.includes(game.stat.grade) !== false) {
 			sound.add("applause")
 		}
-		if (cheerGrades.includes(game.stat.grade) {
+		if (cheerGrades.includes(game.stat.grade) !== false) {
 			sound.add("cheer")
 		}
 	}
