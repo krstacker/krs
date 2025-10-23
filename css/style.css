@@ -1266,11 +1266,13 @@ body {
 }
 
 .hold-canvas.locked {
-  filter: grayscale(100%) drop-shadow(2px 2px 2px #333);
+  /*filter: grayscale(100%) drop-shadow(2px 2px 2px #333);*/
+  opacity: 0.5;
 }
 
 .hold-canvas.oneffect {
-  filter: grayscale(100%) drop-shadow(2px 2px 2px #333);
+  /*filter: grayscale(100%) drop-shadow(2px 2px 2px #333);*/
+  opacity: 0.5;
 }
 
 @keyframes hold-flash {
