@@ -592,9 +592,9 @@ export default class Stack extends GameModule {
 			"phantomBlock",
 		]
 		if (underwaterEffectsRoster.includes(this.parent.pendingEffect) !== true) {
-			this.parent.pendingEffect = this.parent.underwaterEffectsRoster[Math.max(
+			this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
 				0,
-				Math.floor(Math.random() * this.parent.underwaterEffectsRoster.length) - 1
+				Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
 			)]
 			while (this.parent.pendingEffect === this.lastEffect) {
 				this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
@@ -657,9 +657,9 @@ export default class Stack extends GameModule {
 			]
 		}
 		if (effectsRoster.includes(this.parent.pendingEffect) !== true) {
-			this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+			this.parent.pendingEffect = effectsRoster[Math.max(
 				0,
-				Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+				Math.floor(Math.random() * effectsRoster.length) - 1
 			)]
 			while (this.parent.pendingEffect === this.lastEffect) {
 				this.parent.pendingEffect = effectsRoster[Math.max(
@@ -675,9 +675,9 @@ export default class Stack extends GameModule {
 			"phantomBlock",
 		]
 		if (effectsRoster.includes(this.parent.pendingEffect) !== true) {
-			this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+			this.parent.pendingEffect = effectsRoster[Math.max(
 				0,
-				Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+				Math.floor(Math.random() * effectsRoster.length) - 1
 			)]
 			while (this.parent.pendingEffect === this.lastEffect) {
 				this.parent.pendingEffect = effectsRoster[Math.max(
@@ -695,9 +695,9 @@ export default class Stack extends GameModule {
 			"phantomBlock",
 		]
 		if (holdLockSubstitutes.includes(this.parent.pendingEffect) !== true) {
-			this.parent.pendingEffect = this.parent.holdLockSubstitutes[Math.max(
+			this.parent.pendingEffect = holdLockSubstitutes[Math.max(
 				0,
-				Math.floor(Math.random() * this.parent.holdLockSubstitutes.length) - 1
+				Math.floor(Math.random() * holdLockSubstitutes.length) - 1
 			)]
 			while (this.parent.pendingEffect === this.lastEffect) {
 				this.parent.pendingEffect = holdLockSubstitutes[Math.max(
