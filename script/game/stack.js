@@ -344,8 +344,7 @@ export default class Stack extends GameModule {
       gravityAccceleration: 1.05,
       lifeVariance: 80,
     })
-	sound.add("collapse")
-	sound.add("collapse4")
+	sound.add("flipfield")
 	this.reRenderStack()
   }
   sliceGridTop() {
@@ -653,6 +652,22 @@ export default class Stack extends GameModule {
 				"phantomBlock",
 			]
 		}
+		this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+			0,
+			Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+		)]
+		while (this.parent.pendingEffect === this.lastEffect) {
+			this.parent.pendingEffect = effectsRoster[Math.max(
+				0,
+				Math.floor(Math.random() * effectsRoster.length) - 1
+			)]
+		}
+	}
+	if (this.lastEffect === "jewelBlock" && this.effectBlockInterval >= 16) {
+		let effectsRoster = [
+			"fadingBlock",
+			"phantomBlock",
+		]
 		this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
 			0,
 			Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
