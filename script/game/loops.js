@@ -1754,9 +1754,6 @@ export const loops = {
       updateFallSpeed(game)
       if (krsLevelSystem(game, pieceRequirement, levelGoal)) {
 		resetTimeLimit(game)
-		if (collapseUnderwater) {
-			game.stack.clearUnderwaterRows()
-		}
 	  }
 	  const timeLimitTable = [
 		[1, 60],
@@ -1873,12 +1870,13 @@ export const loops = {
 			  sound.killBgm()
 			  break
             case 2:
-			  game.stack.isUnderwater = true
+			  collapseUnderwater = false
 			  sound.loadBgm(["stage2"], "virtuoso2")
               sound.killBgm()
               sound.playBgm(["stage2"], "virtuoso2")
 			  break
 			case 4:
+			  collapseUnderwater = true
 			  sound.loadBgm(["stage3"], "virtuoso2")
               sound.killBgm()
               sound.playBgm(["stage3"], "virtuoso2")
@@ -1945,6 +1943,33 @@ export const loops = {
         sound.add("voxexcellent")
         game.end(true)
 	  }
+	  let underwaterTable = [
+		[8, true],
+		[9, false],
+		[10, true],
+		[11, false],
+		[12, true],
+		[13, false],
+		[14, true],
+		[15, false],
+		[16, true],
+		[17, true],
+		[18, true],
+		[19, true],
+		[20, true],
+		[21, true],
+		[22, true],
+		[23, true],
+		[24, false],
+	  ]
+	  for (const pair of underwaterTable) {
+        const level = pair[0]
+        const entry = pair[1]
+        if (game.stat.level === level) {
+          game.stack.isUnderwater = entry
+          break
+        }
+      }
 	  game.piece.ghostIsVisible = false
     },
     onInit: (game) => {
