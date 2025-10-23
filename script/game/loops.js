@@ -1870,13 +1870,11 @@ export const loops = {
 			  sound.killBgm()
 			  break
             case 2:
-			  collapseUnderwater = false
 			  sound.loadBgm(["stage2"], "virtuoso2")
               sound.killBgm()
               sound.playBgm(["stage2"], "virtuoso2")
 			  break
 			case 4:
-			  collapseUnderwater = true
 			  sound.loadBgm(["stage3"], "virtuoso2")
               sound.killBgm()
               sound.playBgm(["stage3"], "virtuoso2")
@@ -1977,6 +1975,11 @@ export const loops = {
           break
         }
       }
+	  if (game.stat.piece > pieceRequirement * 8) {
+		  collapseUnderwater = true
+	  } else {
+		  collapseUnderwater = false
+	  }
 	  game.piece.ghostIsVisible = false
     },
     onInit: (game) => {
