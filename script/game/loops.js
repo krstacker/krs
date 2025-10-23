@@ -73,7 +73,7 @@ let onCountdown = false
 let countdownTimer = 0
 let lastGemsCleared = 0
 let testMode = false
-let nonEvents = []
+let collapseUnderwater = false
 let medals = [
 	"(KH)", //Home runs
 	"(KT)", //T spins
@@ -174,6 +174,8 @@ const krsGradingSystem = (
 		[0, "N/A"],
 	],
 	firstGrade = "N/A",
+	applauseGrades = [],
+	cheerGrades = [],
 ) => {
 	let currentGrade = ""
 	for (const pair of gradingTable) {
@@ -187,6 +189,12 @@ const krsGradingSystem = (
 	if (lastGrade !== game.stat.grade && game.stat.grade !== "N/A") {
 		if (game.stat.grade !== firstGrade) {
 			sound.add("gradeup")
+		}
+		if (applauseGrades.includes(game.stat.grade) {
+			sound.add("applause")
+		}
+		if (cheerGrades.includes(game.stat.grade) {
+			sound.add("cheer")
 		}
 	}
 	lastGrade = game.stat.grade
@@ -480,7 +488,17 @@ export const loops = {
 			[120000*2.5, "DIAMOND"],
 			[150000*2.5, "TITANIUM"],
 		],
-		"1"
+		"1",
+		[
+			"BRONZE",
+			"SILVER",
+		],
+		[
+			"GOLD",
+			"PLATINUM",
+			"DIAMOND",
+			"TITANIUM",
+		]
 	  )
       collapse(arg)
       if (arg.piece.inAre) {
@@ -802,11 +820,13 @@ export const loops = {
 		[15, 30],
 	  ]
 	  const areTable = [
-        [1, 20],
-        [2, 18],
-        [3, 16],
-        [4, 14],
-		[5, 12],
+	    [1, 24],
+        [2, 22],
+        [3, 20],
+        [4, 18],
+        [5, 16],
+		[6, 14],
+		[7, 12],
 		[11, 10],
 		[16, 8],
 		[21, 6],
@@ -817,11 +837,13 @@ export const loops = {
         [14, 0],
       ]
       const areLineTable = [
-        [1, 20],
-        [2, 18],
-        [3, 16],
-        [4, 14],
-		[5, 12],
+        [1, 24],
+        [2, 22],
+        [3, 20],
+        [4, 18],
+        [5, 16],
+		[6, 14],
+		[7, 12],
 		[11, 10],
 		[16, 8],
 		[21, 6],
@@ -835,8 +857,8 @@ export const loops = {
 		[6, 20],
 		[7, 18],
 		[8, 16],
-		[18, 14],
-		[19, 12],
+		[12, 14],
+		[16, 12],
 		[20, 10],
       ]
 	  const musicProgressionTable = [
@@ -1177,7 +1199,17 @@ export const loops = {
 			[120000*3.5, "DIAMOND"],
 			[150000*3.5, "TITANIUM"],
 		],
-		"1"
+		"1",
+		[
+			"BRONZE",
+			"SILVER",
+		],
+		[
+			"GOLD",
+			"PLATINUM",
+			"DIAMOND",
+			"TITANIUM",
+		]
 	  )
       collapse(arg)
       if (arg.piece.inAre) {
@@ -1530,16 +1562,16 @@ export const loops = {
 		[21, 6],
       ]
 	  const lockDelayTable = [
-		[1, 30],
-		[2, 28],
-		[3, 26],
-		[4, 24],
-		[5, 22],
+		[1, 24],
+		[2, 24],
+		[3, 22],
+		[4, 22],
+		[5, 20],
 		[6, 20],
 		[7, 18],
 		[8, 16],
-		[18, 14],
-		[19, 12],
+		[12, 14],
+		[16, 12],
 		[20, 10],
       ]
 	  const musicProgressionTable = [
@@ -1695,6 +1727,15 @@ export const loops = {
 		  }
         }
       }
+	  if (arg.piece.startingAre >= arg.piece.startingAreLimit) {
+        garbageTimer += arg.ms
+        if (garbageTimer > 10000) {
+          garbageTimer -= 10000
+          if (game.stat.level >= 2 && game.stat.level <= 7) {
+			  arg.stack.addGarbageToCounter(1)
+		  }
+        }
+      }
 	  updateNextAndHold()
 	  updateTestMode()
 	  game.useEffectBlocks = true
@@ -1713,6 +1754,9 @@ export const loops = {
       updateFallSpeed(game)
       if (krsLevelSystem(game, pieceRequirement, levelGoal)) {
 		resetTimeLimit(game)
+		if (collapseUnderwater) {
+			game.stack.clearUnderwaterRows()
+		}
 	  }
 	  const timeLimitTable = [
 		[1, 60],
@@ -1722,48 +1766,79 @@ export const loops = {
 		[10, 40],
 		[13, 35],
 		[15, 30],
+		[23, 30],
+		[24, 60],
+		[26, 55],
+		[28, 50],
+		[30, 45],
+		[31, 40],
+		[32, 35],
+		[33, 30],
 	  ]
 	  const areTable = [
-        [1, 20],
-        [2, 18],
-        [3, 16],
-        [4, 14],
-		[5, 12],
-		[11, 10],
-		[16, 8],
-		[21, 6],
+		[7, 12],
+        [9, 10],
+        [11, 9],
+        [15, 8],
+        [19, 7],
+        [23, 6],
+		[31, 12],
+		[40, 12],
       ]
-	  const areLineModifierTable = [
-        [10, -4],
-        [12, -6],
-        [14, 0],
+      const areLineModifierTable = [
+        [7, -4],
+        [15, -6],
+        [31, 0],
       ]
       const areLineTable = [
-        [1, 20],
-        [2, 18],
-        [3, 16],
-        [4, 14],
-		[5, 12],
-		[11, 10],
-		[16, 8],
-		[21, 6],
+        [7, 8],
+        [9, 8],
+        [11, 7],
+        [15, 6],
+        [19, 5],
+        [23, 5],
+		[31, 5],
+		[40, 5],
       ]
-	  const lockDelayTable = [
-		[1, 30],
-		[2, 28],
-		[3, 26],
-		[4, 24],
-		[5, 22],
-		[6, 20],
-		[7, 18],
-		[8, 16],
-		[18, 14],
-		[19, 12],
-		[20, 10],
+      const lockDelayTable = [
+        [1, 20],
+		[2, 18],
+		[3, 16],
+		[4, 14],
+		[6, 14],
+		[7, 12],
+		[8, 18],
+		[9, 16],
+		[10, 14],
+        [23, 14],
+		[24, 20],
+		[25, 18],
+		[26, 16],
+		[27, 14],
+		[28, 12],
+		[29, 10],
+        [30, 10],
+		[31, 10],
+        [32, 20],
+		[33, 18],
+		[34, 16],
+		[35, 14],
+		[36, 12],
+		[37, 10],
+		[38, 10],
+		[39, 10],
+		[40, 10],
       ]
 	  const musicProgressionTable = [
-        [14.8, 1],
-		[15, 2],
+        [7.8, 1],
+		[8, 2],
+		[15.8, 3],
+		[16, 4],
+		[23.8, 5],
+		[24, 6],
+		[31.8, 7],
+		[32, 8],
+		[40.8, 9],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
@@ -1773,10 +1848,51 @@ export const loops = {
             case 1:
 			  sound.killBgm()
 			  break
+			case 2:
+			  sound.killBgm()
+			  break
+			case 3:
+			  sound.killBgm()
+			  break
+			case 4:
+			  sound.killBgm()
+			  break
+			case 5:
+			  sound.killBgm()
+			  break
+			case 6:
+			  sound.killBgm()
+			  break
+			case 7:
+			  sound.killBgm()
+			  break
+			case 8:
+			  sound.killBgm()
+			  break
+			case 9:
+			  sound.killBgm()
+			  break
             case 2:
-			  sound.loadBgm(["stage2"], "virtuoso1")
+			  game.stack.isUnderwater = true
+			  sound.loadBgm(["stage2"], "virtuoso2")
               sound.killBgm()
-              sound.playBgm(["stage2"], "virtuoso1")
+              sound.playBgm(["stage2"], "virtuoso2")
+			  break
+			case 4:
+			  sound.loadBgm(["stage3"], "virtuoso2")
+              sound.killBgm()
+              sound.playBgm(["stage3"], "virtuoso2")
+			case 6:
+			  game.next.nextLimit = 1
+			  sound.loadBgm(["stage4"], "virtuoso2")
+              sound.killBgm()
+              sound.playBgm(["stage4"], "virtuoso2")
+			case 8:
+			  game.next.nextLimit = 2
+			  game.stack.isFrozen = true
+			  sound.loadBgm(["stage5"], "virtuoso2")
+              sound.killBgm()
+              sound.playBgm(["stage5"], "virtuoso2")
 			  break
           }
           game.musicProgression = entry
@@ -1847,6 +1963,11 @@ export const loops = {
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
+	  game.stack.isUnderwater = false
+	  game.stack.isFrozen = false
+	  collapseUnderwater = false
+	  game.next.nextLimit = 3
+	  garbageTimer = 0
 	  sound.add("cheer")
     },
   },

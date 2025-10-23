@@ -53,7 +53,7 @@
 	{
 	  "string": "virtuoso3Label",
       "stringDesc": "virtuoso3Description",
-	  "disabled": true
+	  "action": "virtuoso3"
     },
 	{
 	  "string": "excavator2Label",
