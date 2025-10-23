@@ -1,0 +1,10 @@
+	{
+	  "string": "excavatorLabel",
+      "stringDesc": "excavatorDescription",
+	  "action": "excavator"
+    },
+	{
+	  "string": "excavator2Label",
+      "stringDesc": "excavator2Description",
+	  "action": "excavator2"
+    },

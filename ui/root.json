@@ -29,12 +29,7 @@
 	  "string": "virtuosoLabel",
       "stringDesc": "virtuosoDescription",
 	  "action": "virtuoso"
-    },
-	{
-	  "string": "excavatorLabel",
-      "stringDesc": "excavatorDescription",
-	  "disabled": true
-    },
+    }
 	{
 	  "string": "normal2Label",
       "stringDesc": "normal2Description",
@@ -54,12 +49,7 @@
 	  "string": "virtuoso3Label",
       "stringDesc": "virtuoso3Description",
 	  "action": "virtuoso3"
-    },
-	{
-	  "string": "excavator2Label",
-      "stringDesc": "excavator2Description",
-	  "disabled": true
-    },
+    }
     {
       "string": "settingsOverline",
       "type": "overline"
