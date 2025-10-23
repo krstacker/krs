@@ -123,6 +123,7 @@ export default class Next extends GameModule {
 		if (this.parent.useEffectBlocks) {
 			if (this.parent.stack.effectBlockInterval === 1 && this.parent.pendingEffect !== "") {
 				color = this.parent.pendingEffect
+				sound.add("bell")
 			}
 		}
         const img = document.getElementById(`mino-${color}${suffix}`)

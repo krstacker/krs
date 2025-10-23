@@ -3,6 +3,7 @@
   "files": [
     "alarm",
     "bravo",
+	"bell",
     "collapse",
 	"cheer",
 	"effectactivated",
