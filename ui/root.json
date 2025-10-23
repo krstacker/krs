@@ -49,7 +49,7 @@
 	  "string": "virtuoso3Label",
       "stringDesc": "virtuoso3Description",
 	  "action": "virtuoso3"
-    }
+    },
     {
       "string": "settingsOverline",
       "type": "overline"
