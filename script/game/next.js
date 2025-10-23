@@ -109,6 +109,7 @@ export default class Next extends GameModule {
     let cellSize = this.parent.cellSize
     const offset = this.parent.nextOffsets[piece]
     let ctx = this.ctx
+	let playBellSound = false
 
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
@@ -120,10 +121,13 @@ export default class Next extends GameModule {
         if (this.parent.piece.useRetroColors) {
           suffix = `-${this.parent.stat.level % 10}`
         }
+		if (this.parent.useBoneBlocks) {
+			color = "bone"
+		}
 		if (this.parent.useEffectBlocks) {
 			if (this.parent.stack.effectBlockInterval === 1 && this.parent.pendingEffect !== "") {
 				color = this.parent.pendingEffect
-				sound.add("bell")
+				playBellSound = true
 			}
 		}
         const img = document.getElementById(`mino-${color}${suffix}`)
@@ -136,6 +140,9 @@ export default class Next extends GameModule {
         }
       }
     }
+	if (playBellSound) {
+		sound.add("bell")
+	}
     cellSize = Math.floor(cellSize * 0.62)
     ctx = this.subCtx
     const nextCount = this.nextLength - 1
@@ -180,6 +187,9 @@ export default class Next extends GameModule {
         for (let x = 0; x < shape[y].length; x++) {
           let color = this.parent.colors[piece]
 		  let suffix = ""
+		  if (this.parent.useBoneBlocks) {
+			color = "bone"
+		  }
           const img = document.getElementById(`mino-${color}${suffix}`)
           const isFilled = shape[y][x]
           if (isFilled) {

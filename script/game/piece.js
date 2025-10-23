@@ -296,10 +296,9 @@ export default class Piece extends GameModule {
     // spriteCtx.drawImage(img, 0, 0, cellSize * 9, cellSize);
     let img
 	let suffix = ""
-	let colour = color
     switch (type) {
       case "ghost":
-        img = document.getElementById(`ghost-${colour}${suffix}`)
+        img = document.getElementById(`ghost-${color}${suffix}`)
         break
       case "piece":
         if (this.useSpecialI && this.name === "I") {
@@ -308,7 +307,7 @@ export default class Piece extends GameModule {
         if (this.useRetroColors) {
           suffix = `-${this.parent.stat.level % 10}`
         }
-        img = document.getElementById(`mino-${colour}${suffix}`)
+        img = document.getElementById(`mino-${color}${suffix}`)
       default:
         break
     }
@@ -338,6 +337,9 @@ export default class Piece extends GameModule {
     if (color == null) {
       color = this.color
     }
+	if (this.parent.useBoneBlocks) {
+		color = "bone"
+	}
 	if (this.parent.useEffectBlocks) {
 		if (this.parent.stack.effectBlockInterval === 0 && this.parent.pendingEffect !== "") {
 			color = this.parent.pendingEffect

@@ -842,6 +842,7 @@ export const loops = {
 	  const musicProgressionTable = [
         [9.8, 1],
 		[10, 2],
+		[20.8, 2],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
@@ -849,6 +850,9 @@ export const loops = {
         if (game.stat.piece >= Math.floor((level - 1) * pieceRequirement) && game.musicProgression < entry) {
           switch (entry) {
             case 1:
+			  sound.killBgm()
+			  break
+			case 3:
 			  sound.killBgm()
 			  break
             case 2:
@@ -1539,8 +1543,11 @@ export const loops = {
 		[20, 10],
       ]
 	  const musicProgressionTable = [
-        [14.8, 1],
-		[15, 2],
+        [9.8, 1],
+		[10, 2],
+		[19.8, 3],
+		[20, 4],
+		[30.8, 5],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
@@ -1550,10 +1557,22 @@ export const loops = {
             case 1:
 			  sound.killBgm()
 			  break
+			case 3:
+			  sound.killBgm()
+			  break
+			case 5:
+			  sound.killBgm()
+			  break
             case 2:
 			  sound.loadBgm(["stage2"], "virtuoso1")
               sound.killBgm()
               sound.playBgm(["stage2"], "virtuoso1")
+			  break
+			case 4:
+			  game.useBoneBlocks = true
+			  sound.loadBgm(["stage3"], "virtuoso1")
+              sound.killBgm()
+              sound.playBgm(["stage3"], "virtuoso1")
 			  break
           }
           game.musicProgression = entry
@@ -1626,6 +1645,7 @@ export const loops = {
 	  game.stat.effect = ""
 	  garbageTimer = 0
 	  sound.add("cheer")
+	  game.useBoneBlocks = false
     },
   },
   virtuoso3: {

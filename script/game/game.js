@@ -113,6 +113,7 @@ export default class Game {
     this.timePassedAre = 0
 	this.useGoldBlocks = false
 	this.useEffectBlocks = false
+	this.useBoneBlocks = false
 	this.currentEffect = ""
 	this.pendingEffect = ""
 	this.effectsRoster = [
@@ -1157,6 +1158,7 @@ export default class Game {
 	  "goldgem",
 	  "frozen",
 	  "icegem",
+	  "bone",
 	  "hidden",
 	  "hideNext",
 	  "rotateLock",

@@ -111,8 +111,10 @@ export default class Stack extends GameModule {
   hidePlacedMinos() {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
-        if (this.grid[x][y] != null) {
-			this.grid[x][y] = "hidden"
+		if (this.parent.effectsRoster.includes(this.grid[x][y]) !== true && this.grid[x][y] !== "gold") {
+			if (this.grid[x][y] != null) {
+				this.grid[x][y] = "hidden"
+			}
 		}
       }
     }
@@ -561,7 +563,7 @@ export default class Stack extends GameModule {
 	//this.targetColor = color
 	if (this.isFrozen && this.wouldCauseLineClear() <= 0) {
 		this.freezePlacedMinos()
-	} else if (this.parent.currentEffect === "fadingBlock") {
+	} else if (this.isHidden && this.redrawOnHidden) {
 		this.reRenderStack()
 	} else if (this.parent.currentEffect === "phantomBlock") {
 		this.reRenderStack()
@@ -659,9 +661,7 @@ export default class Stack extends GameModule {
           if (this.parent.piece.useSpecialI && this.parent.piece.name === "I") {
             this.grid[xLocation][yLocation] = "i" + shape[y][x]
           } else {
-			if (this.isHidden && this.isFrozen !== true) {
-				this.grid[xLocation][yLocation] = "hidden"
-			} else if (
+			if (
 				this.parent.useEffectBlocks &&
 				this.parent.pendingEffect !== "" &&
 				this.effectBlockInterval < 0
@@ -671,6 +671,10 @@ export default class Stack extends GameModule {
 					this.targetColor = color
 				}
 				placedEffectBlock = true
+			} else if (this.isHidden && this.isFrozen !== true) {
+				this.grid[xLocation][yLocation] = "hidden"
+			} else if (this.parent.useBoneBlocks) {
+				this.grid[xLocation][yLocation] = "bone"
 			} else {
 				this.grid[xLocation][yLocation] = color
 			}
