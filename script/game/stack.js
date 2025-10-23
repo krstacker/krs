@@ -48,6 +48,7 @@ export default class Stack extends GameModule {
 	this.effectBlockInterval = 16
 	this.displayedEffectText = false
 	this.targetColor = "red"
+	this.lastEffect = ""
 	$("#message").classList.remove("effectactivated")
   }
   removeFromArray(array, elementToRemove) {
@@ -570,16 +571,23 @@ export default class Stack extends GameModule {
 	} else if (this.isFading && this.isHidden === false) {
 		this.hidePlacedMinos()
 	}
-	if (this.effectBlockInterval === 16) {
+	if (this.effectBlockInterval >= 16) {
 		this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
 			0,
 			Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
 		)]
+		while (this.parent.pendingEffect === this.lastEffect) {
+			this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+				0,
+				Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+			)]
+		}
 	}
-	if (this.isUnderwater) {
+	if (this.isUnderwater && this.effectBlockInterval >= 16) {
 		let underwaterEffectsRoster = [
 			"rotateLock",
 			"holdLock",
+			"deathBlock",
 			"hideNext",
 			"fadingBlock",
 			"phantomBlock",
@@ -588,8 +596,27 @@ export default class Stack extends GameModule {
 			0,
 			Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
 		)]
+		while (this.parent.pendingEffect === this.lastEffect) {
+			this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
+				0,
+				Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
+			)]
+		}
+		if (this.parent.pendingEffect === "rotateLock") {
+			//Reduces the chance of getting Rotate Lock when underwater by re-rolling if it lands on Rotate Lock.
+			this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
+				0,
+				Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
+			)]
+			while (this.parent.pendingEffect === this.lastEffect) {
+				this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
+					0,
+					Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
+				)]
+			}
+		}
 	}
-	if (this.isFrozen) {
+	if (this.isFrozen && this.effectBlockInterval >= 16) {
 		let frozenEffectsRoster = [
 			"rotateLock",
 			"holdLock",
@@ -605,18 +632,53 @@ export default class Stack extends GameModule {
 			0,
 			Math.floor(Math.random() * frozenEffectsRoster.length) - 1
 		)]
+		while (this.parent.pendingEffect === this.lastEffect) {
+			this.parent.pendingEffect = frozenEffectsRoster[Math.max(
+				0,
+				Math.floor(Math.random() * frozenEffectsRoster.length) - 1
+			)]
+		}
 	}
-	if (this.parent.hold.isDisabled && this.parent.pendingEffect === "holdLock") {
-		while (this.parent.pendingEffect === "holdLock") {
-			let holdLockSubstitutes = [
-				"rotateLock",
+	if (this.lastEffect === "rotateLock" && this.effectBlockInterval >= 16) {
+		let effectsRoster = [
+			"delFieldUp",
+			"delFieldDown",
+		]
+		if (this.isUnderwater) {
+			effectsRoster = [
+				"holdLock",
+				"deathBlock",
 				"hideNext",
 				"fadingBlock",
 				"phantomBlock",
 			]
-			this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+		}
+		this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+			0,
+			Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+		)]
+		while (this.parent.pendingEffect === this.lastEffect) {
+			this.parent.pendingEffect = effectsRoster[Math.max(
 				0,
-				Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+				Math.floor(Math.random() * effectsRoster.length) - 1
+			)]
+		}
+	}
+	if (this.parent.hold.isDisabled && this.parent.pendingEffect === "holdLock") {
+		let holdLockSubstitutes = [
+			"rotateLock",
+			"hideNext",
+			"fadingBlock",
+			"phantomBlock",
+		]
+		this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
+			0,
+			Math.floor(Math.random() * this.parent.effectsRoster.length) - 1
+		)]
+		while (this.parent.pendingEffect === this.lastEffect) {
+			this.parent.pendingEffect = holdLockSubstitutes[Math.max(
+				0,
+				Math.floor(Math.random() * holdLockSubstitutes.length) - 1
 			)]
 		}
 	}
@@ -667,6 +729,7 @@ export default class Stack extends GameModule {
 				this.effectBlockInterval < 0
 			) {
 				this.grid[xLocation][yLocation] = this.parent.pendingEffect
+				this.lastEffect = this.parent.pendingEffect
 				if (this.parent.pendingEffect === "jewelBlock") {
 					this.targetColor = color
 				}
@@ -720,6 +783,7 @@ export default class Stack extends GameModule {
 				playEffectSound = true
 				this.parent.stat.score += 100
 				this.parent.currentEffect = this.grid[x][y]
+				this.lastEffect = this.grid[x][y]
 				this.effectBlockInterval = 16
 			}
 			if (this.grid[x][y].includes("gem")) {
