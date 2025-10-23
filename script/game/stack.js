@@ -623,7 +623,7 @@ export default class Stack extends GameModule {
 	}
 	if (
 		this.parent.useEffectBlocks && 
-		this.effectBlockInterval <= 2
+		this.effectBlockInterval <= 0
 	) {
 		this.removeEffectBlocks()
 	}
