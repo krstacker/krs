@@ -19,11 +19,18 @@
       "settingType": "setting"
     },
 	{
-      "string": "lockFlashLabel",
-      "stringDesc": "lockFlashDesription",
-      "type": "toggle",
-      "action": "toggle",
-      "setting": "useLockFlash",
+      "string": "skinLabel",
+      "stringDesc": "skinDescription",
+      "type": "select",
+      "action": "select",
+      "selectOptions": [
+		{
+          "label": "KRS",
+          "fixedText": true,
+          "value": "auto"
+        }
+      ],
+      "setting": "skin",
       "settingType": "setting"
     }
   ]

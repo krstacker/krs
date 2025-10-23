@@ -151,11 +151,7 @@ const resetTimePassed = (game) => {
 	game.timePassed = 0
 }
 const updateLockFlash = () => {
-	if (settings.settings.useLockFlash === true) {
-		settings.settings.lockFlash = "dim"
-	} else {
-		settings.settings.lockFlash = "off"
-	}
+	settings.settings.lockFlash = "dim"
 }
 const krsLevelSystem = (game, pieceRequirement = 40, levelGoal = 20) => {
 	let returnValue = false

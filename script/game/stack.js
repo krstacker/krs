@@ -97,9 +97,9 @@ export default class Stack extends GameModule {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y]) === true || this.grid[x][y] === "gold") {
-				this.grid[x][y] = "yellowgem"
+				this.grid[x][y] = "goldgem"
 			} else if (this.grid[x][y] === "frozen") {
-				this.grid[x][y] = "lightBluegem"
+				this.grid[x][y] = "icegem"
 			} else if (this.grid[x][y] === color) {
 				this.grid[x][y] = `${color}gem`
 			}
@@ -558,7 +558,7 @@ export default class Stack extends GameModule {
     this.flashY = []
     this.flashTime = 0
     let passedLockOut = shape.length
-	this.targetColor = color
+	//this.targetColor = color
 	if (this.isFrozen && this.wouldCauseLineClear() <= 0) {
 		this.freezePlacedMinos()
 	} else if (this.parent.currentEffect === "fadingBlock") {
@@ -667,6 +667,9 @@ export default class Stack extends GameModule {
 				this.effectBlockInterval < 0
 			) {
 				this.grid[xLocation][yLocation] = this.parent.pendingEffect
+				if (this.parent.pendingEffect === "jewelBlock") {
+					this.targetColor = color
+				}
 				placedEffectBlock = true
 			} else {
 				this.grid[xLocation][yLocation] = color

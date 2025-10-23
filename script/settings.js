@@ -38,7 +38,6 @@ class Settings {
       backgroundOpacity: 30,
       gridStyle: "none",
       lockFlash: "dim",
-	  useLockFlash: true,
       actionText: true,
       matrixSwayScale: 0,
       matrixSwaySpeed: 50,
