@@ -200,7 +200,48 @@ const krsGradingSystem = (
 	lastGrade = game.stat.grade
 }
 
-const updateKrsBackground = (game) => {
+const updateKrsBackgroundV1 = (game) => {
+	let backgroundTable = [
+		"backmenu",
+		"back0",
+		"back1",
+		"back2",
+		"back3",
+		"back4",
+		"back5",
+		"back6",
+		"back7",
+		"back8",
+		"back9",
+		"back10",
+		"back11",
+		"back12",
+		"back13",
+		"back14",
+		"back15",
+		"back16",
+		"back17",
+		"back18",
+		"back19",
+	]
+	for (const name of backgroundTable) {
+		if (game.stat.level <= 15) {
+			if (name === backgroundTable[game.stat.level]) {
+				document.getElementById(name).style.opacity = 1
+			} else {
+				document.getElementById(name).style.opacity = 0
+			}
+		} else {
+			if (name === backgroundTable[15]) {
+				document.getElementById(name).style.opacity = 1
+			} else {
+				document.getElementById(name).style.opacity = 0
+			}
+		}
+	}
+}
+
+const updateKrsBackgroundV2 = (game) => {
 	let backgroundTable = [
 		"backmenu",
 		"back0",
@@ -241,11 +282,52 @@ const updateKrsBackground = (game) => {
 	}
 }
 
+const updateKrsBackgroundV2 = (game) => {
+	let backgroundTable = [
+		"backmenu",
+		"back0",
+		"back1",
+		"back2",
+		"back3",
+		"back4",
+		"back5",
+		"back6",
+		"back7",
+		"back8",
+		"back9",
+		"back10",
+		"back11",
+		"back12",
+		"back13",
+		"back14",
+		"back15",
+		"back16",
+		"back17",
+		"back18",
+		"back19",
+	]
+	for (const name of backgroundTable) {
+		if (game.stat.level <= 20) {
+			if (name === backgroundTable[game.stat.level]) {
+				document.getElementById(name).style.opacity = 1
+			} else {
+				document.getElementById(name).style.opacity = 0
+			}
+		} else {
+			if (name === backgroundTable[game.stat.level % 20]) {
+				document.getElementById(name).style.opacity = 1
+			} else {
+				document.getElementById(name).style.opacity = 0
+			}
+		}
+	}
+}
+
 export const loops = {
   normal: {
     update: (arg) => {
 	  const game = gameHandler.game
-	  updateKrsBackground(game)
+	  updateKrsBackgroundV1(game)
       collapse(arg)
       if (arg.piece.inAre) {
         initialDas(arg)
@@ -465,7 +547,7 @@ export const loops = {
   trial: {
     update: (arg) => {
 	  const game = gameHandler.game
-	  updateKrsBackground(game)
+	  updateKrsBackgroundV1(game)
 	  krsGradingSystem(
 		game,
 		[
@@ -738,7 +820,7 @@ export const loops = {
   virtuoso: {
     update: (arg) => {
 	  const game = gameHandler.game
-	  updateKrsBackground(game)
+	  updateKrsBackgroundV1(game)
       collapse(arg)
       if (arg.piece.inAre) {
         initialDas(arg)
@@ -958,7 +1040,7 @@ export const loops = {
   normal2: {
     update: (arg) => {
 	  const game = gameHandler.game
-	  updateKrsBackground(game)
+	  updateKrsBackgroundV2(game)
       collapse(arg)
       if (arg.piece.inAre) {
         initialDas(arg)
@@ -1176,7 +1258,7 @@ export const loops = {
   trial2: {
     update: (arg) => {
 	  const game = gameHandler.game
-	  updateKrsBackground(game)
+	  updateKrsBackgroundV2(game)
 	  krsGradingSystem(
 		game,
 		[
@@ -1453,7 +1535,7 @@ export const loops = {
   virtuoso2: {
     update: (arg) => {
 	  const game = gameHandler.game
-	  updateKrsBackground(game)
+	  updateKrsBackgroundV2(game)
       collapse(arg)
       if (arg.piece.inAre) {
         initialDas(arg)
@@ -1683,7 +1765,7 @@ export const loops = {
   virtuoso3: {
     update: (arg) => {
 	  const game = gameHandler.game
-	  updateKrsBackground(game)
+	  updateKrsBackgroundV2(game)
       collapse(arg)
       if (arg.piece.inAre) {
         initialDas(arg)
