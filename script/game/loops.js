@@ -1933,25 +1933,13 @@ export const loops = {
             case 1:
 			  sound.killBgm()
 			  break
-			case 2:
-			  sound.killBgm()
-			  break
 			case 3:
-			  sound.killBgm()
-			  break
-			case 4:
 			  sound.killBgm()
 			  break
 			case 5:
 			  sound.killBgm()
 			  break
-			case 6:
-			  sound.killBgm()
-			  break
 			case 7:
-			  sound.killBgm()
-			  break
-			case 8:
 			  sound.killBgm()
 			  break
 			case 9:
