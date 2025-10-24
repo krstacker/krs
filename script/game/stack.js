@@ -92,6 +92,17 @@ export default class Stack extends GameModule {
     }
 	this.reRenderStack()
   }
+  noFrozenMinos() {
+	let result = true
+    for (let x = 0; x < this.grid.length; x++) {
+      for (let y = 0; y < this.grid[x].length; y++) {
+        if (this.grid[x][y] === "frozen") {
+			result = false
+		}
+      }
+    }
+	return result
+  }
   gemIfyPlacedMinos() {
 	let color = this.targetColor
     for (let x = 0; x < this.grid.length; x++) {
@@ -1464,7 +1475,16 @@ export default class Stack extends GameModule {
 	for (const y of this.toCollapse) {
       for (let x = 0; x < this.grid.length; x++) {
         for (let shiftY = y; shiftY >= 0; shiftY--) { 
-			if (y === bottomLine && this.lineClear >= 4) {
+		  if (this.noFrozenMinos() === true) {
+			this.grid[x][shiftY] = this.grid[x][shiftY - 1]
+			if (
+				this.grid[x][shiftY] != null &&
+				this.grid[x][shiftY - 1] != null
+			) {
+				fallenBlocks++
+			}
+			this.dirtyCells.push([x, shiftY + 1])
+		  } else if (y === bottomLine && this.lineClear >= 4) {
 			this.grid[x][shiftY] = this.grid[x][shiftY - 1]
 			if (
 				this.grid[x][shiftY] != null &&
