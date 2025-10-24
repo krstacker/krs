@@ -1835,7 +1835,7 @@ export const loops = {
     },
     onPieceSpawn: (game) => {
 	  const pieceRequirement = 40
-	  const levelGoal = 40
+	  const levelGoal = 60
       const x = game.stat.level
       const gravityEquation = (0.8 - (x - 1) * 0.007) ** (x - 1)
       game.piece.gravity = framesToMs(1 / 20)
