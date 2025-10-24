@@ -282,7 +282,7 @@ const updateKrsBackgroundV2 = (game) => {
 	}
 }
 
-const updateKrsBackgroundV2 = (game) => {
+const updateKrsBackgroundV3 = (game) => {
 	let backgroundTable = [
 		"backmenu",
 		"back0",
@@ -1771,7 +1771,7 @@ export const loops = {
   virtuoso3: {
     update: (arg) => {
 	  const game = gameHandler.game
-	  updateKrsBackgroundV2(game)
+	  updateKrsBackgroundV3(game)
       collapse(arg)
       if (arg.piece.inAre) {
         initialDas(arg)
