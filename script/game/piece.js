@@ -307,7 +307,11 @@ export default class Piece extends GameModule {
         if (this.useRetroColors) {
           suffix = `-${this.parent.stat.level % 10}`
         }
-        img = document.getElementById(`mino-${color}${suffix}`)
+		if (this.parent.currentEffect === "rotateLock") {
+			img = document.getElementById(`ghost-${color}${suffix}`)
+		} else {
+			img = document.getElementById(`mino-${color}${suffix}`)
+		}
       default:
         break
     }
