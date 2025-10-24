@@ -1878,11 +1878,13 @@ export const loops = {
 			  sound.loadBgm(["stage3"], "virtuoso2")
               sound.killBgm()
               sound.playBgm(["stage3"], "virtuoso2")
+			  break
 			case 6:
 			  game.next.nextLimit = 1
 			  sound.loadBgm(["stage4"], "virtuoso2")
               sound.killBgm()
               sound.playBgm(["stage4"], "virtuoso2")
+			  break
 			case 8:
 			  game.next.nextLimit = 2
 			  game.stack.isFrozen = true
