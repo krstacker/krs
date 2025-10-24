@@ -298,7 +298,15 @@ export default class Piece extends GameModule {
 	let suffix = ""
     switch (type) {
       case "ghost":
-        img = document.getElementById(`ghost-${color}${suffix}`)
+        if (this.parent.currentEffect === "rotateLock") {
+			if (this.parent.useBoneBlocks) {
+				img = document.getElementById("ghost-rotateLockedBone")
+			} else {
+				img = document.getElementById("ghost-rotateLocked")
+			}
+		} else {
+			img = document.getElementById(`ghost-${color}${suffix}`)
+		}
         break
       case "piece":
         if (this.useSpecialI && this.name === "I") {
@@ -308,7 +316,11 @@ export default class Piece extends GameModule {
           suffix = `-${this.parent.stat.level % 10}`
         }
 		if (this.parent.currentEffect === "rotateLock") {
-			img = document.getElementById(`ghost-${color}${suffix}`)
+			if (this.parent.useBoneBlocks) {
+				img = document.getElementById("mino-rotateLockedBone")
+			} else {
+				img = document.getElementById("mino-rotateLocked")
+			}
 		} else {
 			img = document.getElementById(`mino-${color}${suffix}`)
 		}
