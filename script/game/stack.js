@@ -615,6 +615,19 @@ export default class Stack extends GameModule {
 					)]
 				}
 			}
+			if (this.parent.pendingEffect === "deathBlock") {
+				//Same goes for Death Block. We want to be fair here.
+				this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
+					0,
+					Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
+				)]
+				while (this.parent.pendingEffect === this.lastEffect) {
+					this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
+						0,
+						Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
+					)]
+				}
+			}
 		}
 	}
 	if (this.isFrozen) {
