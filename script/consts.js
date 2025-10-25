@@ -3959,7 +3959,7 @@ KICK_TABLES.krs = {
   S: KICK_TEMPLATES.krs.x,
 }
 KICK_TABLES.arsk = {
-  I: KICK_TABLESarsx.I,
+  I: KICK_TABLES.arsx.I,
   L: KICK_TABLES.arsx.L,
   O: KICK_TABLES.krs.O,
   Z: KICK_TABLES.arsx.Z,
