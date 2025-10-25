@@ -64,10 +64,22 @@
     "message": "オリジナル",
     "description": "As in 'Original Rotation System', the one used by the first version of the game"
   },
-  "pieceBehaviorLabel": {
-    "message": "ピースの挙動"
+  "krsRotsLabel": {
+    "message": "KRS-K"
   },
-  "pieceBehaviorLabel": {
-    "message": "ゲーム内でのピースの挙動を選択してください。"
+  "krsRotsDesc": {
+    "message": "許容性と理解可能性の完璧なバランス。"
+  },
+  "arsRotsLabel": {
+    "message": "ARS-K"
+  },
+  "arsRotsDesc": {
+    "message": "より厳格ではあるが、より理解しやすい。"
+  },
+  "srsRotsLabel": {
+    "message": "SRS-K"
+  },
+  "srsRotsDesc": {
+    "message": "より寛容だが、理解しにくい。"
   }
 }

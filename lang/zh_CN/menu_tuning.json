@@ -64,10 +64,22 @@
     "message": "原始",
     "description": "As in 'Original Rotation System', the one used by the first version of the game"
   },
-  "pieceBehaviorLabel": {
-    "message": "片段行為"
+  "krsRotsLabel": {
+    "message": "KRS-K"
   },
-  "pieceBehaviorLabel": {
-    "message": "選擇遊戲中棋子的行為模式"
+  "krsRotsDesc": {
+    "message": "在宽容与可理解性之间取得完美平衡"
+  },
+  "arsRotsLabel": {
+    "message": "ARS-K"
+  },
+  "arsRotsDesc": {
+    "message": "更严格，但更易理解"
+  },
+  "srsRotsLabel": {
+    "message": "SRS-K"
+  },
+  "srsRotsDesc": {
+    "message": "更宽松，但更难理解"
   }
 }
