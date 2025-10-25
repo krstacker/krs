@@ -956,7 +956,8 @@ export default class Game {
             if (!game.piece.inAre) {
               game.timePassed += msPassed
             } else if (game.piece.startingAre >= game.piece.startingAreLimit) {
-              game.timePassedAre += msPassed
+              //game.timePassedAre += msPassed
+			  game.timePassed += msPassed
             }
 
             // GOALS
