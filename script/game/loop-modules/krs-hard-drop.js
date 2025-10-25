@@ -1,5 +1,5 @@
 import input from "../../input.js"
-import settings from "../settings.js"
+import settings from "../../settings.js"
 
 export default function krsSonicDrop(arg) {
   if (input.getGamePress("hardDrop")) {

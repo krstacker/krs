@@ -1,7 +1,7 @@
 import input from "../../input.js"
 import sound from "../../sound.js"
 import { framesToMs } from "../../shortcuts.js"
-import settings from "../settings.js"
+import settings from "../../settings.js"
 
 export default function krsSoftDrop(arg, frameGravity = 1) {
   if (arg.piece.gravity < framesToMs(1) && arg.piece.isLanded) {
