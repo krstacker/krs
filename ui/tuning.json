@@ -68,7 +68,7 @@
       "setting": "IHS",
       "settingType": "setting"
     },
-	{
+    {
       "string": "rotSysLabel",
       "stringDesc": "rotSysDescription",
       "type": "select",
@@ -77,17 +77,23 @@
         {
           "string": "krsRotsLabel",
 		  "stringDesc": "krsRotsDesc",
-          "value": "auto"
+          "value": "auto",
+		  "langOverride": "menu_tuning",
+		  "fixedText": false
         },
         {
           "string": "arsRotsLabel",
 		  "stringDesc": "arsRotsDesc",
-          "value": "arsk"
+          "value": "arsk",
+		  "langOverride": "menu_tuning",
+		  "fixedText": false
         },
         {
           "string": "srsRotsLabel",
 		  "stringDesc": "srsRotsDesc",
-          "value": "srsk"
+          "value": "srsk",
+		  "langOverride": "menu_tuning",
+		  "fixedText": false
         }
       ],
       "setting": "rotationSystem",
