@@ -39,7 +39,7 @@ export default function krsSoftDrop(arg, frameGravity = 1) {
 			arg.piece.mustLock === false && 
 			input.getGameDown("specialKey") !== true &&
 			settings.settings.rotationSystem !== "srsk"
-		)
+		) {
 			arg.piece.mustLock = true
 			arg.piece.hasHardDropped = true
 			sound.add("harddrop")
