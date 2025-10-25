@@ -73,27 +73,31 @@
       "stringDesc": "rotSysDescription",
       "type": "select",
       "action": "select",
+	  "omitDescription": false,
       "selectOptions": [
         {
           "string": "krsRotsLabel",
 		  "stringDesc": "krsRotsDesc",
           "value": "krs",
 		  "langOverride": "menu_tuning",
-		  "fixedText": false
+		  "fixedText": false,
+		  "omitDescription": false
         },
         {
           "string": "arsRotsLabel",
 		  "stringDesc": "arsRotsDesc",
           "value": "arsk",
 		  "langOverride": "menu_tuning",
-		  "fixedText": false
+		  "fixedText": false,
+		  "omitDescription": false
         },
         {
           "string": "srsRotsLabel",
 		  "stringDesc": "srsRotsDesc",
           "value": "srsk",
 		  "langOverride": "menu_tuning",
-		  "fixedText": false
+		  "fixedText": false,
+		  "omitDescription": false
         }
       ],
       "setting": "rotationSystem",
