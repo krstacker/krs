@@ -73,6 +73,7 @@
       "stringDesc": "rotSysDescription",
       "type": "select",
       "action": "select",
+	  "secretA": true,
 	  "omitDescription": false,
       "selectOptions": [
         {
