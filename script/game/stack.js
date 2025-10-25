@@ -594,6 +594,7 @@ export default class Stack extends GameModule {
 		}
 	}
 	if (this.isUnderwater) {
+		let reRollsLeft = 3
 		let underwaterEffectsRoster = [
 			"rotateLock",
 			"holdLock",
@@ -613,8 +614,13 @@ export default class Stack extends GameModule {
 					Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
 				)]
 			}
-			if (this.parent.pendingEffect === "rotateLock") {
-				//Reduces the chance of getting Rotate Lock when underwater by re-rolling if it lands on Rotate Lock.
+			while (
+					(
+						this.parent.pendingEffect === "rotateLock" || 
+						this.parent.pendingEffect === "deathBlock"
+					) && reRollsLeft >= 1
+				) {
+				//Re-rolls if it lands on rotateLock or on deathBlock to reduce the chances of getting it.
 				this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
 					0,
 					Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
@@ -625,19 +631,7 @@ export default class Stack extends GameModule {
 						Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
 					)]
 				}
-			}
-			if (this.parent.pendingEffect === "deathBlock") {
-				//Same goes for Death Block. We want to be fair here.
-				this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
-					0,
-					Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
-				)]
-				while (this.parent.pendingEffect === this.lastEffect) {
-					this.parent.pendingEffect = underwaterEffectsRoster[Math.max(
-						0,
-						Math.floor(Math.random() * underwaterEffectsRoster.length) - 1
-					)]
-				}
+				reRollsLeft -= 1
 			}
 		}
 	}
