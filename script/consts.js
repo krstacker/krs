@@ -3959,22 +3959,22 @@ KICK_TABLES.krs = {
   S: KICK_TEMPLATES.krs.x,
 }
 KICK_TABLES.arsk = {
-  I: KICK_TEMPLATES.arsx.I,
-  L: KICK_TEMPLATES.arsx.L,
-  O: KICK_TEMPLATES.krs.O,
-  Z: KICK_TEMPLATES.arsx.Z,
-  T: KICK_TEMPLATES.arsx.T,
-  J: KICK_TEMPLATES.arsx.J,
-  S: KICK_TEMPLATES.arsx.S,
+  I: KICK_TABLESarsx.I,
+  L: KICK_TABLES.arsx.L,
+  O: KICK_TABLES.krs.O,
+  Z: KICK_TABLES.arsx.Z,
+  T: KICK_TABLES.arsx.T,
+  J: KICK_TABLES.arsx.J,
+  S: KICK_TABLES.arsx.S,
 }
 KICK_TABLES.srsk = {
-  I: KICK_TEMPLATES.srs.I,
-  L: KICK_TEMPLATES.srs.L,
-  O: KICK_TEMPLATES.krs.O,
-  Z: KICK_TEMPLATES.srs.Z,
-  T: KICK_TEMPLATES.srs.T,
-  J: KICK_TEMPLATES.srs.J,
-  S: KICK_TEMPLATES.srs.S,
+  I: KICK_TABLES.srs.I,
+  L: KICK_TABLES.srs.L,
+  O: KICK_TABLES.krs.O,
+  Z: KICK_TABLES.srs.Z,
+  T: KICK_TABLES.srs.T,
+  J: KICK_TABLES.srs.J,
+  S: KICK_TABLES.srs.S,
 }
 
 export const PIECE_COLORS = {
