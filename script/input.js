@@ -28,6 +28,7 @@ class Input {
       retry: ["SELECT_BACK"],
       pause: ["START_FORWARD"],
 	  testModeKey: [""],
+	  disableItemsKey: [""],
     }
 
     this.holdingCtrl = false

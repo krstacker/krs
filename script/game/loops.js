@@ -73,6 +73,7 @@ let onCountdown = false
 let countdownTimer = 0
 let lastGemsCleared = 0
 let testMode = false
+let useEffectBlocks = true
 let collapseUnderwater = false
 let medals = [
 	"(KH)", //Home runs
@@ -95,6 +96,20 @@ const updateTestMode = () => {
 		} else {
 			testMode = true
 		}
+	}
+}
+const updateEffectBlocks = () => {
+	if (input.getGamePress("disableItemsKey")) {
+		if (useEffectBlocks !== false) {
+			useEffectBlocks = false
+		} else {
+			useEffectBlocks = true
+		}
+	}
+	if (useEffectBlocks) {
+		game.useEffectBlocks = true
+	} else {
+		game.useEffectBlocks = false
 	}
 }
 const updateNextAndHold = () => {
@@ -627,7 +642,7 @@ export const loops = {
       }
 	  updateNextAndHold()
 	  updateTestMode()
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -813,7 +828,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
 	  game.stat.effect = ""
     },
   },
@@ -875,7 +890,7 @@ export const loops = {
       }
 	  updateNextAndHold()
 	  updateTestMode()
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -1037,7 +1052,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
 	  game.stat.effect = ""
 	  garbageTimer = 0
 	  sound.add("cheer")
@@ -1344,7 +1359,7 @@ export const loops = {
       }
 	  updateNextAndHold()
 	  updateTestMode()
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -1534,7 +1549,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
 	  game.stat.effect = ""
     },
   },
@@ -1598,7 +1613,7 @@ export const loops = {
       }
 	  updateNextAndHold()
 	  updateTestMode()
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -1761,7 +1776,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
 	  game.stat.effect = ""
 	  garbageTimer = 0
 	  sound.add("cheer")
@@ -1826,7 +1841,7 @@ export const loops = {
       }
 	  updateNextAndHold()
 	  updateTestMode()
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
       /* Might use this code later
       $('#das').max = arg.piece.dasLimit;
       $('#das').value = arg.piece.das;
@@ -2074,7 +2089,7 @@ export const loops = {
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
-	  game.useEffectBlocks = true
+	  updateEffectBlocks()
 	  game.stat.effect = ""
 	  game.stack.isUnderwater = false
 	  game.stack.isFrozen = false
