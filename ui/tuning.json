@@ -77,7 +77,7 @@
         {
           "string": "krsRotsLabel",
 		  "stringDesc": "krsRotsDesc",
-          "value": "auto",
+          "value": "krs",
 		  "langOverride": "menu_tuning",
 		  "fixedText": false
         },
