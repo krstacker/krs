@@ -615,7 +615,7 @@ class Menu {
   drawControls() {
     const duplicates = settings.getConflictingControlNames()
     for (const key of Object.keys(settings.controls)) {
-	  if (key !== "testModeKey" && key !== "disableItemsKey") {
+	  if (key !== "testModeKey") {
       const array = settings.controls[key]
       const currentControlElement = $(`#control-${key}`)
       currentControlElement.innerHTML = ""

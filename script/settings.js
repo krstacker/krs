@@ -97,8 +97,7 @@ class Settings {
       hold: ["KeyC"],
       retry: ["KeyR"],
       pause: ["Escape"],
-	  testModeKey: ["Pause"],
-	  disableItemsKey: ["F4"],
+	  testModeKey: ["Pause", "F4"],
     }
     this.defaultGame = {}
     this.settings = {}
