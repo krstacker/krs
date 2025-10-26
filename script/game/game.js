@@ -436,7 +436,7 @@ export default class Game {
           $("#end-stats").innerHTML += `<b>Avg. PPS:</b> ${
             Math.round(
               (gameHandler.game.stat.piece /
-                ((gameHandler.game.timePassed + gameHandler.game.timePassedOffset) / 1000)) *
+                ((gameHandler.game.timePassed - gameHandler.game.timePassedAre + gameHandler.game.timePassedOffset) / 1000)) *
                 100
             ) / 100
           }<br>`
@@ -956,7 +956,7 @@ export default class Game {
             if (!game.piece.inAre) {
               game.timePassed += msPassed
             } else if (game.piece.startingAre >= game.piece.startingAreLimit) {
-              //game.timePassedAre += msPassed
+              game.timePassedAre += msPassed
 			  game.timePassed += msPassed
             }
 
@@ -988,7 +988,7 @@ export default class Game {
                 game.end()
               }
             }
-            game.pps = game.stat.piece / ((game.timePassed + game.timePassedOffset) / 1000)
+            game.pps = game.stat.piece / ((game.timePassed - game.timePassedAre + game.timePassedOffset) / 1000)
             // game.stat.pps = Math.round(game.pps * 100) / 100;
             game.updateStats()
             if (game.stack.alarmIsOn) {
