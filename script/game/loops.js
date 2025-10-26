@@ -666,8 +666,8 @@ export const loops = {
 		[15, 50],
 		[16, 45],
 		[17, 40],
-		[18, 35],
-		[19, 30],
+		[18, 40],
+		[19, 40],
 	  ]
 	  const areTable = [
 		[6, 30],
@@ -681,7 +681,7 @@ export const loops = {
 		[15, 12],
 		[18, 10],
 		[19, 8],
-		[20, 6],
+		[20, 8],
       ]
 	  const areLineModifierTable = [
         [10, -4],
@@ -700,7 +700,7 @@ export const loops = {
 		[15, 12],
 		[18, 10],
 		[19, 8],
-		[20, 6],
+		[20, 8],
       ]
 	  const lockDelayTable = [
 		[10, 30],
@@ -1385,8 +1385,8 @@ export const loops = {
 		[15, 50],
 		[16, 45],
 		[17, 40],
-		[18, 35],
-		[19, 30],
+		[18, 40],
+		[19, 40],
 	  ]
 	  const areTable = [
 		[6, 30],
@@ -1400,7 +1400,7 @@ export const loops = {
 		[15, 12],
 		[18, 10],
 		[19, 8],
-		[20, 6],
+		[20, 8],
       ]
 	  const areLineModifierTable = [
         [10, -4],
@@ -1419,7 +1419,7 @@ export const loops = {
 		[15, 12],
 		[18, 10],
 		[19, 8],
-		[20, 6],
+		[20, 8],
       ]
 	  const lockDelayTable = [
 		[10, 30],
