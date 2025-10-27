@@ -1954,7 +1954,8 @@ export const loops = {
 		[24, 8],
 		[31.8, 9],
 		[32, 10],
-		[40.8, 11],
+		[36, 11],
+		[40.8, 12],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
@@ -1974,6 +1975,12 @@ export const loops = {
 			  sound.killBgm()
 			  break
 			case 9:
+			  sound.killBgm()
+			  break
+			case 11:
+			  game.next.nextLimit = 3
+			  break
+			case 12:
 			  sound.killBgm()
 			  break
 			case 2:
