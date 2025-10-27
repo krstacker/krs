@@ -20,7 +20,7 @@
     "description": "How much time has passed since the start of the game"
   },
   "grade": {
-    "message": "等级",
+    "message": "年级",
     "description": "The grade given to the player based on their performance"
   },
   "effect": {

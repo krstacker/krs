@@ -20,7 +20,7 @@
     "description": "How much time has passed since the start of the game"
   },
   "grade": {
-    "message": "Rank",
+    "message": "Grade",
     "description": "The grade given to the player based on their performance"
   },
   "effect": {

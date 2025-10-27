@@ -86,7 +86,7 @@
     "message": "TRIAL"
   },
   "trialDescription": {
-    "message": "あなたのプレイの出来栄えに基づいてランク付けされます。あらゆるスキルレベルのプレイヤーを対象としています。"
+    "message": "プレイの出来栄えで評価されます。あらゆるスキルレベルのプレイヤーを対象としています。"
   },
   "virtuosoLabel": {
     "message": "VIRTUOSO"
