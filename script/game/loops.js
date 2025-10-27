@@ -1615,7 +1615,7 @@ export const loops = {
     },
     onPieceSpawn: (game) => {
 	  const pieceRequirement = 40
-	  const levelGoal = 30
+	  const levelGoal = 25
       const x = game.stat.level
       const gravityEquation = (0.8 - (x - 1) * 0.007) ** (x - 1)
       game.piece.gravity = framesToMs(1 / 20)
@@ -1675,7 +1675,7 @@ export const loops = {
 		[10, 2],
 		[19.8, 3],
 		[20, 4],
-		[30.8, 5],
+		[24.8, 5],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
