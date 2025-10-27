@@ -1944,15 +1944,17 @@ export const loops = {
 		[40, 10],
       ]
 	  const musicProgressionTable = [
-        [7.8, 1],
-		[8, 2],
-		[15.8, 3],
-		[16, 4],
-		[23.8, 5],
-		[24, 6],
-		[31.8, 7],
-		[32, 8],
-		[40.8, 9],
+	    [3.8, 1],
+		[4, 2],
+        [7.8, 3],
+		[8, 4],
+		[15.8, 5],
+		[16, 6],
+		[23.8, 7],
+		[24, 8],
+		[31.8, 9],
+		[32, 10],
+		[40.8, 11],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
@@ -1974,23 +1976,28 @@ export const loops = {
 			case 9:
 			  sound.killBgm()
 			  break
-            case 2:
+			case 2:
+			  sound.loadBgm(["virtuoso3"], "virtuoso")
+              sound.killBgm()
+              sound.playBgm(["virtuoso3"], "virtuoso")
+			  break
+            case 4:
 			  sound.loadBgm(["virtuoso5"], "virtuoso")
               sound.killBgm()
               sound.playBgm(["virtuoso5"], "virtuoso")
 			  break
-			case 4:
+			case 6:
 			  sound.loadBgm(["virtuoso6"], "virtuoso")
               sound.killBgm()
               sound.playBgm(["virtuoso6"], "virtuoso")
 			  break
-			case 6:
+			case 8:
 			  game.next.nextLimit = 1
 			  sound.loadBgm(["virtuoso1"], "virtuoso")
               sound.killBgm()
               sound.playBgm(["virtuoso1"], "virtuoso")
 			  break
-			case 8:
+			case 10:
 			  game.next.nextLimit = 2
 			  game.stack.isFrozen = true
 			  sound.loadBgm(["virtuoso7"], "virtuoso")
