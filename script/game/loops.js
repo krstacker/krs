@@ -66,14 +66,13 @@ let isEndRoll = false
 let endRollPassed = false
 let endRollLines = 0
 let preEndRollLines = 0
-let levelTimer = 0
-let levelTimerLimit = 58000
 let lastPieces = 0
 let onCountdown = false
 let countdownTimer = 0
 let lastGemsCleared = 0
 let testMode = false
 let collapseUnderwater = false
+let gameCleared = false
 let medals = [
 	"(KH)", //Home runs
 	"(KT)", //T spins
@@ -145,6 +144,7 @@ const updateLockDelay = (game, lockDelay) => {
 const resetTimeLimit = (game) => {
 	game.timePassedOffset += game.timePassed
 	game.timePassed = 0
+	countdownTimer = 0
 }
 const resetTimePassed = (game) => {
 	game.timePassedOffset = 0
@@ -177,6 +177,9 @@ const krsGradingSystem = (
 	applauseGrades = [],
 	cheerGrades = [],
 ) => {
+	if (gameCleared) {
+		return
+	}
 	let currentGrade = ""
 	for (const pair of gradingTable) {
         const score = pair[0]
@@ -563,23 +566,21 @@ export const loops = {
 			[22000*2, "10"],
 			[30000*2, "11"],
 			[40000*2, "12"],
-			[52000*2, "BRONZE"],
-			[66000*2, "SILVER"],
-			[82000*2, "GOLD"],
-			[100000*2, "PLATINUM"],
-			[120000*2, "DIAMOND"],
-			[150000*2, "TITANIUM"],
+			[52000*2, "<bronze>BM</bronze>"],
+			[66000*2, "<silver>SM</silver>"],
+			[82000*2, "<gold>GM</gold>"],
+			[100000*2, "<platinum>TM</platinum>"],
+			[120000*2, "<diamond>KM</diamond>"],
 		],
 		"1",
 		[
-			"BRONZE",
-			"SILVER",
+			"<bronze>BM</bronze>",
+			"<silver>SM</silver>",
 		],
 		[
-			"GOLD",
-			"PLATINUM",
-			"DIAMOND",
-			"TITANIUM",
+			"<gold>GM</gold>",
+			"<platinum>TM</platinum>",
+			"<diamond>KM</diamond>",
 		]
 	  )
       collapse(arg)
@@ -791,6 +792,10 @@ export const loops = {
         }
       }
 	  if (game.stat.piece >= pieceRequirement * levelGoal) {
+		gameCleared = true
+		if (game.stat.grade === "<diamond>KM</diamond>") {
+			game.stat.grade = "<titanium>KM+</titanium>"
+		}
 		game.stat.piece = pieceRequirement * levelGoal
 		$("#kill-message").textContent = locale.getString("ui", "excellent")
         sound.killVox()
@@ -817,6 +822,7 @@ export const loops = {
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
+	  gameCleared = false
     },
   },
   virtuoso: {
@@ -1282,23 +1288,21 @@ export const loops = {
 			[22000*3, "10"],
 			[30000*3, "11"],
 			[40000*3, "12"],
-			[52000*3, "BRONZE"],
-			[66000*3, "SILVER"],
-			[82000*3, "GOLD"],
-			[100000*3, "PLATINUM"],
-			[120000*3, "DIAMOND"],
-			[150000*3, "TITANIUM"],
+			[52000*3, "<bronze>BM</bronze>"],
+			[66000*3, "<silver>SM</silver>"],
+			[82000*3, "<gold>GM</gold>"],
+			[100000*3, "<platinum>TM</platinum>"],
+			[120000*3, "<diamond>KM</diamond>"],
 		],
 		"1",
 		[
-			"BRONZE",
-			"SILVER",
+			"<bronze>BM</bronze>",
+			"<silver>SM</silver>",
 		],
 		[
-			"GOLD",
-			"PLATINUM",
-			"DIAMOND",
-			"TITANIUM",
+			"<gold>GM</gold>",
+			"<platinum>TM</platinum>",
+			"<diamond>KM</diamond>",
 		]
 	  )
       collapse(arg)
@@ -1510,6 +1514,10 @@ export const loops = {
         }
       }
 	  if (game.stat.piece >= pieceRequirement * levelGoal) {
+		gameCleared = true
+		if (game.stat.grade === "<diamond>KM</diamond>") {
+			game.stat.grade = "<titanium>KM+</titanium>"
+		}
 		game.stat.piece = pieceRequirement * levelGoal
 		$("#kill-message").textContent = locale.getString("ui", "excellent")
         sound.killVox()
@@ -1540,6 +1548,7 @@ export const loops = {
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
+	  gameCleared = false
     },
   },
   virtuoso2: {

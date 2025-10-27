@@ -457,13 +457,13 @@ export default class Game {
     }
     if (this.timeGoal == null) {
       $("#end-stats").innerHTML += `<b>${locale.getString("ui", "inGameTime", [
-        `<span style="font-weight: normal">${msToTime(this.timePassed)}</span>`,
+        `<span style="font-weight: bold">${msToTime(this.timePassed)}</span>`,
       ])}</b><br>`
       $("#end-stats").innerHTML += `<b>${locale.getString(
         "ui",
         "realTimeAttack",
         [
-          `<span style="font-weight: normal">${msToTime(
+          `<span style="font-weight: bold">${msToTime(
             this.timePassed + this.timePassedAre
           )}</span>`,
         ]

@@ -825,6 +825,8 @@ export default class Stack extends GameModule {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
 				playEffectSound = true
 				this.parent.stat.score += 100
+				this.parent.timePassedOffset += 1000
+				this.parent.timePassed -= 1000
 				this.parent.currentEffect = this.grid[x][y]
 				this.lastEffect = this.grid[x][y]
 				this.effectBlockInterval = 16
@@ -838,6 +840,8 @@ export default class Stack extends GameModule {
 			}
 			if (this.grid[x][y] === "gold") {
 				this.parent.stat.score += 100
+				this.parent.timePassedOffset += 1000
+				this.parent.timePassed -= 1000
 			}
             if (this.isFrozen) {
 				if (this.grid[x][y] !== "frozen") {
