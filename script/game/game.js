@@ -351,7 +351,7 @@ export default class Game {
     if (this.type === "zen") {
       $(".game").classList.remove("zen-paused")
     } else {
-      $(".game").classList.remove("paused")
+      $(".game").classList.remove("zen-paused")
     }
   }
   pause() {
@@ -368,7 +368,7 @@ export default class Game {
     if (this.type === "zen") {
       $(".game").classList.add("zen-paused")
     } else {
-      $(".game").classList.add("paused")
+      $(".game").classList.add("zen-paused")
     }
   }
   hide() {
