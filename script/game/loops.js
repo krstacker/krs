@@ -1609,7 +1609,7 @@ export const loops = {
         garbageTimer += arg.ms
         if (garbageTimer > 10000) {
           garbageTimer -= 10000
-          if (game.stat.level >= 8) {
+          if (game.stat.level >= 5) {
 			  arg.stack.addGarbageToCounter(1)
 		  }
         }
@@ -1681,10 +1681,10 @@ export const loops = {
 		[20, 10],
       ]
 	  const musicProgressionTable = [
-        [7.8, 1],
-		[8, 2],
-		[14.8, 3],
-		[15, 4],
+        [4.8, 1],
+		[5, 2],
+		[11.8, 3],
+		[12, 4],
 		[19.8, 5],
 		[20, 6],
 		[24.8, 7],
