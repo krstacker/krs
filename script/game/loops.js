@@ -1847,7 +1847,7 @@ export const loops = {
         garbageTimer += arg.ms
         if (garbageTimer > 10000) {
           garbageTimer -= 10000
-          if (game.stat.level >= 2 && game.stat.level <= 7) {
+          if (game.stat.level <= 7) {
 			  arg.stack.addGarbageToCounter(1)
 		  }
         }
