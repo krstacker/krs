@@ -871,7 +871,7 @@ export const loops = {
         garbageTimer += arg.ms
         if (garbageTimer > 10000) {
           garbageTimer -= 10000
-          if (game.stat.level >= 15) {
+          if (game.stat.level >= 10) {
 			  arg.stack.addGarbageToCounter(1)
 		  }
         }
@@ -955,7 +955,9 @@ export const loops = {
 	  const musicProgressionTable = [
         [9.8, 1],
 		[10, 2],
-		[20.8, 2],
+		[14.8, 3],
+		[15, 4],
+		[19.8, 5],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
@@ -968,10 +970,18 @@ export const loops = {
 			case 3:
 			  sound.killBgm()
 			  break
+			case 5:
+			  sound.killBgm()
+			  break
             case 2:
-			  sound.loadBgm(["stage2"], "virtuoso1")
+			  sound.loadBgm(["virtuoso2"], "virtuoso")
               sound.killBgm()
-              sound.playBgm(["stage2"], "virtuoso1")
+              sound.playBgm(["virtuoso2"], "virtuoso")
+			  break
+			case 4:
+			  sound.loadBgm(["virtuoso3"], "virtuoso")
+              sound.killBgm()
+              sound.playBgm(["virtuoso3"], "virtuoso")
 			  break
           }
           game.musicProgression = entry
@@ -1599,7 +1609,7 @@ export const loops = {
         garbageTimer += arg.ms
         if (garbageTimer > 10000) {
           garbageTimer -= 10000
-          if (game.stat.level >= 5) {
+          if (game.stat.level >= 8) {
 			  arg.stack.addGarbageToCounter(1)
 		  }
         }
@@ -1671,11 +1681,13 @@ export const loops = {
 		[20, 10],
       ]
 	  const musicProgressionTable = [
-        [9.8, 1],
-		[10, 2],
-		[19.8, 3],
-		[20, 4],
-		[24.8, 5],
+        [7.8, 1],
+		[8, 2],
+		[14.8, 3],
+		[15, 4],
+		[19.8, 5],
+		[20, 6],
+		[24.8, 7],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
@@ -1691,16 +1703,24 @@ export const loops = {
 			case 5:
 			  sound.killBgm()
 			  break
+			case 7:
+			  sound.killBgm()
+			  break
             case 2:
-			  sound.loadBgm(["stage2"], "virtuoso1")
+			  sound.loadBgm(["virtuoso2"], "virtuoso")
               sound.killBgm()
-              sound.playBgm(["stage2"], "virtuoso1")
+              sound.playBgm(["virtuoso2"], "virtuoso")
 			  break
 			case 4:
-			  game.useBoneBlocks = true
-			  sound.loadBgm(["stage3"], "virtuoso1")
+			  sound.loadBgm(["virtuoso3"], "virtuoso")
               sound.killBgm()
-              sound.playBgm(["stage3"], "virtuoso1")
+              sound.playBgm(["virtuoso3"], "virtuoso")
+			  break
+			case 6:
+			  game.useBoneBlocks = true
+			  sound.loadBgm(["virtuoso4"], "virtuoso")
+              sound.killBgm()
+              sound.playBgm(["virtuoso4"], "virtuoso")
 			  break
           }
           game.musicProgression = entry
@@ -1955,27 +1975,27 @@ export const loops = {
 			  sound.killBgm()
 			  break
             case 2:
-			  sound.loadBgm(["stage2"], "virtuoso2")
+			  sound.loadBgm(["virtuoso5"], "virtuoso")
               sound.killBgm()
-              sound.playBgm(["stage2"], "virtuoso2")
+              sound.playBgm(["virtuoso5"], "virtuoso")
 			  break
 			case 4:
-			  sound.loadBgm(["stage3"], "virtuoso2")
+			  sound.loadBgm(["virtuoso6"], "virtuoso")
               sound.killBgm()
-              sound.playBgm(["stage3"], "virtuoso2")
+              sound.playBgm(["virtuoso6"], "virtuoso")
 			  break
 			case 6:
 			  game.next.nextLimit = 1
-			  sound.loadBgm(["stage4"], "virtuoso2")
+			  sound.loadBgm(["virtuoso1"], "virtuoso")
               sound.killBgm()
-              sound.playBgm(["stage4"], "virtuoso2")
+              sound.playBgm(["virtuoso1"], "virtuoso")
 			  break
 			case 8:
 			  game.next.nextLimit = 2
 			  game.stack.isFrozen = true
-			  sound.loadBgm(["stage5"], "virtuoso2")
+			  sound.loadBgm(["virtuoso7"], "virtuoso")
               sound.killBgm()
-              sound.playBgm(["stage5"], "virtuoso2")
+              sound.playBgm(["virtuoso7"], "virtuoso")
 			  break
           }
           game.musicProgression = entry

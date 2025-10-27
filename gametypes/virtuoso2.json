@@ -9,7 +9,7 @@
     "rotationSystem": "krs",
     "skin": "standard",
     "soundbank": "krs",
-    "music": "../virtuoso1/stage1",
+    "music": "../virtuoso/virtuoso1",
     "scoreTable": "krs",
     "background": "marathon.jpg"
   },
