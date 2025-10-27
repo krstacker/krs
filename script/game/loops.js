@@ -72,7 +72,7 @@ let countdownTimer = 0
 let lastGemsCleared = 0
 let testMode = false
 let collapseUnderwater = false
-let gameCleared = false
+let noGradeUpdate = false
 let medals = [
 	"(KH)", //Home runs
 	"(KT)", //T spins
@@ -177,7 +177,7 @@ const krsGradingSystem = (
 	applauseGrades = [],
 	cheerGrades = [],
 ) => {
-	if (gameCleared) {
+	if (noGradeUpdate) {
 		return
 	}
 	let currentGrade = ""
@@ -792,7 +792,7 @@ export const loops = {
         }
       }
 	  if (game.stat.piece >= pieceRequirement * levelGoal) {
-		gameCleared = true
+		noGradeUpdate = true
 		if (game.stat.grade === "<diamond>KM</diamond>") {
 			game.stat.grade = "<titanium>KM+</titanium>"
 		}
@@ -822,7 +822,7 @@ export const loops = {
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
-	  gameCleared = false
+	  noGradeUpdate = false
     },
   },
   virtuoso: {
@@ -1514,7 +1514,7 @@ export const loops = {
         }
       }
 	  if (game.stat.piece >= pieceRequirement * levelGoal) {
-		gameCleared = true
+		noGradeUpdate = true
 		if (game.stat.grade === "<diamond>KM</diamond>") {
 			game.stat.grade = "<titanium>KM+</titanium>"
 		}
@@ -1548,7 +1548,7 @@ export const loops = {
 	  countdownTimer = 0
 	  game.useEffectBlocks = true
 	  game.stat.effect = ""
-	  gameCleared = false
+	  noGradeUpdate = false
     },
   },
   virtuoso2: {
