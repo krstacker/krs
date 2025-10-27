@@ -28,7 +28,8 @@
 	"description": "Please leave blank!"
   },
   "medals": {
-    "message": "Medals"
+    "message": " ",
+	"description": "Please leave blank!"
   },
   "fallspeed": {
     "message": "Gravity",

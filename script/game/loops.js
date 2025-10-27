@@ -74,19 +74,14 @@ let testMode = false
 let collapseUnderwater = false
 let noGradeUpdate = false
 let medals = [
-	"(KH)", //Home runs
-	"(KT)", //T spins
-	"(KL)", //L spins
-	"(KJ)", //J spins
-	"(KS)", //S spins
-	"(KZ)", //Z spins
-	"(KI)", //I spins
-	"(KC)", //O spins
-	"(KB)", //Perfect clears
-	"(KR)", //Combos
-	"(KV)", //Clutches
+	"SK", //Home runs
+	"ST", //Section time
+	"SP", //Spins
+	"BR", //Perfect clears
+	"RE", //Combos
+	"CL", //Clutches
+	"BT", //Back to backs
 ]
-let bpm
 const updateTestMode = () => {
 	if (input.getGamePress("testModeKey")) {
 		if (testMode !== false) {
