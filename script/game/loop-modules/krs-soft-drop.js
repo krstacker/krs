@@ -14,8 +14,7 @@ export default function krsSoftDrop(arg, frameGravity = 1) {
         arg.piece.genPieceParticles()
       } else {
 		if (
-			arg.piece.mustLock === false && 
-			input.getGameDown("specialKey") !== true &&
+			arg.piece.mustLock === false &&
 			settings.settings.rotationSystem !== "srsk"
 		) {
 			arg.piece.mustLock = true
@@ -36,8 +35,7 @@ export default function krsSoftDrop(arg, frameGravity = 1) {
         arg.piece.genPieceParticles()
       } else {
 		if (
-			arg.piece.mustLock === false && 
-			input.getGameDown("specialKey") !== true &&
+			arg.piece.mustLock === false &&
 			settings.settings.rotationSystem !== "srsk"
 		) {
 			arg.piece.mustLock = true

@@ -4,7 +4,7 @@ import settings from "../../settings.js"
 export default function krsSonicDrop(arg) {
   if (input.getGamePress("hardDrop")) {
     if (
-		arg.piece.isLanded || 
+		arg.piece.isLanded ||
 		input.getGameDown("specialKey") ||
 		settings.settings.rotationSystem === "srsk"
 	) {
