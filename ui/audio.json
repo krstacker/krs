@@ -45,33 +45,17 @@
           "value": "standard"
         },
 		{
+          "label": "KRS (ALT)",
+          "fixedText": true,
+          "value": "alternate"
+        },
+		{
           "label": "TGM",
           "fixedText": true,
           "value": "tgm"
         }
       ],
       "setting": "soundbank",
-      "settingType": "setting"
-    },
-    {
-      "string": "nextSoundLabel",
-      "stringDesc": "nextSoundDescription",
-	  "secretA": true,
-      "type": "select",
-      "action": "select",
-      "selectOptions": [
-        {
-          "label": "Auto",
-          "fixedText": true,
-          "value": "auto"
-        },
-        {
-          "label": "TGM",
-          "fixedText": true,
-          "value": "tgm"
-        }
-      ],
-      "setting": "nextSoundbank",
       "settingType": "setting"
     }
   ]

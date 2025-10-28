@@ -18,7 +18,6 @@
 	"gameover",
 	"gembonus",
 	"gradeup",
-	"gradedown",
     "hold",
 	"holdfail",
 	"initialrotate",
@@ -39,5 +38,5 @@
 	"tspinbonus"
   ],
   "ren": [],
-  "nextSoundbank": "standard"
+  "nextSoundbank": "alternate"
 }
