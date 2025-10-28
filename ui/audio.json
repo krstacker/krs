@@ -52,6 +52,26 @@
       ],
       "setting": "soundbank",
       "settingType": "setting"
+    },
+    {
+      "string": "nextSoundLabel",
+      "stringDesc": "nextSoundDescription",
+      "type": "select",
+      "action": "select",
+      "selectOptions": [
+        {
+          "label": "KRS",
+          "fixedText": true,
+          "value": "auto"
+        },
+        {
+          "label": "TGM",
+          "fixedText": true,
+          "value": "tgm"
+        }
+      ],
+      "setting": "nextSoundbank",
+      "settingType": "setting"
     }
   ]
 }
