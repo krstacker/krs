@@ -60,7 +60,7 @@
       "action": "select",
       "selectOptions": [
         {
-          "label": "KRS",
+          "label": "Auto",
           "fixedText": true,
           "value": "auto"
         },
