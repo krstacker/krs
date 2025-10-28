@@ -59,7 +59,7 @@ class Settings {
       sfxVolume: 50,
       musicVolume: 50,
       voiceVolume: 100,
-      soundbank: "auto",
+      soundbank: "standard",
       nextSoundbank: "auto",
       voicebank: "off",
     }

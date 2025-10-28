@@ -687,6 +687,26 @@ export default class Stack extends GameModule {
 			}
 		}
 	}
+	if (this.lastEffect === "garbage") {
+		let effectsRoster = [
+			"delFieldUp",
+			"delFieldDown",
+			"fadingBlock",
+			"phantomBlock",
+		]
+		if (effectsRoster.includes(this.parent.pendingEffect) !== true) {
+			this.parent.pendingEffect = effectsRoster[Math.max(
+				0,
+				Math.floor(Math.random() * effectsRoster.length) - 1
+			)]
+			while (this.parent.pendingEffect === this.lastEffect) {
+				this.parent.pendingEffect = effectsRoster[Math.max(
+					0,
+					Math.floor(Math.random() * effectsRoster.length) - 1
+				)]
+			}
+		}
+	}
 	if (this.lastEffect === "jewelBlock") {
 		let effectsRoster = [
 			"fadingBlock",
