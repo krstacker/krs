@@ -1984,27 +1984,32 @@ export const loops = {
 			  sound.killBgm()
 			  break
 			case 2:
+			  collapseUnderwater = false
 			  sound.loadBgm(["virtuoso3"], "virtuoso")
               sound.killBgm()
               sound.playBgm(["virtuoso3"], "virtuoso")
 			  break
             case 4:
+			  collapseUnderwater = false
 			  sound.loadBgm(["virtuoso5"], "virtuoso")
               sound.killBgm()
               sound.playBgm(["virtuoso5"], "virtuoso")
 			  break
 			case 6:
+			  collapseUnderwater = true
 			  sound.loadBgm(["virtuoso6"], "virtuoso")
               sound.killBgm()
               sound.playBgm(["virtuoso6"], "virtuoso")
 			  break
 			case 8:
+			  collapseUnderwater = false
 			  game.next.nextLimit = 1
 			  sound.loadBgm(["virtuoso1"], "virtuoso")
               sound.killBgm()
               sound.playBgm(["virtuoso1"], "virtuoso")
 			  break
 			case 10:
+			  collapseUnderwater = false
 			  game.next.nextLimit = 2
 			  game.stack.isFrozen = true
 			  sound.loadBgm(["virtuoso7"], "virtuoso")
@@ -2096,11 +2101,6 @@ export const loops = {
           break
         }
       }
-	  if (game.stat.piece > pieceRequirement * 8) {
-		  collapseUnderwater = true
-	  } else {
-		  collapseUnderwater = false
-	  }
 	  game.piece.ghostIsVisible = false
     },
     onInit: (game) => {
