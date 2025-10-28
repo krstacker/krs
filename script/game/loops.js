@@ -452,8 +452,8 @@ export const loops = {
 		[20, 30],
       ]
 	  const musicProgressionTable = [
-        [6.8, 1],
-        [7, 2],
+        [7.8, 1],
+        [8, 2],
 		[15.8, 3],
       ]
 	  for (const pair of musicProgressionTable) {
@@ -871,7 +871,7 @@ export const loops = {
         garbageTimer += arg.ms
         if (garbageTimer > 10000) {
           garbageTimer -= 10000
-          if (game.stat.level >= 10) {
+          if (game.stat.level >= 8) {
 			  arg.stack.addGarbageToCounter(1)
 		  }
         }
@@ -953,8 +953,8 @@ export const loops = {
 		[20, 10],
       ]
 	  const musicProgressionTable = [
-        [9.8, 1],
-		[10, 2],
+        [7.8, 1],
+		[8, 2],
 		[14.8, 3],
 		[15, 4],
 		[19.8, 5],
@@ -1609,7 +1609,7 @@ export const loops = {
         garbageTimer += arg.ms
         if (garbageTimer > 10000) {
           garbageTimer -= 10000
-          if (game.stat.level >= 5) {
+          if (game.stat.level >= 4) {
 			  arg.stack.addGarbageToCounter(1)
 		  }
         }
@@ -1681,8 +1681,8 @@ export const loops = {
 		[20, 10],
       ]
 	  const musicProgressionTable = [
-        [4.8, 1],
-		[5, 2],
+        [3.8, 1],
+		[4, 2],
 		[11.8, 3],
 		[12, 4],
 		[19.8, 5],
