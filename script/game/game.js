@@ -64,13 +64,13 @@ export default class Game {
       maxcombo: 0,
 	  effect: "",
 	  medals: `
-	  <invisible>SK</invisible>
-	  <invisible>ST</invisible>
-	  <invisible>SP</invisible>
-	  <invisible>BR</invisible>
-	  <invisible>RE</invisible>
-	  <invisible>CL</invisible>
-	  <invisible>BT</invisible>
+	  <invisible> SK </invisible>
+	  <invisible> ST </invisible>
+	  <invisible> SP </invisible> <br>
+	  <invisible> BT </invisible>
+	  <invisible> BR </invisible> <br>
+	  <invisible> RE </invisible>
+	  <invisible> CL </invisible>
 	  `,
     }
     this.appends = {}

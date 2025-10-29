@@ -481,53 +481,53 @@ export default class Stack extends GameModule {
   updateMedals() {
 	  let newMedals = this.parent.stat.medals
 	  if (this.erase4Gauge >= 12) {
-		  newMedals = newMedals.replace(`<silver>SK</silver>`, `<gold>SK</gold>`)
+		  newMedals = newMedals.replace(`<silver> SK </silver>`, `<gold> SK </gold>`)
 	  } else if (this.erase4Gauge >= 8) {
-		  newMedals = newMedals.replace(`<bronze>SK</bronze>`, `<silver>SK</silver>`)
+		  newMedals = newMedals.replace(`<bronze> SK </bronze>`, `<silver> SK </silver>`)
 	  } else if (this.erase4Gauge >= 4) {
-		  newMedals = newMedals.replace(`<invisible>SK</invisible>`, `<bronze>SK</bronze>`)
+		  newMedals = newMedals.replace(`<invisible> SK </invisible>`, `<bronze> SK </bronze>`)
 	  }
 	  if (this.spinGauge >= 12) {
-		  newMedals = newMedals.replace(`<silver>SP</silver>`, `<gold>SP</gold>`)
+		  newMedals = newMedals.replace(`<silver> SP </silver>`, `<gold> SP </gold>`)
 	  } else if (this.spinGauge >= 8) {
-		  newMedals = newMedals.replace(`<bronze>SP</bronze>`, `<silver>SP</silver>`)
+		  newMedals = newMedals.replace(`<bronze> SP </bronze>`, `<silver> SP </silver>`)
 	  } else if (this.spinGauge >= 4) {
-		  newMedals = newMedals.replace(`<invisible>SP</invisible>`, `<bronze>SP</bronze>`)
+		  newMedals = newMedals.replace(`<invisible> SP </invisible>`, `<bronze> SP </bronze>`)
 	  }
 	  if (this.sectionGauge >= 3) {
-		  newMedals = newMedals.replace(`<silver>ST</silver>`, `<gold>ST</gold>`)
+		  newMedals = newMedals.replace(`<silver> ST </silver>`, `<gold> ST </gold>`)
 	  } else if (this.sectionGauge >= 2) {
-		  newMedals = newMedals.replace(`<bronze>ST</bronze>`, `<silver>ST</silver>`)
+		  newMedals = newMedals.replace(`<bronze> ST </bronze>`, `<silver> ST </silver>`)
 	  } else if (this.sectionGauge >= 1) {
-		  newMedals = newMedals.replace(`<invisible>ST</invisible>`, `<bronze>ST</bronze>`)
+		  newMedals = newMedals.replace(`<invisible> ST </invisible>`, `<bronze> ST </bronze>`)
 	  }
 	  if (this.bravoGauge >= 3) {
-		  newMedals = newMedals.replace(`<silver>BR</silver>`, `<gold>BR</gold>`)
+		  newMedals = newMedals.replace(`<silver> BR </silver>`, `<gold> BR </gold>`)
 	  } else if (this.bravoGauge >= 2) {
-		  newMedals = newMedals.replace(`<bronze>BR</bronze>`, `<silver>BR</silver>`)
+		  newMedals = newMedals.replace(`<bronze> BR </bronze>`, `<silver> BR </silver>`)
 	  } else if (this.bravoGauge >= 1) {
-		  newMedals = newMedals.replace(`<invisible>BR</invisible>`, `<bronze>BR</bronze>`)
+		  newMedals = newMedals.replace(`<invisible> BR </invisible>`, `<bronze> BR </bronze>`)
 	  }
 	  if (this.renGauge >= 3) {
-		  newMedals = newMedals.replace(`<silver>RE</silver>`, `<gold>RE</gold>`)
+		  newMedals = newMedals.replace(`<silver> RE </silver>`, `<gold> RE </gold>`)
 	  } else if (this.renGauge >= 2) {
-		  newMedals = newMedals.replace(`<bronze>RE</bronze>`, `<silver>RE</silver>`)
+		  newMedals = newMedals.replace(`<bronze> RE </bronze>`, `<silver> RE </silver>`)
 	  } else if (this.renGauge >= 1) {
-		  newMedals = newMedals.replace(`<invisible>RE</invisible>`, `<bronze>RE</bronze>`)
+		  newMedals = newMedals.replace(`<invisible> RE </invisible>`, `<bronze> RE </bronze>`)
 	  }
 	  if (this.b2bGauge >= 12) {
-		  newMedals = newMedals.replace(`<silver>RE</silver>`, `<gold>RE</gold>`)
+		  newMedals = newMedals.replace(`<silver> BT </silver>`, `<gold> BT </gold>`)
 	  } else if (this.b2bGauge >= 8) {
-		  newMedals = newMedals.replace(`<bronze>RE</bronze>`, `<silver>RE</silver>`)
+		  newMedals = newMedals.replace(`<bronze> BT </bronze>`, `<silver> BT </silver>`)
 	  } else if (this.b2bGauge >= 4) {
-		  newMedals = newMedals.replace(`<invisible>RE</invisible>`, `<bronze>RE</bronze>`)
+		  newMedals = newMedals.replace(`<invisible> BT </invisible>`, `<bronze> BT </bronze>`)
 	  }
-	  if (this.bravoGauge >= 3) {
-		  newMedals = newMedals.replace(`<silver>RE</silver>`, `<gold>RE</gold>`)
-	  } else if (this.b2bGauge >= 2) {
-		  newMedals = newMedals.replace(`<bronze>RE</bronze>`, `<silver>RE</silver>`)
-	  } else if (this.b2bGauge >= 1) {
-		  newMedals = newMedals.replace(`<invisible>RE</invisible>`, `<bronze>RE</bronze>`)
+	  if (this.clutchGauge >= 3) {
+		  newMedals = newMedals.replace(`<silver> CL </silver>`, `<gold> CL </gold>`)
+	  } else if (this.clutchGauge >= 2) {
+		  newMedals = newMedals.replace(`<bronze> CL </bronze>`, `<silver> CL </silver>`)
+	  } else if (this.clutchGauge >= 1) {
+		  newMedals = newMedals.replace(`<invisible> CL </invisible>`, `<bronze> CL </bronze>`)
 	  }
 	  this.parent.stat.medals = newMedals
 	  if (this.parent.stat.medals !== this.parent.lastMedals) {
