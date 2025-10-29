@@ -57,6 +57,7 @@ export default class Stack extends GameModule {
 	this.bravoGauge = 0
 	this.renGauge = 0
 	this.sectionGauge = 0
+	this.levelGauge = 1
 	this.levelPieceRequirement = 40
 	$("#message").classList.remove("effectactivated")
   }
@@ -1069,8 +1070,11 @@ export default class Stack extends GameModule {
 	  if (pc) {
 		  this.bravoGauge += 1
 	  }
-	  if (this.parent.stat.piece % this.levelPieceRequirement < 1 && this.parent.pps > 1.5) {
-		  this.sectionGauge += 1
+	  if (this.parent.stat.level !== this.levelGauge) {
+		  this.levelGauge += 1
+		  if (this.parent.pps >= 2) {
+			  this.sectionGauge += 1
+		  }
 	  }
 	  this.updateMedals()
 	  if (this.toCollapse.length === 0) {
