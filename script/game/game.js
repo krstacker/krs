@@ -144,6 +144,7 @@ export default class Game {
 		"deathBlock",
 	]
 	this.lastMedals = this.stat.medals
+	this.initialMedals = this.stat.medals
     loadGameType(gametype)
       .then((gameData) => {
         gtag("event", "play", {
@@ -467,9 +468,11 @@ export default class Game {
           )}:</b> ${this.stat["skipCount"]}<br>`
           break
 		case "medals":
-		  let inGameMedals = this.stat["medals"]
-		  let displayMedals = inGameMedals.replace(`<br>`, ` `)
-          $("#end-stats").innerHTML += `<b></b>${inGameMedals}<br>`
+          if (this.stat["medals"] !== this.initialMedals) {
+			  let inGameMedals = this.stat["medals"]
+			  let displayMedals = inGameMedals.replace(`<br>`, ` `)
+			  $("#end-stats").innerHTML += `<b></b>${inGameMedals}<br>`
+		  }
           break
       }
     }
