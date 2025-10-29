@@ -66,9 +66,9 @@ export default class Game {
 	  medals: `
 	  <invisible> SK </invisible>
 	  <invisible> ST </invisible>
-	  <invisible> SP </invisible> <br>
+	  <invisible> SP </invisible>
 	  <invisible> BT </invisible>
-	  <invisible> BR </invisible> <br>
+	  <invisible> BR </invisible>
 	  <invisible> RE </invisible>
 	  <invisible> CL </invisible>
 	  `,
