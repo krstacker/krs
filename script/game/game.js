@@ -63,6 +63,15 @@ export default class Game {
       piece: 0,
       maxcombo: 0,
 	  effect: "",
+	  medals: `
+	  <invisible>SK</invisible>
+	  <invisible>ST</invisible>
+	  <invisible>SP</invisible>
+	  <invisible>BR</invisible>
+	  <invisible>RE</invisible>
+	  <invisible>CL</invisible>
+	  <invisible>BT</invisible>
+	  `,
     }
     this.appends = {}
     this.prefixes = {}
@@ -87,6 +96,7 @@ export default class Game {
       piece: true,
       line: true,
       maxcombo: true,
+	  medals: true,
     }
     this.b2b = 0
     this.maxb2b = 0
@@ -131,6 +141,7 @@ export default class Game {
 		"jewelBlock",
 		"deathBlock",
 	]
+	this.lastMedals = this.stat.medals
     loadGameType(gametype)
       .then((gameData) => {
         gtag("event", "play", {
@@ -453,6 +464,9 @@ export default class Game {
             "skip"
           )}:</b> ${this.stat["skipCount"]}<br>`
           break
+		case "medals":
+          $("#end-stats").innerHTML += `<b></b>${this.stat["medals"]}<br>`
+          break
       }
     }
     if (this.timeGoal == null) {
@@ -706,6 +720,8 @@ export default class Game {
           .substring(1, locale.getString("action-text", "b2b").length - 1)
       } else if (statName === "pcCount") {
         label.textContent = locale.getString("action-text", "pc")
+	  } else if (statName === "medals" || statName === "effect" || game.redStats[statName]) {
+        label.textContent = " "
       } else {
         label.textContent = locale.getString("ui", statName)
       }
@@ -715,7 +731,6 @@ export default class Game {
         number.classList.add("big")
       }
 	  if (game.redStats[statName]) {
-		label.textContent = " "
         number.classList.add("redstat")
       } else {
 		number.classList.remove("redstat")

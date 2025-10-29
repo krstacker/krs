@@ -49,6 +49,13 @@ export default class Stack extends GameModule {
 	this.displayedEffectText = false
 	this.targetColor = "red"
 	this.lastEffect = ""
+	this.erase4Gauge = 0
+	this.spinGauge = 0
+	this.clutchGauge = 0
+	this.b2bGauge = 0
+	this.bravoGauge = 0
+	this.renGauge = 0
+	this.sectionGauge = 0
 	$("#message").classList.remove("effectactivated")
   }
   removeFromArray(array, elementToRemove) {
@@ -473,6 +480,63 @@ export default class Stack extends GameModule {
 	sound.add("collapse4")
 	this.reRenderStack()
   }
+  updateMedals() {
+	  let newMedals = this.parent.stat.medals
+	  if (this.erase4Gauge >= 12) {
+		  newMedals = newMedals.replace(`<silver>SK</silver>`, `<gold>SK</gold>`)
+	  } else if (this.erase4Gauge >= 8) {
+		  newMedals = newMedals.replace(`<bronze>SK</bronze>`, `<silver>SK</silver>`)
+	  } else if (this.erase4Gauge >= 4) {
+		  newMedals = newMedals.replace(`<invisible>SK</invisible>`, `<bronze>SK</bronze>`)
+	  }
+	  if (this.spinGauge >= 12) {
+		  newMedals = newMedals.replace(`<silver>SP</silver>`, `<gold>SP</gold>`)
+	  } else if (this.spinGauge >= 8) {
+		  newMedals = newMedals.replace(`<bronze>SP</bronze>`, `<silver>SP</silver>`)
+	  } else if (this.spinGauge >= 4) {
+		  newMedals = newMedals.replace(`<invisible>SP</invisible>`, `<bronze>SP</bronze>`)
+	  }
+	  if (this.sectionGauge >= 3) {
+		  newMedals = newMedals.replace(`<silver>ST</silver>`, `<gold>ST</gold>`)
+	  } else if (this.sectionGauge >= 2) {
+		  newMedals = newMedals.replace(`<bronze>ST</bronze>`, `<silver>ST</silver>`)
+	  } else if (this.sectionGauge >= 1) {
+		  newMedals = newMedals.replace(`<invisible>ST</invisible>`, `<bronze>ST</bronze>`)
+	  }
+	  if (this.bravoGauge >= 3) {
+		  newMedals = newMedals.replace(`<silver>BR</silver>`, `<gold>BR</gold>`)
+	  } else if (this.bravoGauge >= 2) {
+		  newMedals = newMedals.replace(`<bronze>BR</bronze>`, `<silver>BR</silver>`)
+	  } else if (this.bravoGauge >= 1) {
+		  newMedals = newMedals.replace(`<invisible>BR</invisible>`, `<bronze>BR</bronze>`)
+	  }
+	  if (this.renGauge >= 3) {
+		  newMedals = newMedals.replace(`<silver>RE</silver>`, `<gold>RE</gold>`)
+	  } else if (this.renGauge >= 2) {
+		  newMedals = newMedals.replace(`<bronze>RE</bronze>`, `<silver>RE</silver>`)
+	  } else if (this.renGauge >= 1) {
+		  newMedals = newMedals.replace(`<invisible>RE</invisible>`, `<bronze>RE</bronze>`)
+	  }
+	  if (this.b2bGauge >= 12) {
+		  newMedals = newMedals.replace(`<silver>RE</silver>`, `<gold>RE</gold>`)
+	  } else if (this.b2bGauge >= 8) {
+		  newMedals = newMedals.replace(`<bronze>RE</bronze>`, `<silver>RE</silver>`)
+	  } else if (this.b2bGauge >= 4) {
+		  newMedals = newMedals.replace(`<invisible>RE</invisible>`, `<bronze>RE</bronze>`)
+	  }
+	  if (this.bravoGauge >= 3) {
+		  newMedals = newMedals.replace(`<silver>RE</silver>`, `<gold>RE</gold>`)
+	  } else if (this.b2bGauge >= 2) {
+		  newMedals = newMedals.replace(`<bronze>RE</bronze>`, `<silver>RE</silver>`)
+	  } else if (this.b2bGauge >= 1) {
+		  newMedals = newMedals.replace(`<invisible>RE</invisible>`, `<bronze>RE</bronze>`)
+	  }
+	  this.parent.stat.medals = newMedals
+	  if (this.parent.stat.medals !== this.parent.lastMedals) {
+		  sound.add("medal")
+	  }
+	  this.parent.lastMedals = this.parent.stat.medals
+  }
   deleteCellsOfColor(color) {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
@@ -856,10 +920,10 @@ export default class Stack extends GameModule {
 				this.gemsCleared += 1
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
-				this.parent.stat.score += (100 + (Math.min(0, game.stat.level - 1) * 10))
+				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 10))
 			}
 			if (this.grid[x][y] === "gold") {
-				this.parent.stat.score += (100 + (Math.min(0, game.stat.level - 1) * 10))
+				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 10))
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
 			}
@@ -977,6 +1041,28 @@ export default class Stack extends GameModule {
           }
         }
       }
+	  if (this.lineClear >= 4) {
+		  this.erase4Gauge += 1
+	  }
+	  if (this.parent.b2b > 1) {
+		  this.b2bGauge += 1
+	  }
+	  if (isSpin) {
+		  this.spinGauge += 1
+	  }
+	  if (this.parent.combo >= 1 && && this.parent.combo >= 4 && this.parent.combo > 3 && this.parent.combo < 5) {
+		  this.renGauge += 1
+	  }
+	  if (this.alarmIsOn) {
+		  this.clutchGauge += 1
+	  }
+	  if (pc) {
+		  this.bravoGauge += 1
+	  }
+	  if (this.parent.stat.piece % 40 <= 0 && this.parent.pps <= 2) {
+		  this.sectionGauge += 1
+	  }
+	  this.updateMedals()
 	  if (this.toCollapse.length === 0) {
 		this.parent.calculateActionText(
 			this.lineClear,

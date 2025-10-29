@@ -73,15 +73,6 @@ let lastGemsCleared = 0
 let testMode = false
 let collapseUnderwater = false
 let noGradeUpdate = false
-let medals = [
-	"SK", //Home runs
-	"ST", //Section time
-	"SP", //Spins
-	"BR", //Perfect clears
-	"RE", //Combos
-	"CL", //Clutches
-	"BT", //Back to backs
-]
 const updateTestMode = () => {
 	if (input.getGamePress("testModeKey")) {
 		if (testMode !== false) {

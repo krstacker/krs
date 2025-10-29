@@ -22,5 +22,5 @@
   "hold": {
     "isDisabled": false
   },
-  "stats": ["score", "level", "grade", "line", "piece", "effect"]
+  "stats": ["score", "level", "grade", "line", "piece", "medals", "effect"]
 }

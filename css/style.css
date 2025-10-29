@@ -1586,6 +1586,59 @@ body {
   filter: drop-shadow(2px 2px 2px #333);
 }
 
+.stats div.stat-group div invisible {
+  opacity: 0;
+}
+
+.stats div.stat-group div bronze {
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(206, 137, 71, 1) 0%, rgba(181, 112, 46, 1) 50%, rgba(156, 87, 21, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+}
+
+.stats div.stat-group div silver {
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(196, 196, 196, 1) 0%, rgba(171, 171, 171, 1) 50%, rgba(146, 146, 146, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+}
+
+.stats div.stat-group div gold {
+  color: #A4F7B5;
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(239, 191, 4, 1) 0%, rgba(214, 166, 0, 1) 50%, rgba(189, 141, 0, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+}
+
+.stats div.stat-group div platinum {
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(217, 217, 255, 1) 0%, rgba(192, 192, 230, 1) 50%, rgba(167, 167, 205, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+}
+
+.stats div.stat-group div diamond {
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(67, 255, 255, 1) 0%, rgba(127, 255, 255, 1) 50%, rgba(177, 255, 255, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+}
+
+.stats div.stat-group div titanium {
+  font-weight: bold;
+  color: transparent;
+  background: linear-gradient(180deg,rgba(119, 214, 238, 1) 0%, rgba(154, 231, 244, 1) 50%, rgba(230, 250, 255, 1) 100%);
+  background-clip: text;
+  text-shadow: none;
+}
+
 .stats div.stat-group div.redstat {
   text-shadow: 1px 1px 5px #000000;
   color: #fff;
@@ -1613,6 +1666,10 @@ body {
   background-clip: text;
   text-shadow: none;
   filter: drop-shadow(2px 2px 2px #333);
+}
+
+.stats div.stat-group div.big invisible {
+  opacity: 0;
 }
 
 .stats div.stat-group div.big bronze {
@@ -2285,6 +2342,10 @@ progress[value]::-moz-progress-bar {
   background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
   background-clip: text;
   text-shadow: none;
+}
+
+.end-message-container .end-stats invisible {
+  opacity: 0;
 }
 
 .end-message-container .end-stats bronze {
