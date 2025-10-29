@@ -470,7 +470,9 @@ export default class Game {
 		case "medals":
           if (this.stat["medals"] !== this.initialMedals) {
 			  let displayedMedals = this.stat["medals"]
-			  displayedMedals = displayedMedals.replace(`<br>`, ``)
+			  while (displayedMedals.includes(`<br>`) {
+				  displayedMedals = displayedMedals.replace(`<br>`, ``)
+			  }
 			  displayedMedals = displayedMedals.replace(`<invisible> SK </invisible>`, ``)
 			  displayedMedals = displayedMedals.replace(`<invisible> ST </invisible>`, ``)
 			  displayedMedals = displayedMedals.replace(`<invisible> SP </invisible>`, ``)
@@ -479,7 +481,7 @@ export default class Game {
 			  displayedMedals = displayedMedals.replace(`<invisible> RC </invisible>`, ``)
 			  displayedMedals = displayedMedals.replace(`<invisible> RE </invisible>`, ``)
 			  displayedMedals = displayedMedals.replace(`<invisible> CL </invisible>`, ``)
-			  $("#end-stats").innerHTML += `<span class="medal">${displayedMedals}</span><br>`
+			  $("#end-stats").innerHTML += `<span style="font-size: 1.1em">${displayedMedals}</span><br>`
 		  }
           break
       }

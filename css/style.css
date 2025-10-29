@@ -2327,10 +2327,10 @@ progress[value]::-moz-progress-bar {
 
 .end-message-container .end-stats {
   color: #fff;
-  text-align: right;
+  /*text-align: right;*/
   width: 15em;
   margin: auto;
-  margin-right: 50%;
+  /*margin-right: 50%;*/
   white-space: nowrap;
   font-weight: bold;
   color: transparent;
