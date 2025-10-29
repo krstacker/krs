@@ -1253,7 +1253,10 @@ export default class Stack extends GameModule {
     //   this.parent.noUpdate = true;
     } */
     this.parent.updateStats()
-	this.parent.stat.effect = ""
+	//this.parent.stat.effect = ""
+	if (this.parent.currentEffect === "") {
+		this.parent.stat.effect = ""
+	}
 	if (this.parent.useEffectBlocks) {
 		if (this.effectBlockInterval <= 4) {
 			this.parent.currentEffect = ""
@@ -1261,7 +1264,11 @@ export default class Stack extends GameModule {
 				this.isFrozen = true
 			}
 		}
-		this.parent.stat.effect = ""
+		if (this.effectBlockInterval <= 3 && this.effectBlockInterval > 0) {
+			this.parent.stat.effect = "INCOMING EFFECT!"
+		} else {
+			this.parent.stat.effect = ""
+		}
 	}
 	if (this.parent.currentEffect === "holdLock") {
 		if (this.displayedEffectText !== true) {
