@@ -1681,7 +1681,7 @@ export const loops = {
 		[12, 4],
 		[19.8, 5],
 		[20, 6],
-		[24.8, 7],
+		[25.8, 7],
       ]
 	  for (const pair of musicProgressionTable) {
         const level = pair[0]
