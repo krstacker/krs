@@ -1076,7 +1076,6 @@ export default class Stack extends GameModule {
 			  this.sectionGauge += 1
 		  }
 	  }
-	  this.updateMedals()
 	  if (this.toCollapse.length === 0) {
 		this.parent.calculateActionText(
 			this.lineClear,
@@ -1412,6 +1411,7 @@ export default class Stack extends GameModule {
 		this.displayedEffectText = true
 		$("#message").classList.remove("effectactivated")
 	}
+	this.updateMedals()
   }
   alarmCheck() {
     if (this.parent.type === "zen") {
