@@ -14,7 +14,7 @@
     "background": "marathon.jpg"
   },
   "piece": {
-    "spinDetectionType": "3corner"
+    "spinDetectionType": "immobile"
   },
   "next": {
     "nextLimit": 3
