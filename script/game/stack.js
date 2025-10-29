@@ -1265,7 +1265,7 @@ export default class Stack extends GameModule {
 			}
 		}
 		if (this.effectBlockInterval <= 3 && this.effectBlockInterval > 0) {
-			this.parent.stat.effect = "INCOMING EFFECT!"
+			this.parent.stat.effect = locale.getString("ui", "watchOutWarning")
 		} else {
 			this.parent.stat.effect = ""
 		}
