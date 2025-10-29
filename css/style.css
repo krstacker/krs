@@ -2335,6 +2335,10 @@ progress[value]::-moz-progress-bar {
   text-shadow: none;
 }
 
+.end-message-container .end-message invisible {
+  opacity: 0;
+}
+
 .end-message-container .end-stats b {
   color: #A4F7B5;
   font-weight: bold;
