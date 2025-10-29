@@ -529,11 +529,11 @@ export default class Stack extends GameModule {
 	  } else if (this.clutchGauge >= 1) {
 		  newMedals = newMedals.replace(`<invisible> CL </invisible>`, `<bronze> CL </bronze>`)
 	  }
-	  if (newMedals !== this.parent.lastMedals) {
+	  this.parent.stat.medals = newMedals
+	  if (this.parent.stat.medals !== this.parent.lastMedals) {
 		  sound.add("medal")
 	  }
-	  this.parent.stat.medals = newMedals
-	  this.parent.lastMedals = newMedals
+	  this.parent.lastMedals = this.parent.stat.medals
   }
   deleteCellsOfColor(color) {
     for (let x = 0; x < this.grid.length; x++) {
