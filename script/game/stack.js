@@ -844,7 +844,7 @@ export default class Stack extends GameModule {
           for (let x = 0; x < this.grid.length; x++) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
 				playEffectSound = true
-				this.parent.stat.score += 100
+				this.parent.stat.score += (100 + (Math.min(0, game.stat.level - 1) * 10))
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
 				this.parent.currentEffect = this.grid[x][y]
@@ -856,10 +856,10 @@ export default class Stack extends GameModule {
 				this.gemsCleared += 1
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
-				this.parent.stat.score += 100
+				this.parent.stat.score += (100 + (Math.min(0, game.stat.level - 1) * 10))
 			}
 			if (this.grid[x][y] === "gold") {
-				this.parent.stat.score += 100
+				this.parent.stat.score += (100 + (Math.min(0, game.stat.level - 1) * 10))
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
 			}
