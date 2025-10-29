@@ -2348,6 +2348,10 @@ progress[value]::-moz-progress-bar {
   text-shadow: none;
 }
 
+.end-message-container .end-stats medal {
+  font-size: 1.1em;
+}
+
 .end-message-container .end-stats invisible {
   opacity: 0;
 }

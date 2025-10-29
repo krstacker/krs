@@ -469,9 +469,7 @@ export default class Game {
           break
 		case "medals":
           if (this.stat["medals"] !== this.initialMedals) {
-			  let inGameMedals = this.stat["medals"]
-			  let displayMedals = inGameMedals.replace(`<br>`, ` `)
-			  $("#end-stats").innerHTML += `<b></b>${inGameMedals}<br>`
+			  $("#end-stats").innerHTML += `<medal>${this.stat["medals"]}</medal><br>`
 		  }
           break
       }
