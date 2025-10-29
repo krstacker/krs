@@ -3961,7 +3961,7 @@ KICK_TABLES.krs = {
 KICK_TABLES.arsk = {
   I: KICK_TABLES.arsx.I,
   L: KICK_TABLES.arsx.L,
-  O: KICK_TABLES.krs.O,
+  O: KICK_TABLES.arsx.O,
   Z: KICK_TABLES.arsx.Z,
   T: KICK_TABLES.arsx.T,
   J: KICK_TABLES.arsx.J,
@@ -3970,7 +3970,7 @@ KICK_TABLES.arsk = {
 KICK_TABLES.srsk = {
   I: KICK_TABLES.srs.I,
   L: KICK_TABLES.srs.L,
-  O: KICK_TABLES.krs.O,
+  O: KICK_TABLES.srs.O,
   Z: KICK_TABLES.srs.Z,
   T: KICK_TABLES.srs.T,
   J: KICK_TABLES.srs.J,
