@@ -479,7 +479,7 @@ export default class Game {
 			  displayedMedals = displayedMedals.replace(`<invisible> RC </invisible>`, ``)
 			  displayedMedals = displayedMedals.replace(`<invisible> RE </invisible>`, ``)
 			  displayedMedals = displayedMedals.replace(`<invisible> CL </invisible>`, ``)
-			  $("#end-stats").innerHTML += `<span class="medal">${.replace(`<br>`, ` `)}</span><br>`
+			  $("#end-stats").innerHTML += `<span class="medal">${displayedMedals}</span><br>`
 		  }
           break
       }
