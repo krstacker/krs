@@ -1546,6 +1546,10 @@ body {
   font-weight: 300;
 }
 
+.medal {
+  font-size: 1.1em;
+}
+
 .medium {
   font-size: 2em;
   text-align: right;
@@ -2346,10 +2350,6 @@ progress[value]::-moz-progress-bar {
   background: linear-gradient(180deg,rgba(214, 247, 222, 1) 0%, rgba(164, 247, 181, 1) 50%, rgba(132, 247, 140, 1) 100%);
   background-clip: text;
   text-shadow: none;
-}
-
-.end-message-container .end-stats medal {
-  font-size: 1.1em;
 }
 
 .end-message-container .end-stats invisible {

@@ -469,7 +469,7 @@ export default class Game {
           break
 		case "medals":
           if (this.stat["medals"] !== this.initialMedals) {
-			  $("#end-stats").innerHTML += `<medal>${this.stat["medals"]}</medal><br>`
+			  $("#end-stats").innerHTML += `<span class="medal">${this.stat["medals"].replace(`<br>`, ` `)}</span><br>`
 		  }
           break
       }

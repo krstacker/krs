@@ -1070,12 +1070,6 @@ export default class Stack extends GameModule {
 	  if (pc) {
 		  this.bravoGauge += 1
 	  }
-	  if (this.parent.stat.level !== this.levelGauge) {
-		  this.levelGauge += 1
-		  if (this.parent.pps >= 2) {
-			  this.sectionGauge += 1
-		  }
-	  }
 	  if (this.toCollapse.length === 0) {
 		this.parent.calculateActionText(
 			this.lineClear,
@@ -1410,6 +1404,12 @@ export default class Stack extends GameModule {
 	} else if (this.parent.useEffectBlocks !== true) {
 		this.displayedEffectText = true
 		$("#message").classList.remove("effectactivated")
+	}
+	if (this.parent.stat.level !== this.levelGauge) {
+		this.levelGauge += 1
+		if (this.parent.pps >= 2) {
+			this.sectionGauge += 1
+		}
 	}
 	this.updateMedals()
   }
