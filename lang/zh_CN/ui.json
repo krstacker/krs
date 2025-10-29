@@ -80,7 +80,7 @@
     "description": "Displays right after 'ready' at the frame the game begins. It displays on a mode that focuses solely on clearing the game as fast as possible, such as sprint; 'race-like' mode."
   },
   "gameover": {
-    "message": "游戏 <br> 结束",
+    "message": "游戏结束",
     "description": "Displays when the game is finished. It does not connotate winning or losing, just that the game has completed"
   },
   "pleasetryagain": {
