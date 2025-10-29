@@ -71,7 +71,7 @@ export default class Game {
 	  <invisible> BR </invisible>
 	  <invisible> RC </invisible><br>
 	  <invisible> RE </invisible>
-	  <invisible> CL </invisible><br>
+	  <invisible> CL </invisible>
 	  `,
     }
     this.appends = {}
