@@ -470,17 +470,24 @@ export default class Game {
 		case "medals":
           if (this.stat["medals"] !== this.initialMedals) {
 			  let displayedMedals = this.stat["medals"]
-			  while (displayedMedals.includes(`<br>`) {
+			  while (
+				  displayedMedals.includes(`<br>`)
+			  ) {
 				  displayedMedals = displayedMedals.replace(`<br>`, ``)
 			  }
-			  displayedMedals = displayedMedals.replace(`<invisible> SK </invisible>`, ``)
-			  displayedMedals = displayedMedals.replace(`<invisible> ST </invisible>`, ``)
-			  displayedMedals = displayedMedals.replace(`<invisible> SP </invisible>`, ``)
-			  displayedMedals = displayedMedals.replace(`<invisible> BT </invisible>`, ``)
-			  displayedMedals = displayedMedals.replace(`<invisible> BR </invisible>`, ``)
-			  displayedMedals = displayedMedals.replace(`<invisible> RC </invisible>`, ``)
-			  displayedMedals = displayedMedals.replace(`<invisible> RE </invisible>`, ``)
-			  displayedMedals = displayedMedals.replace(`<invisible> CL </invisible>`, ``)
+			  while (
+				  displayedMedals.includes(`<invisible>`) ||
+				  displayedMedals.includes(`</invisible>`)
+			  ) {
+				  displayedMedals = displayedMedals.replace(`<invisible> SK </invisible>`, ``)
+				  displayedMedals = displayedMedals.replace(`<invisible> ST </invisible>`, ``)
+				  displayedMedals = displayedMedals.replace(`<invisible> SP </invisible>`, ``)
+				  displayedMedals = displayedMedals.replace(`<invisible> BT </invisible>`, ``)
+				  displayedMedals = displayedMedals.replace(`<invisible> BR </invisible>`, ``)
+				  displayedMedals = displayedMedals.replace(`<invisible> RC </invisible>`, ``)
+				  displayedMedals = displayedMedals.replace(`<invisible> RE </invisible>`, ``)
+				  displayedMedals = displayedMedals.replace(`<invisible> CL </invisible>`, ``)
+			  }
 			  $("#end-stats").innerHTML += `<span style="font-size: 1.1em">${displayedMedals}</span><br>`
 		  }
           break
