@@ -82,10 +82,8 @@ export default class Stack extends GameModule {
     }
   }
   reRenderStack() {
-	  if (game.isDirty !== true) {
-		this.makeAllDirty()
-		this.isDirty = true
-	}
+	this.makeAllDirty()
+	this.isDirty = true
   }
   freezePlacedMinos() {
     for (let x = 0; x < this.grid.length; x++) {
@@ -908,7 +906,7 @@ export default class Stack extends GameModule {
           for (let x = 0; x < this.grid.length; x++) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
 				playEffectSound = true
-				this.parent.stat.score += (100 + (Math.min(0, game.stat.level - 1) * 10))
+				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 10))
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
 				this.parent.currentEffect = this.grid[x][y]
