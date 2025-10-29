@@ -789,6 +789,7 @@ export const loops = {
 	  if (game.stat.piece >= pieceRequirement * levelGoal) {
 		noGradeUpdate = true
 		if (game.stat.grade === "<diamond>KM</diamond>") {
+			sound.add("cheer")
 			game.stat.grade = "<titanium>KM+</titanium>"
 		}
 		game.stat.piece = pieceRequirement * levelGoal
@@ -1521,6 +1522,7 @@ export const loops = {
 	  if (game.stat.piece >= pieceRequirement * levelGoal) {
 		noGradeUpdate = true
 		if (game.stat.grade === "<diamond>KM</diamond>") {
+			sound.add("cheer")
 			game.stat.grade = "<titanium>KM+</titanium>"
 		}
 		game.stat.piece = pieceRequirement * levelGoal

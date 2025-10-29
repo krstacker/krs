@@ -498,7 +498,7 @@ export default class Game {
       sound.add("gameover")
       sound.add("voxgameover")
       //$("#end-message").textContent = locale.getString("ui", "gameover")
-	  $("#end-message").innerHTML = `GAME‎ ‎  ‎  ‎ <br>‎ ‎  ‎ ‎ ‎ OVER`
+	  $("#end-message").innerHTML = `GAME‎ ‎  ‎  ‎  ‎ <br> ‎ ‎ ‎  ‎ ‎ ‎ OVER`
       if (this.type === "handheld" || this.type === "deluxe") {
         $("#end-message").innerHTML = `${locale.getString(
           "ui",
