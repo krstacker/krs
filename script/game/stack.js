@@ -1050,7 +1050,7 @@ export default class Stack extends GameModule {
 	  if (isSpin) {
 		  this.spinGauge += 1
 	  }
-	  if (this.parent.combo >= 1 && && this.parent.combo >= 4 && this.parent.combo > 3 && this.parent.combo < 5) {
+	  if (this.parent.combo >= 1 && this.parent.combo >= 4 && this.parent.combo > 3 && this.parent.combo < 5) {
 		  this.renGauge += 1
 	  }
 	  if (this.alarmIsOn) {
