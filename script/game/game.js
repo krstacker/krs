@@ -497,7 +497,8 @@ export default class Game {
       $("#kill-message-container").classList.add("hidden")
       sound.add("gameover")
       sound.add("voxgameover")
-      $("#end-message").textContent = locale.getString("ui", "gameover")
+      //$("#end-message").textContent = locale.getString("ui", "gameover")
+	  $("#end-message").textContent = "GAME  <br>  OVER"
       if (this.type === "handheld" || this.type === "deluxe") {
         $("#end-message").innerHTML = `${locale.getString(
           "ui",
