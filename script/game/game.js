@@ -65,12 +65,13 @@ export default class Game {
 	  effect: "",
 	  medals: `
 	  <invisible> SK </invisible>
-	  <invisible> ST </invisible>
+	  <invisible> ST </invisible><br>
 	  <invisible> SP </invisible>
-	  <invisible> BT </invisible>
+	  <invisible> BT </invisible><br>
 	  <invisible> BR </invisible>
+	  <invisible> RC </invisible><br>
 	  <invisible> RE </invisible>
-	  <invisible> CL </invisible>
+	  <invisible> CL </invisible><br>
 	  `,
     }
     this.appends = {}
@@ -84,6 +85,7 @@ export default class Game {
       entrydelay: true,
       pace: true,
 	  effect: true,
+	  medals: true,
     }
 	this.redStats = {
 	  effect: true,
@@ -465,7 +467,9 @@ export default class Game {
           )}:</b> ${this.stat["skipCount"]}<br>`
           break
 		case "medals":
-          $("#end-stats").innerHTML += `<b></b>${this.stat["medals"]}<br>`
+		  let inGameMedals = this.stat["medals"]
+		  let displayMedals = inGameMedals.replace(`<br>`, ` `)
+          $("#end-stats").innerHTML += `<b></b>${inGameMedals}<br>`
           break
       }
     }

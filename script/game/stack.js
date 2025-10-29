@@ -52,10 +52,12 @@ export default class Stack extends GameModule {
 	this.erase4Gauge = 0
 	this.spinGauge = 0
 	this.clutchGauge = 0
+	this.dangerGauge = 0
 	this.b2bGauge = 0
 	this.bravoGauge = 0
 	this.renGauge = 0
 	this.sectionGauge = 0
+	this.levelPieceRequirement = 40
 	$("#message").classList.remove("effectactivated")
   }
   removeFromArray(array, elementToRemove) {
@@ -494,6 +496,13 @@ export default class Stack extends GameModule {
 	  } else if (this.spinGauge >= 4) {
 		  newMedals = newMedals.replace(`<invisible> SP </invisible>`, `<bronze> SP </bronze>`)
 	  }
+	  if (this.b2bGauge >= 12) {
+		  newMedals = newMedals.replace(`<silver> BT </silver>`, `<gold> BT </gold>`)
+	  } else if (this.b2bGauge >= 8) {
+		  newMedals = newMedals.replace(`<bronze> BT </bronze>`, `<silver> BT </silver>`)
+	  } else if (this.b2bGauge >= 4) {
+		  newMedals = newMedals.replace(`<invisible> BT </invisible>`, `<bronze> BT </bronze>`)
+	  }
 	  if (this.sectionGauge >= 3) {
 		  newMedals = newMedals.replace(`<silver> ST </silver>`, `<gold> ST </gold>`)
 	  } else if (this.sectionGauge >= 2) {
@@ -509,18 +518,11 @@ export default class Stack extends GameModule {
 		  newMedals = newMedals.replace(`<invisible> BR </invisible>`, `<bronze> BR </bronze>`)
 	  }
 	  if (this.renGauge >= 3) {
-		  newMedals = newMedals.replace(`<silver> RE </silver>`, `<gold> RE </gold>`)
+		  newMedals = newMedals.replace(`<silver> RC </silver>`, `<gold> RC </gold>`)
 	  } else if (this.renGauge >= 2) {
-		  newMedals = newMedals.replace(`<bronze> RE </bronze>`, `<silver> RE </silver>`)
+		  newMedals = newMedals.replace(`<bronze> RC </bronze>`, `<silver> RC </silver>`)
 	  } else if (this.renGauge >= 1) {
-		  newMedals = newMedals.replace(`<invisible> RE </invisible>`, `<bronze> RE </bronze>`)
-	  }
-	  if (this.b2bGauge >= 12) {
-		  newMedals = newMedals.replace(`<silver> BT </silver>`, `<gold> BT </gold>`)
-	  } else if (this.b2bGauge >= 8) {
-		  newMedals = newMedals.replace(`<bronze> BT </bronze>`, `<silver> BT </silver>`)
-	  } else if (this.b2bGauge >= 4) {
-		  newMedals = newMedals.replace(`<invisible> BT </invisible>`, `<bronze> BT </bronze>`)
+		  newMedals = newMedals.replace(`<invisible> RC </invisible>`, `<bronze> RC </bronze>`)
 	  }
 	  if (this.clutchGauge >= 3) {
 		  newMedals = newMedals.replace(`<silver> CL </silver>`, `<gold> CL </gold>`)
@@ -528,6 +530,13 @@ export default class Stack extends GameModule {
 		  newMedals = newMedals.replace(`<bronze> CL </bronze>`, `<silver> CL </silver>`)
 	  } else if (this.clutchGauge >= 1) {
 		  newMedals = newMedals.replace(`<invisible> CL </invisible>`, `<bronze> CL </bronze>`)
+	  }
+	  if (this.dangerGauge >= 12) {
+		  newMedals = newMedals.replace(`<silver> RE </silver>`, `<gold> RE </gold>`)
+	  } else if (this.clutchGauge >= 8) {
+		  newMedals = newMedals.replace(`<bronze> RE </bronze>`, `<silver> RE </silver>`)
+	  } else if (this.clutchGauge >= 4) {
+		  newMedals = newMedals.replace(`<invisible> RE </invisible>`, `<bronze> RE </bronze>`)
 	  }
 	  this.parent.stat.medals = newMedals
 	  if (this.parent.stat.medals !== this.parent.lastMedals) {
@@ -1048,16 +1057,19 @@ export default class Stack extends GameModule {
 	  if (isSpin) {
 		  this.spinGauge += 1
 	  }
-	  if (this.parent.combo >= 1 && this.parent.combo >= 4 && this.parent.combo > 3 && this.parent.combo < 5) {
+	  if (this.parent.combo === 5) {
 		  this.renGauge += 1
 	  }
-	  if (this.alarmIsOn) {
+	  if (this.isClutch) {
 		  this.clutchGauge += 1
+	  }
+	  if (this.alarmIsOn) {
+		  this.dangerGauge += 1
 	  }
 	  if (pc) {
 		  this.bravoGauge += 1
 	  }
-	  if (this.parent.stat.piece % 40 <= 0 && this.parent.pps <= 2) {
+	  if (this.parent.stat.piece % this.levelPieceRequirement <= 0 && this.parent.pps >= 2) {
 		  this.sectionGauge += 1
 	  }
 	  this.updateMedals()

@@ -141,6 +141,7 @@ const updateLockFlash = () => {
 }
 const krsLevelSystem = (game, pieceRequirement = 40, levelGoal = 20) => {
 	let returnValue = false
+	game.stack.levelPieceRequirement = pieceRequirement
 	game.stat.level = Math.floor(game.stat.piece / pieceRequirement) + 1
 	if (game.stat.level !== lastLevel) {
 		if (game.stat.level <= levelGoal) {
