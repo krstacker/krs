@@ -145,6 +145,7 @@ export default class Game {
 	]
 	this.lastMedals = this.stat.medals
 	this.initialMedals = this.stat.medals
+	this.showMedals = false
     loadGameType(gametype)
       .then((gameData) => {
         gtag("event", "play", {
@@ -745,6 +746,9 @@ export default class Game {
       } else if (statName === "pcCount") {
         label.textContent = locale.getString("action-text", "pc")
 	  } else if (statName === "medals" || statName === "effect" || game.redStats[statName]) {
+		if (statName === "medals") {
+			this.showMedals = true
+		}
         label.textContent = " "
       } else {
         label.textContent = locale.getString("ui", statName)

@@ -540,7 +540,7 @@ export default class Stack extends GameModule {
 		  newMedals = newMedals.replace(`<invisible> RE </invisible>`, `<bronze> RE </bronze>`)
 	  }
 	  this.parent.stat.medals = newMedals
-	  if (this.parent.stat.medals !== this.parent.lastMedals) {
+	  if (this.parent.stat.medals !== this.parent.lastMedals && this.parent.showMedals) {
 		  sound.add("medal")
 	  }
 	  this.parent.lastMedals = this.parent.stat.medals
