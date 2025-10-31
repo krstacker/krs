@@ -1864,6 +1864,9 @@ export const loops = {
       updateFallSpeed(game)
       if (krsLevelSystem(game, pieceRequirement, levelGoal)) {
 		resetTimeLimit(game)
+		if (collapseUnderwater) {
+			game.stack.clearUnderwaterRows()
+		}
 	  }
 	  const timeLimitTable = [
 		[1, 60],

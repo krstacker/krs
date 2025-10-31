@@ -720,9 +720,9 @@ export default class Stack extends GameModule {
 			"deathBlock",
 		]
 		if (frozenEffectsRoster.includes(this.parent.pendingEffect) !== true) {
-			this.parent.pendingEffect = this.parent.frozenEffectsRoster[Math.max(
+			this.parent.pendingEffect = frozenEffectsRoster[Math.max(
 				0,
-				Math.floor(Math.random() * this.parent.frozenEffectsRoster.length) - 1
+				Math.floor(Math.random() * frozenEffectsRoster.length) - 1
 			)]
 			while (this.parent.pendingEffect === this.lastEffect) {
 				this.parent.pendingEffect = frozenEffectsRoster[Math.max(
