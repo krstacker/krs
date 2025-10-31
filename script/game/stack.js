@@ -534,9 +534,9 @@ export default class Stack extends GameModule {
 	  }
 	  if (this.dangerGauge >= 9) {
 		  newMedals = newMedals.replace(`<silver> RE </silver>`, `<gold> RE </gold>`)
-	  } else if (this.clutchGauge >= 6) {
+	  } else if (this.dangerGauge >= 6) {
 		  newMedals = newMedals.replace(`<bronze> RE </bronze>`, `<silver> RE </silver>`)
-	  } else if (this.clutchGauge >= 3) {
+	  } else if (this.dangerGauge >= 3) {
 		  newMedals = newMedals.replace(`<invisible> RE </invisible>`, `<bronze> RE </bronze>`)
 	  }
 	  this.parent.stat.medals = newMedals
