@@ -120,6 +120,10 @@ export default class Stack extends GameModule {
 				this.grid[x][y] = "goldgem"
 			} else if (this.grid[x][y] === "frozen") {
 				this.grid[x][y] = "icegem"
+			} else if (this.grid[x][y] === "black") {
+				this.grid[x][y] = "blackgem"
+			} else if (this.grid[x][y] === "white") {
+				this.grid[x][y] = "whitegem"
 			} else if (this.grid[x][y] === color) {
 				this.grid[x][y] = `${color}gem`
 			}
