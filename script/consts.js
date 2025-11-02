@@ -4100,9 +4100,9 @@ PIECE_COLORS.krsb = {
 	I: "orange",
     L: "red",
     O: "yellow",
-    Z: "blue",
+    Z: "lightBlue",
     T: "green",
-    J: "lightBlue",
+    J: "blue",
     S: "purple",
 }
 
