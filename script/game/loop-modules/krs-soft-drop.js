@@ -4,7 +4,11 @@ import { framesToMs } from "../../shortcuts.js"
 import settings from "../../settings.js"
 
 export default function krsSoftDrop(arg, frameGravity = 1) {
-  if (arg.piece.gravity < framesToMs(1) && arg.piece.isLanded) {
+  if (arg.piece.gravity < framesToMs(1) && arg.piece.isLanded &&
+		settings.settings.rotationSystem.includes("srs") !== true &&
+		settings.settings.rotationSystem !== "world" &&
+		settings.settings.rotationSystem !== "krsb"
+	) {
     if (input.getGamePress("softDrop")) {
       arg.piece.gravityMultiplier = Math.max(
         1,

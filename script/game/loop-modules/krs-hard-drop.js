@@ -8,7 +8,7 @@ export default function krsSonicDrop(arg) {
 		input.getGameDown("specialKey") ||
 		settings.settings.rotationSystem.includes("srs") ||
 		settings.settings.rotationSystem === "world" ||
-		settings.settings.rotationSystem === "krsb" ||
+		settings.settings.rotationSystem === "krsb"
 	) {
 		arg.piece.hardDrop()
 	} else {
