@@ -1088,6 +1088,7 @@ SPAWN_OFFSETS.krs = SPAWN_OFFSETS.arsx
 SPAWN_OFFSETS.sega = SPAWN_OFFSETS.ars
 SPAWN_OFFSETS.arsk = SPAWN_OFFSETS.arsx
 SPAWN_OFFSETS.srsk = SPAWN_OFFSETS.srs
+SPAWN_OFFSETS.krsb = SPAWN_OFFSETS.ascx
 
 export const INITIAL_ORIENTATION = {
   srs: {
@@ -1124,6 +1125,7 @@ INITIAL_ORIENTATION.krs = INITIAL_ORIENTATION.arsx
 INITIAL_ORIENTATION.sega = INITIAL_ORIENTATION.ars
 INITIAL_ORIENTATION.arsk = INITIAL_ORIENTATION.arsx
 INITIAL_ORIENTATION.srsk = INITIAL_ORIENTATION.srs
+INITIAL_ORIENTATION.krsb = INITIAL_ORIENTATION.arsx
 
 const KICK_TEMPLATES = {
   o: {
@@ -3677,6 +3679,13 @@ KICK_TEMPLATES.krs = {
   T: KICK_TEMPLATES.tetrax.x,
   O: KICK_TEMPLATES.ascx.x,
 }
+KICK_TEMPLATES.krsb = {
+  x: KICK_TEMPLATES.ascx.x,  
+  I: KICK_TEMPLATES.ascx.x,
+  LJ: KICK_TEMPLATES.asc.x,
+  T: KICK_TEMPLATES.asc.x,
+  O: KICK_TEMPLATES.ascx.x,
+}
 
 export const KICK_TABLES = {
   asc: {
@@ -3976,6 +3985,15 @@ KICK_TABLES.srsk = {
   J: KICK_TABLES.srs.J,
   S: KICK_TABLES.srs.S,
 }
+KICK_TABLES.krsb = {
+  I: KICK_TEMPLATES.krsb.I,
+  L: KICK_TEMPLATES.krsb.LJ,
+  O: KICK_TEMPLATES.krsb.O,
+  Z: KICK_TEMPLATES.krsb.x,
+  T: KICK_TEMPLATES.krsb.T,
+  J: KICK_TEMPLATES.krsb.LJ,
+  S: KICK_TEMPLATES.krsb.x,
+}
 
 export const PIECE_COLORS = {
   srs: {
@@ -4078,6 +4096,15 @@ PIECE_COLORS.sega = PIECE_COLORS.ars
 PIECE_COLORS.krs = PIECE_COLORS.arsx
 PIECE_COLORS.arsk = PIECE_COLORS.arsx
 PIECE_COLORS.srsk = PIECE_COLORS.srs
+PIECE_COLORS.krsb = {
+	I: "orange",
+    L: "red",
+    O: "yellow",
+    Z: "blue",
+    T: "green",
+    J: "lightBlue",
+    S: "purple",
+}
 
 export const NEXT_OFFSETS = {
   monomino: {
@@ -4123,6 +4150,7 @@ NEXT_OFFSETS.sega = NEXT_OFFSETS.ars
 NEXT_OFFSETS.krs = NEXT_OFFSETS.arsx
 NEXT_OFFSETS.arsk = NEXT_OFFSETS.arsx
 NEXT_OFFSETS.srsk = NEXT_OFFSETS.srs
+NEXT_OFFSETS.krsb = NEXT_OFFSETS.ascx
 
 export const PIECE_OFFSETS = {
   asc: {
@@ -4486,6 +4514,15 @@ PIECE_OFFSETS.srsk = {
   T: PIECE_OFFSETS.srs.T,
   J: PIECE_OFFSETS.srs.J,
   S: PIECE_OFFSETS.srs.S,
+}
+PIECE_OFFSETS.krsb = {
+  I: PIECE_OFFSETS.ascx.I,
+  L: PIECE_OFFSETS.asc.L,
+  O: PIECE_OFFSETS.ascx.O,
+  Z: PIECE_OFFSETS.ascx.Z,
+  T: PIECE_OFFSETS.asc.T,
+  J: PIECE_OFFSETS.asc.J,
+  S: PIECE_OFFSETS.ascx.S,
 }
 
 export const PIECE_BINARIES = {
@@ -5023,6 +5060,7 @@ export const SKIN_SETS = {
   krs: "standard",
   arsk: "ars",
   srsk: "srs",
+  krsb: "standard",
 }
 export const SOUND_SETS = {
   asc: "standard",
@@ -5042,4 +5080,5 @@ export const SOUND_SETS = {
   krs: "standard",
   arsk: "standard",
   srsk: "standard",
+  krsb: "standard",
 }

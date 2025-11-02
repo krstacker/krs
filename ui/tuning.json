@@ -73,33 +73,38 @@
       "stringDesc": "rotSysDescription",
       "type": "select",
       "action": "select",
-	  "secretA": true,
 	  "omitDescription": false,
       "selectOptions": [
         {
-          "string": "krsRotsLabel",
-		  "stringDesc": "krsRotsDesc",
+          "label": "KRS-S",
+          "fixedText": true,
           "value": "krs",
-		  "langOverride": "menu_tuning",
-		  "fixedText": false,
-		  "omitDescription": false
+		  "fixedText": true,
+		  "omitDescription": true
         },
         {
-          "string": "arsRotsLabel",
-		  "stringDesc": "arsRotsDesc",
-          "value": "arsk",
-		  "langOverride": "menu_tuning",
-		  "fixedText": false,
-		  "omitDescription": false
+          "label": "KRS-N",
+          "fixedText": true,
+          "value": "krsb",
+		  "fixedText": true,
+		  "omitDescription": true
         },
-        {
-          "string": "srsRotsLabel",
-		  "stringDesc": "srsRotsDesc",
+		{
+          "label": "SRS-X",
+          "fixedText": true,
           "value": "srsk",
-		  "langOverride": "menu_tuning",
-		  "fixedText": false,
-		  "omitDescription": false
-        }
+		  "secretA": true,
+		  "fixedText": true,
+		  "omitDescription": true
+        },
+		{
+          "label": "ARS-X",
+          "fixedText": true,
+          "value": "arsk",
+		  "secretA": true,
+		  "fixedText": true,
+		  "omitDescription": true
+        },
       ],
       "setting": "rotationSystem",
       "settingType": "setting"

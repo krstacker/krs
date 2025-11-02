@@ -63,23 +63,5 @@
   "originalOption": {
     "message": "Original",
     "description": "As in 'Original Rotation System', the one used by the first version of the game"
-  },
-  "krsRotsLabel": {
-    "message": "KRS-K"
-  },
-  "krsRotsDesc": {
-    "message": "A perfect balance between permissive and comprehensible"
-  },
-  "arsRotsLabel": {
-    "message": "ARS-K"
-  },
-  "arsRotsDesc": {
-    "message": "Less permissive, but more comprehensible"
-  },
-  "srsRotsLabel": {
-    "message": "SRS-K"
-  },
-  "srsRotsDesc": {
-    "message": "More permissive, but less comprehensible"
   }
 }
