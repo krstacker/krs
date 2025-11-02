@@ -13,7 +13,7 @@ const useWorldControls = () => {
   if (settings.settings.rotationSystem === "world") {
 	result = true
   }
-  if (settings.settings.rotationSystem !== "krsb") {
+  if (settings.settings.rotationSystem === "krsb") {
 	result = true
   }
   return result

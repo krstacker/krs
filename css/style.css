@@ -808,7 +808,7 @@ body {
   height: 1em;
   width: 1em;
   display: inline-block;
-  border-radius: 100em;
+  border-radius: 0em;
 }
 
 #menu>.toggle-container .bubble.enabled {
@@ -1031,7 +1031,7 @@ body {
   margin-right: .2em;
   border-color: #fff;
   border-width: .05em;
-  border-radius: 100em;
+  border-radius: 0em;
   border-style: solid;
   font-weight: bold;
   color: transparent;
