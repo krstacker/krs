@@ -79,14 +79,12 @@
           "label": "KRS-S",
           "fixedText": true,
           "value": "krs",
-		  "fixedText": true,
 		  "omitDescription": true
         },
         {
           "label": "KRS-N",
           "fixedText": true,
           "value": "krsb",
-		  "fixedText": true,
 		  "omitDescription": true
         },
 		{
@@ -94,7 +92,6 @@
           "fixedText": true,
           "value": "srsk",
 		  "secretA": true,
-		  "fixedText": true,
 		  "omitDescription": true
         },
 		{
@@ -102,9 +99,8 @@
           "fixedText": true,
           "value": "arsk",
 		  "secretA": true,
-		  "fixedText": true,
 		  "omitDescription": true
-        },
+        }
       ],
       "setting": "rotationSystem",
       "settingType": "setting"
