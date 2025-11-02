@@ -20,7 +20,7 @@ const useWorldControls = () => {
 }
 
 export default function krsSoftDrop(arg, frameGravity = 1) {
-  if (arg.piece.gravity < framesToMs(1) && arg.piece.isLanded && useWorldControls() === false) {
+  if (arg.piece.gravity <= framesToMs(1) && arg.piece.isLanded && useWorldControls() === false) {
     if (input.getGamePress("softDrop")) {
       arg.piece.gravityMultiplier = Math.max(
         1,
