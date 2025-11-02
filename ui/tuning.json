@@ -86,20 +86,6 @@
           "fixedText": true,
           "value": "krsb",
 		  "omitDescription": true
-        },
-		{
-          "label": "SRS-X",
-          "fixedText": true,
-          "value": "srsk",
-		  "secretA": true,
-		  "omitDescription": true
-        },
-		{
-          "label": "ARS-X",
-          "fixedText": true,
-          "value": "arsk",
-		  "secretA": true,
-		  "omitDescription": true
         }
       ],
       "setting": "rotationSystem",
