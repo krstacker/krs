@@ -46,19 +46,7 @@ export default function krsSoftDrop(arg, frameGravity = 1) {
 			arg.piece.mustLock = true
 			arg.piece.hasHardDropped = true
 			sound.add("harddrop")
-		}
-      }
-    } else if (input.getGamePress("softDrop")) {
-      arg.piece.gravityMultiplier = Math.max(
-        1,
-        arg.piece.gravity / framesToMs(frameGravity)
-      )
-      if (!arg.piece.isLanded) {
-        arg.piece.genPieceParticles()
-      } else {
-		if (
-			arg.piece.mustLock === false
-		) {
+		} else if (input.getGamePress("softDrop")) {
 			arg.piece.mustLock = true
 			arg.piece.hasHardDropped = true
 			sound.add("harddrop")
