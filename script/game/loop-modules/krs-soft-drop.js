@@ -29,7 +29,7 @@ export default function krsSoftDrop(arg, frameGravity = 1) {
       arg.piece.gravityMultiplier = 1
     }
   } else {
-    if (input.getGameDown("softDrop")) {
+    if (input.getGameDown("softDrop") || input.getGamePress("softDrop")) {
       arg.piece.gravityMultiplier = Math.max(
         1,
         arg.piece.gravity / framesToMs(frameGravity)
