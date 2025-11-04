@@ -120,10 +120,6 @@ export default class Stack extends GameModule {
 				this.grid[x][y] = "goldgem"
 			} else if (this.grid[x][y] === "frozen") {
 				this.grid[x][y] = "icegem"
-			} else if (this.grid[x][y] === "black") {
-				this.grid[x][y] = "blackgem"
-			} else if (this.grid[x][y] === "white") {
-				this.grid[x][y] = "whitegem"
 			} else if (this.grid[x][y] === color) {
 				this.grid[x][y] = `${color}gem`
 			}
@@ -936,7 +932,7 @@ export default class Stack extends GameModule {
           for (let x = 0; x < this.grid.length; x++) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
 				playEffectSound = true
-				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 10))
+				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 25))
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
 				this.parent.currentEffect = this.grid[x][y]
@@ -948,10 +944,10 @@ export default class Stack extends GameModule {
 				this.gemsCleared += 1
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
-				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 10))
+				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 25))
 			}
 			if (this.grid[x][y] === "gold") {
-				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 10))
+				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 25))
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
 			}

@@ -3682,8 +3682,8 @@ KICK_TEMPLATES.krs = {
 KICK_TEMPLATES.krsb = {
   x: KICK_TEMPLATES.ascx.x,  
   I: KICK_TEMPLATES.ascx.x,
-  LJ: KICK_TEMPLATES.asc.x,
-  T: KICK_TEMPLATES.asc.x,
+  LJ: KICK_TEMPLATES.srs.x,
+  T: KICK_TEMPLATES.srs.x,
   O: KICK_TEMPLATES.ascx.x,
 }
 
@@ -4500,7 +4500,7 @@ PIECE_OFFSETS.krs = {
 PIECE_OFFSETS.arsk = {
   I: PIECE_OFFSETS.arsx.I,
   L: PIECE_OFFSETS.arsx.L,
-  O: PIECE_OFFSETS.ascx.O,
+  O: PIECE_OFFSETS.arsx.O,
   Z: PIECE_OFFSETS.arsx.Z,
   T: PIECE_OFFSETS.arsx.T,
   J: PIECE_OFFSETS.arsx.J,
@@ -4509,7 +4509,7 @@ PIECE_OFFSETS.arsk = {
 PIECE_OFFSETS.srsk = {
   I: PIECE_OFFSETS.srs.I,
   L: PIECE_OFFSETS.srs.L,
-  O: PIECE_OFFSETS.ascx.O,
+  O: PIECE_OFFSETS.srs.O,
   Z: PIECE_OFFSETS.srs.Z,
   T: PIECE_OFFSETS.srs.T,
   J: PIECE_OFFSETS.srs.J,
@@ -4517,11 +4517,11 @@ PIECE_OFFSETS.srsk = {
 }
 PIECE_OFFSETS.krsb = {
   I: PIECE_OFFSETS.ascx.I,
-  L: PIECE_OFFSETS.asc.L,
+  L: PIECE_OFFSETS.srs.L,
   O: PIECE_OFFSETS.ascx.O,
   Z: PIECE_OFFSETS.ascx.Z,
-  T: PIECE_OFFSETS.asc.T,
-  J: PIECE_OFFSETS.asc.J,
+  T: PIECE_OFFSETS.srs.T,
+  J: PIECE_OFFSETS.srs.J,
   S: PIECE_OFFSETS.ascx.S,
 }
 
