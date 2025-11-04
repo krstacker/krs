@@ -3682,8 +3682,8 @@ KICK_TEMPLATES.krs = {
 KICK_TEMPLATES.krsb = {
   x: KICK_TEMPLATES.ascx.x,  
   I: KICK_TEMPLATES.ascx.x,
-  LJ: KICK_TEMPLATES.asc.x,
-  T: KICK_TEMPLATES.asc.x,
+  LJ: KICK_TEMPLATES.ascx.x,
+  T: KICK_TEMPLATES.ascx.x,
   O: KICK_TEMPLATES.ascx.x,
 }
 
@@ -4517,11 +4517,11 @@ PIECE_OFFSETS.srsk = {
 }
 PIECE_OFFSETS.krsb = {
   I: PIECE_OFFSETS.ascx.I,
-  L: PIECE_OFFSETS.asc.L,
+  L: PIECE_OFFSETS.ascx.L,
   O: PIECE_OFFSETS.ascx.O,
   Z: PIECE_OFFSETS.ascx.Z,
-  T: PIECE_OFFSETS.asc.T,
-  J: PIECE_OFFSETS.asc.J,
+  T: PIECE_OFFSETS.ascx.T,
+  J: PIECE_OFFSETS.ascx.J,
   S: PIECE_OFFSETS.ascx.S,
 }
 
