@@ -3679,13 +3679,7 @@ KICK_TEMPLATES.krs = {
   T: KICK_TEMPLATES.tetrax.x,
   O: KICK_TEMPLATES.ascx.x,
 }
-KICK_TEMPLATES.krsb = {
-  x: KICK_TEMPLATES.ascx.x,  
-  I: KICK_TEMPLATES.ascx.x,
-  LJ: KICK_TEMPLATES.ascx.x,
-  T: KICK_TEMPLATES.ascx.x,
-  O: KICK_TEMPLATES.ascx.x,
-}
+KICK_TEMPLATES.krsb = KICK_TEMPLATES.krs
 
 export const KICK_TABLES = {
   asc: {
@@ -3985,15 +3979,7 @@ KICK_TABLES.srsk = {
   J: KICK_TABLES.srs.J,
   S: KICK_TABLES.srs.S,
 }
-KICK_TABLES.krsb = {
-  I: KICK_TEMPLATES.krsb.I,
-  L: KICK_TEMPLATES.krsb.LJ,
-  O: KICK_TEMPLATES.krsb.O,
-  Z: KICK_TEMPLATES.krsb.x,
-  T: KICK_TEMPLATES.krsb.T,
-  J: KICK_TEMPLATES.krsb.LJ,
-  S: KICK_TEMPLATES.krsb.x,
-}
+KICK_TABLES.krsb = KICK_TABLES.krs
 
 export const PIECE_COLORS = {
   srs: {
@@ -4515,15 +4501,7 @@ PIECE_OFFSETS.srsk = {
   J: PIECE_OFFSETS.srs.J,
   S: PIECE_OFFSETS.srs.S,
 }
-PIECE_OFFSETS.krsb = {
-  I: PIECE_OFFSETS.ascx.I,
-  L: PIECE_OFFSETS.ascx.L,
-  O: PIECE_OFFSETS.ascx.O,
-  Z: PIECE_OFFSETS.ascx.Z,
-  T: PIECE_OFFSETS.ascx.T,
-  J: PIECE_OFFSETS.ascx.J,
-  S: PIECE_OFFSETS.ascx.S,
-}
+PIECE_OFFSETS.krsb = PIECE_OFFSETS.krs
 
 export const PIECE_BINARIES = {
   L: 0b000,
