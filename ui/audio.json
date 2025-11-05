@@ -31,32 +31,6 @@
       "discrete": 5,
       "setting": "musicVolume",
       "settingType": "setting"
-    },
-	{
-      "string": "soundbankLabel",
-      "stringDesc": "soundbankDescription",
-      "type": "select",
-	  "secretA": true,
-      "action": "select",
-      "selectOptions": [
-        {
-          "label": "KRS",
-          "fixedText": true,
-          "value": "standard"
-        },
-		{
-          "label": "KRS (ALT)",
-          "fixedText": true,
-          "value": "alternate"
-        },
-		{
-          "label": "TGM",
-          "fixedText": true,
-          "value": "tgm"
-        }
-      ],
-      "setting": "soundbank",
-      "settingType": "setting"
     }
   ]
 }
