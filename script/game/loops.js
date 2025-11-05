@@ -106,13 +106,19 @@ const updateNextAndHold = () => {
 		$(".hold-canvas").classList.remove("oneffect")
 	}
 	if (
-		game.currentEffect === "fadingBlock" ||
-		game.currentEffect === "phantomBlock" || 
-		game.stack.isHidden !== false
+		game.currentEffect === "fadingBlock"
 	) {
 		$(".stack-canvas").classList.add("fadingeffect")
 	} else {
 		$(".stack-canvas").classList.remove("fadingeffect")
+	}
+	if (
+		game.currentEffect === "phantomBlock" || 
+		game.stack.isHidden !== false
+	) {
+		$(".stack-canvas").classList.add("phantomeffect")
+	} else {
+		$(".stack-canvas").classList.remove("phantomeffect")
 	}
 	if (testMode === false) {
 		$(".error-stack").classList.add("nontestmode")

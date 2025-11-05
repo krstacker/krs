@@ -544,6 +544,16 @@
   }
 }
 
+@keyframes krsphantomeffect {
+  from {
+    opacity: 0.25
+  }
+
+  to {
+    opacity: 0.25
+  }
+}
+
 @keyframes bob {
   from {
     padding-left: .15em
@@ -1823,7 +1833,10 @@ body {
 }
 
 .stack-canvas.phantomeffect {
-  opacity: 0;
+  animation-name: krsphantomeffect;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }
 
 .hold-container {
