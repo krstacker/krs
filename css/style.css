@@ -504,6 +504,16 @@
   }
 }
 
+@keyframes pulse-grayscale {
+  from {
+    filter: brightness(1.1) grayscale(100%)
+  }
+
+  to {
+    filter: brightness(0.9) grayscale(100%)
+  }
+}
+
 @keyframes pulse-semi-strong {
   from {
     filter: brightness(1.45)
@@ -1826,7 +1836,11 @@ body {
 }
 
 .game-canvas.grayscale {
-  filter: grayscale(100%);
+  animation-name: pulse-grayscale;
+  animation-duration: .5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
 }
 
 .stack-canvas.fadingeffect {
