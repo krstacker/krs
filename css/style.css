@@ -1825,6 +1825,10 @@ body {
   left: 0;
 }
 
+.game-canvas.grayscale {
+  filter: grayscale(100%);
+}
+
 .stack-canvas.fadingeffect {
   animation-name: krsfadingeffect;
   animation-duration: 1s;

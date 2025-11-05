@@ -316,12 +316,15 @@ export default class Piece extends GameModule {
           suffix = `-${this.parent.stat.level % 10}`
         }
 		if (this.parent.currentEffect === "rotateLock") {
-			if (this.parent.useBoneBlocks) {
+			/*if (this.parent.useBoneBlocks) {
 				img = document.getElementById("mino-rotateLockedBone")
 			} else {
 				img = document.getElementById("mino-rotateLocked")
-			}
+			}*/
+			document.getElementById(`piece`).classList.add("grayscale")
+			img = document.getElementById(`mino-${color}${suffix}`)
 		} else {
+			document.getElementById(`piece`).classList.remove("grayscale")
 			img = document.getElementById(`mino-${color}${suffix}`)
 		}
       default:
