@@ -76,13 +76,13 @@
 	  "omitDescription": false,
       "selectOptions": [
         {
-          "label": "KRS-S",
+          "label": "KRS-A",
           "fixedText": true,
           "value": "krs",
 		  "omitDescription": true
         },
         {
-          "label": "KRS-N",
+          "label": "KRS-B",
           "fixedText": true,
           "value": "krsb",
 		  "omitDescription": true

@@ -1087,8 +1087,8 @@ SPAWN_OFFSETS.original = SPAWN_OFFSETS.retro
 SPAWN_OFFSETS.krs = SPAWN_OFFSETS.arsx
 SPAWN_OFFSETS.sega = SPAWN_OFFSETS.ars
 SPAWN_OFFSETS.arsk = SPAWN_OFFSETS.arsx
-SPAWN_OFFSETS.srsk = { ...SPAWN_OFFSETS.srs, downShift: 0 }
-SPAWN_OFFSETS.krsb = { ...SPAWN_OFFSETS.srs, downShift: 0 }
+SPAWN_OFFSETS.srsk = { ...SPAWN_OFFSETS.srs, downShift: 2, I: [2, -4] }
+SPAWN_OFFSETS.krsb = { ...SPAWN_OFFSETS.srs, downShift: 2, I: [2, -4] }
 
 export const INITIAL_ORIENTATION = {
   srs: {
@@ -4082,7 +4082,7 @@ PIECE_COLORS.sega = PIECE_COLORS.ars
 PIECE_COLORS.krs = PIECE_COLORS.arsx
 PIECE_COLORS.arsk = PIECE_COLORS.arsx
 PIECE_COLORS.srsk = PIECE_COLORS.srs
-PIECE_COLORS.krsb = {
+PIECE_COLORS.dblox = {
 	I: "orange",
     L: "red",
     O: "yellow",
@@ -4091,6 +4091,16 @@ PIECE_COLORS.krsb = {
     J: "blue",
     S: "purple",
 }
+PIECE_COLORS.nblox = {
+	I: "orange",
+    L: "blue",
+    O: "red",
+    Z: "green",
+    T: "yellow",
+    J: "purple",
+    S: "lightBlue",
+}
+PIECE_COLORS.krsb = PIECE_COLORS.nblox
 
 export const NEXT_OFFSETS = {
   monomino: {
