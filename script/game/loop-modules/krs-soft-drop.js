@@ -18,9 +18,19 @@ const useWorldControls = () => {
   }
   return result
 }
+const useSoftDrop = () => {
+  let result = false
+  if (useWorldControls() === true) {
+	result = true
+  }
+  if (settings.settings.rotationSystem === "krsb") {
+	result = false
+  }
+  return result
+}
 
 export default function krsSoftDrop(arg, frameGravity = 1) {
-  if (arg.piece.gravity <= framesToMs(1) && arg.piece.isLanded && useWorldControls() === false) {
+  if (arg.piece.gravity <= framesToMs(1) && arg.piece.isLanded && useSoftDrop() === false) {
     if (input.getGamePress("softDrop")) {
       arg.piece.gravityMultiplier = Math.max(
         1,
@@ -51,7 +61,7 @@ export default function krsSoftDrop(arg, frameGravity = 1) {
       } else {
 		if (
 			arg.piece.mustLock === false &&
-			useWorldControls() === false
+			useSoftDrop() === false
 		) {
 			arg.piece.mustLock = true
 			arg.piece.hasHardDropped = true
