@@ -143,8 +143,7 @@ export default class Stack extends GameModule {
   laserGrid() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	let delayMs = 0
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	let targetColumn = Math.max(
 		0,
 		Math.floor(Math.random() * this.width) - 1
@@ -182,25 +181,15 @@ export default class Stack extends GameModule {
 		lifeVariance: 0,
     })
 	delayFinished = true
-	}, 250)
-	while (delayFinished === false) {
-		delayMs += 1
-	}
-	delayFinished = false
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	delayFinished = true
-	}, 250)
-	while (delayFinished === false) {
-		delayMs += 1
-	}
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
   }
   mirrorGrid() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	let delayMs = 0
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	let tempGrid = this.grid
 	this.new()
 	for (let x = 0; x < this.grid.length; x++) {
@@ -332,22 +321,15 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
 	delayFinished = true
-	}, 250)
-	delayFinished = false
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	delayFinished = true
-	}, 250)
-	while (delayFinished === false) {
-		delayMs += 1
-	}
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
   }
   flipGrid() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	let delayMs = 0
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	let tempGrid = this.grid
 	this.new()
 	let flippedGrid = this.grid
@@ -403,22 +385,15 @@ export default class Stack extends GameModule {
 	sound.add("collapse4")
 	this.reRenderStack()
 	delayFinished = true
-	}, 250)
-	delayFinished = false
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	delayFinished = true
-	}, 250)
-	while (delayFinished === false) {
-		delayMs += 1
-	}
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
   }
   sliceGridTop() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	let delayMs = 0
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	let targetPoint = (this.height + this.hiddenHeight) - 4
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
@@ -453,22 +428,15 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
 	delayFinished = true
-	}, 250)
-	delayFinished = false
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	delayFinished = true
-	}, 250)
-	while (delayFinished === false) {
-		delayMs += 1
-	}
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
   }
   sliceGridBottom() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	let delayMs = 0
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	let targetPoint = (this.height + this.hiddenHeight) - 4
 	if (this.isFrozen) {
 		targetPoint = (this.height + this.hiddenHeight) - (this.height - 4)
@@ -505,9 +473,7 @@ export default class Stack extends GameModule {
 		lifeVariance: 0,
     })
 	delayFinished = true
-	}, 250)
-	delayFinished = false
-	setTimeout(function() {
+	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
 	//Were not done yet. We still have to move the stack to the bottom of the board.
 	let tempGrid = this.grid
 	this.new()
@@ -552,10 +518,6 @@ export default class Stack extends GameModule {
 	sound.add("collapse4")
 	this.reRenderStack()
 	delayFinished = true
-	}, 250)
-	while (delayFinished === false) {
-		delayMs += 1
-	}
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
   }
@@ -1324,7 +1286,7 @@ export default class Stack extends GameModule {
       element.id = id
       $("#game").appendChild(element)
       sound.add("garbagesend")
-      setTimeout(() => {
+      while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
         element.parentNode.removeChild(element)
       }, 330)
     }
@@ -1589,7 +1551,7 @@ export default class Stack extends GameModule {
     element.id = id
     $("#game").appendChild(element)
     sound.add("garbagefly")
-    setTimeout(() => {
+    while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
       this.waitingGarbage += amount
       this.parent.piece.isDirty = true
       this.parent.shakeMatrix()
