@@ -1286,7 +1286,7 @@ export default class Stack extends GameModule {
       element.id = id
       $("#game").appendChild(element)
       sound.add("garbagesend")
-      while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+      setTimeout(() => {
         element.parentNode.removeChild(element)
       }, 330)
     }
@@ -1551,7 +1551,7 @@ export default class Stack extends GameModule {
     element.id = id
     $("#game").appendChild(element)
     sound.add("garbagefly")
-    while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+    setTimeout(() => {
       this.waitingGarbage += amount
       this.parent.piece.isDirty = true
       this.parent.shakeMatrix()
