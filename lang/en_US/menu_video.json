@@ -170,5 +170,11 @@
   },
   "themeDescription": {
     "message": "Determines the visual style of the game"
+  },
+  "outlineLabel": {
+    "message": "Outline",
+  },
+  "outlineDescription": {
+    "message": "Dislay a white outline around the stack"
   }
 }

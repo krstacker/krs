@@ -33,7 +33,7 @@ class Settings {
       colorT: "auto",
       colorJ: "auto",
       colorS: "auto",
-      outline: "on",
+      outline: false,
       ghost: "color",
       backgroundOpacity: 30,
       gridStyle: "none",

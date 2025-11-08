@@ -1502,7 +1502,7 @@ export default class Piece extends GameModule {
     return (
       this.are < this.areLimit + areMod ||
       this.startingAre < this.startingAreLimit ||
-	  this.parent.onForcedTimeout
+	  this.parent.onCustomDelay
     )
   }
 }

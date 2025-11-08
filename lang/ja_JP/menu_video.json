@@ -170,5 +170,11 @@
   },
   "themeDescription": {
     "message": "ゲームのビジュアルスタイルを選択します"
+  },
+  "outlineLabel": {
+    "message": "概要",
+  },
+  "outlineDescription": {
+    "message": "スタックの周囲に白い輪郭を表示する。"
   }
 }

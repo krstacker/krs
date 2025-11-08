@@ -59,10 +59,8 @@ export default class Stack extends GameModule {
 	this.sectionGauge = 0
 	this.levelGauge = 1
 	this.levelPieceRequirement = 40
+	this.resetLastPlacedBlocks()
 	$("#message").classList.remove("effectactivated")
-  }
-  sleep(ms = 1) {
-	  //Still trying to figure out how to make it wait.
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -95,7 +93,10 @@ export default class Stack extends GameModule {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
-			if (this.parent.effectsRoster.includes(this.grid[x][y]) !== true) {
+			if (
+				this.parent.effectsRoster.includes(this.grid[x][y]) !== true &&
+				this.lastPlacedBlocks[x][y] === null
+			) {
 				this.grid[x][y] = "frozen"
 			}
 		}
@@ -131,11 +132,15 @@ export default class Stack extends GameModule {
     }
 	this.reRenderStack()
   }
-  hidePlacedMinos() {
+  fadePlacedMinos() {
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
-		if (this.parent.effectsRoster.includes(this.grid[x][y]) !== true && this.grid[x][y] !== "gold") {
-			if (this.grid[x][y] != null) {
+		if (this.grid[x][y] != null) {
+			if (
+				this.parent.effectsRoster.includes(this.grid[x][y]) !== true && 
+				this.grid[x][y] !== "gold" &&
+				this.lastPlacedBlocks[x][y] === null
+			) {
 				this.grid[x][y] = "hidden"
 			}
 		}
@@ -144,9 +149,9 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
   }
   laserGrid() {
-	this.parent.onForcedTimeout = true
+	this.parent.onCustomDelay = true
 	let delayFinished = false
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	let targetColumn = Math.max(
 		0,
 		Math.floor(Math.random() * this.width) - 1
@@ -184,15 +189,15 @@ export default class Stack extends GameModule {
 		lifeVariance: 0,
     })
 	delayFinished = true
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onForcedTimeout = false
+	this.parent.onCustomDelay = false
   }
   mirrorGrid() {
-	this.parent.onForcedTimeout = true
+	this.parent.onCustomDelay = true
 	let delayFinished = false
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	let tempGrid = this.grid
 	this.new()
 	for (let x = 0; x < this.grid.length; x++) {
@@ -324,15 +329,15 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
 	delayFinished = true
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onForcedTimeout = false
+	this.parent.onCustomDelay = false
   }
   flipGrid() {
-	this.parent.onForcedTimeout = true
+	this.parent.onCustomDelay = true
 	let delayFinished = false
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	let tempGrid = this.grid
 	this.new()
 	let flippedGrid = this.grid
@@ -388,15 +393,15 @@ export default class Stack extends GameModule {
 	sound.add("collapse4")
 	this.reRenderStack()
 	delayFinished = true
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onForcedTimeout = false
+	this.parent.onCustomDelay = false
   }
   sliceGridTop() {
-	this.parent.onForcedTimeout = true
+	this.parent.onCustomDelay = true
 	let delayFinished = false
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	let targetPoint = (this.height + this.hiddenHeight) - 4
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
@@ -431,15 +436,15 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
 	delayFinished = true
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onForcedTimeout = false
+	this.parent.onCustomDelay = false
   }
   sliceGridBottom() {
-	this.parent.onForcedTimeout = true
+	this.parent.onCustomDelay = true
 	let delayFinished = false
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	let targetPoint = (this.height + this.hiddenHeight) - 4
 	if (this.isFrozen) {
 		targetPoint = (this.height + this.hiddenHeight) - (this.height - 4)
@@ -476,7 +481,7 @@ export default class Stack extends GameModule {
 		lifeVariance: 0,
     })
 	delayFinished = true
-	this.sleep(250)
+	//NOTE: Add a 250 millisecond delay here
 	//Were not done yet. We still have to move the stack to the bottom of the board.
 	let tempGrid = this.grid
 	this.new()
@@ -522,7 +527,7 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onForcedTimeout = false
+	this.parent.onCustomDelay = false
   }
   updateMedals() {
 	  let newMedals = this.parent.stat.medals
@@ -710,7 +715,7 @@ export default class Stack extends GameModule {
 	} else if (this.parent.currentEffect === "phantomBlock") {
 		this.reRenderStack()
 	} else if (this.isFading && this.isHidden === false) {
-		this.hidePlacedMinos()
+		this.fadePlacedMinos()
 	}
 	if (this.effectBlockInterval >= 16) {
 		this.parent.pendingEffect = this.parent.effectsRoster[Math.max(
@@ -886,6 +891,21 @@ export default class Stack extends GameModule {
 		this.removeEffectBlocks()
 	}
 	let placedEffectBlock = false
+	if (this.parent.piece.useBoneBlocks || settings.settings.outline !== true) {
+		$(".stack-canvas").classList.add("outlineoff")
+	} else {
+		$(".stack-canvas").classList.remove("outlineoff")
+	}
+	if (this.isFading || this.isHidden) {
+		$(".stack-canvas").classList.remove("outlineoff")
+		$(".stack-canvas").classList.add("invis")
+	} else if (this.parent.currentEffect === "fadingBlock") {
+		$(".stack-canvas").classList.remove("outlineoff")
+		$(".stack-canvas").classList.remove("invis")
+	} else {
+		$(".stack-canvas").classList.remove("invis")
+	}
+	this.resetLastPlacedBlocks()
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
         const isFilled = shape[y][x]
@@ -1040,9 +1060,6 @@ export default class Stack extends GameModule {
 	  this.spinGauge += 1
 	}
     const version = isMini ? "mini" : ""
-    if (this.lineClear >= 4 && this.flashOnTetris) {
-      resetAnimation("#stack", "tetris-flash")
-    }
     let pc = true
     for (let x = 0; x < this.grid.length; x++) {
       if (!pc) {
@@ -1783,6 +1800,13 @@ export default class Stack extends GameModule {
       cells[i] = new Array(this.height + this.hiddenHeight)
     }
     this.grid = cells
+  }
+  resetLastPlacedBlocks() {
+    const cells = new Array(this.width)
+    for (let i = 0; i < this.width; i++) {
+      cells[i] = new Array(this.height + this.hiddenHeight)
+    }
+    this.lastPlacedBlocks = cells
   }
   endRollStart() {
 	  sound.add("endingstart")

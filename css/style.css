@@ -1843,7 +1843,41 @@ body {
   animation-timing-function: ease-in-out;
 }
 
+.stack-canvas {
+  filter: 
+  drop-shadow(3px 3px 0px rgba(255,255,255,0.25))
+  drop-shadow(-3px -3px 0px rgba(255,255,255,0.25))
+  drop-shadow(3px -3px 0px rgba(255,255,255,0.25))
+  drop-shadow(-3px 3px 0px rgba(255,255,255,0.25))
+  ;
+}
+
+.stack-canvas.outlineoff {
+  filter: 
+  drop-shadow(0px 0px 0px rgba(255,255,255,0.25))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0.25))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0.25))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0.25))
+  ;
+}
+
+.stack-canvas.invis {
+  filter: 
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  ;
+  opacity: 0.25;
+}
+
 .stack-canvas.fadingeffect {
+  filter: 
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  ;
   animation-name: krsfadingeffect;
   animation-duration: 1s;
   animation-direction: alternate;
@@ -1851,6 +1885,12 @@ body {
 }
 
 .stack-canvas.phantomeffect {
+  filter: 
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  drop-shadow(0px 0px 0px rgba(255,255,255,0))
+  ;
   animation-name: krsphantomeffect;
   animation-duration: 1s;
   animation-direction: alternate;

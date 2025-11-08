@@ -17,6 +17,14 @@
       "action": "toggle",
       "setting": "particles",
       "settingType": "setting"
+    },
+	{
+      "string": "outlineLabel",
+      "stringDesc": "outlineDescription",
+      "type": "toggle",
+      "action": "toggle",
+      "setting": "outline",
+      "settingType": "setting"
     }
   ]
 }
