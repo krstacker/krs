@@ -109,7 +109,7 @@ export default class Next extends GameModule {
     let cellSize = this.parent.cellSize
     const offset = this.parent.nextOffsets[piece]
     let ctx = this.ctx
-	let playBellSound = false
+	let playEffectCue = false
 
     for (let y = 0; y < shape.length; y++) {
       for (let x = 0; x < shape[y].length; x++) {
@@ -127,7 +127,7 @@ export default class Next extends GameModule {
 		if (this.parent.useEffectBlocks) {
 			if (this.parent.stack.effectBlockInterval === 1 && this.parent.pendingEffect !== "") {
 				color = this.parent.pendingEffect
-				playBellSound = true
+				playEffectCue = true
 			}
 		}
         const img = document.getElementById(`mino-${color}${suffix}`)
@@ -140,8 +140,8 @@ export default class Next extends GameModule {
         }
       }
     }
-	if (playBellSound) {
-		sound.add("bell")
+	if (playEffectCue) {
+		sound.add("effectincoming")
 	}
     cellSize = Math.floor(cellSize * 0.62)
     ctx = this.subCtx

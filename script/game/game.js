@@ -146,6 +146,7 @@ export default class Game {
 	this.lastMedals = this.stat.medals
 	this.initialMedals = this.stat.medals
 	this.showMedals = false
+	this.onEffectTimeout = false
     loadGameType(gametype)
       .then((gameData) => {
         gtag("event", "play", {
@@ -998,10 +999,14 @@ export default class Game {
           }
           if (!game.noUpdate) {
             if (!game.piece.inAre) {
-              game.timePassed += msPassed
+              if (!game.onEffectTimeout) {
+				  game.timePassed += msPassed
+			  }
             } else if (game.piece.startingAre >= game.piece.startingAreLimit) {
-              game.timePassedAre += msPassed
-			  game.timePassed += msPassed
+              if (!game.onEffectTimeout) {
+				  game.timePassedAre += msPassed
+				  game.timePassed += msPassed
+			  }
             }
 
             // GOALS
