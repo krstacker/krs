@@ -363,7 +363,8 @@ export default class Stack extends GameModule {
       gravityAccceleration: 1.05,
       lifeVariance: 80,
     })
-	sound.add("flipfield")
+	sound.add("collapse")
+	sound.add("collapse4")
 	this.reRenderStack()
   }
   sliceGridTop() {

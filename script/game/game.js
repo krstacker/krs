@@ -1003,6 +1003,7 @@ export default class Game {
               if (!game.onEffectTimeout) {
 				  game.timePassed += msPassed
 			  } else {
+				  game.timePassedAre += msPassed
 				  game.effectTimeout += msPassed
 			  }
             } else if (game.piece.startingAre >= game.piece.startingAreLimit) {
@@ -1010,6 +1011,7 @@ export default class Game {
 				  game.timePassedAre += msPassed
 				  game.timePassed += msPassed
 			  } else {
+				  game.timePassedAre += msPassed
 				  game.effectTimeout += msPassed
 			  }
             }
@@ -1140,11 +1142,11 @@ export default class Game {
           $("#timer").classList.add("paused")
           $("#timer-real").classList.add("paused")
         } else {
-          if (game.piece.inAre) {
+          /*if (game.piece.inAre) {
             $("#timer").classList.add("paused")
           } else {
             $("#timer").classList.remove("paused")
-          }
+          }*/
           if (game.piece.startingAre < game.piece.startingAreLimit) {
             $("#timer-real").classList.add("paused")
           } else {

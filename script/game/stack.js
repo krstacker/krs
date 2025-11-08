@@ -61,6 +61,10 @@ export default class Stack extends GameModule {
 	this.levelPieceRequirement = 40
 	$("#message").classList.remove("effectactivated")
   }
+  sleep(t=1){
+	  let AB = new Int32Array(new SharedArrayBuffer(4));
+	  Atomics.wait(AB, 0, 0, Math.max(1, t|0));
+  }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
 	  if (indexToRemove > -1) {
@@ -143,7 +147,7 @@ export default class Stack extends GameModule {
   laserGrid() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	let targetColumn = Math.max(
 		0,
 		Math.floor(Math.random() * this.width) - 1
@@ -181,7 +185,7 @@ export default class Stack extends GameModule {
 		lifeVariance: 0,
     })
 	delayFinished = true
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
@@ -189,7 +193,7 @@ export default class Stack extends GameModule {
   mirrorGrid() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	let tempGrid = this.grid
 	this.new()
 	for (let x = 0; x < this.grid.length; x++) {
@@ -321,7 +325,7 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
 	delayFinished = true
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
@@ -329,7 +333,7 @@ export default class Stack extends GameModule {
   flipGrid() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	let tempGrid = this.grid
 	this.new()
 	let flippedGrid = this.grid
@@ -385,7 +389,7 @@ export default class Stack extends GameModule {
 	sound.add("collapse4")
 	this.reRenderStack()
 	delayFinished = true
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
@@ -393,7 +397,7 @@ export default class Stack extends GameModule {
   sliceGridTop() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	let targetPoint = (this.height + this.hiddenHeight) - 4
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
@@ -428,7 +432,7 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
 	delayFinished = true
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onEffectTimeout = false
@@ -436,7 +440,7 @@ export default class Stack extends GameModule {
   sliceGridBottom() {
 	this.parent.onEffectTimeout = true
 	let delayFinished = false
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	let targetPoint = (this.height + this.hiddenHeight) - 4
 	if (this.isFrozen) {
 		targetPoint = (this.height + this.hiddenHeight) - (this.height - 4)
@@ -473,7 +477,7 @@ export default class Stack extends GameModule {
 		lifeVariance: 0,
     })
 	delayFinished = true
-	while (this.parent.effectTimeout < this.parent.effectTimeout + 250) {delayFinished = false}
+	this.sleep(250)
 	//Were not done yet. We still have to move the stack to the bottom of the board.
 	let tempGrid = this.grid
 	this.new()
