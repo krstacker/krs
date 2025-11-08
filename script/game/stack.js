@@ -62,9 +62,9 @@ export default class Stack extends GameModule {
 	$("#message").classList.remove("effectactivated")
   }
   sleep(t=1) {
-	  let SAB = new SharedArrayBuffer(4);
-	  let AB = new Int32Array(SAB);
-	  Atomics.wait(AB, 0, 0, Math.max(1, t|0));
+	  /*let BUF = new SharedArrayBuffer(1024);
+	  let ARR = new Int32Array(buf);
+	  Atomics.wait(ARR, 0, 0, Math.max(1, t))*/
   }
   removeFromArray(array, elementToRemove) {
 	  const indexToRemove = array.indexOf(elementToRemove)
@@ -146,7 +146,7 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
   }
   laserGrid() {
-	this.parent.onEffectTimeout = true
+	this.parent.onForcedTimeout = true
 	let delayFinished = false
 	this.sleep(250)
 	let targetColumn = Math.max(
@@ -189,10 +189,10 @@ export default class Stack extends GameModule {
 	this.sleep(250)
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onEffectTimeout = false
+	this.parent.onForcedTimeout = false
   }
   mirrorGrid() {
-	this.parent.onEffectTimeout = true
+	this.parent.onForcedTimeout = true
 	let delayFinished = false
 	this.sleep(250)
 	let tempGrid = this.grid
@@ -329,10 +329,10 @@ export default class Stack extends GameModule {
 	this.sleep(250)
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onEffectTimeout = false
+	this.parent.onForcedTimeout = false
   }
   flipGrid() {
-	this.parent.onEffectTimeout = true
+	this.parent.onForcedTimeout = true
 	let delayFinished = false
 	this.sleep(250)
 	let tempGrid = this.grid
@@ -393,10 +393,10 @@ export default class Stack extends GameModule {
 	this.sleep(250)
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onEffectTimeout = false
+	this.parent.onForcedTimeout = false
   }
   sliceGridTop() {
-	this.parent.onEffectTimeout = true
+	this.parent.onForcedTimeout = true
 	let delayFinished = false
 	this.sleep(250)
 	let targetPoint = (this.height + this.hiddenHeight) - 4
@@ -436,10 +436,10 @@ export default class Stack extends GameModule {
 	this.sleep(250)
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onEffectTimeout = false
+	this.parent.onForcedTimeout = false
   }
   sliceGridBottom() {
-	this.parent.onEffectTimeout = true
+	this.parent.onForcedTimeout = true
 	let delayFinished = false
 	this.sleep(250)
 	let targetPoint = (this.height + this.hiddenHeight) - 4
@@ -524,7 +524,7 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
 	delayFinished = true
 	this.reRenderStack()
-	this.parent.onEffectTimeout = false
+	this.parent.onForcedTimeout = false
   }
   updateMedals() {
 	  let newMedals = this.parent.stat.medals
