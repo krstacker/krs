@@ -61,8 +61,9 @@ export default class Stack extends GameModule {
 	this.levelPieceRequirement = 40
 	$("#message").classList.remove("effectactivated")
   }
-  sleep(t=1){
-	  let AB = new Int32Array(new SharedArrayBuffer(4));
+  sleep(t=1) {
+	  let SAB = new SharedArrayBuffer(4);
+	  let AB = new Int32Array(SAB);
 	  Atomics.wait(AB, 0, 0, Math.max(1, t|0));
   }
   removeFromArray(array, elementToRemove) {
