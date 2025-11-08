@@ -80,6 +80,7 @@ export default class Piece extends GameModule {
     this.resetHoldingTime = false
     this.killLockDelayOnRotate = false
     this.lastSpinDirection = null
+	this.showGarbageOutline = false
   }
   new(name = this.parent.next.next()) {
     this.isFrozen = false
@@ -449,7 +450,8 @@ export default class Piece extends GameModule {
     if (
       this.parent.stack.waitingGarbage > 0 &&
       !this.isDead &&
-      !this.parent.stack.wouldCauseLineClear()
+      !this.parent.stack.wouldCauseLineClear() &&
+	  this.showGarbageOutline
     ) {
       ctx.beginPath()
       const bottom = this.parent.stack.height + this.parent.bufferPeek
