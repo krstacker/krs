@@ -5,4 +5,4 @@ KRStackerは進行中のプロジェクトであり、SEGAのアーケードゲ�
 
 KRStacker是一款正在开发的Tetra Legends分支作品，其灵感源自Sega街机游戏及TGM系列。
 
-https://krsofficial.github.io/krs/
+https://krstacker.netlify.app

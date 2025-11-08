@@ -62,7 +62,7 @@ export default class Stack extends GameModule {
 	$("#message").classList.remove("effectactivated")
   }
   sleep(t=1) {
-	  let BUF = new ArrayBuffer(1024);
+	  let BUF = new SharedArrayBuffer(1024);
 	  let ARR = new Int32Array(BUF);
 	  Atomics.wait(ARR, 0, 0, Math.max(1, t));
   }
