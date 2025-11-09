@@ -166,13 +166,14 @@ export default class Game {
         $("#game").classList.remove("dead")
 		$("#game").classList.remove("victory")
 		$("#game").classList.remove("loss")
-		$(".game-center").classList.remove("victory")
-		$(".game-center").classList.remove("loss")
+		$(".stack-canvas").classList.remove("victory")
+		$(".stack-canvas").classList.remove("loss")
         $("#ready-meter").classList.remove("hidden")
         $("#end-message-container").classList.add("hidden")
         $("#kill-message-container").classList.add("hidden")
         $("#next-piece").classList.remove("immediate-death")
-		document.getElementById(`piece`).classList.remove("gameend")
+		document.getElementById(`piece`).classList.remove("victory")
+		document.getElementById(`piece`).classList.remove("loss")
 
         this.resetBeatStuff()
 
@@ -524,12 +525,12 @@ export default class Game {
     sound.killAllLoops()
     if (victory) {
 		$("#game").classList.add("victory")
-		$(".game-center").classList.add("victory")
-		document.getElementById(`piece`).classList.add("gameend")
+		$(".stack-canvas").classList.add("victory")
+		document.getElementById(`piece`).classList.add("victory")
 	} else {
 		$("#game").classList.add("loss")
-		$(".game-center").classList.add("loss")
-		document.getElementById(`piece`).classList.add("gameend")
+		$(".stack-canvas").classList.add("loss")
+		document.getElementById(`piece`).classList.add("loss")
 	}
     endScreenTimeout = setTimeout(() => {
 	  $("#game").classList.add("dead")

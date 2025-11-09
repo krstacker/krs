@@ -564,6 +564,46 @@
   }
 }
 
+@keyframes stack-canvas-loss {
+  from {
+    filter: grayscale(100%) brightness(1) blur(0em)
+  }
+
+  to {
+    filter: grayscale(100%) brightness(1) blur(0em)
+  }
+}
+
+@keyframes stack-canvas-victory {
+  from {
+    filter: grayscale(0%) brightness(1) blur(0em)
+  }
+
+  to {
+    filter: grayscale(0%) brightness(1) blur(0em)
+  }
+}
+
+@keyframes piece-canvas-loss {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 1
+  }
+}
+
+@keyframes piece-canvas-victory {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 0
+  }
+}
+
 @keyframes bob {
   from {
     padding-left: .15em
@@ -1788,20 +1828,12 @@ body {
   border-bottom-color: transparent;
   border-right-color: transparent;
   border-style: solid;
-  transition-property: border-color, filter, transform;
-  transition-duration: 0.8s;
+  transition-property: border-color;
+  transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
   /* margin: 0em 1em; */
   margin-top: 3.5em;
   border-width: .5em;
-}
-
-.game-center.loss {
-  filter: grayscale(100%) brightness(1) blur(0em);
-}
-
-.game-center.victory {
-  filter: grayscale(0%) brightness(1) blur(0em);
 }
 
 .game-border {
@@ -1873,8 +1905,22 @@ body {
   animation-timing-function: ease-in-out;
 }
 
-.game-canvas.gameend {
+.game-canvas.loss {
   opacity: 1;
+  filter: grayscale(100%) brightness(1) blur(0em);
+  animation-name: piece-canvas-loss;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.game-canvas.victory {
+  opacity: 0;
+  filter: grayscale(0%) brightness(1) blur(0em);
+  animation-name: piece-canvas-victory;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
 }
 
 .stack-canvas {
@@ -1884,6 +1930,9 @@ body {
   drop-shadow(0.2em -0.2em 0em rgba(255,255,255,0.25))
   drop-shadow(-0.2em 0.2em 0em rgba(255,255,255,0.25))
   ;
+  transition-property: filter, transform;
+  transition-duration: 0.8s;
+  transition-timing-function: ease-in-out;
 }
 
 .stack-canvas.outlineoff {
@@ -1926,6 +1975,24 @@ body {
   drop-shadow(0em 0em 0em rgba(255,255,255,0))
   ;
   animation-name: krsphantomeffect;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.stack-canvas.loss {
+  opacity: 1;
+  filter: grayscale(100%) brightness(1) blur(0em);
+  animation-name: stack-canvas-loss;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.stack-canvas.victory {
+  opacity: 1;
+  filter: grayscale(0%) brightness(1) blur(0em);
+  animation-name: stack-canvas-victory;
   animation-duration: 1s;
   animation-direction: alternate;
   animation-iteration-count: infinite;
