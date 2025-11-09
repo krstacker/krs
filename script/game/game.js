@@ -166,10 +166,13 @@ export default class Game {
         $("#game").classList.remove("dead")
 		$("#game").classList.remove("victory")
 		$("#game").classList.remove("loss")
+		$(".game-center").classList.remove("victory")
+		$(".game-center").classList.remove("loss")
         $("#ready-meter").classList.remove("hidden")
         $("#end-message-container").classList.add("hidden")
         $("#kill-message-container").classList.add("hidden")
         $("#next-piece").classList.remove("immediate-death")
+		document.getElementById(`piece`).classList.remove("gameend")
 
         this.resetBeatStuff()
 
@@ -510,14 +513,10 @@ export default class Game {
       )}</b><br>`
     }
     $("#kill-message-container").classList.remove("hidden")
+	document.getElementById(`piece`).classList.add("gameend")
     if (victory) {
+	  endScreenDelay = 1700
       sound.add("excellent")
-	  switch (this.loadedSoundbank) {
-		default: {
-			endScreenDelay = 1700
-			break
-		}
-	}
     } else {
 	  endScreenDelay = 1700
       sound.add("ko")
@@ -526,8 +525,10 @@ export default class Game {
     sound.killAllLoops()
     if (victory) {
 		$("#game").classList.add("victory")
+		$(".game-center").classList.add("victory")
 	} else {
 		$("#game").classList.add("loss")
+		$(".game-center").classList.add("loss")
 	}
     endScreenTimeout = setTimeout(() => {
 	  $("#game").classList.add("dead")

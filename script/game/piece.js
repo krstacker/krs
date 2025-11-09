@@ -300,12 +300,15 @@ export default class Piece extends GameModule {
     switch (type) {
       case "ghost":
         if (this.parent.currentEffect === "rotateLock") {
-			if (this.parent.useBoneBlocks) {
+			/*if (this.parent.useBoneBlocks) {
 				img = document.getElementById("ghost-rotateLockedBone")
 			} else {
 				img = document.getElementById("ghost-rotateLocked")
-			}
+			}*/
+			document.getElementById(`piece`).classList.add("grayscale")
+			img = document.getElementById(`ghost-${color}${suffix}`)
 		} else {
+			document.getElementById(`piece`).classList.remove("grayscale")
 			img = document.getElementById(`ghost-${color}${suffix}`)
 		}
         break

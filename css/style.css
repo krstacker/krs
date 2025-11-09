@@ -506,11 +506,11 @@
 
 @keyframes pulse-grayscale {
   from {
-    filter: brightness(0.75) grayscale(25%)
+    filter: brightness(0.75) grayscale(100%)
   }
 
   to {
-    filter: brightness(0.5) grayscale(25%)
+    filter: brightness(0.5) grayscale(100%)
   }
 }
 
@@ -1537,15 +1537,15 @@ body {
 }
 
 .game.dead {
-  filter: grayscale(100%) brightness(1) blur(1em);
+  filter: grayscale(0%) brightness(1) blur(0.2em);
 }
 
 .game.loss {
-  filter: grayscale(100%) brightness(1) blur(.5em);
+  filter: grayscale(0%) brightness(1) blur(0.1em);
 }
 
 .game.victory {
-  filter: grayscale(0%) brightness(1) blur(.5em);
+  filter: grayscale(0%) brightness(1) blur(0.1em);
 }
 
 .game.paused canvas {
@@ -1788,12 +1788,20 @@ body {
   border-bottom-color: transparent;
   border-right-color: transparent;
   border-style: solid;
-  transition-property: border-color;
-  transition-duration: 0.5s;
+  transition-property: border-color, filter, transform;
+  transition-duration: 0.8s;
   transition-timing-function: ease-in-out;
   /* margin: 0em 1em; */
   margin-top: 3.5em;
   border-width: .5em;
+}
+
+.game-center.loss {
+  filter: grayscale(100%) brightness(1) blur(0em);
+}
+
+.game-center.victory {
+  filter: grayscale(0%) brightness(1) blur(0em);
 }
 
 .game-border {
@@ -1863,6 +1871,10 @@ body {
   animation-iteration-count: infinite;
   animation-direction: alternate;
   animation-timing-function: ease-in-out;
+}
+
+.game-canvas.gameend {
+  opacity: 1;
 }
 
 .stack-canvas {
