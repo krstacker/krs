@@ -566,21 +566,21 @@
 
 @keyframes stack-canvas-loss {
   from {
-    filter: grayscale(100%) brightness(1) blur(0em)
+    opacity: 1
   }
 
   to {
-    filter: grayscale(100%) brightness(1) blur(0em)
+    opacity: 1
   }
 }
 
 @keyframes stack-canvas-victory {
   from {
-    filter: grayscale(0%) brightness(1) blur(0em)
+    opacity: 1
   }
 
   to {
-    filter: grayscale(0%) brightness(1) blur(0em)
+    opacity: 1
   }
 }
 
