@@ -1799,22 +1799,22 @@ body {
 .game-border {
   /* -webkit-backdrop-filter: blur(5em);
   backdrop-filter: blur(5em); */
+  width: 105%;
+  height: 102.5%;
   position: relative;
-  width: calc(var(--matrix-width) * var(--cell-size));
-  height: calc(var(--matrix-height) * var(--cell-size));
-  background-size: calc(100% / var(--matrix-width)) calc(100% / var(--matrix-height));
   background-color: transparent;
   background-position: left bottom;
-  border-top-color: #80808A00;
+  border-top-color: #57575EFF;
   border-left-color: #80808AFF;
-  border-bottom-color: #80808AFF;
+  border-bottom-color: #57575EFF;
   border-right-color: #80808AFF;
   border-style: ridge;
   transition-property: border-color;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
   /* margin: 0em 1em; */
-  margin-top: 3.5em;
+  margin-top: 1em;
+  margin-left: -0.5em;
   border-width: .5em;
 }
 
