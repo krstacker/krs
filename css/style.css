@@ -1813,7 +1813,7 @@ body {
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
   /* margin: 0em 1em; */
-  margin-top: 1em;
+  margin-top: -0.5em;
   margin-left: -0.5em;
   border-width: .5em;
 }
