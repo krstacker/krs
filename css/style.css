@@ -506,11 +506,11 @@
 
 @keyframes pulse-grayscale {
   from {
-    filter: brightness(1.1) grayscale(100%)
+    filter: brightness(0.75) grayscale(25%)
   }
 
   to {
-    filter: brightness(0.9) grayscale(100%)
+    filter: brightness(0.5) grayscale(25%)
   }
 }
 
@@ -1783,11 +1783,33 @@ body {
   background-size: calc(100% / var(--matrix-width)) calc(100% / var(--matrix-height));
   background-color: #000000bf;
   background-position: left bottom;
-  border-top-color: #B5BAB500; /* Lighter top */
-  border-left-color: #B5BAB5; /* Lighter left */
-  border-bottom-color: #7B716B; /* Darker bottom */
-  border-right-color: #A59A94; /* Darker right */
-  border-style: groove;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-right-color: transparent;
+  border-style: solid;
+  transition-property: border-color;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  /* margin: 0em 1em; */
+  margin-top: 3.5em;
+  border-width: .5em;
+}
+
+.game-border {
+  /* -webkit-backdrop-filter: blur(5em);
+  backdrop-filter: blur(5em); */
+  position: relative;
+  width: calc(var(--matrix-width) * var(--cell-size));
+  height: calc(var(--matrix-height) * var(--cell-size));
+  background-size: calc(100% / var(--matrix-width)) calc(100% / var(--matrix-height));
+  background-color: transparent;
+  background-position: left bottom;
+  border-top-color: #80808A00;
+  border-left-color: #80808AFF;
+  border-bottom-color: #80808AFF;
+  border-right-color: #80808AFF;
+  border-style: ridge;
   transition-property: border-color;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
@@ -1921,6 +1943,22 @@ body {
 
 .hold-canvas {
   margin-right: -6.25em;
+}
+
+.hold-lock {
+  width: calc(4 * var(--cell-size));
+  height: calc(4 * var(--cell-size));
+  filter: drop-shadow(2px 2px 2px #333);
+  margin-right: -6.25em;
+  opacity: 0;
+}
+
+.hold-lock.disabledeffect {
+  width: calc(4 * var(--cell-size));
+  height: calc(4 * var(--cell-size));
+  filter: drop-shadow(2px 2px 2px #333);
+  margin-right: -6.25em;
+  opacity: 1;
 }
 
 .main-next-canvas {
