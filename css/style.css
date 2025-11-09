@@ -1537,15 +1537,15 @@ body {
 }
 
 .game.dead {
-  filter: grayscale(0%) brightness(1) blur(0.2em);
+  filter: grayscale(0%) brightness(1) blur(0em);
 }
 
 .game.loss {
-  filter: grayscale(0%) brightness(1) blur(0.1em);
+  filter: grayscale(0%) brightness(1) blur(0em);
 }
 
 .game.victory {
-  filter: grayscale(0%) brightness(1) blur(0.1em);
+  filter: grayscale(0%) brightness(1) blur(0em);
 }
 
 .game.paused canvas {

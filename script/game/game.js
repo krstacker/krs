@@ -513,7 +513,6 @@ export default class Game {
       )}</b><br>`
     }
     $("#kill-message-container").classList.remove("hidden")
-	document.getElementById(`piece`).classList.add("gameend")
     if (victory) {
 	  endScreenDelay = 1700
       sound.add("excellent")
@@ -526,9 +525,11 @@ export default class Game {
     if (victory) {
 		$("#game").classList.add("victory")
 		$(".game-center").classList.add("victory")
+		document.getElementById(`piece`).classList.add("gameend")
 	} else {
 		$("#game").classList.add("loss")
 		$(".game-center").classList.add("loss")
+		document.getElementById(`piece`).classList.add("gameend")
 	}
     endScreenTimeout = setTimeout(() => {
 	  $("#game").classList.add("dead")
