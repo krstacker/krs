@@ -1936,6 +1936,7 @@ body {
 }
 
 .hold-canvas {
+  position: absolute;
   width: calc(4 * var(--cell-size));
   height: calc(4 * var(--cell-size));
   filter: drop-shadow(2px 2px 2px #333);
@@ -1946,6 +1947,7 @@ body {
 }
 
 .hold-lock {
+  position: relative;
   width: calc(4 * var(--cell-size));
   height: calc(4 * var(--cell-size));
   filter: drop-shadow(2px 2px 2px #333);
