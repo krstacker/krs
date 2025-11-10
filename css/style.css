@@ -2495,7 +2495,7 @@ progress[value]::-moz-progress-bar {
   left: 50%;
   margin-left: -10em;
   top: 40%;
-  margin-top: -6em;
+  margin-top: -0.72em;
   width: 20em;
   height: 12em;
   z-index: 200;
