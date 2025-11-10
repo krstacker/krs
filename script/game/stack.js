@@ -1742,7 +1742,7 @@ export default class Stack extends GameModule {
         if (x === this.garbageRandomHole && !this.copyBottomForGarbage) {
           continue
         }
-        this.grid[x][this.grid[0].length - 1] = "black"
+        this.grid[x][this.grid[0].length - 1] = "white"
       }
       if (this.parent.piece.isStuck) {
         this.parent.piece.y--
