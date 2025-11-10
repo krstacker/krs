@@ -153,7 +153,7 @@ export default class Stack extends GameModule {
   laserGrid() {
 	this.parent.onCustomDelay = true
 	let delayFinished = false
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	let targetColumn = Math.max(
 		0,
 		Math.floor(Math.random() * this.width) - 1
@@ -191,7 +191,7 @@ export default class Stack extends GameModule {
 		lifeVariance: 0,
     })
 	delayFinished = true
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
@@ -199,7 +199,7 @@ export default class Stack extends GameModule {
   mirrorGrid() {
 	this.parent.onCustomDelay = true
 	let delayFinished = false
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	let tempGrid = this.grid
 	this.new()
 	for (let x = 0; x < this.grid.length; x++) {
@@ -331,7 +331,7 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
 	delayFinished = true
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
@@ -339,7 +339,7 @@ export default class Stack extends GameModule {
   flipGrid() {
 	this.parent.onCustomDelay = true
 	let delayFinished = false
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	let tempGrid = this.grid
 	this.new()
 	let flippedGrid = this.grid
@@ -395,7 +395,7 @@ export default class Stack extends GameModule {
 	sound.add("collapse4")
 	this.reRenderStack()
 	delayFinished = true
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
@@ -403,7 +403,7 @@ export default class Stack extends GameModule {
   sliceGridTop() {
 	this.parent.onCustomDelay = true
 	let delayFinished = false
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	let targetPoint = (this.height + this.hiddenHeight) - 4
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
@@ -438,7 +438,7 @@ export default class Stack extends GameModule {
     })
 	this.reRenderStack()
 	delayFinished = true
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
@@ -446,7 +446,7 @@ export default class Stack extends GameModule {
   sliceGridBottom() {
 	this.parent.onCustomDelay = true
 	let delayFinished = false
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	let targetPoint = (this.height + this.hiddenHeight) - 4
 	if (this.isFrozen) {
 		targetPoint = (this.height + this.hiddenHeight) - (this.height - 4)
@@ -483,7 +483,7 @@ export default class Stack extends GameModule {
 		lifeVariance: 0,
     })
 	delayFinished = true
-	//NOTE: Add a 250 millisecond delay here
+	//To do: Add a 250ms delay here if possible
 	//Were not done yet. We still have to move the stack to the bottom of the board.
 	let tempGrid = this.grid
 	this.new()
