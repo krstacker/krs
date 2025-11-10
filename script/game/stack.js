@@ -132,6 +132,7 @@ export default class Stack extends GameModule {
 		}
       }
     }
+	this.gridParticles()
 	this.reRenderStack()
   }
   fadePlacedMinos() {
@@ -195,6 +196,129 @@ export default class Stack extends GameModule {
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
+  }
+  gridParticles() {
+	  // Grid particles
+	let cellSize = this.parent.cellSize
+	this.parent.particle.generateIgnoreSettings({
+		red: 255,
+		blue: 128,
+		green: 128,
+		amount: 200,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
+	this.parent.particle.generateIgnoreSettings({
+		red: 128,
+		blue: 255,
+		green: 128,
+		amount: 200,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
+	this.parent.particle.generateIgnoreSettings({
+		red: 128,
+		blue: 128,
+		green: 255,
+		amount: 200,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
+	this.parent.particle.generateIgnoreSettings({
+		red: 255,
+		blue: 255,
+		green: 128,
+		amount: 200,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
+	this.parent.particle.generateIgnoreSettings({
+		red: 128,
+		blue: 255,
+		green: 255,
+		amount: 200,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
+	this.parent.particle.generateIgnoreSettings({
+		red: 255,
+		blue: 128,
+		green: 255,
+		amount: 200,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
+	this.parent.particle.generateIgnoreSettings({
+		red: 255,
+		blue: 128,
+		green: 195,
+		amount: 200,
+		x: 0,
+		y: 0,
+		xRange: cellSize * this.width,
+		yRange: cellSize * (this.height + this.hiddenHeight),
+		xVelocity: 0,
+		yVelocity: 0,
+		xVariance: 10,
+		yVariance: 10,
+		xDampening: 1,
+		yDampening: 1,
+		lifeVariance: 0,
+    })
   }
   mirrorGrid() {
 	this.parent.onCustomDelay = true
@@ -391,6 +515,7 @@ export default class Stack extends GameModule {
       gravityAccceleration: 1.05,
       lifeVariance: 80,
     })
+	this.gridParticles()
 	sound.add("collapse")
 	sound.add("collapse4")
 	this.reRenderStack()
@@ -420,8 +545,8 @@ export default class Stack extends GameModule {
     let buffer = this.parent.bufferPeek
     let ctx = this.ctx
 	this.parent.particle.generateIgnoreSettings({
-		red: 128,
-		blue: 255,
+		red: 255,
+		blue: 128,
 		green: 128,
 		amount: 750,
 		x: cellSize,
@@ -440,6 +565,7 @@ export default class Stack extends GameModule {
 	delayFinished = true
 	//To do: Add a 250ms delay here if possible
 	delayFinished = true
+	this.gridParticles()
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
   }
@@ -466,8 +592,8 @@ export default class Stack extends GameModule {
     let buffer = this.parent.bufferPeek
     let ctx = this.ctx
 	this.parent.particle.generateIgnoreSettings({
-		red: 128,
-		blue: 255,
+		red: 255,
+		blue: 128,
 		green: 128,
 		amount: 750,
 		x: cellSize,
@@ -527,6 +653,7 @@ export default class Stack extends GameModule {
 	sound.add("collapse")
 	sound.add("collapse4")
 	this.reRenderStack()
+	this.gridParticles()
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
