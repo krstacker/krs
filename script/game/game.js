@@ -1193,7 +1193,7 @@ export default class Game {
     } else {
       if (game.mustReset) {
         gameHandler.reset()
-      } else {
+      } else if (game.stack.deathAnimation <= game.stack.deathAnimationLimit) {
 		game.request = requestAnimationFrame(game.gameLoop)
 		game.now = game.timestamp()
         game.deltaTime = (game.now - game.last) / 1000
