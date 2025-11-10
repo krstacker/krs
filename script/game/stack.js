@@ -2071,7 +2071,7 @@ export default class Stack extends GameModule {
 			color = "hidden"
 			suffix = ""
 		}
-		if (this.deathAnimation <= this.deathAnimationLimit) {
+		if (this.deathAnimation <= 3399) {
           if (y - 4 <= deathAnimationLength) {
 		    color = "black"
 		  }
