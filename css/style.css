@@ -1907,7 +1907,7 @@ body {
 
 .game-canvas.loss {
   opacity: 1;
-  filter: grayscale(100%) brightness(1) blur(0em);
+  filter: grayscale(0%) brightness(1) blur(0em);
   animation-name: piece-canvas-loss;
   animation-duration: 1s;
   animation-direction: alternate;
