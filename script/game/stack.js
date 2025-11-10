@@ -1945,7 +1945,7 @@ export default class Stack extends GameModule {
 			suffix = ""
 		}
 		if (this.deathAnimation <= this.deathAnimationLimit) {
-          if (y - 3 <= deathAnimationLength) {
+          if (y - 4 <= deathAnimationLength) {
 		    color = "black"
 		  }
 		  suffix = ""
