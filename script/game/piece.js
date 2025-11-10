@@ -304,7 +304,7 @@ export default class Piece extends GameModule {
 		} else {
 			document.getElementById(`piece`).classList.remove("grayscale")
 		}
-		if (this.parent.stack.deathAnimation <= this.parent.stack.deathAnimationLimit) {
+		if (this.parent.stack.deathAnimation < this.parent.stack.deathAnimationLimit) {
 			img = document.getElementById(`ghost-hidden`)
 		} else {
 			img = document.getElementById(`ghost-${color}${suffix}`)
@@ -322,7 +322,7 @@ export default class Piece extends GameModule {
 		} else {
 			document.getElementById(`piece`).classList.remove("grayscale")
 		}
-		if (this.parent.stack.deathAnimation <= this.parent.stack.deathAnimationLimit) {
+		if (this.parent.stack.deathAnimation < this.parent.stack.deathAnimationLimit) {
 			img = document.getElementById(`mino-black`)
 		} else {
 			img = document.getElementById(`mino-${color}${suffix}`)

@@ -518,7 +518,7 @@ export default class Game {
 	*/
     $("#kill-message-container").classList.remove("hidden")
     if (victory) {
-	  this.stack.deathAnimation = 1000
+	  this.stack.deathAnimation = 3400
 	  endScreenDelay = 1700
       sound.add("excellent")
     } else {
@@ -1105,7 +1105,7 @@ export default class Game {
           }
           game.particle.update(msPassed)
           game.updateMatrix(msPassed)
-		  if (game.stack.deathAnimation <= game.stack.deathAnimationLimit) {
+		  if (game.stack.deathAnimation < game.stack.deathAnimationLimit) {
 			game.stack.makeAllDirty()
 			game.stack.isDirty = true
 			game.stack.deathAnimation += msPassed

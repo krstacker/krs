@@ -25,8 +25,8 @@ export default class Stack extends GameModule {
     this.dirtyCells = []
     this.levelUpAnimation = 0
     this.levelUpAnimationLimit = 0
-	this.deathAnimation = 1000
-	this.deathAnimationLimit = 500
+	this.deathAnimation = 3400
+	this.deathAnimationLimit = 1700
     this.flashOnTetris = false
     this.alarmIsOn = false
     this.isInvisible = false
@@ -2074,6 +2074,9 @@ export default class Stack extends GameModule {
 		if (this.deathAnimation <= this.deathAnimationLimit) {
           if (y - 4 <= deathAnimationLength) {
 		    color = "black"
+		  }
+		  if (this.deathAnimation >= this.deathAnimationLimit - 1) {
+			  color = "black"
 		  }
 		  suffix = ""
         }
