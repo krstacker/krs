@@ -518,7 +518,7 @@ export default class Game {
 	*/
     $("#kill-message-container").classList.remove("hidden")
     if (victory) {
-	  this.stack.deathAnimation = 3400
+	  this.stack.deathAnimation = 1000
 	  endScreenDelay = 1700
       sound.add("excellent")
     } else {

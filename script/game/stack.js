@@ -25,8 +25,8 @@ export default class Stack extends GameModule {
     this.dirtyCells = []
     this.levelUpAnimation = 0
     this.levelUpAnimationLimit = 0
-	this.deathAnimation = 3400
-	this.deathAnimationLimit = 1700
+	this.deathAnimation = 1000
+	this.deathAnimationLimit = 500
     this.flashOnTetris = false
     this.alarmIsOn = false
     this.isInvisible = false
