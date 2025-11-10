@@ -84,7 +84,7 @@
     "description": "Displays when a tetra or spin line clear is performed when the previous one was also a tetra or spin line clear"
   },
   "combo": {
-    "message": "%1 Combo",
+    "message": "%1 REN",
     "description": "Displays on clearing rows successively"
   },
   "pc": {
