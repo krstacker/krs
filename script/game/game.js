@@ -1202,6 +1202,7 @@ export default class Game {
 			game.stack.makeAllDirty()
 			game.stack.isDirty = true
 			game.stack.deathAnimation += msPassed
+			console.log(game.stack.deathAnimation)
 		}
 		const modules = ["stack"]
         for (const moduleName of modules) {
@@ -1214,7 +1215,6 @@ export default class Game {
 				currentModule.isDirty = false
             }
         }
-		game.isDirty = false
 	  }
     }
   }
