@@ -418,9 +418,6 @@ export default class Game {
   die() {
     cancelAnimationFrame(this.request)
     this.isDead = true
-	if (this.mustReset !== true) {
-		this.request = requestAnimationFrame(this.gameLoop)
-	}
   }
   end(victory = false) {
     this.resetBeatStuff()
@@ -541,8 +538,6 @@ export default class Game {
 		document.getElementById(`piece`).classList.add("loss")
 	}
     endScreenTimeout = setTimeout(() => {
-	  cancelAnimationFrame(this.request)
-	  this.stack.deathAnimation = 1000
 	  $("#game").classList.add("dead")
 	  $("#game").classList.remove("victory")
 	  $("#game").classList.remove("loss")
@@ -1110,6 +1105,12 @@ export default class Game {
           }
           game.particle.update(msPassed)
           game.updateMatrix(msPassed)
+		  if (game.stack.deathAnimation <= game.stack.deathAnimationLimit) {
+			game.stack.makeAllDirty()
+			game.stack.isDirty = true
+			game.stack.deathAnimation += msPassed
+			console.log(game.stack.deathAnimation)
+		  }
           const modules = ["piece", "stack", "next", "hold", "particle"]
           for (const moduleName of modules) {
             const currentModule = game[moduleName]
@@ -1198,29 +1199,7 @@ export default class Game {
     } else {
       if (game.mustReset) {
         gameHandler.reset()
-      } else if (game.stack.deathAnimation <= game.stack.deathAnimationLimit) {
-		game.request = requestAnimationFrame(game.gameLoop)
-		game.now = game.timestamp()
-        game.deltaTime = (game.now - game.last) / 1000
-		const msPassed = game.deltaTime * 1000
-		if (game.stack.deathAnimation <= game.stack.deathAnimationLimit) {
-			game.stack.makeAllDirty()
-			game.stack.isDirty = true
-			game.stack.deathAnimation += msPassed
-			console.log(game.stack.deathAnimation)
-		}
-		const modules = ["stack"]
-        for (const moduleName of modules) {
-			const currentModule = game[moduleName]
-            if (currentModule.isDirty || game.isDirty) {
-				if (moduleName === "stack" && game.isDirty) {
-					game.stack.makeAllDirty()
-				}
-				currentModule.draw()
-				currentModule.isDirty = false
-            }
-        }
-	  }
+      }
     }
   }
   makeSprite(

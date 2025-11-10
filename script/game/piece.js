@@ -300,15 +300,13 @@ export default class Piece extends GameModule {
     switch (type) {
       case "ghost":
         if (this.parent.currentEffect === "rotateLock") {
-			/*if (this.parent.useBoneBlocks) {
-				img = document.getElementById("ghost-rotateLockedBone")
-			} else {
-				img = document.getElementById("ghost-rotateLocked")
-			}*/
 			document.getElementById(`piece`).classList.add("grayscale")
-			img = document.getElementById(`ghost-${color}${suffix}`)
 		} else {
 			document.getElementById(`piece`).classList.remove("grayscale")
+		}
+		if (this.parent.stack.deathAnimation <= this.parent.stack.deathAnimationLimit) {
+			img = document.getElementById(`ghost-hidden`)
+		} else {
 			img = document.getElementById(`ghost-${color}${suffix}`)
 		}
         break
@@ -320,16 +318,13 @@ export default class Piece extends GameModule {
           suffix = `-${this.parent.stat.level % 10}`
         }
 		if (this.parent.currentEffect === "rotateLock") {
-			/*if (this.parent.useBoneBlocks) {
-				img = document.getElementById("mino-rotateLockedBone")
-			} else {
-				img = document.getElementById("mino-rotateLocked")
-			}*/
 			document.getElementById(`piece`).classList.add("grayscale")
-			img = document.getElementById(`mino-${color}${suffix}`)
 		} else {
 			document.getElementById(`piece`).classList.remove("grayscale")
-			document.getElementById(`piece`).classList.remove("grayscale")
+		}
+		if (this.parent.stack.deathAnimation <= this.parent.stack.deathAnimationLimit) {
+			img = document.getElementById(`mino-black`)
+		} else {
 			img = document.getElementById(`mino-${color}${suffix}`)
 		}
       default:
