@@ -515,7 +515,7 @@ export default class Stack extends GameModule {
       gravityAccceleration: 1.05,
       lifeVariance: 80,
     })
-	this.gridParticles()
+	//this.gridParticles()
 	sound.add("collapse")
 	sound.add("collapse4")
 	this.reRenderStack()
@@ -561,11 +561,11 @@ export default class Stack extends GameModule {
 		yDampening: 1,
 		lifeVariance: 0,
     })
+	//this.gridParticles()
 	this.reRenderStack()
 	delayFinished = true
 	//To do: Add a 250ms delay here if possible
 	delayFinished = true
-	this.gridParticles()
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
   }
@@ -650,10 +650,10 @@ export default class Stack extends GameModule {
       gravityAccceleration: 1.05,
       lifeVariance: 80,
     })
+	//this.gridParticles()
 	sound.add("collapse")
 	sound.add("collapse4")
 	this.reRenderStack()
-	this.gridParticles()
 	delayFinished = true
 	this.reRenderStack()
 	this.parent.onCustomDelay = false
