@@ -538,6 +538,9 @@ export default class Piece extends GameModule {
         sound.stopSeLoop("topoutwarning")
       }
       $("#rotation-warning").classList.add("hidden")
+	  if (this.shape !== null) {
+		  this.drawPiece(this.shape, 0, this.getDrop(), "ghost")
+	  }
       return
     }
     if (this.ghostIsVisible) {
