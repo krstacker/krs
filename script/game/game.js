@@ -1203,7 +1203,7 @@ export default class Game {
 			game.stack.isDirty = true
 			game.stack.deathAnimation += msPassed
 		}
-		const modules = ["stack", "piece"]
+		const modules = ["stack"]
         for (const moduleName of modules) {
 			const currentModule = game[moduleName]
             if (currentModule.isDirty || game.isDirty) {
