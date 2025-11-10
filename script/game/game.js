@@ -418,6 +418,9 @@ export default class Game {
   die() {
     cancelAnimationFrame(this.request)
     this.isDead = true
+	if (this.mustReset !== true) {
+		this.request = requestAnimationFrame(this.gameLoop)
+	}
   }
   end(victory = false) {
     this.resetBeatStuff()
@@ -538,6 +541,8 @@ export default class Game {
 		document.getElementById(`piece`).classList.add("loss")
 	}
     endScreenTimeout = setTimeout(() => {
+	  cancelAnimationFrame(this.request)
+	  this.stack.deathAnimation = 1000
 	  $("#game").classList.add("dead")
 	  $("#game").classList.remove("victory")
 	  $("#game").classList.remove("loss")
