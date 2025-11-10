@@ -1916,7 +1916,6 @@ export default class Stack extends GameModule {
       (this.height * this.levelUpAnimation) / this.levelUpAnimationLimit
 	const deathAnimationLength =
       (this.height * this.deathAnimation) / this.deathAnimationLimit
-      (this.height * this.deathAnimation) / this.deathAnimationLimit
     for (const cell of this.dirtyCells) {
       const x = cell[0]
       const y = cell[1]
