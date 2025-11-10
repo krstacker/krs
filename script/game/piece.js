@@ -319,10 +319,7 @@ export default class Piece extends GameModule {
         if (this.useRetroColors) {
           suffix = `-${this.parent.stat.level % 10}`
         }
-		if (this.parent.isDead && this.parent.stack.deathAnimation <= this.parent.stack.deathAnimationLimit) {
-			document.getElementById(`piece`).classList.remove("grayscale")
-			img = document.getElementById(`mino-black`)
-		} else if (this.parent.currentEffect === "rotateLock") {
+		if (this.parent.currentEffect === "rotateLock") {
 			/*if (this.parent.useBoneBlocks) {
 				img = document.getElementById("mino-rotateLockedBone")
 			} else {
@@ -331,6 +328,7 @@ export default class Piece extends GameModule {
 			document.getElementById(`piece`).classList.add("grayscale")
 			img = document.getElementById(`mino-${color}${suffix}`)
 		} else {
+			document.getElementById(`piece`).classList.remove("grayscale")
 			document.getElementById(`piece`).classList.remove("grayscale")
 			img = document.getElementById(`mino-${color}${suffix}`)
 		}
@@ -540,7 +538,6 @@ export default class Piece extends GameModule {
         sound.stopSeLoop("topoutwarning")
       }
       $("#rotation-warning").classList.add("hidden")
-	  this.drawPiece(this.shape, 0, 0, "piece")
       return
     }
     if (this.ghostIsVisible) {

@@ -506,11 +506,11 @@
 
 @keyframes pulse-grayscale {
   from {
-    filter: brightness(0.75) grayscale(100%)
+    filter: brightness(0.8) grayscale(100%)
   }
 
   to {
-    filter: brightness(0.5) grayscale(100%)
+    filter: brightness(0.6) grayscale(100%)
   }
 }
 
@@ -1907,7 +1907,7 @@ body {
 
 .game-canvas.loss {
   opacity: 1;
-  filter: grayscale(0%) brightness(1) blur(0em);
+  filter: grayscale(100%) brightness(1) blur(0em);
   animation-name: piece-canvas-loss;
   animation-duration: 1s;
   animation-direction: alternate;
