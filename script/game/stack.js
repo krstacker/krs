@@ -25,6 +25,8 @@ export default class Stack extends GameModule {
     this.dirtyCells = []
     this.levelUpAnimation = 0
     this.levelUpAnimationLimit = 0
+	this.deathAnimation = 3400
+	this.deathAnimationLimit = 1700
     this.flashOnTetris = false
     this.alarmIsOn = false
     this.isInvisible = false
@@ -1912,6 +1914,8 @@ export default class Stack extends GameModule {
     */
     const levelUpLength =
       (this.height * this.levelUpAnimation) / this.levelUpAnimationLimit
+	const deathAnimationLength =
+      (this.height * this.deathAnimation) / this.deathAnimationLimit
     for (const cell of this.dirtyCells) {
       const x = cell[0]
       const y = cell[1]
@@ -1940,6 +1944,12 @@ export default class Stack extends GameModule {
 			color = "hidden"
 			suffix = ""
 		}
+		if (this.parent.isDead && this.deathAnimation <= this.deathAnimationLimit) {
+          if (y <= deathAnimationLength) {
+		    color = "black"
+		  }
+		  suffix = ""
+        }
         const img = document.getElementById(`${name}-${color}${suffix}`)
         const xPos = x * cellSize
         const yPos =

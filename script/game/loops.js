@@ -812,7 +812,7 @@ export const loops = {
 	  game.timeGoal = 120000
 	  game.musicProgression = 0
 	  game.stat.grade = ""
-	  game.endingStats.grade = true
+	  //game.endingStats.grade = true
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0
@@ -1549,7 +1549,7 @@ export const loops = {
 	  game.timeGoal = 120000
 	  game.musicProgression = 0
 	  game.stat.grade = ""
-	  game.endingStats.grade = true
+	  //game.endingStats.grade = true
 	  updateLockFlash()
 	  onCountdown = false
 	  countdownTimer = 0

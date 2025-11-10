@@ -100,6 +100,7 @@ export default class Game {
       maxcombo: true,
 	  medals: true,
     }
+	this.endingStats = {}
     this.b2b = 0
     this.maxb2b = 0
     this.combo = -1
@@ -428,6 +429,7 @@ export default class Game {
       this.stats.splice(0, 0, "skipCount")
     }
     $("#end-stats").innerHTML = ""
+	this.endingStats = {}
     for (const statName of this.stats) {
       const append = this.appends[statName] ? this.appends[statName] : ""
       if (
@@ -531,6 +533,7 @@ export default class Game {
 		$("#game").classList.add("loss")
 		$(".stack-canvas").classList.add("loss")
 		document.getElementById(`piece`).classList.add("loss")
+		this.stack.deathAnimation = 0
 	}
     endScreenTimeout = setTimeout(() => {
 	  $("#game").classList.add("dead")
@@ -1188,7 +1191,27 @@ export default class Game {
     } else {
       if (game.mustReset) {
         gameHandler.reset()
-      }
+      } else {
+		  game.now = game.timestamp()
+          game.deltaTime = (game.now - game.last) / 1000
+		  const msPassed = game.deltaTime * 1000
+		  if (this.stack.deathAnimation < this.stack.deathAnimationLimit) {
+			this.stack.makeAllDirty()
+			this.stack.isDirty = true
+			this.stack.deathAnimation += msPassed
+		  }
+		  const modules = ["piece", "stack"]
+          for (const moduleName of modules) {
+            const currentModule = game[moduleName]
+            if (currentModule.isDirty || game.isDirty) {
+              if (moduleName === "stack" && game.isDirty) {
+                game.stack.makeAllDirty()
+              }
+              currentModule.draw()
+              currentModule.isDirty = false
+            }
+          }
+	  }
     }
   }
   makeSprite(
