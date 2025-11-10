@@ -1192,6 +1192,7 @@ export default class Game {
       if (game.mustReset) {
         gameHandler.reset()
       } else {
+		  game.request = requestAnimationFrame(game.gameLoop)
 		  game.now = game.timestamp()
           game.deltaTime = (game.now - game.last) / 1000
 		  const msPassed = game.deltaTime * 1000
