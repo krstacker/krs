@@ -1482,6 +1482,10 @@ export default class Stack extends GameModule {
 	}
 	if (this.parent.useEffectBlocks) {
 		if (this.effectBlockInterval <= 4) {
+			if (this.parent.currentEffect === "xRay") {
+				this.parent.currentEffect = ""
+				this.reRenderStack()
+			}
 			this.parent.currentEffect = ""
 			if (this.refreezeOnEffect) {
 				this.isFrozen = true
