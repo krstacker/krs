@@ -85,10 +85,10 @@ const updateTestMode = () => {
 const updateNextAndHold = () => {
 	const game = gameHandler.game
 	if (game.currentEffect === "holdLock") {
-		$(".hold-canvas").classList.add("hiddeneffect")
+		$(".hold-canvas").classList.add("disabledeffect")
 		$(".hold-lock").classList.add("disabledeffect")
 	} else {
-		$(".hold-canvas").classList.remove("hiddeneffect")
+		$(".hold-canvas").classList.remove("disabledeffect")
 		$(".hold-lock").classList.remove("disabledeffect")
 	}
 	if (game.currentEffect === "hideNext") {
