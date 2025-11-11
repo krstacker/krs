@@ -2082,13 +2082,6 @@ export const loops = {
         game.end(true)
 	  }
 	  let underwaterTable = [
-	    [1, false],
-		[2, false],
-		[3, false],
-		[4, false],
-		[5, false],
-		[6, false],
-		[7, false],
 		[8, true],
 		[9, false],
 		[10, true],
@@ -2101,11 +2094,7 @@ export const loops = {
 		[17, true],
 		[18, true],
 		[19, true],
-		[20, true],
-		[21, true],
-		[22, true],
-		[23, true],
-		[24, false],
+		[20, false],
 	  ]
 	  for (const pair of underwaterTable) {
         const level = pair[0]
