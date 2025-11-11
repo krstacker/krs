@@ -752,6 +752,7 @@ export default class Stack extends GameModule {
 	this.reRenderStack()
   }
   removeEffectBlocks() {
+	let color = this.targetColor
     for (let x = 0; x < this.grid.length; x++) {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
