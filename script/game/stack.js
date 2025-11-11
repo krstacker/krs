@@ -1087,9 +1087,7 @@ export default class Stack extends GameModule {
 			) {
 				this.grid[xLocation][yLocation] = this.parent.pendingEffect
 				this.lastEffect = this.parent.pendingEffect
-				if (this.parent.pendingEffect === "jewelBlock") {
-					this.targetColor = color
-				}
+				this.targetColor = color
 				placedEffectBlock = true
 			} else if (this.isHidden && this.isFrozen !== true) {
 				this.grid[xLocation][yLocation] = "hidden"
