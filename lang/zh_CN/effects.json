@@ -37,5 +37,8 @@
   },
   "deathBlock": {
     "message": "死亡阻挡"
+  },
+  "xRay": {
+    "message": "X-RAY"
   }
 }

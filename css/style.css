@@ -564,6 +564,16 @@
   }
 }
 
+@keyframes krsxrayeffect {
+  from {
+    opacity: 1
+  }
+
+  to {
+    opacity: 0.75
+  }
+}
+
 @keyframes stack-canvas-loss {
   from {
     opacity: 1
@@ -1977,6 +1987,19 @@ body {
   animation-iteration-count: infinite;
 }
 
+.stack-canvas.xrayeffect {
+  filter: 
+  drop-shadow(0em 0em 0em rgba(255,255,255,0))
+  drop-shadow(0em 0em 0em rgba(255,255,255,0))
+  drop-shadow(0em 0em 0em rgba(255,255,255,0))
+  drop-shadow(0em 0em 0em rgba(255,255,255,0))
+  ;
+  animation-name: krsxrayeffect;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
 .stack-canvas.loss {
   opacity: 1;
   filter: grayscale(0%) brightness(1) blur(0em);
@@ -2074,6 +2097,12 @@ body {
 .hold-canvas.hidden,
 .main-next-canvas.hidden,
 .sub-next-canvas.hidden {
+  opacity: 0;
+}
+
+.hold-canvas.hiddeneffect,
+.main-next-canvas.hiddeneffect,
+.sub-next-canvas.hiddeneffect {
   opacity: 0;
 }
 

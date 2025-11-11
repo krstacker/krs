@@ -314,9 +314,6 @@ export default class Piece extends GameModule {
         if (this.useSpecialI && this.name === "I") {
           suffix = number
         }
-        if (this.useRetroColors) {
-          suffix = `-${this.parent.stat.level % 10}`
-        }
 		if (this.parent.currentEffect === "rotateLock") {
 			document.getElementById(`piece`).classList.add("grayscale")
 		} else {

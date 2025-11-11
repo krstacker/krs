@@ -85,22 +85,22 @@ const updateTestMode = () => {
 const updateNextAndHold = () => {
 	const game = gameHandler.game
 	if (game.currentEffect === "holdLock") {
-		$(".hold-canvas").classList.add("hidden")
+		$(".hold-canvas").classList.add("hiddeneffect")
 		$(".hold-lock").classList.add("disabledeffect")
 		$(".hold-label").classList.add("disabledeffect")
 	} else {
-		$(".hold-canvas").classList.remove("hidden")
+		$(".hold-canvas").classList.remove("hiddeneffect")
 		$(".hold-lock").classList.remove("disabledeffect")
 		$(".hold-label").classList.remove("disabledeffect")
 	}
 	if (game.currentEffect === "hideNext") {
-		$(".main-next-canvas").classList.add("hidden")
-		$(".sub-next-canvas").classList.add("hidden")
-		$(".next-label").classList.add("disabledeffect")
+		$(".main-next-canvas").classList.add("hiddeneffect")
+		$(".sub-next-canvas").classList.add("hiddeneffect")
+		$(".hold-canvas").classList.add("hiddeneffect")
 	} else {
-		$(".main-next-canvas").classList.remove("hidden")
-		$(".sub-next-canvas").classList.remove("hidden")
-		$(".next-label").classList.remove("disabledeffect")
+		$(".main-next-canvas").classList.remove("hiddeneffect")
+		$(".sub-next-canvas").classList.remove("hiddeneffect")
+		$(".hold-canvas").classList.remove("hiddeneffect")
 	}
 	if (game.useEffectBlocks && game.stack.effectBlockInterval === 0 && game.pendingEffect !== "") {
 		$(".hold-canvas").classList.add("oneffect")
@@ -113,6 +113,13 @@ const updateNextAndHold = () => {
 		$(".stack-canvas").classList.add("fadingeffect")
 	} else {
 		$(".stack-canvas").classList.remove("fadingeffect")
+	}
+	if (
+		game.currentEffect === "xRay"
+	) {
+		$(".stack-canvas").classList.add("xrayeffect")
+	} else {
+		$(".stack-canvas").classList.remove("xrayeffect")
 	}
 	if (
 		game.currentEffect === "phantomBlock" || 

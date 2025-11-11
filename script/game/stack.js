@@ -23,8 +23,7 @@ export default class Stack extends GameModule {
     this.fadeLineClear = true
     this.useMinoSkin = false
     this.dirtyCells = []
-    this.levelUpAnimation = 0
-    this.levelUpAnimationLimit = 0
+    this.xRayAnimation = 0
 	this.deathAnimation = 3400
 	this.deathAnimationLimit = 1700
     this.flashOnTetris = false
@@ -126,6 +125,8 @@ export default class Stack extends GameModule {
 				this.grid[x][y] = "goldgem"
 			} else if (this.grid[x][y] === "frozen") {
 				this.grid[x][y] = "icegem"
+			} else if (this.grid[x][y].includes("bonus")) {
+				this.grid[x][y] = `${color}gem`
 			} else if (this.grid[x][y] === color) {
 				this.grid[x][y] = `${color}gem`
 			}
@@ -755,7 +756,8 @@ export default class Stack extends GameModule {
       for (let y = 0; y < this.grid[x].length; y++) {
         if (this.grid[x][y] != null) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
-				this.grid[x][y] = "gold"
+				//this.grid[x][y] = "gold"
+				this.grid[x][y] = `bonus${color}`
 			}
 		}
       }
@@ -866,6 +868,7 @@ export default class Stack extends GameModule {
 			"deathBlock",
 			"hideNext",
 			"fadingBlock",
+			"xRay",
 			"phantomBlock",
 		]
 		if (underwaterEffectsRoster.includes(this.parent.pendingEffect) !== true) {
@@ -906,6 +909,7 @@ export default class Stack extends GameModule {
 			"holdLock",
 			"hideNext",
 			"fadingBlock",
+			"xRay",
 			"phantomBlock",
 			"delFieldUp",
 			"delFieldDown",
@@ -936,6 +940,7 @@ export default class Stack extends GameModule {
 				"deathBlock",
 				"hideNext",
 				"fadingBlock",
+				"xRay",
 				"phantomBlock",
 			]
 		}
@@ -957,6 +962,7 @@ export default class Stack extends GameModule {
 			"delFieldUp",
 			"delFieldDown",
 			"fadingBlock",
+			"xRay",
 			"phantomBlock",
 		]
 		if (effectsRoster.includes(this.parent.pendingEffect) !== true) {
@@ -975,6 +981,7 @@ export default class Stack extends GameModule {
 	if (this.lastEffect === "jewelBlock") {
 		let effectsRoster = [
 			"fadingBlock",
+			"xRay",
 			"phantomBlock",
 		]
 		if (effectsRoster.includes(this.parent.pendingEffect) !== true) {
@@ -995,6 +1002,7 @@ export default class Stack extends GameModule {
 			"rotateLock",
 			"hideNext",
 			"fadingBlock",
+			"xRay",
 			"phantomBlock",
 		]
 		if (holdLockSubstitutes.includes(this.parent.pendingEffect) !== true) {
@@ -1020,7 +1028,7 @@ export default class Stack extends GameModule {
 		this.removeEffectBlocks()
 	}
 	let placedEffectBlock = false
-	if (this.parent.piece.useBoneBlocks || settings.settings.outline !== true) {
+	if (this.parent.useBoneBlocks || settings.settings.outline !== true) {
 		$(".stack-canvas").classList.add("outlineoff")
 	} else {
 		$(".stack-canvas").classList.remove("outlineoff")
@@ -1028,11 +1036,16 @@ export default class Stack extends GameModule {
 	if (this.isFading || this.isHidden) {
 		$(".stack-canvas").classList.remove("outlineoff")
 		$(".stack-canvas").classList.add("invis")
-	} else if (this.parent.currentEffect === "fadingBlock") {
+	} else if (this.parent.currentEffect === "fadingBlock" || this.parent.currentEffect === "xRay") {
 		$(".stack-canvas").classList.remove("outlineoff")
 		$(".stack-canvas").classList.remove("invis")
 	} else {
 		$(".stack-canvas").classList.remove("invis")
+		if (this.parent.useBoneBlocks || settings.settings.outline !== true) {
+			$(".stack-canvas").classList.add("outlineoff")
+		} else {
+			$(".stack-canvas").classList.remove("outlineoff")
+		}
 	}
 	this.resetLastPlacedBlocks()
     for (let y = 0; y < shape.length; y++) {
@@ -1139,6 +1152,11 @@ export default class Stack extends GameModule {
 				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 25))
 			}
 			if (this.grid[x][y] === "gold") {
+				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 25))
+				this.parent.timePassedOffset += 1000
+				this.parent.timePassed -= 1000
+			}
+			if (this.grid[x][y].includes("bonus")) {
 				this.parent.stat.score += (100 + (Math.min(0, this.parent.stat.level - 1) * 25))
 				this.parent.timePassedOffset += 1000
 				this.parent.timePassed -= 1000
@@ -1524,6 +1542,16 @@ export default class Stack extends GameModule {
 			resetAnimation("#message", "dissolve")
 		}
 		this.parent.stat.effect = locale.getString("effects", "fadingBlock")
+	}
+	if (this.parent.currentEffect === "xRay") {
+		if (this.displayedEffectText !== true) {
+			this.displayedEffectText = true
+			let effectName = locale.getString("effects", "xRay")
+			$("#message").classList.add("effectactivated")
+			$("#message").textContent = `${effectName}!`
+			resetAnimation("#message", "dissolve")
+		}
+		this.parent.stat.effect = locale.getString("effects", "xRay")
 	}
 	if (this.parent.currentEffect === "phantomBlock") {
 		if (this.displayedEffectText !== true) {
@@ -2039,8 +2067,6 @@ export default class Stack extends GameModule {
       }
     }
     */
-    const levelUpLength =
-      (this.height * this.levelUpAnimation) / this.levelUpAnimationLimit
 	const deathAnimationLength =
       (this.height * this.deathAnimation) / this.deathAnimationLimit
     for (const cell of this.dirtyCells) {
@@ -2054,15 +2080,6 @@ export default class Stack extends GameModule {
           name = "mino"
         }
         let suffix = ""
-        if (this.parent.piece.useRetroColors) {
-          let modifier = 0
-          if (this.levelUpAnimation < this.levelUpAnimationLimit) {
-            if (y - 3 <= this.height - levelUpLength) {
-              modifier--
-            }
-          }
-          suffix = `-${negativeMod(this.parent.stat.level + modifier, 10)}`
-        }
 		if (this.isHidden && this.redrawOnHidden) {
 			color = "hidden"
 			suffix = ""
@@ -2070,6 +2087,11 @@ export default class Stack extends GameModule {
 		if (this.parent.currentEffect === "phantomBlock") {
 			color = "hidden"
 			suffix = ""
+		}
+		if (this.parent.currentEffect === "xRay") {
+			if (x !== this.xRayAnimation % this.width) {
+				color = "hidden"
+			}
 		}
 		if (this.deathAnimation <= 3399) {
           if (y - 4 <= deathAnimationLength) {
@@ -2080,6 +2102,9 @@ export default class Stack extends GameModule {
 		  }
 		  suffix = ""
         }
+		if (color.includes("bonus")) {
+			color = color.replace("bonus", "")
+		}
         const img = document.getElementById(`${name}-${color}${suffix}`)
         const xPos = x * cellSize
         const yPos =
@@ -2103,7 +2128,8 @@ export default class Stack extends GameModule {
         ctx.fillStyle = `#ffffff${flash}`
         if (
           settings.settings.lockFlash !== "off" &&
-          settings.settings.lockFlash !== "flash"
+          settings.settings.lockFlash !== "flash" &&
+		  this.parent.useBoneBlocks !== true
         ) {
           ctx.fillRect(x, Math.floor(y), cellSize, cellSize)
         }
@@ -2149,7 +2175,8 @@ export default class Stack extends GameModule {
           ctx.fill()
         }
         // Solid white 2f
-        if (this.flashTime < 50 && settings.settings.lockFlash !== "off") {
+        if (this.flashTime < 50 && settings.settings.lockFlash !== "off"
+		&& this.parent.useBoneBlocks !== true) {
           ctx.globalCompositeOperation = "source-over"
           ctx.fillStyle = `#fff`
           ctx.fillRect(x, Math.floor(y), cellSize, cellSize)
@@ -2157,7 +2184,7 @@ export default class Stack extends GameModule {
       }
     }
     // Line clear animation
-    if (this.toCollapse.length > 0 && this.isFrozen !== true) {
+    if (this.toCollapse.length > 0 && this.isFrozen !== true && this.parent.useBoneBlocks !== true) {
       const brightness = Math.max(
         0,
         1 -
@@ -2211,7 +2238,7 @@ export default class Stack extends GameModule {
           )
         }
       }
-  } else if (this.isFrozen === true) {
+  } else if (this.toCollapse.length > 0) {
 	  for (const i of this.toCollapse) {
 		this.parent.particle.generate({
           amount: 2,

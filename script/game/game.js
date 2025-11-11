@@ -143,6 +143,7 @@ export default class Game {
 		"delFieldDown",
 		"jewelBlock",
 		"deathBlock",
+		"xRay",
 	]
 	this.lastMedals = this.stat.medals
 	this.initialMedals = this.stat.medals
@@ -1111,6 +1112,11 @@ export default class Game {
 			game.stack.deathAnimation += msPassed
 			console.log(game.stack.deathAnimation)
 		  }
+		  if (game.currentEffect === "xRay") {
+			  game.stack.xRayAnimation += 1
+			  game.stack.makeAllDirty()
+			  game.stack.isDirty = true
+		  }
           const modules = ["piece", "stack", "next", "hold", "particle"]
           for (const moduleName of modules) {
             const currentModule = game[moduleName]
@@ -1224,6 +1230,8 @@ export default class Game {
       "blackgem",
 	  "gold",
 	  "goldgem",
+	  "silver",
+	  "silvergem",
 	  "frozen",
 	  "icegem",
 	  "bone",
@@ -1243,6 +1251,7 @@ export default class Game {
 	  "delFieldDown",
 	  "jewelBlock",
 	  "deathBlock",
+	  "xRay",
     ],
     types = ["mino", "ghost"],
     skin = settings.settings.skin === "auto"
