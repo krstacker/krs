@@ -2109,6 +2109,7 @@ export const loops = {
         const level = pair[0]
         const entry = pair[1]
         if (game.stat.level === level) {
+		  game.stack.removeEffectBlocks()
           game.stack.isUnderwater = entry
           break
         }

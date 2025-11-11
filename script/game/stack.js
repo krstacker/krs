@@ -126,7 +126,7 @@ export default class Stack extends GameModule {
 			} else if (this.grid[x][y] === "frozen") {
 				this.grid[x][y] = "icegem"
 			} else if (this.grid[x][y].includes("bonus")) {
-				this.grid[x][y] = `${color}gem`
+				this.grid[x][y] = `${color.replace("bonus", "")}gem`
 			} else if (this.grid[x][y] === color) {
 				this.grid[x][y] = `${color}gem`
 			}
@@ -757,7 +757,7 @@ export default class Stack extends GameModule {
         if (this.grid[x][y] != null) {
 			if (this.parent.effectsRoster.includes(this.grid[x][y])) {
 				//this.grid[x][y] = "gold"
-				this.grid[x][y] = `bonus${color}`
+				this.grid[x][y] = `${color}bonus`
 			}
 		}
       }
